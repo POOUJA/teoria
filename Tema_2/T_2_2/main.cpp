@@ -1,11 +1,10 @@
 /** 
- * @brief Fichero principal del ejemplo de teoría 2.2
+ * @brief Fichero principal del ejemplo de teoría T_2_"
  * @file main.cpp
  * @author Victor M. Rivas (vrivas@ujaen.es)
  * @date 17 de septiembre de 2015, 18:17
  */
 
-#include <cstdlib>
 #include <iostream>
 #include "CalculadoraIVA.h"
 using namespace std;
