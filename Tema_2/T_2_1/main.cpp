@@ -1,5 +1,5 @@
 /** 
- * @brief Fichero principal del ejemplo de teoría 2.1 
+ * @brief Fichero principal del ejemplo de teoría T_2_1
  * @file main.cpp
  * @author Victor M. Rivas (vrivas@ujaen.es)
  * @date 17 de septiembre de 2015, 18:17

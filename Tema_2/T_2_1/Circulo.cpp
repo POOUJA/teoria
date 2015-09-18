@@ -1,4 +1,7 @@
 /** 
+ * @brief Definición de una clase. 
+ *        Ejemplo T_2_1, de la Teoría de Prog. Orientada a Objetos
+ *        del curso 2015-2016.
  * @file Circulo.cpp
  * @author vrivas
  * 
@@ -6,6 +9,13 @@
  */
 
 #include "Circulo.h"
+
+
+// ATENCIÓN:
+// Esta declaración de la clase se ha simplificado mucho por motivos pedagógicos.
+// Para ver una declaración completa de una clase, mira el ejemplo T_3_3
+
+
 /**
  * @brief Constructor por defecto
  * @post Crea un nuevo objeto de tipo círculo cuyo radio vale 0.0
