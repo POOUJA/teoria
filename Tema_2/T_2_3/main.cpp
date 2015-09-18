@@ -13,15 +13,13 @@ using namespace std;
  * @brief Función principal
  * @param argc Número de argumentos
  * @param argv Caracteres que forman dichos argumentos
- * @post Crea un objeto de la clase Círculo e imprimir su diámetro
+ * @post Crea un objeto de la clase Gol e imprime su estado
  */
 int main(int argc, char** argv) {
     Gol primerGol( "Alex Cruz", 23 );
     cout << "Ejemplo Teoría T_2_3"<<endl;
-    cout << "El gol fue marcado por "
-            << primerGol.GetJugador()
-            << " en el minuto "
-            << primerGol.GetMinuto() << endl;
+    cout << "El gol fue marcado por " << primerGol.GetJugador()
+            << " en el minuto " << primerGol.GetMinuto() << endl;
     return 0;
 }
 
