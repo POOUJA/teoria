@@ -17,7 +17,7 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     Gol primerGol( "Alex Cruz", 23 );
-    cout << "Ejemplo Teoría T_2_3"<<endl;
+    cout << "Ejemplo Teoria T_2_3" << endl;
     cout << "El gol fue marcado por " << primerGol.GetJugador()
             << " en el minuto " << primerGol.GetMinuto() << endl;
     return 0;
