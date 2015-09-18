@@ -14,13 +14,13 @@ using namespace std;
  * @brief Función principal
  * @param argc Número de argumentos
  * @param argv Caracteres que forman dichos argumentos
- * @post Crea un objeto de la clase Círculo e imprimir su diámetro
+ * @post Crea un objeto de la clase Círculo e imprime su radio
  */
 int main(int argc, char** argv) {
     Circulo rueda;
-    rueda.SetRadio( 12 );
-    cout << "Ejemplo T_2_1"<<endl<<endl;
-    cout << "El radio de la rueda es "<<rueda.GetRadio()<<endl;
+    rueda.SetRadio(12);
+    cout << "Ejemplo T_2_1" << endl;
+    cout << "El radio de la rueda es " << rueda.GetRadio() << endl;
     return 0;
 }
 

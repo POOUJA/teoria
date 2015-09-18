@@ -13,12 +13,12 @@ using namespace std;
  * @brief Función principal
  * @param argc Número de argumentos
  * @param argv Caracteres que forman dichos argumentos
- * @post Crea un objeto de la clase Círculo e imprimir su diámetro
+ * @post Crea un objeto de la clase CalculadoraIVA e imprime el IVA para un determinado precio
  */
 int main(int argc, char** argv) {
     CalculadoraIVA calculadora( 21 );
     cout << "El IVA de un producto que cuesta 80 euros es "
-            << calculadora.aplicar( 80 )<<endl;
+            << calculadora.aplicar( 80 ) << endl;
     return 0;
 }
 
