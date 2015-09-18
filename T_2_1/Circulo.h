@@ -1,8 +1,8 @@
-/* 
- * File:   Circulo.h
- * Author: vrivas
+/**
+ * @file Circulo.h
+ * @author vrivas
  *
- * Created on 17 de septiembre de 2015, 18:29
+ * @date 17 de septiembre de 2015, 18:29
  */
 
 #ifndef CIRCULO_H
