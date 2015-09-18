@@ -34,5 +34,5 @@ private:
     int minuto;
 };
 
-#endif	/* CALCULADORAIVA_H */
+#endif	/* GOL_H */
 
