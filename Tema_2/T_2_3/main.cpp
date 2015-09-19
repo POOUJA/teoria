@@ -20,6 +20,8 @@ int main(int argc, char** argv) {
     cout << "Ejemplo Teoria T_2_3" << endl;
     cout << "El gol fue marcado por " << primerGol.GetJugador()
             << " en el minuto " << primerGol.GetMinuto() << endl;
+    
+    // Incorrecto: cout << "El gol fue marcado por " << primerGol.jugador
     return 0;
 }
 
