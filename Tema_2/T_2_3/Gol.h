@@ -30,6 +30,9 @@ public:
     std::string GetJugador() const;
     
 private:
+    bool minutoEsCorrecto(int minuto) const;
+    
+private:
     std::string jugador;
     int minuto;
 };

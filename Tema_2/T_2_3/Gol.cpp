@@ -36,7 +36,8 @@ jugador(orig.jugador)
  * @brief Destructor
  * @post Destruye el objeto
  */
-Gol::~Gol(){}
+Gol::~Gol() {
+}
 
 /**
  * @brief modifica el valor del atributo minuto
@@ -44,7 +45,9 @@ Gol::~Gol(){}
  * @post El valor del atributo queda modificado
  */
 void Gol::SetMinuto(int minuto) {
-    this->minuto = minuto;
+    if (minutoEsCorrecto(minuto)) {
+        this->minuto = minuto;
+    }
 }
 
 /**
@@ -52,7 +55,7 @@ void Gol::SetMinuto(int minuto) {
  * @post Devuelve el valor del atributo minuto
  */
 int Gol::GetMinuto() const {
-    return minuto;
+    return this->minuto;
 }
 
 /**
@@ -69,5 +72,19 @@ void Gol::SetJugador(std::string jugador) {
  * @post Devuelve el valor del atributo jugador
  */
 std::string Gol::GetJugador() const {
-    return jugador;
+    return this->jugador;
+}
+
+/**
+ * @brief Comprueba si el valor que se pasa del minuto en que se marca un gol es correcto o no.
+ * @param minuto Valor del minuto que se quiere comprobar
+ * @post Devuelve true si el minuto está entre 0 y 120, false en otro caso 
+ */
+bool Gol::minutoEsCorrecto(int minuto) const {
+    if (minuto >= 0 && minuto <= 120) { // 90'+30' de prórroga
+        return true;
+    } else {
+        return false;
+    }
+    // Más breve: return ( minuto>=0 && minuto<=120 );
 }
