@@ -19,22 +19,21 @@
  * @param autor Nombre del jugador que ha marcado el gol
  * @param minuto Minuto del partido en que se ha marcado el gol
  */
+
 class Gol {
-public:
-    Gol(const std::string elJugador, const int elMinuto);
-    Gol( const Gol& orig);
-    ~Gol();
-    void SetMinuto(int minuto);
-    int GetMinuto() const;
-    void SetJugador(std::string jugador);
-    std::string GetJugador() const;
-    
+public:                                                     // Métodos públicos
+    Gol(const std::string elJugador, const int elMinuto);   // Método: constructor
+    Gol(const Gol& orig);                                   // Método: constructor
+    ~Gol();                                                 // Método: constructor
+    void SetMinuto(int minuto);                             // Método: mutador
+    int GetMinuto() const;                                  // Método: observador
+    void SetJugador(std::string jugador);                   // Método: mutador
+    std::string GetJugador() const;                         // Método: observador
 private:
-    bool minutoEsCorrecto(int minuto) const;
-    
+    bool minutoEsCorrecto(int minuto) const;                // Método privado  
 private:
-    std::string jugador;
-    int minuto;
+    std::string jugador;                                    // Atributo
+    int minuto;                                             // Atributo
 };
 
 #endif	/* GOL_H */
