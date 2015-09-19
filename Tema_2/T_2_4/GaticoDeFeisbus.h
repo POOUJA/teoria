@@ -16,16 +16,20 @@
  */
 
 class GaticoDeFeisbus {
+
 public:
+    // Métodos NO inline
     GaticoDeFeisbus();
     GaticoDeFeisbus(const GaticoDeFeisbus& orig);
     ~GaticoDeFeisbus();
-    void megusta() {           // Método inline
+    int GetNumMeGusta() const;
+
+    // Método inline
+    void megusta() {
         ++this->numMeGusta;
     };
-    int GetNumMeGusta() const;
-private:
     
+private:
     /// Número de "Me gusta" que ha recibido.
     int numMeGusta;
 };
