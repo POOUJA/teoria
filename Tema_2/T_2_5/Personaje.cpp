@@ -13,22 +13,20 @@
  */
 Personaje::Personaje(std::string nombre, Familia* suFamilia) :
 nombre(nombre)
-, suFamilia( suFamilia )
-{
+, suFamilia(suFamilia) {
 }
 
 /**
  * @brief Constructor de copia, PRRIMERA VERSION: Se copian las direcciones de los punteros
  * @param orig Objeto cuyos datos se van a copiar
  */
-Personaje::Personaje(const Personaje& orig) :
-nombre(orig.nombre)
-, suFamilia( orig.suFamilia )
-{
+Personaje::Personaje(const Personaje& orig) : // Si quieres usar este costructor de copia debes poner entre comentarios el de abajo, y también el destructor que lleva asociado
+nombre(orig.nombre) ∑
+, suFamilia(orig.suFamilia) {
 }
 
 /**
- * @brief Destructor de clase, PRIMERA VERSION
+ * @brief Destructor de clase, asociado a la PRIMERA VERSION del constructor de copia
  */
 Personaje::~Personaje() {
 }
@@ -41,23 +39,22 @@ Personaje::~Personaje() {
  */
 
 /*
-Personaje::Personaje(const Personaje& orig) :
+Personaje::Personaje(const Personaje& orig) :  // Si quieres usar este constructor de copia, debes poner entre comentarios el de arriba y también el destructor que lleva asociado
 nombre(orig.nombre)
 , suFamilia(0)
 {
     suFamilia=new Familia( *orig.suFamilia );
 }
-*/
+ */
 
 /**
- * @brief Destructor de clase, SEGUNDA VERSION
+ * @brief Destructor de clase, asociado a la SEGUNDA VERSION del constructor de copia
  */
 /*
 Personaje::~Personaje() {
     if( suFamilia ) delete suFamilia;
 }
-*/
-
+ */
 
 /**
  * @brief Modifica el nombre del personaje
