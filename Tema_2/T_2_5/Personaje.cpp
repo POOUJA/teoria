@@ -11,50 +11,40 @@
  * @brief Constructor por defecto de la clase
  * @param nombre Nombre del personaje
  */
-Personaje::Personaje(std::string nombre, Familia* suFamilia) :
+Personaje::Personaje(std::string nombre, std::string* apellidoFamilia) :
 nombre(nombre)
-, suFamilia(suFamilia) {
+, apellidoFamilia(apellidoFamilia) {
 }
 
 /**
  * @brief Constructor de copia, PRRIMERA VERSION: Se copian las direcciones de los punteros
  * @param orig Objeto cuyos datos se van a copiar
  */
-Personaje::Personaje(const Personaje& orig) : // Si quieres usar este costructor de copia debes poner entre comentarios el de abajo, y también el destructor que lleva asociado
-nombre(orig.nombre) 
-, suFamilia(orig.suFamilia) {
+Personaje::Personaje(const Personaje& orig) : // Si quieres usar este costructor de copia debes poner entre comentarios el de abajo
+nombre(orig.nombre)
+, apellidoFamilia(orig.apellidoFamilia) {
 }
-
-/**
- * @brief Destructor de clase, asociado a la PRIMERA VERSION del constructor de copia
- */
-Personaje::~Personaje() {
-}
-
 
 /**
  * @brief Constructor de copia, SEGUNDA VERSION: Se duplica el objeto apuntado
- *        ¡IMPORTANTE! Si la usas, debes usar también el destructor denominado SEGUNDA VERSION
  * @param orig Objeto cuyos datos se van a copiar
  */
 
 /*
-Personaje::Personaje(const Personaje& orig) :  // Si quieres usar este constructor de copia, debes poner entre comentarios el de arriba y también el destructor que lleva asociado
+Personaje::Personaje(const Personaje& orig) : // Si quieres usar este constructor de copia, debes poner entre comentarios el de arriba 
 nombre(orig.nombre)
-, suFamilia(0)
-{
-    suFamilia=new Familia( *orig.suFamilia );
+, apellidoFamilia(0) {
+    apellidoFamilia = new std::string;
+ *apellidoFamilia = *orig.apellidoFamilia;
 }
  */
 
 /**
- * @brief Destructor de clase, asociado a la SEGUNDA VERSION del constructor de copia
+ *  @brief Destructor de clase, asociado a la SEGUNDA VERSION del constructor de copia
+ * @post Destruye el objeto
  */
-/*
 Personaje::~Personaje() {
-    if( suFamilia ) delete suFamilia;
 }
- */
 
 /**
  * @brief Modifica el nombre del personaje
@@ -74,19 +64,19 @@ std::string Personaje::GetNombre() const {
 }
 
 /**
- * @brief Modifica el valor del atributo suFamilia
- * @param suFamilia Nueva familia para el personaje
- * @post  Modifica el valor del atributo suFamilia
+ * @brief Modifica el valor del atributo apellidoFamilia
+ * @param apellidoFamilia Nueva familia para el personaje
+ * @post  Modifica el valor del atributo apellidoFamilia
  */
-void Personaje::SetSuFamilia(Familia* suFamilia) {
-    this->suFamilia = suFamilia;
+void Personaje::SetApellidoFamilia(std::string* apellidoFamilia) {
+    this->apellidoFamilia = apellidoFamilia;
 }
 
 /**
  * @brief Devuelve una referencia a la familia a la que pertenece el personaje
  * @post Devuelve una referencia a la familia a la que pertenece el personaje
  */
-Familia* Personaje::GetSuFamilia() const {
-    return suFamilia;
+std::string* Personaje::GetApellidoFamilia() const {
+    return apellidoFamilia;
 }
 

@@ -9,25 +9,24 @@
 #define	PERSONAJE_H
 
 #include <string>
-#include "Familia.h"
 
 /**
  * @brief Clase para almacenar los datos de cada personaje de la serie
  * @param nombre Nombre del personaje
- * @param suFamilia Referencia a un objeto de tipo Familia, al cual el personaje pertenece
+ * @param apellidoFamilia Referencia a un objeto de tipo Familia, al cual el personaje pertenece
  */
 class Personaje {
 public:
-    Personaje(std::string nombre = "", Familia* suFamilia = 0);
+    Personaje(std::string nombre = "", std::string* apellidoFamilia = 0);
     Personaje(const Personaje& orig);
     virtual ~Personaje();
     void SetNombre(std::string nombre);
     std::string GetNombre() const;
-    void SetSuFamilia(Familia* suFamilia);
-    Familia* GetSuFamilia() const;
+    void SetApellidoFamilia(std::string* apellidoFamilia);
+    std::string* GetApellidoFamilia() const;
 private:
     std::string nombre;
-    Familia *suFamilia;
+    std::string *apellidoFamilia;
 };
 
 #endif	/* PERSONAJE_H */

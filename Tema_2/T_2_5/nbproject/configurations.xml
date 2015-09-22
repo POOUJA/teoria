@@ -4,7 +4,6 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>Familia.h</itemPath>
       <itemPath>Personaje.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -14,7 +13,6 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>Familia.cpp</itemPath>
       <itemPath>Personaje.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
@@ -40,10 +38,6 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="Familia.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Familia.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Personaje.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Personaje.h" ex="false" tool="3" flavor2="0">
@@ -71,10 +65,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="Familia.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Familia.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Personaje.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Personaje.h" ex="false" tool="3" flavor2="0">
