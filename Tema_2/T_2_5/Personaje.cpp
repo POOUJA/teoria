@@ -21,7 +21,7 @@ nombre(nombre)
  * @param orig Objeto cuyos datos se van a copiar
  */
 Personaje::Personaje(const Personaje& orig) : // Si quieres usar este costructor de copia debes poner entre comentarios el de abajo, y también el destructor que lleva asociado
-nombre(orig.nombre) ∑
+nombre(orig.nombre) 
 , suFamilia(orig.suFamilia) {
 }
 
