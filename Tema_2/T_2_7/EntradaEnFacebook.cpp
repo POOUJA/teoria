@@ -118,19 +118,21 @@ bool EntradaEnFacebook::operator<=(const EntradaEnFacebook& otro) {
  * @post Asigna los datos de otro en el objeto que recibe la llamada al método.
  * @post Devuelve el mismo objeto que ha recibido la llamada por referencia para "encadenar" asignaciones: a=b=c=d
  */
-EntradaEnFacebook& EntradaEnFacebook::operator=(const EntradaEnFacebook& otro) {
-    texto = otro.texto;
-    maxComentarios = otro.maxComentarios;
-    if (comentarios) {
-        delete [] comentarios;
-        comentarios = 0;
-    }
-    if (maxComentarios > 0) {
-        comentarios = new std::string[maxComentarios];
+EntradaEnFacebook& EntradaEnFacebook::operator=(const EntradaEnFacebook& orig) {
+    if (this != &orig) {
+        texto = orig.texto;
+        maxComentarios = orig.maxComentarios;
         if (comentarios) {
-            numComentarios = otro.numComentarios;
-            for (int i = 0; i < otro.numComentarios; ++i) {
-                comentarios[i] = otro.comentarios[i];
+            delete [] comentarios;
+            comentarios = 0;
+        }
+        if (maxComentarios > 0) {
+            comentarios = new std::string[maxComentarios];
+            if (comentarios) {
+                numComentarios = orig.numComentarios;
+                for (int i = 0; i < orig.numComentarios; ++i) {
+                    comentarios[i] = orig.comentarios[i];
+                }
             }
         }
     }
