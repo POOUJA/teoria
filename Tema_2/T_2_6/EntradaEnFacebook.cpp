@@ -42,6 +42,7 @@ texto(orig.texto)
  * @post Destruye el objeto
  */
 EntradaEnFacebook::~EntradaEnFacebook() {
+    // Liberamos la memoria que se reservó en el constructor
     if (comentarios) {
         delete [] comentarios;
         comentarios = 0;
