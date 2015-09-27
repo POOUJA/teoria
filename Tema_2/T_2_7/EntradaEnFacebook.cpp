@@ -124,14 +124,14 @@ EntradaEnFacebook& EntradaEnFacebook::operator=(const EntradaEnFacebook& otro) {
     if (comentarios) {
         delete [] comentarios;
         comentarios = 0;
-        if (maxComentarios >= 0) {
-            comentarios = new std::string[maxComentarios];
-        }
     }
-    if (comentarios) {
-        numComentarios = otro.numComentarios;
-        for (int i = 0; i < otro.numComentarios; ++i) {
-            comentarios[i] = otro.comentarios[i];
+    if (maxComentarios > 0) {
+        comentarios = new std::string[maxComentarios];
+        if (comentarios) {
+            numComentarios = otro.numComentarios;
+            for (int i = 0; i < otro.numComentarios; ++i) {
+                comentarios[i] = otro.comentarios[i];
+            }
         }
     }
     // Devolvermos referencia al propio objeto para las asignaciones encadenadas: a=b=c=d
