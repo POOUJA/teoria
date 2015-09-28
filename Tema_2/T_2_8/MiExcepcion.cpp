@@ -10,7 +10,7 @@
 /**
  * @brief Constructor por defecto de la clase
  * @param texto Explicación de la excepción
- * @post Crea un objeto de la clase MiExcepción
+ * @post Crea un objeto de la clase MiExcepcion
  */
 MiExcepcion::MiExcepcion(std::string texto) :
 texto(texto) {
