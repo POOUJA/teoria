@@ -13,7 +13,7 @@
 
 // ATENCIÓN:
 // Esta declaración de la clase se ha simplificado mucho por motivos pedagógicos.
-// Para ver una declaración completa de una clase, mira el ejemplo T_3_3
+// Para ver una declaración completa de una clase, mira el ejemplo T_2_3
 
 class Circulo {
 public:
