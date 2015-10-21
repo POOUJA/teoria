@@ -7,6 +7,10 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
+
+#include "Armero.h"
 
 using namespace std;
 
@@ -15,7 +19,16 @@ using namespace std;
  */
 int main ( int argc, char** argv )
 {
-   cout << "kk";
+   Armero *a;
+   Arma *b;
+
+   // Inicializa el generador de números pseudoaleatorios
+   srand ( time (NULL) );
+
+   a = new Armero ( "pepe" );
+   cout << a->info () << endl;
+   b = a->creaArma ( "kk" );
+   cout << b->info () << endl;
    return 0;
 }
 

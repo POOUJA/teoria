@@ -8,14 +8,30 @@
 #ifndef GUERRERO_H
 #define	GUERRERO_H
 
+#include <string>
+
+using namespace std;
+
 class Guerrero
 {
-public:
-   Guerrero ( );
-   Guerrero ( const Guerrero& orig );
-   virtual ~Guerrero ( );
-private:
-
+   private:
+      string nombre;
+      int energia;
+      Arma *armamento;
+      
+   public:
+      Guerrero ( );
+      Guerrero ( string nNombre );
+      Guerrero ( const Guerrero& orig );
+      virtual ~Guerrero ( );
+      void setArmamento ( Arma* nArmamento );
+      Arma* getArmamento ( ) const;
+      void setEnergia ( int nEnergia );
+      int getEnergia ( ) const;
+      void setNombre ( string nNombre );
+      string getNombre ( ) const;
+      int ataque ();
+      string info ();
 };
 
 #endif	/* GUERRERO_H */

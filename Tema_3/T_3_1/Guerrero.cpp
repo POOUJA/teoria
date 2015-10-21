@@ -19,3 +19,33 @@ Guerrero::~Guerrero ( )
 {
 }
 
+void Guerrero::setArmamento ( Arma* nArmamento )
+{
+   this->armamento = nArmamento;
+}
+
+Arma* Guerrero::getArmamento ( ) const
+{
+   return armamento;
+}
+
+void Guerrero::setEnergia ( int nEnergia )
+{
+   this->energia = nEnergia;
+}
+
+int Guerrero::getEnergia ( ) const
+{
+   return energia;
+}
+
+void Guerrero::setNombre ( string nNombre )
+{
+   this->nombre = nombre;
+}
+
+string Guerrero::getNombre ( ) const
+{
+   return nombre;
+}
+
