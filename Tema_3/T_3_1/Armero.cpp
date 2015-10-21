@@ -13,8 +13,8 @@ Armero::Armero ( ): energia (1000), nombre("---"), maxPoderArma(100)
 {
 }
 
-Armero::Armero (string nNombre): energia (1000), nombre(nNombre),
-                                 maxPoderArma(100)
+Armero::Armero ( string nNombre, int nMPArma ): energia (1000), nombre(nNombre),
+                                                maxPoderArma(nMPArma)
 {
 }
 
@@ -85,4 +85,9 @@ string Armero::info () const
 
    getline ( aux, resultado );
    return ( resultado );
+}
+
+int Armero::ataque ()
+{
+   return ( 0 );   // Un armero no puede atacar
 }

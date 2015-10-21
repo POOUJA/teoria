@@ -9,6 +9,9 @@
 #define	GUERRERO_H
 
 #include <string>
+#include "Arma.h"
+
+#define _FACTOR_ATAQUE_ 0.001
 
 using namespace std;
 
@@ -21,7 +24,7 @@ class Guerrero
       
    public:
       Guerrero ( );
-      Guerrero ( string nNombre );
+      Guerrero ( string nNombre, int nEnergia=1000 );
       Guerrero ( const Guerrero& orig );
       virtual ~Guerrero ( );
       void setArmamento ( Arma* nArmamento );
@@ -31,7 +34,7 @@ class Guerrero
       void setNombre ( string nNombre );
       string getNombre ( ) const;
       int ataque ();
-      string info ();
+      string info () const;
 };
 
 #endif	/* GUERRERO_H */

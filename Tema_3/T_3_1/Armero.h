@@ -22,7 +22,7 @@ class Armero
 
    public:
       Armero ( );
-      Armero ( string nNombre );
+      Armero ( string nNombre, int nMPArma = 100 );
       Armero ( const Armero& orig );
       virtual ~Armero ( );
       void setEnergia ( int nEnergia );
@@ -32,6 +32,7 @@ class Armero
       void setMaxPoderArma ( int nMaxPoderArma );
       int getMaxPoderArma ( ) const;
       Arma *creaArma ( string nombreArma );
+      int ataque ();
       string info () const;
 };
 
