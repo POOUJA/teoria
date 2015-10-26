@@ -4,9 +4,6 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>Arma.h</itemPath>
-      <itemPath>Armero.h</itemPath>
-      <itemPath>Guerrero.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -15,9 +12,6 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>Arma.cpp</itemPath>
-      <itemPath>Armero.cpp</itemPath>
-      <itemPath>Guerrero.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -42,18 +36,6 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="Arma.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Arma.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Armero.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Armero.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Guerrero.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Guerrero.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -77,18 +59,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="Arma.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Arma.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Armero.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Armero.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="Guerrero.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Guerrero.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
