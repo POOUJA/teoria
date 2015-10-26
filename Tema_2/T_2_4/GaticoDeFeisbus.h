@@ -22,9 +22,12 @@ public:
     GaticoDeFeisbus();
     GaticoDeFeisbus(const GaticoDeFeisbus& orig);
     ~GaticoDeFeisbus();
+    
+     // Método inline    
+    // a) Solo cabecera... se implementa abajo
     inline int GetNumMeGusta() const;
-
-    // Método inline
+    
+    // b) Cabecera e implementación juntas
     void megusta() {
         ++this->numMeGusta;
     };
