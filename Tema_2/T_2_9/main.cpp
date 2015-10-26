@@ -19,6 +19,13 @@ using namespace std;
 int main(int argc, char** argv) {
 
     cout << "Ejemplo de teoría T_2_9: Excepciones en métodos de una clase" << endl;
+    try {
+        // Creamos una entrada con 0 comentarios como máximo
+        EntradaEnFacebook entrada("Mi perra Lucera", 0);
+
+    } catch (string e) {
+        cerr << "Error: " << e << endl;
+    }
 
     try {
         // Creamos una entrada que admite 2 comentarios como máximo
