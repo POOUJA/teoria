@@ -22,7 +22,7 @@ public:
     GaticoDeFeisbus();
     GaticoDeFeisbus(const GaticoDeFeisbus& orig);
     ~GaticoDeFeisbus();
-    int GetNumMeGusta() const;
+    inline int GetNumMeGusta() const;
 
     // Método inline
     void megusta() {
@@ -34,5 +34,14 @@ private:
     int numMeGusta;
 };
 
+
+// Declaración de funciones inline cuya cabecera previamente ha sido definida en la c
+/**
+ * @brief Devuelve el valor del atributo numMeGusta
+ * @post Devuelve el valor del atributo numMeGusta
+ */
+inline int GaticoDeFeisbus::GetNumMeGusta() const {
+    return this->numMeGusta;
+}
 #endif	/* GATICODEFEISBUS_H */
 
