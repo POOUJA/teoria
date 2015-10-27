@@ -9,6 +9,7 @@
 #define	ENTRADAENFACEBOOK_H
 
 #include <string>
+#include "Usuario.h"
 
 /**
  * @brief Clase para almacenar una entrada en Facebook junto con los comentarios  de otros usuarios
@@ -16,7 +17,7 @@
  */
 class EntradaEnFacebook {
 public:
-    EntradaEnFacebook(std::string texto = "", int maxComentarios=10);
+    EntradaEnFacebook(const Usuario &usuario=Usuario(), std::string texto = "", int maxComentarios=10);
     EntradaEnFacebook(const EntradaEnFacebook& orig);
     virtual ~EntradaEnFacebook();
     void SetTexto(std::string texto);
@@ -30,6 +31,9 @@ public:
     EntradaEnFacebook& operator=(const EntradaEnFacebook& otro);
     
 private:
+    /// Usuario que realiza la entrada
+    Usuario usuario;
+    
     /// Texto inicial de la entrada en Facebook
     std::string texto;
     

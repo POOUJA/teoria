@@ -19,9 +19,12 @@ using namespace std;
 int main(int argc, char** argv) {
 
     cout << "Ejemplo de teoría T_2_9: Excepciones en métodos de una clase" << endl;
-    try {
+
+    Usuario unUsuario("Luis");
+    try {        
         // Creamos una entrada con 0 comentarios como máximo
-        EntradaEnFacebook entrada("Mi perra Lucera", 0);
+        cout << "Creando una entrada con 0 comentarios como máximo...\n";
+        EntradaEnFacebook entrada(unUsuario, "Mi perra Lucera", 0);
 
     } catch (string e) {
         cerr << "Error: " << e << endl;
@@ -29,7 +32,9 @@ int main(int argc, char** argv) {
 
     try {
         // Creamos una entrada que admite 2 comentarios como máximo
-        EntradaEnFacebook entrada("Fin de semana en el pueblo", 2);
+        
+        cout << "Añadiendo más comentarios de las permitidas a una entrada...\n";
+        EntradaEnFacebook entrada(unUsuario, "Fin de semana en el pueblo", 2);
 
         // Añadimos comentarios
         entrada.AddComentario("Qué paisajes tan bonitos!");
@@ -41,6 +46,18 @@ int main(int argc, char** argv) {
     } catch (string e) {
         cerr << "Error: " << e << endl;
     }
+
+    try {
+        // Creamos una entrada con un usuario sin nombre        
+        
+        cout << "Creando una entrada con un usuario sin nombre...\n";
+        unUsuario.setNombre("");
+        EntradaEnFacebook entrada( Usuario(unUsuario), "En la Feria de San Lucas", 10);
+
+    } catch (string e) {
+        cerr << "Error: " << e << endl;
+    }
+
     return 0;
 }
 
