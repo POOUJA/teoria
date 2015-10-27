@@ -15,7 +15,7 @@
  */
 EntradaEnFacebook::EntradaEnFacebook(const Usuario& usuario, std::string texto, int maxComentarios)
 try :
-    usuario(usuario)
+    usuario(usuario) // Lanza una excepción si el nombre del usuario está vacío
     , texto(texto)
     , maxComentarios(maxComentarios)
     , numComentarios(0)
