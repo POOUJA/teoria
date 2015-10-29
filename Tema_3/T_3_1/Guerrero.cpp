@@ -29,7 +29,6 @@ Guerrero::Guerrero ( const Guerrero& orig ): armamento (NULL),
 
 Guerrero::~Guerrero ( )
 {
-   delete armamento;
 }
 
 void Guerrero::setArmamento ( Arma* nArmamento )
@@ -60,6 +59,13 @@ void Guerrero::setNombre ( string nNombre )
 string Guerrero::getNombre ( ) const
 {
    return nombre;
+}
+
+Arma *Guerrero::desarmar ()
+{
+   Arma *aux = armamento;
+   armamento = NULL;
+   return ( aux );
 }
 
 int Guerrero::ataque ()

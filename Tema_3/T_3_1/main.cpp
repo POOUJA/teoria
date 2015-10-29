@@ -41,6 +41,7 @@ int main ( int argc, char** argv )
    cout << g->ataque () << endl;
    cout << g->ataque () << endl;
    
+   b = g->desarmar ();
    delete g;
    g = NULL;
    delete a;
