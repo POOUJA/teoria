@@ -10,32 +10,37 @@
 
 /**
  * @brief Constructor por defecto de la clase
- * @param nombre Nombre del personaje
+ * @param texto Texto del comentario en Facebook
+ * @param maxComentarios Máximo número de comentarios que se permiten para esta entrada
  */
-EntradaEnFacebook::EntradaEnFacebook(std::string texto, int maxComentarios)
+EntradaEnFacebook::EntradaEnFacebook(const Usuario& usuario, std::string texto, int maxComentarios)
 try :
-    texto(texto)
+    usuario(usuario) // Lanza una excepción si el nombre del usuario está vacío
+    , texto(texto)
     , maxComentarios(maxComentarios)
     , numComentarios(0)
     , comentarios(0) {
-    if (maxComentarios > 0) {
-        comentarios = new std::string[maxComentarios];
-    }
+    // Estos throw NO serían capturados por el catch que acompaña al try anterior
+    if (maxComentarios <= 0) throw std::string("EntradaEnFacebook.cpp, constructor: el valor de maxComentarios debe ser mayor que 0");
+    if (maxComentarios > 100) throw std::string("EntradaEnFacebook.cpp, constructor: el valor de maxComentarios debe ser menor que 100");
+    comentarios = new std::string[maxComentarios];
 } catch (std::string e) {
+    // Este catch solo podría capturar excepciones lanzadas en los constructores de sus atributos
     std::cerr << "Error en constructor por defecto de EntradaEnFacebook: " << e << std::endl;
-    throw e;
+    throw "Capturada y re-lanzada la excepción: "+e;
 }
 
 /**
- * @brief Constructor de copia, PRRIMERA VERSION: Se copian las direcciones de los punteros
+ * @brief Constructor de copia: se duplican los comentarios.
  * @param orig Objeto cuyos datos se van a copiar
  */
-EntradaEnFacebook::EntradaEnFacebook(const EntradaEnFacebook& orig) 
-try:
-texto(orig.texto)
-, maxComentarios(orig.maxComentarios)
-, numComentarios(0)
-, comentarios(0) {
+EntradaEnFacebook::EntradaEnFacebook(const EntradaEnFacebook& orig)
+try :
+    usuario(orig.usuario)
+    , texto(orig.texto)
+    , maxComentarios(orig.maxComentarios)
+    , numComentarios(0)
+    , comentarios(0) {
     comentarios = new std::string[maxComentarios];
     for (int i = 0; i < orig.numComentarios; ++i) {
         comentarios[i] = orig.comentarios[i];
@@ -76,8 +81,8 @@ std::string EntradaEnFacebook::GetTexto() const {
 }
 
 /**
- * @brief Devuelve el máximo número de comentarios que puede tener la entrada
- * @post Devuelve el máximo número de comentarios que puede tener la entrada 
+ * @brief Devuelve el máximo número de comentarios máximo que puede tener la entrada
+ * @post Devuelve el máximo número de comentarios máximo que puede tener la entrada 
  */
 int EntradaEnFacebook::GetMaxComentarios() const {
     return maxComentarios;
@@ -98,7 +103,7 @@ int EntradaEnFacebook::GetNumComentarios() const {
  * @post Si la posición no existe, lanza una excepción
  */
 std::string EntradaEnFacebook::GetComentario(int pos) const {
-    if( pos<0 || pos > numComentarios ) throw (std::string) "La posición solicitada no existe";
+    if (pos < 0 || pos > numComentarios) throw (std::string) "EntradaEnFacebook.cpp, método GetComentario: La posición solicitada no existe";
     return comentarios[pos];
 }
 
@@ -112,7 +117,7 @@ void EntradaEnFacebook::AddComentario(std::string nuevoComentario) {
     if (numComentarios < maxComentarios) {
         comentarios[numComentarios++] = nuevoComentario;
     } else {
-        throw (std::string) "No se pueden añadir más comentarios a esta entrada";
+        throw (std::string) "EntradaEnFacebook.cpp, método AddComentario: No se pueden añadir más comentarios a esta entrada";
     }
 }
 

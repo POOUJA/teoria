@@ -35,11 +35,5 @@ numMeGusta(orig.numMeGusta) {
 GaticoDeFeisbus::~GaticoDeFeisbus() {
 }
 
-/**
- * @brief Devuelve el valor del atributo numMeGusta
- * @post Devuelve el valor del atributo numMeGusta
- */
-int GaticoDeFeisbus::GetNumMeGusta() const {
-    return this->numMeGusta;
-}
+
 
