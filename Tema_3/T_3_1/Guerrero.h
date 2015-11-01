@@ -1,29 +1,24 @@
-/** 
- * @brief Definición de la clase Guerrero
- *
- *        Programación Orientada a Objetos. Curso 2015-2016. Ejemplo T_3_1
+/**
  * @file Guerrero.h
+ * Archivo con la declaración de la clase Guerrero
  * @author algarcia
- *
- * @date 20 de octubre de 2015, 13:58
+ * @date 2015-10-20
  */
 
 #ifndef GUERRERO_H
-#define	GUERRERO_H
+#define GUERRERO_H
 
 #include <string>
 #include "Arma.h"
-
-/// Factor a aplicar para calcular el valor de los ataques
-#define _FACTOR_ATAQUE_ 0.001
 
 using namespace std;
 
 /**
  * @brief Clase para representar los guerreros del juego.
  * 
- * Ejemplo de asociación. Cada guerrero está asociado con su arma
- * 
+ * Ejemplo de asociación. Cada guerrero está asociado con su arma, y antes de
+ * destruir un objeto de clase Guerrero, es necesario desarmarle primero con
+ * el método Guerrero::desarmar
  */
 class Guerrero
 {

@@ -1,24 +1,31 @@
-/* 
- * File:   Armero.h
- * Author: algarcia
- *
- * Created on 21 de octubre de 2015, 16:12
+/**
+ * @file Armero.h
+ * Archivo con la declaración de la clase Armero
+ * @author algarcia
+ * @date 2015-10-21
  */
 
 #ifndef ARMERO_H
-#define	ARMERO_H
+#define ARMERO_H
 
 #include <string>
 #include "Arma.h"
 
 using namespace std;
 
+/**
+ * @brief Clase para representar los armeros del juego
+ * 
+ * Ejemplo de dependencia. El armero crea armas, pero no existe más relación
+ * entre el armero y el arma durante el juego, más allá del instante de la
+ * creación del objeto de clase Arma.
+ */
 class Armero
 {
    private:
-      int    energia;
-      string nombre;
-      int    maxPoderArma;
+      int    energia;        ///< Energía vital del armero. Un valor negativo implica muerte
+      string nombre;         ///< Nombre del armero
+      int    maxPoderArma;   ///< Máximo poder destructivo de las armas creadas. Debe ser > 0
 
    public:
       Armero ( );

@@ -1,22 +1,25 @@
-/* 
- * File:   Arma.h
- * Author: algarcia
- *
- * Created on 21 de octubre de 2015, 16:12
+/**
+ * @file Arma.h
+ * Archivo con la declaración de la clase Arma
+ * @author algarcia
+ * @date 2015-10-21
  */
 
 #ifndef ARMA_H
-#define	ARMA_H
+#define ARMA_H
 
 #include <string>
 
 using namespace std;
 
+/**
+ * @brief Representación de armas para un juego simple
+ */
 class Arma
 {
    private:
-      int    poder;
-      string nombre;
+      int    poder;    ///< Poder para infligir daño del arma. Ha de ser >= 0
+      string nombre;   ///< Nombre del arma para identificarla
 
    public:
       Arma ( );

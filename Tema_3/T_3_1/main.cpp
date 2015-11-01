@@ -1,8 +1,8 @@
-/* 
- * File:   main.cpp
- * Author: algarcia
- *
- * Created on 25 de septiembre de 2015, 19:02
+/**
+ * @file main.cpp
+ * Archivo con la función main
+ * @author algarcia
+ * @date 2015-09-25
  */
 
 #include <cstdlib>
@@ -15,8 +15,8 @@
 
 using namespace std;
 
-/*
- * 
+/**
+ * Función principal. Crea objetos, utiliza métodos y libera recursos
  */
 int main ( int argc, char** argv )
 {
@@ -27,23 +27,37 @@ int main ( int argc, char** argv )
    // Inicializa el generador de números pseudoaleatorios
    srand ( time (NULL) );
 
+   // Crea un nuevo armero
    a = new Armero ( "Merlín", 500 );
    cout << a->info () << endl;
+
+   // Pide al armero que fabrique un arma
    b = a->creaArma ( "Excalibur" );
    cout << b->info () << endl;
+
+   // Crea un guerrero, y le entrega el arma
    g = new Guerrero ( "Lancelot", 2500 );
    g->setArmamento (b);
    b = NULL;
    cout << g->info () << endl;
 
+   // El guerrero hace varios ataques de prueba
    cout << "Ataques de demostración:" << endl;
    cout << g->ataque () << endl;
    cout << g->ataque () << endl;
    cout << g->ataque () << endl;
-   
+
+   // Pasa a liberar recursos. En primer lugar, hay que desarmar al guerrero
+   // antes de destruirlo
    b = g->desarmar ();
    delete g;
    g = NULL;
+
+   // Destruye el arma
+   delete b;
+   b = NULL;
+
+   // Destruye el armero
    delete a;
    a = NULL;
 
