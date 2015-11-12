@@ -35,8 +35,11 @@ void inicializa(Catalogo &catalogo) {
         catalogo.nuevoEjemplar( Libro("8499893740","La mano de Fatima",
                                         2012,1,"Falcon, I.","De bolsillo",9.46) ) ;
         std::cout << "Catálogo inicializado" << std::endl << std::endl;
-    } catch (...) {
+    } catch (std::exception &e) {
         //TODO capturar excepciones 
+        std::cerr << "Ha ocurrido un error al preparar el catálogo: "
+                  << e.what() << std::endl;
+        throw e;  //Consideramos que La excepción no es recuperable
     }
         
 }
