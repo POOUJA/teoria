@@ -15,6 +15,8 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <itemPath>Doxyfile</itemPath>
+      <itemPath>README.md</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -46,6 +48,8 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="Doxyfile" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Ejemplar.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Ejemplar.h" ex="false" tool="3" flavor2="0">
@@ -59,6 +63,8 @@
       <item path="Libro.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Libro.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="README.md" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Revista.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -89,6 +95,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Doxyfile" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Ejemplar.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Ejemplar.h" ex="false" tool="3" flavor2="0">
@@ -102,6 +110,8 @@
       <item path="Libro.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Libro.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="README.md" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Revista.cpp" ex="false" tool="1" flavor2="0">
       </item>

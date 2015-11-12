@@ -13,6 +13,8 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <itemPath>Doxyfile</itemPath>
+      <itemPath>README.md</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -33,7 +35,6 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
-    <itemPath>README.md</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -45,6 +46,8 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="Doxyfile" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Ejemplar.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Ejemplar.h" ex="false" tool="3" flavor2="0">
@@ -86,6 +89,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Doxyfile" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Ejemplar.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Ejemplar.h" ex="false" tool="3" flavor2="0">
