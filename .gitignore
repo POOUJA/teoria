@@ -8,8 +8,9 @@
 **/nb-configuration.xml
 **/.nb-gradle/
 
-#Doxygen generated output
+#Doxygen generated output & temp files
 **/html/
+**/doxygen_sqlite3.db
 
 #sample applications temp files
 **/*.csv
