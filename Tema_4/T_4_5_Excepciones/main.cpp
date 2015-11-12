@@ -73,56 +73,6 @@ void Guarda(Ejemplar* ejemplares[], unsigned int numEjemplares, std::string nomb
     }
 }
 
-///**Guarda los ejemplares de un vector en un fichero con formato CSV
-// * @param ejemplares[out] Vector donde se ubicarán los ejemplares recuperados
-// * @pre El vector no apunta a objetos previamente construidos
-// * @pos Los ejemplares recuperados se almacenan en memoria dinámica 
-// *      y deben ser liberados por el usuario llamador
-// * @throw std::runtime_error si no se puede abrir el fichero indicado
-// * @throw std::out_of_range  si no hay espacio en el vector para almacenar ejemplares recuperados
-// * @throw std::bad_alloc 
-// * @throw ExConversion Si hay algún ejemplar recuperado no puede convertirse a los tipos disponibles
-// */
-//void Recupera(Ejemplar* ejemplares[], unsigned int &numEjemplares, std::string nombreFichero) 
-//        throw (std::runtime_error, std::out_of_range, std::bad_alloc, ExConversion){
-//    std::ifstream f;
-//    std::string tipo,linea;
-//    unsigned int leidos=0;
-//    
-//    if (numEjemplares>0) {
-//        //TODO:Si el catálogo ya tiene ejemplares, borrarlos previamente
-//        //vaciar();
-//    }
-//    f.open( nombreFichero.c_str() );
-//
-//    if ( f.good() ) {
-//        leidos=0;
-//        while( !f.eof() && leidos<MAXEJEMPLARES ) {
-//            std::getline( f, tipo, ';' );
-//            if (tipo=="") {
-//                continue; //ignoramos líneas vacías
-//            }else if (tipo=="libro") {
-//                ejemplares[numEjemplares]=new Libro();
-//            }else if (tipo=="revista") {
-//                ejemplares[numEjemplares]=new Revista();
-//            }else {
-//                throw std::logic_error("[Recupera] El fichero contiene ejemplares de tipo desconocido");                
-//            };
-//            
-//            //TODO: NO OMITIR EL TIPO DE EJEMPLAR DE LA LÍNEA...
-//            std::getline(f,linea);
-//            ejemplares[numEjemplares]->fromCSV(linea);
-//            numEjemplares++;            
-//            }
-//            f.close();
-//            if (leidos==MAXEJEMPLARES)
-//                throw std::out_of_range("[Guarda] No hay espacio suficiente en el vector para almacenar elementos");
-//            
-//    } else {
-//        throw std::runtime_error("[Recupera] No puede abrirse el fichero "+nombreFichero);
-//    }
-//}
-
 /**Visualiza elementos que implementan la Interfaz CSV*/
 void Visualiza(const ItemCSV &item ) {
     //Polimorfismo de objetos mediante referencias en paso de parámetro
