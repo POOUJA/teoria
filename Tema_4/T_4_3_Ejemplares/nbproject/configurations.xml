@@ -11,6 +11,7 @@
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
                    projectFiles="true">
+      <itemPath>Doxyfile</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -41,6 +42,8 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="Doxyfile" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Ejemplar.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Ejemplar.h" ex="false" tool="3" flavor2="0">
@@ -74,6 +77,8 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Doxyfile" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Ejemplar.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Ejemplar.h" ex="false" tool="3" flavor2="0">
