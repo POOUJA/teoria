@@ -11,7 +11,6 @@
 #include "Libro.h"
 #include "busqueda.h"
 
-
 /**Visualiza un ejemplar en formato CSV*/
 void Visualiza(const Ejemplar &ejemplar ) {
     //Polimorfismo de objetos mediante referencias en paso de parámetro
@@ -33,7 +32,7 @@ void Visualiza(Ejemplar* elementos[], int numElementos ) {
     std::cout << std::endl;
 }
 
-const int NUMEJEMPLARES=5; /*< Tamaño del vector de ejemplares*/
+const int NUMEJEMPLARES=6; /*< Tamaño del vector de ejemplares*/
 
 /**
  * Ejemplo de prueba clases Ejemplar y Libro
@@ -47,15 +46,22 @@ int main(int argc, char** argv) {
                        2004, 1, "Miguel de Cervantes", "Espasa libros", 15.95);
     Libro libroPOO( "9786071512123","Programación en C/C++, Java y UML",
                     2014,2,"Luís Joyanes Aguilar", "MacGraw-Hill", 42);
+    Libro libroFatima("8499893740","La mano de Fatima",
+                       2012,1,"Falcon, I.","De bolsillo",9.46);
 
-    Ejemplar *previstaMUY=new Ejemplar(revistaMUY);
+    Ejemplar *pRevistaMuy=new Ejemplar(revistaMUY);
+    //Polimorfismo de objetos mediante referencia
+    Ejemplar &refFatima= libroFatima;
     //Polimorfismo de objetos mediante punteros
     Ejemplar *plibroQuijote=new Libro(libroQuijote);
     
     //Utilizamos polimorfirmos de objetos mediante punteros a clase base
+    //Sólo apuntamos a objetos en memoria dinámica para saber que todos pueden liberarse
     Ejemplar* ejemplares[NUMEJEMPLARES]= {
-        previstaMUY,
+        pRevistaMuy,
         plibroQuijote,
+        //new Libro(refFatima), //No es una conversión válida
+        new Libro (libroFatima),
         new Libro("8497320409","C++ Estandar",2001,1,"Enrique Hernández Orallo","Paraninfo",12),
         new Ejemplar(dvdRAM),
         new Ejemplar(dvdRAM)
