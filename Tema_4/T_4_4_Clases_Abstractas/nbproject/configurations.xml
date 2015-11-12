@@ -33,6 +33,7 @@
                    kind="IMPORTANT_FILES_FOLDER">
       <itemPath>Makefile</itemPath>
     </logicalFolder>
+    <itemPath>README.md</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -53,6 +54,8 @@
       <item path="Libro.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Libro.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="README.md" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Revista.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -92,6 +95,8 @@
       <item path="Libro.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Libro.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="README.md" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Revista.cpp" ex="false" tool="1" flavor2="0">
       </item>

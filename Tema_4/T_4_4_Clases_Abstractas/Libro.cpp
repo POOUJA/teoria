@@ -62,8 +62,8 @@ unsigned int Libro::getEdicion() const {
     setIsbn(isbn);
 }
 
-
 void Libro::setIsbn(std::string _isbn) {
+    //TODO: Comprobar formato ISBN
     _identificador=_isbn;
 }
 

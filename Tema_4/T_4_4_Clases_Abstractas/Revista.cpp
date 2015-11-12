@@ -49,6 +49,7 @@ unsigned int Revista::getNumero() const {
 }
 
 void Revista::setISSN(std::string issn) {
+    //TODO: Comprobar formato ISSN
     _identificador=issn;
 }
 
