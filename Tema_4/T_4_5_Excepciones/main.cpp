@@ -52,19 +52,22 @@ void NuevoEjemplar(Ejemplar* ejemplares[], unsigned int &numEjemplares, Ejemplar
     numEjemplares++;
 }
 
-/**Guarda los ejemplares de un vector en un fichero con formato CSV
- * @throw std::runtime_error si no se pueden almacenar los ejemplares en el fichero
- */
-void Guarda(Ejemplar* ejemplares[], unsigned int numEjemplares, std::string nombreFichero) 
-        throw (std::runtime_error){
+/**Guarda en un fichero elementos que implementan la Interfaz CSV
+   @param[in] elementos vector de punteros a objetos de la clase T
+   @param[in] nombreFichero ruta del fichero donde se almacenarán los elementos
+   @pre la clase T implementa la interfaz ItemCSV
+   @return devuelve un valór lógico indicando si la operación ha tenido éxito*/
+template<class T>
+void GuardaCSV(T* elementos[], int numElementos, std::string nombreFichero ) {
     std::ofstream f;
     std::string linea;
-    
+
     f.open(nombreFichero.c_str());
     
     if (f.good()) {
-        for ( int i=0; i<numEjemplares; i++ ) {
-            linea=linea+ejemplares[i]->toCSV();
+        for ( int i=0; i<numElementos; i++ ) {
+            //Polimorfismo de métodos usando la interfaz ItemCSV
+            linea=linea+elementos[i]->toCSV();
             f << linea << std::endl;
         };
         f.close();
@@ -115,7 +118,7 @@ int main(int argc, char** argv) {
     
     try {
         //Esta revista no se creará porque su ISSN es inválido
-        Revista revistaBike("XXXX","Bike",2014,1,"Motorpress Ibérica", 2.5);
+        Revista revistaBike("XXXXXX","Bike",2014,1,"Motorpress Ibérica", 2.5);
     } catch (std::domain_error &e) {
         std::cout << "No se ha podido inicializar un objeto. " << e.what() << std::endl ;
         //Consideramos que es un error recuperable
@@ -172,7 +175,7 @@ int main(int argc, char** argv) {
     
     //Volcamos los ejemplares a disco
     try {
-        Guarda(ejemplares,numEjemplares,FICHEROEJEMPLARES);
+        GuardaCSV(ejemplares,numEjemplares,FICHEROEJEMPLARES);
         std::cout << "Ejemplares almacenados en " << FICHEROEJEMPLARES << std::endl;
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
