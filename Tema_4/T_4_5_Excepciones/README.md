@@ -7,7 +7,7 @@
   * Se lanzan excepciones **std::domain_error** para notificar valores no válidos en atributos
 4. **Nuevos tipos de excepciones** personalizados en jerarquía de excepciones de STL para detectar situaciones específicas:
   * **ExConversion** derivada de std::logic_error para representar errores de conversión de formato
-  * Se modifican los métodos fromCSV para lanzar excepciones ExConversion y std::domain_error si ocurren errores durante el proceso de conversión
+    * Se modifican los métodos fromCSV para lanzar excepciones ExConversion y std::domain_error si ocurren errores durante el proceso de conversión
   * **ExNoEncontrado** derivada de std::logic_error para indicar errores en búsqueda elementos en general
-  * Lanzada por método de utilidad BorrarEjemplar si no se encuentra el ejemplar a borrar del vector
+    * Lanzada por método de utilidad BorrarEjemplar si no se encuentra el ejemplar a borrar del vector
 5. Se modifica el programa principal para capurar las excepciones correspondientes a cada parte del código
