@@ -25,7 +25,7 @@ void Ordena( T valores[], int numValores) {
     
     for (int i = 0; i < numValores-1; i++) {
         posMenor=i;
-        for (int j = i; j < numValores; j++) {
+        for (int j = i+1; j < numValores; j++) {
             if (valores[j] < valores[posMenor])
                 posMenor=j;
         }

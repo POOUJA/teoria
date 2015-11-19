@@ -11,7 +11,7 @@
 
 /**Localiza un elemento en un vector
    @pre  Los elementos del vector deben poder compararse con el operador ==
-   @post Devuelve la posicion del vector donde se encuentra la primera ocurrencia del elemento
+   @post Devuelve la posición del vector donde se encuentra la primera ocurrencia del elemento
    @post Devuelve -1 si el elemento no se encuentra en el vector
  */
 template<typename T>
