@@ -64,8 +64,8 @@ Guerrero::~Guerrero ( )
    // simplemente se muestra un mensaje por la consola de errores
    if ( armamento != NULL )
    {
-      cerr << "Guerrero::~Guerrero: se destruye un guerrero sin "
-           << "desarmarlo previamente";
+      std::cerr << "Guerrero::~Guerrero: se destruye un guerrero sin "
+                << "desarmarlo previamente";
    }
 }
 
@@ -165,7 +165,7 @@ int Guerrero::ataque ()
 string Guerrero::info () const
 {
    string resultado;
-   stringstream aux;
+   std::stringstream aux;
    
    aux << "Soy guerrero. Mi nombre es "
        << nombre

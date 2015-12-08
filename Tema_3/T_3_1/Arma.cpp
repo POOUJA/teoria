@@ -109,7 +109,7 @@ int Arma::getPoder ( ) const
  */
 string Arma::info () const
 {
-   stringstream aux;
+   std::stringstream aux;
    string resultado;
    
    aux << "Soy un arma. Mi nombre es "

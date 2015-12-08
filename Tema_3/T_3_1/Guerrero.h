@@ -11,7 +11,7 @@
 #include <string>
 #include "Arma.h"
 
-using namespace std;
+using std::string;
 
 /**
  * @brief Clase para representar los guerreros del juego.

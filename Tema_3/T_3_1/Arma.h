@@ -10,7 +10,7 @@
 
 #include <string>
 
-using namespace std;
+using std::string;
 
 /**
  * @brief Representación de armas para un juego simple

@@ -157,7 +157,7 @@ Arma *Armero::creaArma ( string nombreArma )
 string Armero::info () const
 {
    string resultado;
-   stringstream aux;
+   std::stringstream aux;
    
    aux << "Soy armero. Mi nombre es "
        << nombre
