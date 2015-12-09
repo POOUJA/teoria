@@ -11,7 +11,7 @@
 #include "Revista.h"
 
 /**Construye una revista a partir de su información básica
-   @throw std::domain_error si algún atributo no es válido para un libro*/
+   @throw std::domain_error si algún atributo no es válido para una revista*/
 Revista::Revista(   std::string ISSN, std::string titulo, unsigned int anio, unsigned int numero,
                     std::string editorial, float precio) 
                 throw (std::domain_error)
