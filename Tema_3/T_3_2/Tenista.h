@@ -8,14 +8,26 @@
 #ifndef TENISTA_H
 #define	TENISTA_H
 
+#include <string>
+
+using std::string;
+
 class Tenista
 {
-public:
-   Tenista ( );
-   Tenista ( const Tenista& orig );
-   virtual ~Tenista ( );
-private:
+   private:
+      string nombre;
+      int ranking;
 
+   public:
+      Tenista ( );
+      Tenista ( const Tenista& orig );
+      Tenista ( const string nNombre, const int nRanking );
+      virtual ~Tenista ( );
+      void setRanking ( int nRanking );
+      int getRanking ( ) const;
+      void setNombre ( string nNombre );
+      string getNombre ( ) const;
+      string info ( ) const;
 };
 
 #endif	/* TENISTA_H */
