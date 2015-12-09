@@ -6,7 +6,8 @@
  */
 
 #include "Tenista.h"
-#include <sstream>
+#include <sstream>     // Para usar stringstream
+#include <stdexcept>   // Para usar std::out_of_range
 
 Tenista::Tenista ( ): nombre ("---"), ranking (99999)
 {
@@ -17,13 +18,32 @@ Tenista::Tenista ( const Tenista& orig ): ranking ( orig.ranking )
    nombre = orig.nombre + " - 2";
 }
 
+Tenista::Tenista ( const string nNombre, const int nRanking ): nombre (nNombre)
+{
+   if ( nRanking > 0 )
+   {
+      ranking = nRanking;
+   }
+   else
+   {
+      throw std::out_of_range ( "El valor de ranking no puede ser negativo o cero" );
+   }
+}
+
 Tenista::~Tenista ( )
 {
 }
 
 void Tenista::setRanking ( int nRanking )
 {
-   this->ranking = nRanking;
+   if ( nRanking > 0 )
+   {
+      this->ranking = nRanking;
+   }
+   else
+   {
+      throw std::out_of_range ( "El valor de ranking no puede ser negativo o cero" );
+   }
 }
 
 int Tenista::getRanking ( ) const

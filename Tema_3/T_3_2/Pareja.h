@@ -8,14 +8,28 @@
 #ifndef PAREJA_H
 #define	PAREJA_H
 
+#include "Tenista.h"
+
 class Pareja
 {
-public:
-   Pareja ( );
-   Pareja ( const Pareja& orig );
-   virtual ~Pareja ( );
-private:
+   private:
+      Tenista *t1;
+      Tenista *t2;
+      int ranking;
 
+   public:
+      Pareja ( );
+      Pareja ( const Pareja& orig );
+      Pareja ( Tenista *nT1, Tenista *nT2, int nRanking );
+      Pareja ( Tenista &nT1, Tenista &nT2, int nRanking );
+      virtual ~Pareja ( );
+      void setRanking ( int ranking );
+      int getRanking ( ) const;
+      void setT2 ( Tenista* t2 );
+      Tenista* getT2 ( ) const;
+      void setT1 ( Tenista* t1 );
+      Tenista* getT1 ( ) const;
+      string info ( ) const;
 };
 
 #endif	/* PAREJA_H */
