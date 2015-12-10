@@ -134,3 +134,10 @@ string Pareja::info () const
    getline ( aux, resultado );
    return ( resultado );
 }
+
+Pareja& Pareja::operator = (const Pareja& orig)
+{
+   this->ranking = orig.ranking;
+   
+   return ( *this );
+}

@@ -1,8 +1,8 @@
-/* 
- * File:   Tenista.h
- * Author: algarcia
- *
- * Created on 9 de diciembre de 2015, 12:12
+/**
+ * @file Tenista.h
+ * Archivo con la declaración de la clase Tenista
+ * @author algarcia
+ * @date 2015-12-09
  */
 
 #ifndef TENISTA_H
@@ -12,11 +12,14 @@
 
 using std::string;
 
+/**
+ * @brief Representación básica de un tenista profesional
+ */
 class Tenista
 {
    private:
-      string nombre;
-      int ranking;
+      string nombre;   ///< Nombre del tenista
+      int ranking;     ///< Posición en el ranking oficial
 
    public:
       Tenista ( );
@@ -28,6 +31,7 @@ class Tenista
       void setNombre ( string nNombre );
       string getNombre ( ) const;
       string info ( ) const;
+      Tenista& operator= ( const Tenista& orig );
 };
 
 #endif	/* TENISTA_H */

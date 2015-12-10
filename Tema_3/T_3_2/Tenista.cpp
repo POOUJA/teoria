@@ -74,3 +74,10 @@ string Tenista::info () const
    getline ( aux, resultado );
    return ( resultado );
 }
+
+Tenista& Tenista::operator = (const Tenista& orig)
+{
+   this->ranking = orig.ranking;
+   
+   return ( *this );
+}
