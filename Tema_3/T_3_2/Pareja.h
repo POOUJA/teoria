@@ -23,11 +23,11 @@ class Pareja
       Pareja ( Tenista *nT1, Tenista *nT2, int nRanking );
       Pareja ( Tenista &nT1, Tenista &nT2, int nRanking );
       virtual ~Pareja ( );
-      void setRanking ( int ranking );
+      void setRanking ( int nRanking );
       int getRanking ( ) const;
-      void setT2 ( Tenista* t2 );
+      void setT2 ( Tenista* nT2 );
       Tenista* getT2 ( ) const;
-      void setT1 ( Tenista* t1 );
+      void setT1 ( Tenista* nT1 );
       Tenista* getT1 ( ) const;
       string info ( ) const;
 };
