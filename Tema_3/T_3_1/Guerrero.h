@@ -41,6 +41,7 @@ class Guerrero
       Arma *desarmar ();
       int ataque ();
       string info () const;
+      Guerrero& operator= ( const Guerrero& orig );
 };
 
 #endif	/* GUERRERO_H */

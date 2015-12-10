@@ -137,7 +137,7 @@ int Armero::getMaxPoderArma ( ) const
  * @return Un puntero al objeto de clase Arma con la información de la nueva
  *         arma
  */
-Arma *Armero::creaArma ( string nombreArma )
+Arma* Armero::creaArma ( string nombreArma )
 {
    // Crea un nuevo objeto de clase Arma, con el nombre que se le pasa
    Arma *a = new Arma ( nombreArma );
@@ -147,6 +147,16 @@ Arma *Armero::creaArma ( string nombreArma )
    a->setPoder ( aux );
 
    return ( a );
+}
+
+/**
+ * @brief Método para producir un ataque
+ * 
+ * @return El valor del daño provocado por el ataque de un armero
+ */
+int Armero::ataque ()
+{
+   return ( 0 );   // Un armero no puede atacar
 }
 
 /**
@@ -172,11 +182,17 @@ string Armero::info () const
 }
 
 /**
- * @brief Método para producir un ataque
- * 
- * @return El valor del daño provocado por el ataque de un armero
+ * En este caso, no asigna el nombre del armero, para que no haya dos con el
+ * mismo nombre
+ * @brief Operador de asignación
+ * @param orig Objeto del que se copian los atributos
+ * @return Una referencia al propio objeto, para posibilitar las asignaciones
+ *         en cascada (a=b=c)
  */
-int Armero::ataque ()
+Armero& Armero::operator = (const Armero& orig)
 {
-   return ( 0 );   // Un armero no puede atacar
+   this->energia = orig.energia;
+   this->maxPoderArma = orig.maxPoderArma;
+   
+   return ( *this );
 }

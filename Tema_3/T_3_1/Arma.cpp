@@ -121,3 +121,17 @@ string Arma::info () const
    getline ( aux, resultado );
    return ( resultado );
 }
+
+/**
+ * En este caso, no asigna el nombre, para evitar dos armas con el mismo nombre
+ * @brief Operador de asignación
+ * @param orig Objeto del que se copian los atributos
+ * @return Una referencia al propio objeto, necesaria para poder hacer
+ *         asignaciones en cadena (a=b=c)
+ */
+Arma& Arma::operator = (const Arma& orig)
+{
+   this->poder = orig.poder;
+   
+   return ( *this );
+}

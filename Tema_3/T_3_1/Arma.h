@@ -31,6 +31,7 @@ class Arma
       void setPoder ( int nPoder );
       int getPoder ( ) const;
       string info () const;
+      Arma& operator= ( const Arma& orig );
 };
 
 #endif	/* ARMA_H */

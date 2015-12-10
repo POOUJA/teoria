@@ -178,3 +178,19 @@ string Guerrero::info () const
    getline ( aux, resultado );
    return ( resultado );
 }
+
+/**
+ * En este caso, no copia el nombre del guerrero (para evitar dos guerreros con
+ * el mismo nombre) ni el arma (un arma no puede estar en poder de dos guerreros
+ * a la vez)
+ * @brief Operador de asignación
+ * @param orig Objeto del que se copian los atributos
+ * @return Una referencia al propio objeto, para facilitar la asignación en
+ *         cascada (a=b=c)
+ */
+Guerrero& Guerrero::operator = (const Guerrero& orig)
+{
+   this->energia = orig.energia;
+   
+   return ( *this );
+}
