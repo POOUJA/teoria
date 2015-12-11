@@ -23,9 +23,9 @@ using std::string;
 class Guerrero
 {
    private:
-      string nombre;     ///< Nombre del guerrero
-      int energia;       ///< Energía vital. Un valor menor o igual a cero implica muerte
-      Arma *armamento;   ///< A través de este atributo se establece la asociación
+      string _nombre;     ///< Nombre del guerrero
+      int _energia;       ///< Energía vital. Un valor menor o igual a cero implica muerte
+      Arma *_armamento;   ///< A través de este atributo se establece la asociación
 
    public:
       Guerrero ( );

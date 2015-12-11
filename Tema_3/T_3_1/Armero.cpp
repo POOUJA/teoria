@@ -16,7 +16,7 @@
  * Inicializa la energía vital a 1000, el nombre a "---" y el poder máximo de
  * las armas que cree a 100
  */
-Armero::Armero ( ): energia (1000), nombre("---"), maxPoderArma(100)
+Armero::Armero ( ): _energia (1000), _nombre("---"), _maxPoderArma(100)
 {
 }
 
@@ -31,11 +31,11 @@ Armero::Armero ( ): energia (1000), nombre("---"), maxPoderArma(100)
  * @exception std::out_of_range Si el valor máximo de poder para las armas no es
  *            positivo
  */
-Armero::Armero ( string nNombre, int nMPArma ): energia (1000), nombre(nNombre)
+Armero::Armero ( string nNombre, int nMPArma ): _energia (1000), _nombre(nNombre)
 {
    if ( nMPArma > 0 )
    {
-      maxPoderArma = nMPArma;
+      _maxPoderArma = nMPArma;
    }
    else
    {
@@ -50,10 +50,10 @@ Armero::Armero ( string nNombre, int nMPArma ): energia (1000), nombre(nNombre)
  * haya dos armeros con el mismo nombre
  * @param orig Objeto del que copia los atributos
  */
-Armero::Armero ( const Armero& orig ): energia (orig.energia),
-                                       maxPoderArma (orig.maxPoderArma)
+Armero::Armero ( const Armero& orig ): _energia (orig._energia),
+                                       _maxPoderArma (orig._maxPoderArma)
 {
-   nombre = orig.nombre + " - 2";   // Para no tener dos armeros con el mismo nombre
+   _nombre = orig._nombre + " - 2";   // Para no tener dos armeros con el mismo nombre
 }
 
 /**
@@ -64,44 +64,44 @@ Armero::~Armero ( )
 }
 
 /**
- * @brief Modificador para el atributo Armero::energia
+ * @brief Modificador para el atributo Armero::_energia
  * @param nEnergia Nuevo valor de energía a asignar. No se hacen comprobaciones
  *        sobre él
  */
 void Armero::setEnergia ( int nEnergia )
 {
-   this->energia = nEnergia;
+   this->_energia = nEnergia;
 }
 
 /**
- * @brief Observador para el atributo Armero::energia
+ * @brief Observador para el atributo Armero::_energia
  * @return La energía restante en el armero
  */
 int Armero::getEnergia ( ) const
 {
-   return energia;
+   return _energia;
 }
 
 /**
- * @brief Modificador para el atributo Armero::nombre
+ * @brief Modificador para el atributo Armero::_nombre
  * @param nNombre Texto con el nuevo nombre. No se hacen comprobaciones sobre él
  */
 void Armero::setNombre ( string nNombre )
 {
-   this->nombre = nNombre;
+   this->_nombre = nNombre;
 }
 
 /**
- * @brief Observador para el atributo Armero::nombre
+ * @brief Observador para el atributo Armero::_nombre
  * @return El texto con el nombre del armero
  */
 string Armero::getNombre ( ) const
 {
-   return nombre;
+   return _nombre;
 }
 
 /**
- * @brief Modificador para el atributo Armero::maxPoderArma
+ * @brief Modificador para el atributo Armero::_maxPoderArma
  * @param nMaxPoderArma Nuevo valor para el poder máximo de las armas producidas.
  *        Ha de ser un valor positivo
  * @exception std::out_of_range Si el valor del parámetro no es positivo
@@ -110,7 +110,7 @@ void Armero::setMaxPoderArma ( int nMaxPoderArma )
 {
    if ( nMaxPoderArma > 0 )
    {
-      this->maxPoderArma = nMaxPoderArma;
+      this->_maxPoderArma = nMaxPoderArma;
    }
    else
    {
@@ -119,20 +119,20 @@ void Armero::setMaxPoderArma ( int nMaxPoderArma )
 }
 
 /**
- * @brief Observador para el atributo Armero::maxPoderArma
+ * @brief Observador para el atributo Armero::_maxPoderArma
  * @return El poder de destrucción máximo que tienen las armas fabricadas por el
  *         armero
  */
 int Armero::getMaxPoderArma ( ) const
 {
-   return maxPoderArma;
+   return _maxPoderArma;
 }
 
 /**
  * @brief Método para crear armas
  * 
  * El poder de destrucción del arma creada variará aleatoriamente entre 1 y el
- * valor del atributo Armero::maxPoderArma
+ * valor del atributo Armero::_maxPoderArma
  * @param nombreArma Texto con el nombre que se asignará a la nueva arma
  * @return Un puntero al objeto de clase Arma con la información de la nueva
  *         arma
@@ -143,7 +143,7 @@ Arma* Armero::creaArma ( string nombreArma )
    Arma *a = new Arma ( nombreArma );
 
    // Calcula aleatoriamente el poder asociado al arma, y lo asigna
-   int aux = (rand () % maxPoderArma) + 1;   
+   int aux = (rand () % _maxPoderArma) + 1;   
    a->setPoder ( aux );
 
    return ( a );
@@ -170,11 +170,11 @@ string Armero::info () const
    std::stringstream aux;
    
    aux << "Soy armero. Mi nombre es "
-       << nombre
+       << _nombre
        << ", mi energía es "
-       << energia
+       << _energia
        << " y puedo producir armas de hasta "
-       << maxPoderArma
+       << _maxPoderArma
        << " puntos de poder";
 
    getline ( aux, resultado );
@@ -191,8 +191,8 @@ string Armero::info () const
  */
 Armero& Armero::operator = (const Armero& orig)
 {
-   this->energia = orig.energia;
-   this->maxPoderArma = orig.maxPoderArma;
+   this->_energia = orig._energia;
+   this->_maxPoderArma = orig._maxPoderArma;
    
    return ( *this );
 }

@@ -18,8 +18,8 @@ using std::string;
 class Arma
 {
    private:
-      int    poder;    ///< Poder para infligir daño del arma. Ha de ser >= 0
-      string nombre;   ///< Nombre del arma para identificarla
+      int    _poder;    ///< Poder para infligir daño del arma. Ha de ser >= 0
+      string _nombre;   ///< Nombre del arma para identificarla
 
    public:
       Arma ( );

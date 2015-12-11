@@ -20,7 +20,7 @@
  * 
  * Fija el nombre a "---", la energía a 1000, y está desarmado
  */
-Guerrero::Guerrero ( ): nombre ("---"), armamento (NULL), energia (1000)
+Guerrero::Guerrero ( ): _nombre ("---"), _armamento (NULL), _energia (1000)
 {
 }
 
@@ -31,9 +31,9 @@ Guerrero::Guerrero ( ): nombre ("---"), armamento (NULL), energia (1000)
  * @param nNombre Texto con el nombre a asignar al nuevo guerrero
  * @param nEnergia Valor de energía a asignar al guerrero
  */
-Guerrero::Guerrero ( string nNombre, int nEnergia ): nombre (nNombre),
-                                                     armamento (NULL),
-                                                     energia (nEnergia)
+Guerrero::Guerrero ( string nNombre, int nEnergia ): _nombre (nNombre),
+                                                     _armamento (NULL),
+                                                     _energia (nEnergia)
 {
 }
 
@@ -45,10 +45,10 @@ Guerrero::Guerrero ( string nNombre, int nEnergia ): nombre (nNombre),
  * que no tiene sentido que tenga la misma arma que el original
  * @param orig Objeto del que se copian los atributos
  */
-Guerrero::Guerrero ( const Guerrero& orig ): armamento (NULL),
-                                             energia (orig.energia)
+Guerrero::Guerrero ( const Guerrero& orig ): _armamento (NULL),
+                                             _energia (orig._energia)
 {
-   nombre = orig.nombre + " - 2";   // Para evitar nombres duplicados
+   _nombre = orig._nombre + " - 2";   // Para evitar nombres duplicados
 }
 
 /**
@@ -62,7 +62,7 @@ Guerrero::~Guerrero ( )
 {
    // Como lanzar excepciones en los destructores no es una buena práctica,
    // simplemente se muestra un mensaje por la consola de errores
-   if ( armamento != NULL )
+   if ( _armamento != NULL )
    {
       std::cerr << "Guerrero::~Guerrero: se destruye un guerrero sin "
                 << "desarmarlo previamente";
@@ -70,60 +70,60 @@ Guerrero::~Guerrero ( )
 }
 
 /**
- * @brief Modificador para el atributo Guerrero::armamento
+ * @brief Modificador para el atributo Guerrero::_armamento
  * @param nArmamento Puntero a un objeto de clase Arma, que representa a la
  *        nueva arma del guerrero
  */
 void Guerrero::setArmamento ( Arma* nArmamento )
 {
-   this->armamento = nArmamento;
+   this->_armamento = nArmamento;
 }
 
 /**
- * @brief Observador para el atributo Guerrero::armamento
+ * @brief Observador para el atributo Guerrero::_armamento
  * @return Un puntero al arma del guerrero
  */
 Arma* Guerrero::getArmamento ( ) const
 {
-   return armamento;
+   return _armamento;
 }
 
 /**
- * @brief Modificador para el atributo Guerrero::energia
+ * @brief Modificador para el atributo Guerrero::_energia
  * @param nEnergia Nuevo valor de energía a asignar. No se hacen comprobaciones
  *        sobre él
  */
 void Guerrero::setEnergia ( int nEnergia )
 {
-   this->energia = nEnergia;
+   this->_energia = nEnergia;
 }
 
 /**
- * @brief Observador para el atributo Guerrero::energia
+ * @brief Observador para el atributo Guerrero::_energia
  * @return La energía restante del guerrero
  */
 int Guerrero::getEnergia ( ) const
 {
-   return energia;
+   return _energia;
 }
 
 /**
- * @brief Modificador para el atributo Guerrero::nombre
+ * @brief Modificador para el atributo Guerrero::_nombre
  * @param nNombre Texto con el nuevo nombre a asignar al guerrero. No se hacen
  *        comprobaciones sobre él
  */
 void Guerrero::setNombre ( string nNombre )
 {
-   this->nombre = nombre;
+   this->_nombre = _nombre;
 }
 
 /**
- * @brief Observador para el atributo Guerrero::nombre
+ * @brief Observador para el atributo Guerrero::_nombre
  * @return Una cadena de texto con el nombre asignado al guerrero
  */
 string Guerrero::getNombre ( ) const
 {
-   return nombre;
+   return _nombre;
 }
 
 /**
@@ -136,8 +136,8 @@ string Guerrero::getNombre ( ) const
  */
 Arma *Guerrero::desarmar ()
 {
-   Arma *aux = armamento;
-   armamento = NULL;
+   Arma *aux = _armamento;
+   _armamento = NULL;
    return ( aux );
 }
 
@@ -151,7 +151,7 @@ Arma *Guerrero::desarmar ()
  */
 int Guerrero::ataque ()
 {
-   int maxPoder = _FACTOR_ATAQUE_ * energia * armamento->getPoder ();
+   int maxPoder = _FACTOR_ATAQUE_ * _energia * _armamento->getPoder ();
    int resultado = rand () % maxPoder + 1;
 
    return ( resultado );
@@ -168,11 +168,11 @@ string Guerrero::info () const
    std::stringstream aux;
    
    aux << "Soy guerrero. Mi nombre es "
-       << nombre
+       << _nombre
        << ", mi energía es "
-       << energia
+       << _energia
        << " y puedo producir ataques de hasta "
-       << (int) ( _FACTOR_ATAQUE_ * energia * armamento->getPoder () )
+       << (int) ( _FACTOR_ATAQUE_ * _energia * _armamento->getPoder () )
        << " puntos de poder";
 
    getline ( aux, resultado );
@@ -190,7 +190,7 @@ string Guerrero::info () const
  */
 Guerrero& Guerrero::operator = (const Guerrero& orig)
 {
-   this->energia = orig.energia;
+   this->_energia = orig._energia;
    
    return ( *this );
 }

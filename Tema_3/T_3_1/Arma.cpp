@@ -14,7 +14,7 @@
  * 
  * Fija el poder a 0, y el nombre a "---"
  */
-Arma::Arma ( ): nombre("---"), poder(0)
+Arma::Arma ( ): _nombre("---"), _poder(0)
 {
 }
 
@@ -25,9 +25,9 @@ Arma::Arma ( ): nombre("---"), poder(0)
  * distinga del original
  * @param orig Objeto del que se copian los atributos
  */
-Arma::Arma ( const Arma& orig ): poder(orig.poder)
+Arma::Arma ( const Arma& orig ): _poder(orig._poder)
 {
-   nombre = orig.nombre + " - 2";   // Para evitar dos armas con el mismo nombre
+   _nombre = orig._nombre + " - 2";   // Para evitar dos armas con el mismo nombre
 }
 
 /**
@@ -38,11 +38,11 @@ Arma::Arma ( const Arma& orig ): poder(orig.poder)
  * @param nPoder Valor de poder para la nueva arma
  * @exception std::out_of_range Si el valor de nPoder es < 0
  */
-Arma::Arma (const string nNombre, const int nPoder): nombre(nNombre)
+Arma::Arma (const string nNombre, const int nPoder): _nombre(nNombre)
 {
    if ( nPoder >= 0 )
    {
-      poder = nPoder;
+      _poder = nPoder;
    }
    else
    {
@@ -58,25 +58,25 @@ Arma::~Arma ( )
 }
 
 /**
- * @brief Modificador para el atributo Arma::nombre
+ * @brief Modificador para el atributo Arma::_nombre
  * @param nNombre Nuevo nombre para el arma. No se hacen comprobaciones sobre él
  */
 void Arma::setNombre ( string nNombre )
 {
-   this->nombre = nombre;
+   this->_nombre = _nombre;
 }
 
 /**
- * @brief Observador para el atributo Arma::nombre
+ * @brief Observador para el atributo Arma::_nombre
  * @return El nombre asignado al arma
  */
 string Arma::getNombre ( ) const
 {
-   return nombre;
+   return _nombre;
 }
 
 /**
- * @brief Modificador para el atributo Arma::poder
+ * @brief Modificador para el atributo Arma::_poder
  * @param nPoder Nuevo valor de poder para el arma. Se hace la comprobación de
  *        que su valor sea >= 0
  * @exception std::out_of_range Si el valor de nPoder es < 0
@@ -85,7 +85,7 @@ void Arma::setPoder ( int nPoder )
 {
    if ( nPoder >= 0 )
    {
-      this->poder = nPoder;
+      this->_poder = nPoder;
    }
    else
    {
@@ -94,18 +94,18 @@ void Arma::setPoder ( int nPoder )
 }
 
 /**
- * @brief Observador para el atributo Arma::poder
- * @return El valor del atributo Arma::poder
+ * @brief Observador para el atributo Arma::_poder
+ * @return El poder de destrucción del arma
  */
 int Arma::getPoder ( ) const
 {
-   return poder;
+   return _poder;
 }
 
 /**
- * @brief Información del objeto
+ * @brief Información del arma
  * @return Devuelve una cadena de texto conteniendo los valores de los atributos
- *         del objeto
+ *         del arma
  */
 string Arma::info () const
 {
@@ -113,9 +113,9 @@ string Arma::info () const
    string resultado;
    
    aux << "Soy un arma. Mi nombre es "
-       << nombre
+       << _nombre
        << " y mi poder es de "
-       << poder
+       << _poder
        << " puntos";
 
    getline ( aux, resultado );
@@ -131,7 +131,7 @@ string Arma::info () const
  */
 Arma& Arma::operator = (const Arma& orig)
 {
-   this->poder = orig.poder;
+   this->_poder = orig._poder;
    
    return ( *this );
 }

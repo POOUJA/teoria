@@ -23,9 +23,9 @@ using std::string;
 class Armero
 {
    private:
-      int    energia;        ///< Energía vital del armero. Un valor negativo implica muerte
-      string nombre;         ///< Nombre del armero
-      int    maxPoderArma;   ///< Máximo poder destructivo de las armas creadas. Debe ser > 0
+      int    _energia;        ///< Energía vital del armero. Un valor negativo implica muerte
+      string _nombre;         ///< Nombre del armero
+      int    _maxPoderArma;   ///< Máximo poder destructivo de las armas creadas. Debe ser > 0
 
    public:
       Armero ( );
