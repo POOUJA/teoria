@@ -18,8 +18,8 @@ using std::string;
 class Tenista
 {
    private:
-      string nombre;   ///< Nombre del tenista
-      int ranking;     ///< Posición en el ranking oficial
+      string _nombre;   ///< Nombre del tenista
+      int _ranking;     ///< Posición en el ranking oficial
 
    public:
       Tenista ( );

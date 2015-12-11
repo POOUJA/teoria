@@ -10,22 +10,24 @@
 #include <stdexcept>   // Para usar std::out_of_range
 
 /**
- * Inicializa el nombre a "---", y el ranking a 99999
  * @brief Constructor por defecto de la clase
+ * 
+ * Inicializa el nombre a "---", y el ranking a 99999
  */
-Tenista::Tenista ( ): nombre ("---"), ranking (99999)
+Tenista::Tenista ( ): _nombre ("---"), _ranking (99999)
 {
 }
 
 /**
+ * @brief Constructor de copia
+ * 
  * Copia el valor de ranking, pero modifica el nombre, añadiendo "-2" al final,
  * para evitar que haya dos tenistas con el mismo nombre
- * @brief Constructor de copia
  * @param orig Objeto del que se copian los atributos
  */
-Tenista::Tenista ( const Tenista& orig ): ranking ( orig.ranking )
+Tenista::Tenista ( const Tenista& orig ): _ranking ( orig._ranking )
 {
-   nombre = orig.nombre + " - 2";
+   _nombre = orig._nombre + " - 2";
 }
 
 /**
@@ -34,11 +36,11 @@ Tenista::Tenista ( const Tenista& orig ): ranking ( orig.ranking )
  * @param nRanking Ranking del nuevo tenista. Ha de ser un número positivo
  * @throw std::out_of_range Si el valor de ranking no es positivo
  */
-Tenista::Tenista ( const string nNombre, const int nRanking ): nombre (nNombre)
+Tenista::Tenista ( const string nNombre, const int nRanking ): _nombre (nNombre)
 {
    if ( nRanking > 0 )
    {
-      ranking = nRanking;
+      _ranking = nRanking;
    }
    else
    {
@@ -54,7 +56,7 @@ Tenista::~Tenista ( )
 }
 
 /**
- * @brief Modificador (setter) del atributo Tenista::ranking
+ * @brief Modificador (setter) del atributo Tenista::_ranking
  * @param nRanking Nuevo valor de ranking. Debe ser un número positivo
  * @throws std::out_of_range Si el valor de nRanking no es positivo
  */
@@ -62,7 +64,7 @@ void Tenista::setRanking ( int nRanking )
 {
    if ( nRanking > 0 )
    {
-      this->ranking = nRanking;
+      this->_ranking = nRanking;
    }
    else
    {
@@ -71,30 +73,30 @@ void Tenista::setRanking ( int nRanking )
 }
 
 /**
- * @brief Observador (getter) del atributo Tenista::ranking
+ * @brief Observador (getter) del atributo Tenista::_ranking
  * @return El valor de ranking del tenista
  */
 int Tenista::getRanking ( ) const
 {
-   return ranking;
+   return _ranking;
 }
 
 /**
- * @brief Modificador (setter) del atributo Tenista::nombre
+ * @brief Modificador (setter) del atributo Tenista::_nombre
  * @param nNombre Nuevo valor para el nombre del tenista
  */
 void Tenista::setNombre ( string nNombre )
 {
-   this->nombre = nNombre;
+   this->_nombre = nNombre;
 }
 
 /**
- * @brief Observador (getter) para el atributo Tenista::nombre
+ * @brief Observador (getter) para el atributo Tenista::_nombre
  * @return El nombre del tenista
  */
 string Tenista::getNombre ( ) const
 {
-   return nombre;
+   return _nombre;
 }
 
 /**
@@ -108,25 +110,26 @@ string Tenista::info () const
    string resultado;
    
    aux << "Soy un tenista. Mi nombre es "
-       << nombre
+       << _nombre
        << " y estoy en el puesto "
-       << ranking
+       << _ranking
        << " del ranking";
    getline ( aux, resultado );
    return ( resultado );
 }
 
 /**
- * No se copia el atributo Tenista::nombre, para evitar que haya dos tenistas
- * con el mismo nombre
  * @brief Operador de asignación
+ *
+ * No se copia el atributo Tenista::_nombre, para evitar que haya dos tenistas
+ * con el mismo nombre
  * @param orig Objeto del que se copian los atributos
  * @return Una referencia al propio objeto, para posibilitar las asignaciones en
  *         cascada (a=b=c)
  */
 Tenista& Tenista::operator = (const Tenista& orig)
 {
-   this->ranking = orig.ranking;
+   this->_ranking = orig._ranking;
    
    return ( *this );
 }

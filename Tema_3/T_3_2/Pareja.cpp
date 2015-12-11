@@ -13,7 +13,7 @@
  * Inicializa los punteros a NULL, y el ranking a 99999
  * @brief Constructor por defecto
  */
-Pareja::Pareja ( ): t1 (NULL), t2 (NULL), ranking (99999)
+Pareja::Pareja ( ): _t1 (NULL), _t2 (NULL), _ranking (99999)
 {
 }
 
@@ -21,8 +21,8 @@ Pareja::Pareja ( ): t1 (NULL), t2 (NULL), ranking (99999)
  * @brief Constructor de copia
  * @param orig Objeto del que se copian los atributos
  */
-Pareja::Pareja ( const Pareja& orig ): t1 (orig.t1), t2 (orig.t2),
-                                       ranking (orig.ranking)
+Pareja::Pareja ( const Pareja& orig ): _t1 (orig._t1), _t2 (orig._t2),
+                                       _ranking (orig._ranking)
 {
 }
 
@@ -34,11 +34,11 @@ Pareja::Pareja ( const Pareja& orig ): t1 (orig.t1), t2 (orig.t2),
  *                 positivo
  * @throw std::out_of_range Si el valor de ranking no es positivo
  */
-Pareja::Pareja ( Tenista *nT1, Tenista *nT2, int nRanking ): t1 (nT1), t2 (nT2)
+Pareja::Pareja ( Tenista *nT1, Tenista *nT2, int nRanking ): _t1 (nT1), _t2 (nT2)
 {
    if ( nRanking > 0 )
    {
-      ranking = nRanking;
+      _ranking = nRanking;
    }
    else
    {
@@ -54,11 +54,11 @@ Pareja::Pareja ( Tenista *nT1, Tenista *nT2, int nRanking ): t1 (nT1), t2 (nT2)
  *                 positivo
  * @throw std::out_of_range Si el valor de ranking no es positivo
  */
-Pareja::Pareja ( Tenista &nT1, Tenista &nT2, int nRanking ): t1 (&nT1), t2 (&nT2)
+Pareja::Pareja ( Tenista &nT1, Tenista &nT2, int nRanking ): _t1 (&nT1), _t2 (&nT2)
 {
    if ( nRanking > 0 )
    {
-      ranking = nRanking;
+      _ranking = nRanking;
    }
    else
    {
@@ -67,18 +67,19 @@ Pareja::Pareja ( Tenista &nT1, Tenista &nT2, int nRanking ): t1 (&nT1), t2 (&nT2
 }
 
 /**
+ * @brief Destructor
+ * 
  * Pone a NULL los punteros a los miembros de la pareja, pero no destruye los
  * objetos
- * @brief Destructor
  */
 Pareja::~Pareja ( )
 {
-   t1 = NULL;
-   t2 = NULL;
+   _t1 = NULL;
+   _t2 = NULL;
 }
 
 /**
- * @brief Modificador (setter) del atributo Pareja::ranking
+ * @brief Modificador (setter) del atributo Pareja::_ranking
  * @param nRanking Nuevo valor de ranking. Debe ser un número positivo
  * @throws std::out_of_range Si el valor de nRanking no es positivo
  */
@@ -86,7 +87,7 @@ void Pareja::setRanking ( int nRanking )
 {
    if ( nRanking > 0 )
    {
-      this->ranking = nRanking;
+      this->_ranking = nRanking;
    }
    else
    {
@@ -95,64 +96,66 @@ void Pareja::setRanking ( int nRanking )
 }
 
 /**
- * @brief Observador (getter) del atributo Pareja::ranking
+ * @brief Observador (getter) del atributo Pareja::_ranking
  * @return El valor de ranking de la pareja
  */
 int Pareja::getRanking ( ) const
 {
-   return ranking;
+   return _ranking;
 }
 
 /**
+ * @brief Método para cambiar el segundo tenista de la pareja
+ * 
  * Si se pasa NULL como parámetro, la pareja pasa a tener ranking 99999, ya que
  * no está completa
- * @brief Método para cambiar el segundo tenista de la pareja
  * @param nT2 Puntero al nuevo tenista
  */
 void Pareja::setT2 ( Tenista* nT2 )
 {
-   this->t2 = nT2;
+   this->_t2 = nT2;
 
-   if ( t2 == NULL )
+   if ( _t2 == NULL )
    {
-      ranking = 99999;
+      _ranking = 99999;
    }
 }
 
 /**
- * @brief Observador (getter) para el atributo Pareja::t2
+ * @brief Observador (getter) para el atributo Pareja::_t2
  * @return Un puntero al segundo tenista de la pareja, o NULL si éste no ha
  *         sido asignado
  */
 Tenista* Pareja::getT2 ( ) const
 {
-   return t2;
+   return _t2;
 }
 
 /**
+ * @brief Método para cambiar el primer tenista de la pareja
+ * 
  * Si se pasa NULL como parámetro, la pareja pasa a tener ranking 99999, ya que
  * no está completa
- * @brief Método para cambiar el primer tenista de la pareja
  * @param nT1 Puntero al nuevo tenista
  */
 void Pareja::setT1 ( Tenista* nT1 )
 {
-   this->t1 = nT1;
+   this->_t1 = nT1;
    
-   if ( t1 == NULL )
+   if ( _t1 == NULL )
    {
-      ranking = 99999;
+      _ranking = 99999;
    }
 }
 
 /**
- * @brief Observador (getter) para el atributo Pareja::t1
+ * @brief Observador (getter) para el atributo Pareja::_t1
  * @return Un puntero al primer tenista de la pareja, o NULL si éste no ha
  *         sido asignado
  */
 Tenista* Pareja::getT1 ( ) const
 {
-   return t1;
+   return _t1;
 }
 
 /**
@@ -165,34 +168,34 @@ string Pareja::info () const
    std::stringstream aux;
    string resultado;
 
-   if ( ( t1 != NULL ) && ( t2 != NULL ) )
+   if ( ( _t1 != NULL ) && ( _t2 != NULL ) )
    {
       aux << "Somos una pareja, formada por "
-          << t1->getNombre ()
+          << _t1->getNombre ()
           << " y "
-          << t2->getNombre ()
+          << _t2->getNombre ()
           << ". Nuestro ranking es "
-          << ranking;
+          << _ranking;
    }
    else
    {
-      if ( t1 == NULL )
+      if ( _t1 == NULL )
       {
-         if ( t2 == NULL )
+         if ( _t2 == NULL )
          {
             aux << "Esta pareja está vacía";
          }
          else
          {
             aux << "En esta pareja falta el primer integrante. El segundo es "
-                << t2->getNombre ();
+                << _t2->getNombre ();
          }
       }
       else
       {
          // t2 es necesariamente distinto de NULL en este caso
          aux << "En esta pareja falta el segundo integrante. El primero es "
-             << t1->getNombre ();
+             << _t1->getNombre ();
       }
    }
 
@@ -201,16 +204,17 @@ string Pareja::info () const
 }
 
 /**
+ * @brief Operador de asignación
+ * 
  * Sólo copia el valor de ranking, puesto que no tiene sentido tener dos parejas
  * con los mismos jugadores
- * @brief Operador de asignación
  * @param orig Objeto del que se copian los valores de los atributos
  * @return Una referencia al propio objeto, para su uso en asignaciones en
  *         cascada (a=b=c)
  */
 Pareja& Pareja::operator = (const Pareja& orig)
 {
-   this->ranking = orig.ranking;
+   this->_ranking = orig._ranking;
    
    return ( *this );
 }

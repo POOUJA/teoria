@@ -19,9 +19,9 @@
 class Pareja
 {
    private:
-      Tenista *t1;   ///< Puntero al primer miembro del doble
-      Tenista *t2;   ///< Puntero al segundo miembro del doble
-      int ranking;   ///< Posición de la pareja en el ranking de dobles
+      Tenista *_t1;   ///< Puntero al primer miembro del doble
+      Tenista *_t2;   ///< Puntero al segundo miembro del doble
+      int _ranking;   ///< Posición de la pareja en el ranking de dobles
 
    public:
       Pareja ( );
