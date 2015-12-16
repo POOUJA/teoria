@@ -10,12 +10,12 @@
 
 class Vivienda
 {
-public:
-   Vivienda ( );
-   Vivienda ( const Vivienda& orig );
-   virtual ~Vivienda ( );
-private:
+   private:
 
+   public:
+      Vivienda ( );
+      Vivienda ( const Vivienda& orig );
+      virtual ~Vivienda ( );
 };
 
 #endif	/* VIVIENDA_H */

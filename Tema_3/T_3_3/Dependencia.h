@@ -34,11 +34,11 @@ class Dependencia
       Dependencia ( );
       Dependencia ( const Dependencia& orig );
       virtual ~Dependencia ( );
-      void setTipo ( dependencia_t _tipo );
+      void setTipo ( dependencia_t nTipo );
       int getTipo ( ) const;
-      void setSuperficie ( int _superficie );
-      int getSuperficie ( ) const;
-      void setNombre ( string _nombre );
+      void setSuperficie ( float nSuperficie );
+      float getSuperficie ( ) const;
+      void setNombre ( string nNombre );
       string getNombre ( ) const;
 };
 

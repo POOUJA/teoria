@@ -29,19 +29,19 @@ int Dependencia::getTipo ( ) const
    return _tipo;
 }
 
-void Dependencia::setSuperficie ( int _superficie )
+void Dependencia::setSuperficie ( float nSuperficie )
 {
-   this->_superficie = _superficie;
+   this->_superficie = nSuperficie;
 }
 
-int Dependencia::getSuperficie ( ) const
+float Dependencia::getSuperficie ( ) const
 {
    return _superficie;
 }
 
-void Dependencia::setNombre ( string _nombre )
+void Dependencia::setNombre ( string nNombre )
 {
-   this->_nombre = _nombre;
+   this->_nombre = nNombre;
 }
 
 string Dependencia::getNombre ( ) const
