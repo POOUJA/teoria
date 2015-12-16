@@ -8,9 +8,15 @@
 #ifndef VIVIENDA_H
 #define	VIVIENDA_H
 
+#define _MAX_HAB_ 10   ///< Número máximo de habitaciones en una vivienda
+
+#include "Dependencia.h"
+
 class Vivienda
 {
    private:
+      string _direccion;                      ///< Calle, número, piso...
+      Dependencia *salon;
 
    public:
       Vivienda ( );
