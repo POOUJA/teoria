@@ -4,8 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>Dependencia.h</itemPath>
-      <itemPath>Vivienda.h</itemPath>
+      <itemPath>Jugador.h</itemPath>
+      <itemPath>Tablero.h</itemPath>
+      <itemPath>TicTacToe.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,8 +15,9 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>Dependencia.cpp</itemPath>
-      <itemPath>Vivienda.cpp</itemPath>
+      <itemPath>Jugador.cpp</itemPath>
+      <itemPath>Tablero.cpp</itemPath>
+      <itemPath>TicTacToe.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -40,13 +42,17 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="Dependencia.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Dependencia.h" ex="false" tool="3" flavor2="0">
+      <item path="Jugador.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Vivienda.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Tablero.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Vivienda.h" ex="false" tool="3" flavor2="0">
+      <item path="Tablero.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TicTacToe.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TicTacToe.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -71,13 +77,17 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="Dependencia.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Dependencia.h" ex="false" tool="3" flavor2="0">
+      <item path="Jugador.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Vivienda.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Tablero.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Vivienda.h" ex="false" tool="3" flavor2="0">
+      <item path="Tablero.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TicTacToe.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TicTacToe.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

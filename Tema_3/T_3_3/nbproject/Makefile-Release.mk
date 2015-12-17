@@ -35,8 +35,9 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Dependencia.o \
-	${OBJECTDIR}/Vivienda.o \
+	${OBJECTDIR}/Jugador.o \
+	${OBJECTDIR}/Tablero.o \
+	${OBJECTDIR}/TicTacToe.o \
 	${OBJECTDIR}/main.o
 
 
@@ -64,15 +65,20 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/t_3_3: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/t_3_3 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/Dependencia.o: Dependencia.cpp 
+${OBJECTDIR}/Jugador.o: Jugador.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Dependencia.o Dependencia.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Jugador.o Jugador.cpp
 
-${OBJECTDIR}/Vivienda.o: Vivienda.cpp 
+${OBJECTDIR}/Tablero.o: Tablero.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Vivienda.o Vivienda.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Tablero.o Tablero.cpp
+
+${OBJECTDIR}/TicTacToe.o: TicTacToe.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TicTacToe.o TicTacToe.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
