@@ -35,7 +35,6 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/Jugador.o \
 	${OBJECTDIR}/Tablero.o \
 	${OBJECTDIR}/TicTacToe.o \
 	${OBJECTDIR}/main.o
@@ -64,11 +63,6 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/t_3_3: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/t_3_3 ${OBJECTFILES} ${LDLIBSOPTIONS}
-
-${OBJECTDIR}/Jugador.o: Jugador.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Jugador.o Jugador.cpp
 
 ${OBJECTDIR}/Tablero.o: Tablero.cpp 
 	${MKDIR} -p ${OBJECTDIR}

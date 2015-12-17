@@ -4,7 +4,6 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>Jugador.h</itemPath>
       <itemPath>Tablero.h</itemPath>
       <itemPath>TicTacToe.h</itemPath>
     </logicalFolder>
@@ -15,7 +14,6 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>Jugador.cpp</itemPath>
       <itemPath>Tablero.cpp</itemPath>
       <itemPath>TicTacToe.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
@@ -42,10 +40,6 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Jugador.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Tablero.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Tablero.h" ex="false" tool="3" flavor2="0">
@@ -77,10 +71,6 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="Jugador.cpp" ex="false" tool="1" flavor2="0">
-      </item>
-      <item path="Jugador.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="Tablero.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Tablero.h" ex="false" tool="3" flavor2="0">

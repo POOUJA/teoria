@@ -131,6 +131,7 @@ bool Tablero::checkMovimientoGanador (int f, int c)
    int i;
    
    contC = contF = contSlash = contBackslash = 1;
+
    for ( i = 1; i < 3; i++ )
    {
       // Cuenta los valores iguales en la columna
