@@ -36,7 +36,7 @@ Arma::Arma ( const Arma& orig ): _poder(orig._poder)
  * Comprueba que el nuevo valor para Arma::poder sea >= 0
  * @param nNombre Texto a asignar como nombre del arma. No se hacen comprobaciones
  * @param nPoder Valor de poder para la nueva arma
- * @exception std::out_of_range Si el valor de nPoder es < 0
+ * @throws std::out_of_range Si el valor de nPoder es < 0
  */
 Arma::Arma (const string nNombre, const int nPoder): _nombre(nNombre)
 {
@@ -79,7 +79,7 @@ string Arma::getNombre ( ) const
  * @brief Modificador para el atributo Arma::_poder
  * @param nPoder Nuevo valor de poder para el arma. Se hace la comprobación de
  *        que su valor sea >= 0
- * @exception std::out_of_range Si el valor de nPoder es < 0
+ * @throws std::out_of_range Si el valor de nPoder es < 0
  */
 void Arma::setPoder ( int nPoder )
 {
@@ -110,7 +110,6 @@ int Arma::getPoder ( ) const
 string Arma::info () const
 {
    std::stringstream aux;
-   string resultado;
    
    aux << "Soy un arma. Mi nombre es "
        << _nombre
@@ -118,8 +117,7 @@ string Arma::info () const
        << _poder
        << " puntos";
 
-   getline ( aux, resultado );
-   return ( resultado );
+   return ( aux.str () );
 }
 
 /**

@@ -28,7 +28,7 @@ Armero::Armero ( ): _energia (1000), _nombre("---"), _maxPoderArma(100)
  *        comprobaciones sobre él
  * @param nMPArma Valor máximo de poder para las armas que cree el armero. Ha
  *        de ser un número positivo
- * @exception std::out_of_range Si el valor máximo de poder para las armas no es
+ * @throws std::out_of_range Si el valor máximo de poder para las armas no es
  *            positivo
  */
 Armero::Armero ( string nNombre, int nMPArma ): _energia (1000), _nombre(nNombre)
@@ -104,7 +104,7 @@ string Armero::getNombre ( ) const
  * @brief Modificador para el atributo Armero::_maxPoderArma
  * @param nMaxPoderArma Nuevo valor para el poder máximo de las armas producidas.
  *        Ha de ser un valor positivo
- * @exception std::out_of_range Si el valor del parámetro no es positivo
+ * @throws std::out_of_range Si el valor del parámetro no es positivo
  */
 void Armero::setMaxPoderArma ( int nMaxPoderArma )
 {
@@ -166,7 +166,6 @@ int Armero::ataque ()
  */
 string Armero::info () const
 {
-   string resultado;
    std::stringstream aux;
    
    aux << "Soy armero. Mi nombre es "
@@ -177,8 +176,7 @@ string Armero::info () const
        << _maxPoderArma
        << " puntos de poder";
 
-   getline ( aux, resultado );
-   return ( resultado );
+   return ( aux.str () );
 }
 
 /**

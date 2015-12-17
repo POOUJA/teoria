@@ -164,7 +164,6 @@ int Guerrero::ataque ()
  */
 string Guerrero::info () const
 {
-   string resultado;
    std::stringstream aux;
    
    aux << "Soy guerrero. Mi nombre es "
@@ -175,8 +174,7 @@ string Guerrero::info () const
        << (int) ( _FACTOR_ATAQUE_ * _energia * _armamento->getPoder () )
        << " puntos de poder";
 
-   getline ( aux, resultado );
-   return ( resultado );
+   return ( aux.str () );
 }
 
 /**
