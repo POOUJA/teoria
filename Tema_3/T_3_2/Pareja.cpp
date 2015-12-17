@@ -32,7 +32,7 @@ Pareja::Pareja ( const Pareja& orig ): _t1 (orig._t1), _t2 (orig._t2),
  * @param nT2 Puntero al segundo tenista de la pareja
  * @param nRanking Posición en el ranking de la pareja. Debe ser un número
  *                 positivo
- * @throw std::out_of_range Si el valor de ranking no es positivo
+ * @throws std::out_of_range Si el valor de ranking no es positivo
  */
 Pareja::Pareja ( Tenista *nT1, Tenista *nT2, int nRanking ): _t1 (nT1), _t2 (nT2)
 {
@@ -42,7 +42,8 @@ Pareja::Pareja ( Tenista *nT1, Tenista *nT2, int nRanking ): _t1 (nT1), _t2 (nT2
    }
    else
    {
-      throw std::out_of_range ( "El ranking tiene que ser positivo" );
+      throw std::out_of_range ( "Pareja::Pareja: El ranking tiene que ser"
+                                " positivo" );
    }
 }
 
@@ -52,7 +53,7 @@ Pareja::Pareja ( Tenista *nT1, Tenista *nT2, int nRanking ): _t1 (nT1), _t2 (nT2
  * @param nT2 Referencia al segundo tenista de la pareja
  * @param nRanking Posición en el ranking de la pareja. Debe ser un número
  *                 positivo
- * @throw std::out_of_range Si el valor de ranking no es positivo
+ * @throws std::out_of_range Si el valor de ranking no es positivo
  */
 Pareja::Pareja ( Tenista &nT1, Tenista &nT2, int nRanking ): _t1 (&nT1), _t2 (&nT2)
 {
@@ -62,7 +63,8 @@ Pareja::Pareja ( Tenista &nT1, Tenista &nT2, int nRanking ): _t1 (&nT1), _t2 (&n
    }
    else
    {
-      throw std::out_of_range ( "El ranking tiene que ser positivo" );
+      throw std::out_of_range ( "Pareja::Pareja: El ranking tiene que ser"
+                                " positivo" );
    }
 }
 
@@ -91,7 +93,8 @@ void Pareja::setRanking ( int nRanking )
    }
    else
    {
-      throw std::out_of_range ( "El valor de ranking tiene que ser positivo" );
+      throw std::out_of_range ( "Pareja::setRanking: El valor de ranking tiene"
+                                " que ser positivo" );
    }
 }
 
@@ -166,7 +169,6 @@ Tenista* Pareja::getT1 ( ) const
 string Pareja::info () const
 {
    std::stringstream aux;
-   string resultado;
 
    if ( ( _t1 != NULL ) && ( _t2 != NULL ) )
    {
@@ -199,8 +201,7 @@ string Pareja::info () const
       }
    }
 
-   getline ( aux, resultado );
-   return ( resultado );
+   return ( aux.str () );
 }
 
 /**

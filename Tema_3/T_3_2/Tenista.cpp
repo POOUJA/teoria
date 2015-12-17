@@ -34,7 +34,7 @@ Tenista::Tenista ( const Tenista& orig ): _ranking ( orig._ranking )
  * @brief Constructor parametrizado
  * @param nNombre Nombre del nuevo tenista
  * @param nRanking Ranking del nuevo tenista. Ha de ser un número positivo
- * @throw std::out_of_range Si el valor de ranking no es positivo
+ * @throws std::out_of_range Si el valor de ranking no es positivo
  */
 Tenista::Tenista ( const string nNombre, const int nRanking ): _nombre (nNombre)
 {
@@ -44,7 +44,8 @@ Tenista::Tenista ( const string nNombre, const int nRanking ): _nombre (nNombre)
    }
    else
    {
-      throw std::out_of_range ( "El valor de ranking no puede ser negativo o cero" );
+      throw std::out_of_range ( "Tenista::Tenista: El valor de ranking no"
+                                " puede ser negativo o cero" );
    }
 }
 
@@ -68,7 +69,8 @@ void Tenista::setRanking ( int nRanking )
    }
    else
    {
-      throw std::out_of_range ( "El valor de ranking no puede ser negativo o cero" );
+      throw std::out_of_range ( "Tenista::setRanking: El valor de ranking no"
+                                " puede ser negativo o cero" );
    }
 }
 
@@ -107,15 +109,14 @@ string Tenista::getNombre ( ) const
 string Tenista::info () const
 {
    std::stringstream aux;
-   string resultado;
    
    aux << "Soy un tenista. Mi nombre es "
        << _nombre
        << " y estoy en el puesto "
        << _ranking
        << " del ranking";
-   getline ( aux, resultado );
-   return ( resultado );
+
+   return ( aux.str () );
 }
 
 /**
