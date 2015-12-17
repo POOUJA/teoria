@@ -1,8 +1,8 @@
-/* 
- * File:   Tablero.cpp
- * Author: algarcia
- * 
- * Created on 17 de diciembre de 2015, 16:13
+/**
+ * @file Tablero.cpp
+ * Archivo con la implementación de la clase Tablero (para un juego de tres en raya)
+ * @author algarcia
+ * @date 2015-12-17
  */
 
 #include <stdexcept>
@@ -10,6 +10,10 @@
 
 #include "Tablero.h"
 
+/**
+ * @brief Constructor por defecto
+ * Inicializa 
+ */
 Tablero::Tablero ( )
 {
    int i,j;
