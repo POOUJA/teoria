@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <iostream>
 
-#include "Tablero.h"
+#include "TicTacToe.h"
 
 using namespace std;
 
@@ -17,6 +17,9 @@ using namespace std;
  */
 int main ( int argc, char** argv )
 {
+   TicTacToe *partida = new TicTacToe ();
+   TicTacToe *p2 = new TicTacToe(*partida);
+   
    return 0;
 }
 

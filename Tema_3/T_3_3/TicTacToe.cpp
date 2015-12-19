@@ -7,12 +7,21 @@
 
 #include "TicTacToe.h"
 
-TicTacToe::TicTacToe ( )
+TicTacToe::TicTacToe ( ): _jugadores{"---","---"}, _t(new Tablero()), _turno(1)
 {
+   // NOTA: si la inicialización del array _jugadores da errores al compilar,
+   // ha de incluirse aquí. Es una característica reciente de C++ que algunos
+   // compiladores no soportan todavía
 }
 
-TicTacToe::TicTacToe ( const TicTacToe& orig )
+TicTacToe::TicTacToe ( const TicTacToe& orig ): _jugadores{orig._jugadores[0],
+                                                           orig._jugadores[1]},
+                                                _t( new Tablero(*orig._t) ),
+                                                _turno(orig._turno)
 {
+   // NOTA: si la inicialización del array _jugadores da errores al compilar,
+   // ha de incluirse aquí. Es una característica reciente de C++ que algunos
+   // compiladores no soportan todavía
 }
 
 TicTacToe::TicTacToe ( const string& jugador1, const string& jugador2 )

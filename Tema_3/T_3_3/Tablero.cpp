@@ -11,8 +11,9 @@
 #include "Tablero.h"
 
 /**
+ * Inicializa el tablero como vacío
  * @brief Constructor por defecto
- * Inicializa 
+ * 
  */
 Tablero::Tablero ( )
 {
@@ -27,6 +28,11 @@ Tablero::Tablero ( )
    }
 }
 
+/**
+ * Copia los valores de las posiciones del tablero tal cual
+ * @brief Constructor de copia
+ * @param orig Tablero del que se copian los valores
+ */
 Tablero::Tablero ( const Tablero& orig )
 {
    int i,j;
@@ -38,12 +44,26 @@ Tablero::Tablero ( const Tablero& orig )
          _tablero[i][j] = orig._tablero[i][j];
       }
    }
+   
+   throw std::out_of_range ( "usado el de copia");
 }
 
+/**
+ * @brief Destructor por defecto
+ */
 Tablero::~Tablero ( )
 {
 }
 
+/**
+ * @brief Método para consultar el valor en una posición del tablero
+ * @param f Fila de la posición a consultar. Su valor ha de estar entre 1 y 3
+ * @param c Columna de la posición a consultar. Su valor ha de estar entre 1 y 3
+ * @return Un carácter ('X', 'O' o '-'), dependiendo de si la posición del
+ *         tablero ha sido ocupada por el jugador 1, el 2, o todavía está libre
+ * @throws std::out_of_range Si el valor de fila o columna no está en el rango
+ *         correcto
+ */
 char Tablero::getPos ( int f, int c )
 {
    if ( ( f < 1 ) || ( f > 3 ) )
@@ -61,6 +81,23 @@ char Tablero::getPos ( int f, int c )
    return ( _tablero[f-1][c-1] );
 }
 
+/**
+ * @brief Método para indicar que un jugador ha ocupado una posición del
+ *        tablero
+ * @param f Fila de la posición a ocupar. Su valor ha de estar entre 1 y 3
+ * @param c Columna de la posición a ocupar. Su valor ha de estar entre 1 y 3
+ * @param jugador Tendrá valor 'X' o 'O' (sensible a mayúsculas y minúsculas)
+ *        para indicar qué jugador (1 o 2, respectivamente) ha ocupado la
+ *        posición
+ * @retval true Si el movimiento implica que el jugador en cuestión ha ganado la
+ *         partida
+ * @retval false Si la partida aún no ha terminado
+ * @throws std::out_of_range Si los valores de fila o columna no están en el
+ *         rango de 1 a 3, o si para identificar al jugador no se utiliza 'X' o
+ *         'O'
+ * @throws std::invalid_argument Si la posición que se intenta ocupar no está
+ *         libre (ya ha sido tomada por otro jugador anteriormente)
+ */
 bool Tablero::setPos ( int f, int c, char jugador )
 {
    if ( ( f < 1 ) || ( f > 3 ) )
@@ -92,6 +129,12 @@ bool Tablero::setPos ( int f, int c, char jugador )
    return ( checkMovimientoGanador ( f-1, c-1 ) );
 }
 
+/**
+ * @brief Método para generar una representación en modo texto del estado del
+ *        tablero
+ * @return Un texto multilínea que representa el tablero, con 'X' representando
+ *         las celdas ocupadas por el jugador 1, y 'O' para el jugador 2
+ */
 string Tablero::info ()
 {
    std::stringstream aux;
@@ -114,6 +157,13 @@ string Tablero::info ()
    return ( aux.str () );
 }
 
+/**
+ * Copia los valores almacenados en las posiciones de un tablero en otro
+ * @brief Operador de asignación
+ * @param orig Objeto del que se copia la información
+ * @return Una referencia al propio objeto, para facilitar las asignaciones en
+ *         cascada (a=b=c)
+ */
 Tablero& Tablero::operator= ( const Tablero& orig )
 {
    int i,j;
@@ -129,12 +179,24 @@ Tablero& Tablero::operator= ( const Tablero& orig )
    return ( *this );
 }
 
+/**
+ * Comprueba si en la fila, la columna, o en alguna de las diagonales, se ha
+ * completado el tres en raya
+ * @brief Método para comprobar si una jugada es ganadora
+ * @param f Fila de la jugada a comprobar. El rango de valores es de 0 a 2
+ * @param c Columna de la jugada a comprobar. El rango de valores es de 0 a 2
+ * @retval true Si la jugada ha resultado en una combinación ganadora
+ * @retval false Si la jugada NO ha resultado en una combinación ganadora
+ */
 bool Tablero::checkMovimientoGanador (int f, int c)
 {
-   int contC, contF, contSlash, contBackslash;
+   int contC, contF;
    int i;
-   
-   contC = contF = contSlash = contBackslash = 1;
+
+   // Como este método es privado, no hago comprobaciones en los rangos de los
+   // parámetros
+
+   contC = contF = 1;
 
    for ( i = 1; i < 3; i++ )
    {
@@ -149,26 +211,31 @@ bool Tablero::checkMovimientoGanador (int f, int c)
       {
          contF++;
       }
-      
-      // Cuenta los valores iguales en la diagonal principal
-      if ( _tablero[(f + i) % 3][(c + i) % 3] == _tablero[f][c] )
+   }
+   
+   if ( ( contC == 3 ) || ( contF == 3 ) )
+   {
+      return ( true );
+   }
+
+   // Comprueba la diagonal principal
+   if ( f == c )
+   {
+      if ( ( _tablero[0][0] == _tablero[1][1] )
+           && ( _tablero[0][0] == _tablero[2][2] ) )
       {
-         contSlash++;
-      }
-      
-      // Cuenta los valores iguales en la diagonal secundaria
-      if ( _tablero[(f + i) % 3][(c - i + 3) % 3] == _tablero[f][c] )
-      {
-         contBackslash++;
+         return ( true );
       }
    }
    
-   if ( ( contC == 3 )
-        || ( contF == 3 )
-        || ( contSlash == 3 )
-        || ( contBackslash == 3 ) )
+   // Comprueba la diagonal secundaria
+   if ( (f + c) == 2 )
    {
-      return ( true );
+      if ( ( _tablero[0][2] == _tablero[1][1] )
+           && ( _tablero[0][2] == _tablero [2][0] ) )
+      {
+         return ( true );
+      }
    }
 
    return ( false );
