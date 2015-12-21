@@ -36,15 +36,15 @@ int main ( int argc, char** argv )
            << endl;
    }
 
-   p1->setT2 ( NULL );
+   p1->setT2 ( 0 );
    cout << p1->info () << endl;
 
    delete ( p1 );
-   p1 = NULL;
+   p1 = 0;
    delete ( nadal );
    delete ( federer );
    delete ( novak );
-   nadal = federer = novak = NULL;
+   nadal = federer = novak = 0;
 
    return 0;
 }

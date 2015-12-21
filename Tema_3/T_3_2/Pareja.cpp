@@ -10,10 +10,10 @@
 #include "Pareja.h"
 
 /**
- * Inicializa los punteros a NULL, y el ranking a 99999
+ * Inicializa los punteros a 0, y el ranking a 99999
  * @brief Constructor por defecto
  */
-Pareja::Pareja ( ): _t1 (NULL), _t2 (NULL), _ranking (99999)
+Pareja::Pareja ( ): _t1 (0), _t2 (0), _ranking (99999)
 {
 }
 
@@ -71,13 +71,13 @@ Pareja::Pareja ( Tenista &nT1, Tenista &nT2, int nRanking ): _t1 (&nT1), _t2 (&n
 /**
  * @brief Destructor
  * 
- * Pone a NULL los punteros a los miembros de la pareja, pero no destruye los
+ * Pone a 0 los punteros a los miembros de la pareja, pero no destruye los
  * objetos
  */
 Pareja::~Pareja ( )
 {
-   _t1 = NULL;
-   _t2 = NULL;
+   _t1 = 0;
+   _t2 = 0;
 }
 
 /**
@@ -110,7 +110,7 @@ int Pareja::getRanking ( ) const
 /**
  * @brief Método para cambiar el segundo tenista de la pareja
  * 
- * Si se pasa NULL como parámetro, la pareja pasa a tener ranking 99999, ya que
+ * Si se pasa 0 como parámetro, la pareja pasa a tener ranking 99999, ya que
  * no está completa
  * @param nT2 Puntero al nuevo tenista
  */
@@ -118,7 +118,7 @@ void Pareja::setT2 ( Tenista* nT2 )
 {
    this->_t2 = nT2;
 
-   if ( _t2 == NULL )
+   if ( _t2 == 0 )
    {
       _ranking = 99999;
    }
@@ -126,7 +126,7 @@ void Pareja::setT2 ( Tenista* nT2 )
 
 /**
  * @brief Observador (getter) para el atributo Pareja::_t2
- * @return Un puntero al segundo tenista de la pareja, o NULL si éste no ha
+ * @return Un puntero al segundo tenista de la pareja, o 0 si éste no ha
  *         sido asignado
  */
 Tenista* Pareja::getT2 ( ) const
@@ -137,7 +137,7 @@ Tenista* Pareja::getT2 ( ) const
 /**
  * @brief Método para cambiar el primer tenista de la pareja
  * 
- * Si se pasa NULL como parámetro, la pareja pasa a tener ranking 99999, ya que
+ * Si se pasa 0 como parámetro, la pareja pasa a tener ranking 99999, ya que
  * no está completa
  * @param nT1 Puntero al nuevo tenista
  */
@@ -145,7 +145,7 @@ void Pareja::setT1 ( Tenista* nT1 )
 {
    this->_t1 = nT1;
    
-   if ( _t1 == NULL )
+   if ( _t1 == 0 )
    {
       _ranking = 99999;
    }
@@ -153,7 +153,7 @@ void Pareja::setT1 ( Tenista* nT1 )
 
 /**
  * @brief Observador (getter) para el atributo Pareja::_t1
- * @return Un puntero al primer tenista de la pareja, o NULL si éste no ha
+ * @return Un puntero al primer tenista de la pareja, o 0 si éste no ha
  *         sido asignado
  */
 Tenista* Pareja::getT1 ( ) const
@@ -170,7 +170,7 @@ string Pareja::info () const
 {
    std::stringstream aux;
 
-   if ( ( _t1 != NULL ) && ( _t2 != NULL ) )
+   if ( ( _t1 != 0 ) && ( _t2 != 0 ) )
    {
       aux << "Somos una pareja, formada por "
           << _t1->getNombre ()
@@ -181,9 +181,9 @@ string Pareja::info () const
    }
    else
    {
-      if ( _t1 == NULL )
+      if ( _t1 == 0 )
       {
-         if ( _t2 == NULL )
+         if ( _t2 == 0 )
          {
             aux << "Esta pareja está vacía";
          }
@@ -195,7 +195,7 @@ string Pareja::info () const
       }
       else
       {
-         // t2 es necesariamente distinto de NULL en este caso
+         // t2 es necesariamente distinto de 0 en este caso
          aux << "En esta pareja falta el segundo integrante. El primero es "
              << _t1->getNombre ();
       }
