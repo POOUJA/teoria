@@ -20,7 +20,7 @@
  * 
  * Fija el nombre a "---", la energía a 1000, y está desarmado
  */
-Guerrero::Guerrero ( ): _nombre ("---"), _armamento (NULL), _energia (1000)
+Guerrero::Guerrero ( ): _nombre ("---"), _armamento (0), _energia (1000)
 {
 }
 
@@ -32,7 +32,7 @@ Guerrero::Guerrero ( ): _nombre ("---"), _armamento (NULL), _energia (1000)
  * @param nEnergia Valor de energía a asignar al guerrero
  */
 Guerrero::Guerrero ( string nNombre, int nEnergia ): _nombre (nNombre),
-                                                     _armamento (NULL),
+                                                     _armamento (0),
                                                      _energia (nEnergia)
 {
 }
@@ -45,7 +45,7 @@ Guerrero::Guerrero ( string nNombre, int nEnergia ): _nombre (nNombre),
  * que no tiene sentido que tenga la misma arma que el original
  * @param orig Objeto del que se copian los atributos
  */
-Guerrero::Guerrero ( const Guerrero& orig ): _armamento (NULL),
+Guerrero::Guerrero ( const Guerrero& orig ): _armamento (0),
                                              _energia (orig._energia)
 {
    _nombre = orig._nombre + " - 2";   // Para evitar nombres duplicados
@@ -62,7 +62,7 @@ Guerrero::~Guerrero ( )
 {
    // Como lanzar excepciones en los destructores no es una buena práctica,
    // simplemente se muestra un mensaje por la consola de errores
-   if ( _armamento != NULL )
+   if ( _armamento != 0 )
    {
       std::cerr << "Guerrero::~Guerrero: se destruye un guerrero sin "
                 << "desarmarlo previamente";
@@ -137,7 +137,7 @@ string Guerrero::getNombre ( ) const
 Arma *Guerrero::desarmar ()
 {
    Arma *aux = _armamento;
-   _armamento = NULL;
+   _armamento = 0;
    return ( aux );
 }
 

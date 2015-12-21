@@ -25,7 +25,7 @@ int main ( int argc, char** argv )
    Guerrero *g;
 
    // Inicializa el generador de números pseudoaleatorios
-   srand ( time (NULL) );
+   srand ( time (0) );
 
    // Crea un nuevo armero
    a = new Armero ( "Merlín", 500 );
@@ -38,7 +38,7 @@ int main ( int argc, char** argv )
    // Crea un guerrero, y le entrega el arma
    g = new Guerrero ( "Lancelot", 2500 );
    g->setArmamento (b);
-   b = NULL;
+   b = 0;
    cout << g->info () << endl;
 
    // El guerrero hace varios ataques de prueba
@@ -51,15 +51,15 @@ int main ( int argc, char** argv )
    // antes de destruirlo
    b = g->desarmar ();
    delete g;
-   g = NULL;
+   g = 0;
 
    // Destruye el arma
    delete b;
-   b = NULL;
+   b = 0;
 
    // Destruye el armero
    delete a;
-   a = NULL;
+   a = 0;
 
    return 0;
 }
