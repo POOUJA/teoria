@@ -44,8 +44,6 @@ Tablero::Tablero ( const Tablero& orig )
          _tablero[i][j] = orig._tablero[i][j];
       }
    }
-   
-   throw std::out_of_range ( "usado el de copia");
 }
 
 /**
