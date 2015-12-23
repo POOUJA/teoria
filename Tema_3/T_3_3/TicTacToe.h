@@ -1,21 +1,27 @@
-/* 
- * File:   TicTacToe.h
- * Author: algarcia
- *
- * Created on 17 de diciembre de 2015, 16:13
+/**
+ * @file TicTacToe.h
+ * Archivo con la declaración de la clase TicTacToe, para gestionar una partida
+ * de tres en raya clásico
+ * @author algarcia
+ * @date 2015-12-17
  */
 
 #ifndef TICTACTOE_H
-#define	TICTACTOE_H
+#define TICTACTOE_H
 
 #include "Tablero.h"
 
+/**
+ * Ejemplo de composición: la partida crea el tablero y lo gestiona. Al
+ * destruirse la partida, el tablero también se destruye.
+ * @brief Clase para gestionar una partida de tres en raya clásico
+ */
 class TicTacToe
 {
    private:
-      string _jugadores[2];
-      int _turno;
-      Tablero *_t;      
+      string _jugadores[2];   /// Nombres de los jugadores
+      int _turno;             /// Almacena a qué jugador le toca mover (0 ó 1)
+      Tablero *_t;            /// Tablero de juego
 
    public:
       TicTacToe ( );
