@@ -15,6 +15,11 @@ Dependencia::Dependencia ( const Dependencia& orig )
 {
 }
 
+Dependencia::Dependencia ( string nombre, float superficie, dependencia_t tipo ):
+                         _nombre (nombre), _superficie (superficie), _tipo (tipo)
+{
+}
+
 Dependencia::~Dependencia ( )
 {
 }

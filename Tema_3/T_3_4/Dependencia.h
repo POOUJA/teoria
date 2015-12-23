@@ -6,7 +6,7 @@
  */
 
 #ifndef DEPENDENCIA_H
-#define	DEPENDENCIA_H
+#define DEPENDENCIA_H
 
 #include <string>
 
@@ -33,6 +33,7 @@ class Dependencia
    public:
       Dependencia ( );
       Dependencia ( const Dependencia& orig );
+      Dependencia ( string nombre, float superficie, dependencia_t tipo );
       virtual ~Dependencia ( );
       void setTipo ( dependencia_t nTipo );
       int getTipo ( ) const;
