@@ -36,7 +36,7 @@ class Dependencia
       Dependencia ( string nombre, float superficie, dependencia_t tipo );
       virtual ~Dependencia ( );
       void setTipo ( dependencia_t nTipo );
-      int getTipo ( ) const;
+      dependencia_t getTipo ( ) const;
       void setSuperficie ( float nSuperficie );
       float getSuperficie ( ) const;
       void setNombre ( string nNombre );
