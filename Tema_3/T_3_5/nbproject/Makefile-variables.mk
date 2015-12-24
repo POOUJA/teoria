@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux-x86
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux-x86
-CND_ARTIFACT_NAME_Debug=t_3_1
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/t_3_1
+CND_ARTIFACT_NAME_Debug=t_3_5
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/t_3_5
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Debug=t31.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/t31.tar
+CND_PACKAGE_NAME_Debug=t35.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/t35.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux-x86
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
-CND_ARTIFACT_NAME_Release=t_3_1
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/t_3_1
+CND_ARTIFACT_NAME_Release=t_3_5
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/t_3_5
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
-CND_PACKAGE_NAME_Release=t31.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/t31.tar
+CND_PACKAGE_NAME_Release=t35.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/t35.tar
 #
 # include compiler specific variables
 #
