@@ -6,6 +6,9 @@
  */
 
 #include <cstdlib>
+#include <iostream>
+
+#include "Dependencia.h"
 
 using namespace std;
 
@@ -14,6 +17,13 @@ using namespace std;
  */
 int main ( int argc, char** argv )
 {
+   Dependencia *d = new Dependencia ();
+   
+   d->setTipo ( (dependencia_t) -150 );
+   
+   cout << d->getTipo ();
+
+   delete ( d );
 
    return 0;
 }

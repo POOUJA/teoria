@@ -35,6 +35,8 @@ Dependencia::Dependencia ( const Dependencia& orig ): _nombre (orig._nombre),
  * @param tipo Tipo de la nueva dependencia
  * @throws std::out_of_range Si la superficie de la dependencia no es un número
  *         positivo
+ * @throws std::invalid_argument Si el tipo que se asigna a la dependencia no es
+ *         válido (ver #dependencia_t)
  */
 Dependencia::Dependencia ( string nombre, float superficie, dependencia_t tipo ):
                          _nombre (nombre), _superficie (superficie), _tipo (tipo)
@@ -43,6 +45,22 @@ Dependencia::Dependencia ( string nombre, float superficie, dependencia_t tipo )
    {
       throw std::out_of_range ( "Dependencia::Dependencia: la superficie debe"
                                 " ser un número positivo" );
+   }
+   
+   switch ( tipo )
+   {
+      case dorm:
+      case coc:
+      case sal:
+      case serv:
+      case ent:
+      case pas:
+      case otra:
+         break;
+      default:
+         throw std::invalid_argument ( "Dependencia::Dependencia: tipo de"
+                                       " Dependencia no soportado" );
+         break;
    }
 }
 
@@ -54,12 +72,29 @@ Dependencia::~Dependencia ( )
 }
 
 /**
- * 
- * @param nTipo
+ * @brief Modificador del tipo de dependencia
+ * @param nTipo Nuevo tipo de la dependencia
+ * @throws std::invalid_argument Si el valor de tipo que se quiere asignar no es
+ *         un valor correcto
  */
 void Dependencia::setTipo ( dependencia_t nTipo )
 {
-   this->_tipo = nTipo;
+   switch ( nTipo )
+   {
+      case dorm:
+      case coc:
+      case sal:
+      case serv:
+      case ent:
+      case pas:
+      case otra:
+         this->_tipo = nTipo;
+         break;
+      default:
+         throw std::invalid_argument ( "Dependencia::setTipo: tipo de"
+                                       " Dependencia no soportado" );
+         break;
+   }
 }
 
 dependencia_t Dependencia::getTipo ( ) const
