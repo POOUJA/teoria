@@ -41,6 +41,7 @@ class Dependencia
       float getSuperficie ( ) const;
       void setNombre ( string nNombre );
       string getNombre ( ) const;
+      Dependencia& operator= ( const Dependencia& orig);
 };
 
 #endif	/* DEPENDENCIA_H */
