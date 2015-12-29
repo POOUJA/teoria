@@ -8,8 +8,6 @@
 #ifndef VIVIENDA_H
 #define	VIVIENDA_H
 
-#define _MAX_HAB_ 10   ///< Número máximo de habitaciones en una vivienda
-
 #include "Dependencia.h"
 
 /**
@@ -20,6 +18,10 @@
  */
 class Vivienda
 {
+   public:
+      /// Número máximo de habitaciones en una vivienda
+      static const int _MAX_HAB_ = 10;
+
    private:
       string _direccion;                       ///< Calle, número, piso...
       Dependencia *_dependencias[_MAX_HAB_];   ///< Habitaciones
@@ -32,14 +34,18 @@ class Vivienda
       Vivienda ( const Vivienda& orig );
       Vivienda ( string direccion );
       virtual ~Vivienda ( );
-      int addDependencia ( string nombre, float superficie, dependencia_t tipo );
+      int addDependencia ( string nombre, float superficie, bool estaLimpia );
+      int borraDependencia ( int cual );
       int borraDependencia ( string nombre );
-      int borraDependencia ( dependencia_t tipo );
+      void limpiaDependencia ( int cual );
+      void ensuciaDependencia ( int cual );
+      void limpiezaGeneral ();
       float getSuperficie ();
       void setDireccion ( string nDireccion );
       string getDireccion ( ) const;
       int getNumDependencias ();
       Vivienda& operator= ( const Vivienda& orig );
+      string info () const;
 };
 
 #endif	/* VIVIENDA_H */

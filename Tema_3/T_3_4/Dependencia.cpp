@@ -6,14 +6,15 @@
  */
 
 #include <stdexcept>
+#include <sstream>
 
 #include "Dependencia.h"
 
 /**
- * Inicializa una dependencia del tipo "otra", con superficie 0 y nombre "---"
+ * Inicializa una dependencia con superficie 0, nombre "---" y sucia
  * @brief Constructor por defecto
  */
-Dependencia::Dependencia ( ): _nombre ("---"), _superficie(0), _tipo(otra)
+Dependencia::Dependencia ( ): _nombre ("---"), _superficie(0), _limpia (false)
 {
 }
 
@@ -23,7 +24,7 @@ Dependencia::Dependencia ( ): _nombre ("---"), _superficie(0), _tipo(otra)
  */
 Dependencia::Dependencia ( const Dependencia& orig ): _nombre (orig._nombre),
                                                       _superficie (orig._superficie),
-                                                      _tipo (orig._tipo)
+                                                      _limpia (orig._limpia)
 {
 }
 
@@ -32,34 +33,18 @@ Dependencia::Dependencia ( const Dependencia& orig ): _nombre (orig._nombre),
  * @brief Constructor parametrizado
  * @param nombre Nombre de la nueva dependencia
  * @param superficie Superficie. Debe ser un número positivo
- * @param tipo Tipo de la nueva dependencia
- * @throws std::invalid argument Si la superficie de la dependencia no es un
- *         número positivo, o si el tipo que se asigna a la dependencia no es
- *         válido (ver #dependencia_t)
+ * @param estaLimpia Indica si la dependencia está limpia o no
+ * @throws std::invalid_argument Si la superficie de la dependencia no es un
+ *         número positivo
  */
-Dependencia::Dependencia ( string nombre, float superficie, dependencia_t tipo ):
-                         _nombre (nombre), _superficie (superficie), _tipo (tipo)
+Dependencia::Dependencia ( string nombre, float superficie,
+                           bool estaLimpia ): _nombre (nombre),
+                           _superficie (superficie), _limpia (estaLimpia)
 {
    if ( superficie <= 0)
    {
       throw std::invalid_argument ( "Dependencia::Dependencia: la superficie debe"
                                     " ser un número positivo" );
-   }
-   
-   switch ( tipo )
-   {
-      case dorm:
-      case coc:
-      case sal:
-      case serv:
-      case ent:
-      case pas:
-      case otra:
-         break;
-      default:
-         throw std::invalid_argument ( "Dependencia::Dependencia: tipo de"
-                                       " Dependencia no soportado" );
-         break;
    }
 }
 
@@ -71,38 +56,31 @@ Dependencia::~Dependencia ( )
 }
 
 /**
- * @brief Modificador del tipo de dependencia
- * @param nTipo Nuevo tipo de la dependencia
- * @throws std::invalid_argument Si el valor de tipo que se quiere asignar no es
- *         un valor correcto (ver #dependencia_t)
+ * @brief Método para cambiar el estado de limpieza de la habitación
+ * @throws std::runtime_error Si se intenta limpiar una habitación que ya está
+ *         limpia
  */
-void Dependencia::setTipo ( dependencia_t nTipo )
+void Dependencia::limpiar ()
 {
-   switch ( nTipo )
+   if ( _limpia == false )
    {
-      case dorm:
-      case coc:
-      case sal:
-      case serv:
-      case ent:
-      case pas:
-      case otra:
-         this->_tipo = nTipo;
-         break;
-      default:
-         throw std::invalid_argument ( "Dependencia::setTipo: tipo de"
-                                       " Dependencia no soportado" );
-         break;
+      _limpia = true;
+   }
+   else
+   {
+      throw std::runtime_error ( "Dependencia::limpiar: se intenta limpiar una"
+                                 " habitación que ya está limpia" );
    }
 }
 
 /**
- * @brief Observador del tipo de dependencia
- * @return Un valor de #dependencia_t que identifica el tipo de dependencia
+ * @brief Observador del estado de limpieza de la dependencia
+ * @retval true  Si la dependencia está limpia
+ * @retval false Si la dependencia está sucia
  */
-dependencia_t Dependencia::getTipo ( ) const
+bool Dependencia::estaLimpia () const
 {
-   return _tipo;
+   return _limpia;
 }
 
 /**
@@ -161,7 +139,29 @@ Dependencia& Dependencia::operator = (const Dependencia& orig)
 {
    _nombre = orig._nombre;
    _superficie = orig._superficie;
-   _tipo = orig._tipo;
+   _limpia = orig._limpia;
 
    return ( *this );
+}
+
+/**
+ * @brief Método para obtener información extendida de la dependencia
+ * @return Una cadena de texto con los datos de la dependencia
+ */
+string Dependencia::info () const
+{
+   std::stringstream ss;
+   
+   ss << _nombre << ", " << _superficie << " metros cuadrados, ";
+
+   if ( _limpia == true )
+   {
+      ss << "limpia";
+   }
+   else
+   {
+      ss << "sucia";
+   }
+
+   return ( ss.str () );
 }
