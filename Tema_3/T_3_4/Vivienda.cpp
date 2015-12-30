@@ -139,13 +139,15 @@ int Vivienda::borraDependencia ( string nombre )
  *        la vivienda. El valor ha de pertenecer al intervalo [1, número de
  *        habitaciones]
  * @return El número de habitaciones tras el borrado
- * @throws std::out_of_range Si se pasa un índice incorrecto
+ * @throws std::out_of_range Si se pasa como parámetro un índice incorrecto
  */
 int Vivienda::borraDependencia ( int cual )
 {
    if ( ( cual > 0 ) && ( cual <= _numH ) )
    {
-      
+      delete _dependencias[cual-1];
+      _dependencias[cual-1] = 0;
+      return ( repasaDependencias () );
    }
    else
    {
@@ -174,9 +176,19 @@ string Vivienda::getDireccion ( ) const
 }
 
 
+/**
+ * Este método repasa la estructura que guarda las habitaciones y la compacta en
+ * caso de que se encuentre algún hueco. Se debe llamar cada vez que haya un
+ * borrado de habitaciones
+ * @brief Método para reorganizar las habitaciones
+ * @return El número de habitaciones que tiene la vivienda
+ */
+int Vivienda::repasaDependencias ()
+{
+   
+}
 
-
-/*      int repasaDependencias ();
+/*
 
    public:
       int addDependencia ( string nombre, float superficie, dependencia_t tipo );

@@ -35,8 +35,8 @@ class Vivienda
       Vivienda ( string direccion );
       virtual ~Vivienda ( );
       int addDependencia ( string nombre, float superficie, bool estaLimpia );
-      int borraDependencia ( int cual );
       int borraDependencia ( string nombre );
+      int borraDependencia ( int cual );
       void limpiaDependencia ( int cual );
       void ensuciaDependencia ( int cual );
       void limpiezaGeneral ();
