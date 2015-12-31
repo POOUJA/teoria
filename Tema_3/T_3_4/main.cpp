@@ -1,29 +1,33 @@
-/* 
- * File:   main.cpp
- * Author: algarcia
- *
- * Created on 11 de diciembre de 2015, 18:11
+/**
+ * @file main.cpp
+ * Archivo con la implementación de la función principal
+ * @author algarcia
+ * @date 2015-12-11
  */
 
 #include <cstdlib>
 #include <iostream>
 
-#include "Dependencia.h"
+#include "Vivienda.h"
 
 using namespace std;
 
-/*
- * 
- */
 int main ( int argc, char** argv )
 {
-   Dependencia *d = new Dependencia ();
+   Vivienda *v;
    
-   d->setTipo ( (dependencia_t) -150 );
-   
-   cout << d->getTipo ();
+   v = new Vivienda ( "C/ Ben Saprut 32, 5ºA" );
+   v->addDependencia ( "Cocina", 10, 0 );
+   v->addDependencia ( "Comedor", 20, 0 );
+   v->addDependencia ( "Aseo", 3, 0 );
+   v->addDependencia ( "Dormitorio", 15, 0 );
+   v->limpiezaGeneral ();
+   v->borraDependencia ( "Comedor" );
+   v->addDependencia ( "Salón-comedor", 20, 0 );
+   cout << v->info ();
 
-   delete ( d );
+   delete v;
+   v = 0;
 
    return 0;
 }

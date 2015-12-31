@@ -25,6 +25,7 @@ class Dependencia
       Dependencia ( string nombre, float superficie, bool estaLimpia );
       virtual ~Dependencia ( );
       void limpiar ();
+      void ensuciar ();
       bool estaLimpia ( ) const;
       void setSuperficie ( float nSuperficie );
       float getSuperficie ( ) const;

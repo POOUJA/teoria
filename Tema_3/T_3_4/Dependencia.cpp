@@ -56,7 +56,7 @@ Dependencia::~Dependencia ( )
 }
 
 /**
- * @brief Método para cambiar el estado de limpieza de la habitación
+ * @brief Método para cambiar el estado de limpieza de la habitación a "limpia"
  * @throws std::runtime_error Si se intenta limpiar una habitación que ya está
  *         limpia
  */
@@ -70,6 +70,24 @@ void Dependencia::limpiar ()
    {
       throw std::runtime_error ( "Dependencia::limpiar: se intenta limpiar una"
                                  " habitación que ya está limpia" );
+   }
+}
+
+/**
+ * @brief Método para cambiar el estado de limpieza de la habitación a "sucia"
+ * @throws std::runtime_error Si se intenta limpiar una habitación que ya está
+ *         sucia
+ */
+void Dependencia::ensuciar ()
+{
+   if ( _limpia == true )
+   {
+      _limpia = false;
+   }
+   else
+   {
+      throw std::runtime_error ( "Dependencia::ensuciar: se intenta ensuciar una"
+                                 " habitación que ya está sucia" );
    }
 }
 

@@ -43,9 +43,9 @@ class Vivienda
       float getSuperficie ();
       void setDireccion ( string nDireccion );
       string getDireccion ( ) const;
-      int getNumDependencias ();
+      int getNumDependencias () const;
       Vivienda& operator= ( const Vivienda& orig );
-      string info () const;
+      string info ();
 };
 
 #endif	/* VIVIENDA_H */
