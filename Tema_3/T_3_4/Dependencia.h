@@ -12,6 +12,9 @@
 
 using std::string;
 
+/**
+ * @brief Clase que representa una habitación en una vivienda
+ */
 class Dependencia
 {
    private:
