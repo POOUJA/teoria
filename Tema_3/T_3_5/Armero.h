@@ -2,7 +2,7 @@
  * @file Armero.h
  * Archivo con la declaración de la clase Armero
  * @author algarcia
- * @date 2015-10-21
+ * @date 2015-12-31
  */
 
 #ifndef ARMERO_H

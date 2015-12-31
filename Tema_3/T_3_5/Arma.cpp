@@ -2,7 +2,7 @@
  * @file Arma.cpp
  * Archivo con la definición de los métodos de la clase Arma
  * @author algarcia
- * @date 2015-10-21
+ * @date 2015-12-31
  */
 
 #include "Arma.h"

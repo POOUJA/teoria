@@ -2,7 +2,7 @@
  * @file Guerrero.cpp
  * Archivo con la definición de los métodos de la clase Guerrero
  * @author algarcia
- * @date 2015-10-20
+ * @date 2015-12-31
  */
 
 #include "Guerrero.h"

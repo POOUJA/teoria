@@ -2,7 +2,7 @@
  * @file main.cpp
  * Archivo con la función main
  * @author algarcia
- * @date 2015-09-25
+ * @date 2015-12-31
  */
 
 #include <cstdlib>
