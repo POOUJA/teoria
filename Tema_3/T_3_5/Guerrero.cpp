@@ -9,19 +9,22 @@
 
 #include <stdlib.h>   // Para usar rand
 #include <sstream>    // Para usar stringstream
-#include <iostream>   // Para usar cerr
-
-/// Factor a aplicar para calcular el valor de los ataques
-#define _FACTOR_ATAQUE_ 0.001
-
+#include <iostream>
+#include <stdexcept>   // Para usar cerr
 
 /**
  * @brief Constructor por defecto
  * 
  * Fija el nombre a "---", la energía a 1000, y está desarmado
  */
-Guerrero::Guerrero ( ): _nombre ("---"), _armamento (0), _energia (1000)
+Guerrero::Guerrero ( ): _nombre ("---"), _numArmas (0), _energia (1000)
 {
+   int i;
+   
+   for ( i = 0; i < _MAX_AMMO_; i++ )
+   {
+      _armamento[i] = 0;
+   }
 }
 
 /**
@@ -32,9 +35,15 @@ Guerrero::Guerrero ( ): _nombre ("---"), _armamento (0), _energia (1000)
  * @param nEnergia Valor de energía a asignar al guerrero
  */
 Guerrero::Guerrero ( string nNombre, int nEnergia ): _nombre (nNombre),
-                                                     _armamento (0),
+                                                     _numArmas (0),
                                                      _energia (nEnergia)
 {
+   int i;
+   
+   for ( i = 0; i < _MAX_AMMO_; i++ )
+   {
+      _armamento[i] = 0;
+   }
 }
 
 /**
@@ -42,50 +51,97 @@ Guerrero::Guerrero ( string nNombre, int nEnergia ): _nombre (nNombre),
  * 
  * Solamente copia la energía y el nombre (añadiendo " - 2" al final, para que
  * no tenga exactamente el mismo nombre). El nuevo guerrero está desarmado, ya
- * que no tiene sentido que tenga la misma arma que el original
+ * que no tiene sentido que tenga las mismas armas que el original
  * @param orig Objeto del que se copian los atributos
  */
-Guerrero::Guerrero ( const Guerrero& orig ): _armamento (0),
+Guerrero::Guerrero ( const Guerrero& orig ): _numArmas (0),
                                              _energia (orig._energia)
 {
+   int i;
+
    _nombre = orig._nombre + " - 2";   // Para evitar nombres duplicados
+   
+   for ( i = 0; i < _MAX_AMMO_; i++ )
+   {
+      _armamento[i] = 0;
+   }
 }
 
 /**
  * @brief Destructor
  * 
- * Como la relación con el arma es de asociación, no se destruye el objeto de
- * clase Arma apuntado por Guerrero::armamento. Es necesario llamar al método
+ * Como la relación con el arma es de asociación, no se destruyen los objetos de
+ * clase Arma apuntados por Guerrero::_armamento. Es necesario llamar al método
  * Guerrero::desarmar antes de destruirlo
  */
 Guerrero::~Guerrero ( )
 {
    // Como lanzar excepciones en los destructores no es una buena práctica,
    // simplemente se muestra un mensaje por la consola de errores
-   if ( _armamento != 0 )
+   int i;
+   
+   for ( i = 0; i < _numArmas; i++ )
    {
-      std::cerr << "Guerrero::~Guerrero: se destruye un guerrero sin "
-                << "desarmarlo previamente";
+      if ( _armamento[i] != 0 )
+      {
+         std::cerr << "Guerrero::~Guerrero: se destruye un guerrero sin "
+                   << "desarmarlo previamente";
+      }
    }
 }
 
 /**
- * @brief Modificador para el atributo Guerrero::_armamento
- * @param nArmamento Puntero a un objeto de clase Arma, que representa a la
- *        nueva arma del guerrero
+ * @brief Método para añadir un arma al guerrero
+ * @param nArma Puntero a un objeto de clase Arma, que representa a la nueva
+ *        arma del guerrero
+ * @throws std::length_error Si se intenta añadir más armas de las permitidas
+ *         (ver #_MAX_AMMO_)
  */
-void Guerrero::setArmamento ( Arma* nArmamento )
+void Guerrero::addArma ( Arma* nArma )
 {
-   this->_armamento = nArmamento;
+   if ( _numArmas < _MAX_AMMO_ )
+   {
+      _armamento[_numArmas] = nArma;
+      _numArmas++;
+   }
+   else
+   {
+      throw std::length_error ( "Guerrero::addArma: el guerrero no puede llevar"
+                                " más armas consigo" );
+   }
 }
 
 /**
- * @brief Observador para el atributo Guerrero::_armamento
+ * Este método sólo sirve para consultar. El arma sigue estando en poder del
+ * guerrero. Si lo que se desea es quitarle el arma, hay que utilizar el método
+ * Guerrero::desarmar
+ * @brief Método para consultar un arma de un guerrero
+ * @param cual Índice del arma que se quiere consultar. Su valor ha de estar en
+ *        el rango [1, número de armas del guerrero]
  * @return Un puntero al arma del guerrero
+ * @throws std::out_of_range Si se utiliza un índice que no se corresponde con
+ *         ningún arma
  */
-Arma* Guerrero::getArmamento ( ) const
+Arma* Guerrero::getArma ( int cual ) const
 {
-   return _armamento;
+   if ( ( cual > 0 ) && (cual <= _numArmas ) )
+   {
+      return ( _armamento[cual-1] );
+   }
+   else
+   {
+      throw std::out_of_range ( "Guerrero::getArma: el guerrero no posee el arma"
+                                " solicitada" );
+   }
+}
+
+/**
+ * @brief Método para consultar el número de armas que tiene el guerrero
+ * @return El número de armas que tiene el guerrero
+ */
+int Guerrero::getNumArmas () const
+{
+   return ( _numArmas );
 }
 
 /**
@@ -127,18 +183,35 @@ string Guerrero::getNombre ( ) const
 }
 
 /**
- * @brief Método para romper la asociación entre un guerrero y su arma
- * 
- * Este método ha de ser llamado antes de la destrucción de un objeto de clase
- * Guerrero, para romper la asociación entre un guerrero y su arma. De otro
- * modo, no se podrá reutilizar el arma para asignarla a otro guerrero
+ * Es necesario romper la relación entre un guerrero y una de sus armas para
+ * poder reutilizar el arma para asignarla a otro guerrero
+ * @brief Método para quitarle al guerrero una de sus armas
+ * @param cual Índice del arma que se quiere quitar al guerrero. Su valor ha de
+ *        estar en el rango [1, número de armas del guerrero]
  * @return El puntero al arma que tenía asociada el guerrero
+ * @throws std::out_of_range Si se utiliza un índice que no se corresponde con
+ *         ningún arma
  */
-Arma *Guerrero::desarmar ()
+Arma *Guerrero::desarmar ( int cual )
 {
-   Arma *aux = _armamento;
-   _armamento = 0;
-   return ( aux );
+   int i, contador;
+   Arma *aux[_MAX_AMMO_];
+   Arma *aDevolver = 0;
+   
+   if ( ( cual > 0 ) && ( cual <= _numArmas ) )
+   {
+      aDevolver = _armamento[cual-1];
+      _armamento[cual-1] = 0;
+      
+      /** queda compactar el array si es necesario **/
+   }
+   else
+   {
+      throw std::out_of_range ( "Guerrero::desarmar: el guerrero no tiene esa"
+                                " arma" );
+   }
+
+   return ( aDevolver );
 }
 
 /**
