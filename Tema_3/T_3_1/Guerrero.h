@@ -27,6 +27,9 @@ class Guerrero
       int _energia;       ///< Energía vital. Un valor menor o igual a cero implica muerte
       Arma *_armamento;   ///< A través de este atributo se establece la asociación
 
+      /// Factor a aplicar para calcular el valor de los ataques
+      static const double _FACTOR_ATAQUE_ = 0.001;
+
    public:
       Guerrero ( );
       Guerrero ( string nNombre, int nEnergia=1000 );

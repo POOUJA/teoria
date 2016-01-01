@@ -11,10 +11,6 @@
 #include <sstream>    // Para usar stringstream
 #include <iostream>   // Para usar cerr
 
-/// Factor a aplicar para calcular el valor de los ataques
-#define _FACTOR_ATAQUE_ 0.001
-
-
 /**
  * @brief Constructor por defecto
  * 
