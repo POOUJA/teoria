@@ -51,7 +51,7 @@ Guerrero::Guerrero ( const Guerrero& orig ): _armamento (0),
  * @brief Destructor
  * 
  * Como la relación con el arma es de asociación, no se destruye el objeto de
- * clase Arma apuntado por Guerrero::armamento. Es necesario llamar al método
+ * clase Arma apuntado por Guerrero::_armamento. Es necesario llamar al método
  * Guerrero::desarmar antes de destruirlo
  */
 Guerrero::~Guerrero ( )
