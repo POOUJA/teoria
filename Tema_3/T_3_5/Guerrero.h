@@ -16,9 +16,9 @@ using std::string;
 /**
  * @brief Clase para representar los guerreros del juego.
  * 
- * Ejemplo de asociación de uno a muchos. Cada guerrero está asociado con una
- * cantidad de armas, y antes de destruir un objeto de clase Guerrero, es
- * necesario desarmarle primero con los métodos Guerrero::desarmar
+ * Ejemplo de asociación con cardinalidad variable. Cada guerrero está asociado
+ * con una cantidad de armas, y antes de destruir un objeto de clase Guerrero,
+ * es necesario desarmarle primero con los métodos Guerrero::desarmar
  */
 class Guerrero
 {
