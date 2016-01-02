@@ -194,40 +194,80 @@ string Guerrero::getNombre ( ) const
  */
 Arma *Guerrero::desarmar ( int cual )
 {
-   int i, contador;
-   Arma *aux[_MAX_AMMO_];
+   int i;
    Arma *aDevolver = 0;
    
    if ( ( cual > 0 ) && ( cual <= _numArmas ) )
    {
-      aDevolver = _armamento[cual-1];
-      _armamento[cual-1] = 0;
+      i = cual-1;
+      aDevolver = _armamento[i];
+      _armamento[i] = 0;
+
+      // Si es necesario, compacta el array de armas      
+      if ( cual < _numArmas )
+      {
+         while ( i < ( _numArmas - 1 ) )
+         {
+            _armamento[i] = _armamento[i+1];
+            i++;
+         }
+      }
       
-      /** queda compactar el array si es necesario **/
+      return ( aDevolver );
    }
    else
    {
       throw std::out_of_range ( "Guerrero::desarmar: el guerrero no tiene esa"
                                 " arma" );
    }
-
-   return ( aDevolver );
 }
 
 /**
- * @brief Método para producir un ataque
- * 
- * La potencia de un ataque depende de la energía del guerrero, así como del
- * poder de destrucción de su arma. Se incluye también un factor de
- * aleatoriedad, para que cada ataque tenga un daño diferente
- * @return El valor del daño provocado por el ataque de un guerrero
+ * @brief Método para quitarle todas las armas a un guerrero de una sola vez
+ * @param armas Array en el que se guardarán los punteros a las armas que se le
+ *        quitan al guerrero. Debe haber sido reservado antes de la llamada a
+ *        este método. Los valores que tuviera almacenados se borrarán
+ * @return El número de armas que se le han quitado al guerrero
  */
-int Guerrero::ataque ()
+int Guerrero::desarmar ( Arma* (&armas)[_MAX_AMMO_] )
 {
-   int maxPoder = _FACTOR_ATAQUE_ * _energia * _armamento->getPoder ();
-   int resultado = rand () % maxPoder + 1;
+   int i;
+   
+   for ( i = 0; i < _MAX_AMMO_; i++ )
+   {
+      armas[i] = _armamento[i];
+      _armamento[i] = 0;
+   }
+   
+   return ( _numArmas );
+}
 
-   return ( resultado );
+/**
+ * La potencia de un ataque depende de la energía del guerrero, así como del
+ * poder de destrucción del arma elegida. Se incluye también un factor de
+ * aleatoriedad, para que cada ataque tenga un daño diferente
+ * @brief Método para producir un ataque, eligiendo el arma
+ * @param armaElegida Índice del arma a utilizar. El valor tiene que estar en el
+ *        rango [1, número de armas del guerrero]
+ * @return El valor del daño provocado por el ataque de un guerrero
+ * @throws std::out_of_range Si el valor del parámetro no pertenece al rango
+ *         indicado
+ */
+int Guerrero::ataque ( int armaElegida )
+{
+   int maxPoder;
+   int resultado;
+   
+   if ( ( armaElegida > 0 ) && ( armaElegida <= _numArmas ) )
+   {
+      maxPoder = calculaMaxPoder ( _armamento[armaElegida-1]->getPoder () );
+      resultado = rand () % maxPoder + 1;
+      return ( resultado );
+   }
+   else
+   {
+      throw std::out_of_range ( "Guerrero::ataque: elección de arma incorrecta" );
+   }
 }
 
 /**
@@ -235,26 +275,54 @@ int Guerrero::ataque ()
  * @return Devuelve una cadena de texto conteniendo los valores de los atributos
  *         del objeto
  */
-string Guerrero::info () const
+string Guerrero::info ()
 {
    std::stringstream aux;
+   int i, maxPoderArma, maxPoderAtaque;
    
    aux << "Soy guerrero. Mi nombre es "
        << _nombre
        << ", mi energía es "
        << _energia
-       << " y puedo producir ataques de hasta "
-       << (int) ( _FACTOR_ATAQUE_ * _energia * _armamento->getPoder () )
-       << " puntos de poder";
+       << " y tengo "
+       << _numArmas
+       << " armas";
+   
+   if ( _numArmas > 0 )
+   {
+      aux << ":"
+          << std::endl
+          << "-------------------------"
+          << std::endl;
+
+      maxPoderArma = 0;
+      for ( i = 0; i < _numArmas; i++ )
+      {
+         aux << "\t"
+             << _armamento[i]->info ()
+             << std::endl;
+         
+         maxPoderArma = ( _armamento[i]->getPoder () > maxPoderArma ) ?
+                        _armamento[i]->getPoder () : maxPoderArma;
+      }
+      
+      maxPoderAtaque = calculaMaxPoder ( maxPoderArma );
+
+      aux << "-------------------------"
+          << std::endl
+          << "Puedo producir ataques de hasta "
+          << maxPoderAtaque
+          << " puntos de poder";
+   }
 
    return ( aux.str () );
 }
 
 /**
  * En este caso, no copia el nombre del guerrero (para evitar dos guerreros con
- * el mismo nombre) ni el arma (un arma no puede estar en poder de dos guerreros
+ * el mismo nombre) ni las armas (un arma no puede estar en poder de dos guerreros
  * a la vez)
- * @brief Operador de asignación
+ * @brief Operador de asignación. Sólo asigna el valor de energía
  * @param orig Objeto del que se copian los atributos
  * @return Una referencia al propio objeto, para facilitar la asignación en
  *         cascada (a=b=c)
@@ -264,4 +332,18 @@ Guerrero& Guerrero::operator = (const Guerrero& orig)
    this->_energia = orig._energia;
    
    return ( *this );
+}
+
+/**
+ * El valor máximo de daño que puede producir un guerrero, dado el poder
+ * de un arma, depende de la energía vital que tenga el guerrero
+ * @brief Método para calcular el valor máximo de daño que puede producir
+ *        el guerrero, dado el poder de un arma
+ * @param valorBase Máximo daño que puede producir un arma
+ * @return El valor máximo de daño que puede producir el guerrero con esa
+ *         arma
+ */
+int Guerrero::calculaMaxPoder ( int valorBase )
+{
+   return ( int ( _FACTOR_ATAQUE_ * _energia * valorBase ) );
 }
