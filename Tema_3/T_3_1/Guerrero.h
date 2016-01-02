@@ -29,6 +29,8 @@ class Guerrero
 
       /// Factor a aplicar para calcular el valor de los ataques
       static const double _FACTOR_ATAQUE_ = 0.001;
+      
+      int calculaMaxPoder ( int valorBase );
 
    public:
       Guerrero ( );
@@ -43,7 +45,7 @@ class Guerrero
       string getNombre ( ) const;
       Arma *desarmar ();
       int ataque ();
-      string info () const;
+      string info ();
       Guerrero& operator= ( const Guerrero& orig );
 };
 

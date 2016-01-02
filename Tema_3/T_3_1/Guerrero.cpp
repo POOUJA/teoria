@@ -147,7 +147,7 @@ Arma *Guerrero::desarmar ()
  */
 int Guerrero::ataque ()
 {
-   int maxPoder = _FACTOR_ATAQUE_ * _energia * _armamento->getPoder ();
+   int maxPoder = calculaMaxPoder ( _armamento->getPoder () );
    int resultado = rand () % maxPoder + 1;
 
    return ( resultado );
@@ -158,7 +158,7 @@ int Guerrero::ataque ()
  * @return Devuelve una cadena de texto conteniendo los valores de los atributos
  *         del objeto
  */
-string Guerrero::info () const
+string Guerrero::info ()
 {
    std::stringstream aux;
    
@@ -167,7 +167,7 @@ string Guerrero::info () const
        << ", mi energía es "
        << _energia
        << " y puedo producir ataques de hasta "
-       << (int) ( _FACTOR_ATAQUE_ * _energia * _armamento->getPoder () )
+       << calculaMaxPoder ( _armamento->getPoder () )
        << " puntos de poder";
 
    return ( aux.str () );
@@ -187,4 +187,18 @@ Guerrero& Guerrero::operator = (const Guerrero& orig)
    this->_energia = orig._energia;
    
    return ( *this );
+}
+
+/**
+ * El valor máximo de daño que puede producir un guerrero, dado el poder
+ * de un arma, depende de la energía vital que tenga el guerrero
+ * @brief Método para calcular el valor máximo de daño que puede producir
+ *        el guerrero, dado el poder de un arma
+ * @param valorBase Máximo daño que puede producir un arma
+ * @return El valor máximo de daño que puede producir el guerrero con esa
+ *         arma
+ */
+int Guerrero::calculaMaxPoder ( int valorBase )
+{
+   return ( int ( _FACTOR_ATAQUE_ * _energia * valorBase ) );
 }
