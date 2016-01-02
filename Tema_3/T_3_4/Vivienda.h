@@ -37,6 +37,7 @@ class Vivienda
       int addDependencia ( string nombre, float superficie, bool estaLimpia );
       int borraDependencia ( string nombre );
       int borraDependencia ( int cual );
+      int borraDependencias ( string nombre );
       void limpiaDependencia ( int cual );
       void ensuciaDependencia ( int cual );
       void limpiezaGeneral ();

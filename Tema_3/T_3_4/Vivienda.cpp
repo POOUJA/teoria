@@ -125,7 +125,8 @@ int Vivienda::addDependencia (string nombre, float superficie, bool estaLimpia)
  * Si el nombre de la habitación que se pasa como parámetro no coincide
  * exactamente con el nombre de alguna de las dependencias de la vivienda, no
  * se hace nada
- * @brief Método para eliminar una habitación de la vivienda según su nombre
+ * @brief Método para eliminar la primera habitación de la vivienda cuyo nombre
+ *        coincide con el que se pasa como parámetro
  * @param nombre Nombre de la dependencia que se quiere eliminar
  * @return El número de habitaciones tras el borrado
  */
@@ -175,6 +176,38 @@ int Vivienda::borraDependencia ( int cual )
       throw std::out_of_range ( "Vivienda::borraDependencia: el índice no se"
                                 " corresponde con ninguna habitación" );
    }
+}
+
+/**
+ * Si el nombre de la habitación que se pasa como parámetro no coincide
+ * exactamente con el nombre de alguna de las dependencias de la vivienda, no
+ * se hace nada
+ * @brief Método para eliminar todas las habitaciones de la vivienda cuyos nombres
+ *        coinciden con el que se pasa como parámetro
+ * @param nombre Nombre de las dependencias que se quiere eliminar
+ * @return El número de habitaciones tras el borrado
+ */
+int Vivienda::borraDependencias ( string nombre )
+{
+   int i = 0;
+   bool hecho = false;
+   
+   for ( i = 0; i < _numH; i++ )
+   {
+      if ( _dependencias[i]->getNombre () == nombre )
+      {
+         delete _dependencias[i];
+         _dependencias[i] = 0;
+         hecho = true;
+      }
+   }
+   
+   if ( hecho )
+   {
+      return ( repasaDependencias () );
+   }
+
+   return ( _numH );
 }
 
 /**
