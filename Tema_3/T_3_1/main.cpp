@@ -22,7 +22,7 @@ int main ( int argc, char** argv )
 {
    Armero *a;
    Arma *b;
-   Guerrero *g;
+   Guerrero *g1, *g2;
 
    // Inicializa el generador de números pseudoaleatorios
    srand ( time (0) );
@@ -36,22 +36,34 @@ int main ( int argc, char** argv )
    cout << b->info () << endl;
 
    // Crea un guerrero, y le entrega el arma
-   g = new Guerrero ( "Lancelot", 2500 );
-   g->setArmamento (b);
+   g1 = new Guerrero ( "Lancelot", 2500 );
+   g1->setArmamento (b);
    b = 0;
-   cout << g->info () << endl;
+   cout << g1->info () << endl;
 
    // El guerrero hace varios ataques de prueba
    cout << "Ataques de demostración:" << endl;
-   cout << g->ataque () << endl;
-   cout << g->ataque () << endl;
-   cout << g->ataque () << endl;
+   cout << g1->ataque () << endl;
+   cout << g1->ataque () << endl;
+   cout << g1->ataque () << endl;
 
-   // Pasa a liberar recursos. En primer lugar, hay que desarmar al guerrero
-   // antes de destruirlo
-   b = g->desarmar ();
-   delete g;
-   g = 0;
+   // En primer lugar, hay que desarmar al guerrero antes de destruirlo
+   b = g1->desarmar ();
+   delete g1;
+   g1 = 0;
+
+   // Reutiliza el arma, dándosela a otro guerrero
+   g2 = new Guerrero ( "Caballero negro", 3000 );
+   g2->setArmamento (b);
+   b = 0;
+   cout << g2->info () << endl;
+   cout << "Ataque de demostración:" << endl;
+   cout << g2->ataque () << endl;
+
+   // Desarma y destruye al segundo guerrero
+   b = g2->desarmar ();
+   delete g2;
+   g2 = 0;
 
    // Destruye el arma
    delete b;
