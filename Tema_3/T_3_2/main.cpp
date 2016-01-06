@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <stdexcept>
-#include "Pareja.h"
+#include "F1team.h"
 
 using namespace std;
 
@@ -17,34 +17,37 @@ using namespace std;
  */
 int main ( int argc, char** argv )
 {
-   Tenista *nadal = new Tenista ( "Rafa", 1 );
-   Tenista *federer = new Tenista ( "Roger", 2 );
-   Tenista *novak = new Tenista ( "Djokovic", 3 );
-   Pareja *p1 = new Pareja ( nadal, novak, 1 );
+   Piloto *alonso = new Piloto ( "Fernando", 0 );
+   Piloto *button = new Piloto ( "Jenson", 0 );
+   Piloto *vettel = new Piloto ( "Sebastian", 0 );
+   F1team *mc = new F1team ( alonso, button, "McLaren F1 Team" );
    
-   cout << nadal->info () << endl;
-   cout << p1->info () << endl;
-   
+   cout << alonso->info () << endl;
+   cout << mc->info () << endl;
+
    try
    {
-      p1->setRanking ( 0 );
+      mc->setP2 ( 0 );
    }
-   catch ( out_of_range ex )
+   catch ( invalid_argument ex )
    {
       cout << "-----Excepción capturada----- Mensaje: "
            << ex.what ()
            << endl;
    }
 
-   p1->setT2 ( 0 );
-   cout << p1->info () << endl;
+   mc->sumaPtosCarrera ( 10, 8 );
+   cout << mc->info () << endl;
+   
+   mc->setP2 ( vettel );
+   cout << mc->info () << endl;
 
-   delete ( p1 );
-   p1 = 0;
-   delete ( nadal );
-   delete ( federer );
-   delete ( novak );
-   nadal = federer = novak = 0;
+   delete ( mc );
+   mc = 0;
+   delete ( alonso );
+   delete ( button );
+   delete ( vettel );
+   alonso = button = vettel = 0;
 
    return 0;
 }
