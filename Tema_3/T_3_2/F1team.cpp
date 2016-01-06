@@ -49,9 +49,10 @@ F1team::F1team ( Piloto &nP1, Piloto &nP2, string nNombre ): _p1 (&nP1), _p2 (&n
 }
 
 /**
+ * Pone a 0 los punteros a los pilotos del equipo, pero no destruye los objetos.
+ * Es responsabilidad del programador obtener los punteros a los pilotos con
+ * F1team::getP1 y F1team::getP2 antes de destruir el objeto
  * @brief Destructor
- * 
- * Pone a 0 los punteros a los pilotos del equipo, pero no destruye los objetos
  */
 F1team::~F1team ( )
 {
