@@ -1,8 +1,8 @@
-/* 
- * File:   main.cpp
- * Author: algarcia
- *
- * Created on 21 de octubre de 2015, 15:03
+/**
+ * @file main.cpp
+ * Archivo con la implementación de la función main
+ * @author algarcia
+ * @date 2015-12-09
  */
 
 #include <cstdlib>
