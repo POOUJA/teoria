@@ -4,6 +4,11 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>Componente.h</itemPath>
+      <itemPath>Computadora.h</itemPath>
+      <itemPath>DiscoDuro.h</itemPath>
+      <itemPath>PlacaBase.h</itemPath>
+      <itemPath>Procesador.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -12,6 +17,11 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Componente.cpp</itemPath>
+      <itemPath>Computadora.cpp</itemPath>
+      <itemPath>DiscoDuro.cpp</itemPath>
+      <itemPath>PlacaBase.cpp</itemPath>
+      <itemPath>Procesador.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -36,6 +46,26 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="Componente.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Componente.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Computadora.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Computadora.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DiscoDuro.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DiscoDuro.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PlacaBase.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PlacaBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Procesador.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Procesador.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
@@ -59,6 +89,26 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="Componente.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Componente.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Computadora.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Computadora.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DiscoDuro.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DiscoDuro.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="PlacaBase.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="PlacaBase.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Procesador.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Procesador.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
