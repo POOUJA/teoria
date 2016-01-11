@@ -4,8 +4,8 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>F1team.h</itemPath>
-      <itemPath>Piloto.h</itemPath>
+      <itemPath>Dependencia.h</itemPath>
+      <itemPath>Vivienda.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,8 +14,8 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>F1team.cpp</itemPath>
-      <itemPath>Piloto.cpp</itemPath>
+      <itemPath>Dependencia.cpp</itemPath>
+      <itemPath>Vivienda.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
@@ -40,13 +40,13 @@
       </toolsSet>
       <compileType>
       </compileType>
-      <item path="F1team.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Dependencia.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="F1team.h" ex="false" tool="3" flavor2="0">
+      <item path="Dependencia.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Piloto.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Vivienda.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Piloto.h" ex="false" tool="3" flavor2="0">
+      <item path="Vivienda.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -71,13 +71,13 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="F1team.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Dependencia.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="F1team.h" ex="false" tool="3" flavor2="0">
+      <item path="Dependencia.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="Piloto.cpp" ex="false" tool="1" flavor2="0">
+      <item path="Vivienda.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="Piloto.h" ex="false" tool="3" flavor2="0">
+      <item path="Vivienda.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.cpp" ex="false" tool="1" flavor2="0">
       </item>

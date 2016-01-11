@@ -11,16 +11,12 @@
 #include <sstream>    // Para usar stringstream
 #include <iostream>   // Para usar cerr
 
-/// Factor a aplicar para calcular el valor de los ataques
-#define _FACTOR_ATAQUE_ 0.001
-
-
 /**
  * @brief Constructor por defecto
  * 
  * Fija el nombre a "---", la energía a 1000, y está desarmado
  */
-Guerrero::Guerrero ( ): nombre ("---"), armamento (NULL), energia (1000)
+Guerrero::Guerrero ( ): _nombre ("---"), _armamento (0), _energia (1000)
 {
 }
 
@@ -31,9 +27,9 @@ Guerrero::Guerrero ( ): nombre ("---"), armamento (NULL), energia (1000)
  * @param nNombre Texto con el nombre a asignar al nuevo guerrero
  * @param nEnergia Valor de energía a asignar al guerrero
  */
-Guerrero::Guerrero ( string nNombre, int nEnergia ): nombre (nNombre),
-                                                     armamento (NULL),
-                                                     energia (nEnergia)
+Guerrero::Guerrero ( string nNombre, int nEnergia ): _nombre (nNombre),
+                                                     _armamento (0),
+                                                     _energia (nEnergia)
 {
 }
 
@@ -45,24 +41,24 @@ Guerrero::Guerrero ( string nNombre, int nEnergia ): nombre (nNombre),
  * que no tiene sentido que tenga la misma arma que el original
  * @param orig Objeto del que se copian los atributos
  */
-Guerrero::Guerrero ( const Guerrero& orig ): armamento (NULL),
-                                             energia (orig.energia)
+Guerrero::Guerrero ( const Guerrero& orig ): _armamento (0),
+                                             _energia (orig._energia)
 {
-   nombre = orig.nombre + " - 2";   // Para evitar nombres duplicados
+   _nombre = orig._nombre + " - 2";   // Para evitar nombres duplicados
 }
 
 /**
  * @brief Destructor
  * 
  * Como la relación con el arma es de asociación, no se destruye el objeto de
- * clase Arma apuntado por Guerrero::armamento. Es necesario llamar al método
+ * clase Arma apuntado por Guerrero::_armamento. Es necesario llamar al método
  * Guerrero::desarmar antes de destruirlo
  */
 Guerrero::~Guerrero ( )
 {
    // Como lanzar excepciones en los destructores no es una buena práctica,
    // simplemente se muestra un mensaje por la consola de errores
-   if ( armamento != NULL )
+   if ( _armamento != 0 )
    {
       std::cerr << "Guerrero::~Guerrero: se destruye un guerrero sin "
                 << "desarmarlo previamente";
@@ -70,60 +66,60 @@ Guerrero::~Guerrero ( )
 }
 
 /**
- * @brief Modificador para el atributo Guerrero::armamento
+ * @brief Modificador para el atributo Guerrero::_armamento
  * @param nArmamento Puntero a un objeto de clase Arma, que representa a la
  *        nueva arma del guerrero
  */
 void Guerrero::setArmamento ( Arma* nArmamento )
 {
-   this->armamento = nArmamento;
+   this->_armamento = nArmamento;
 }
 
 /**
- * @brief Observador para el atributo Guerrero::armamento
+ * @brief Observador para el atributo Guerrero::_armamento
  * @return Un puntero al arma del guerrero
  */
 Arma* Guerrero::getArmamento ( ) const
 {
-   return armamento;
+   return _armamento;
 }
 
 /**
- * @brief Modificador para el atributo Guerrero::energia
+ * @brief Modificador para el atributo Guerrero::_energia
  * @param nEnergia Nuevo valor de energía a asignar. No se hacen comprobaciones
  *        sobre él
  */
 void Guerrero::setEnergia ( int nEnergia )
 {
-   this->energia = nEnergia;
+   this->_energia = nEnergia;
 }
 
 /**
- * @brief Observador para el atributo Guerrero::energia
+ * @brief Observador para el atributo Guerrero::_energia
  * @return La energía restante del guerrero
  */
 int Guerrero::getEnergia ( ) const
 {
-   return energia;
+   return _energia;
 }
 
 /**
- * @brief Modificador para el atributo Guerrero::nombre
+ * @brief Modificador para el atributo Guerrero::_nombre
  * @param nNombre Texto con el nuevo nombre a asignar al guerrero. No se hacen
  *        comprobaciones sobre él
  */
 void Guerrero::setNombre ( string nNombre )
 {
-   this->nombre = nombre;
+   this->_nombre = _nombre;
 }
 
 /**
- * @brief Observador para el atributo Guerrero::nombre
+ * @brief Observador para el atributo Guerrero::_nombre
  * @return Una cadena de texto con el nombre asignado al guerrero
  */
 string Guerrero::getNombre ( ) const
 {
-   return nombre;
+   return _nombre;
 }
 
 /**
@@ -136,8 +132,8 @@ string Guerrero::getNombre ( ) const
  */
 Arma *Guerrero::desarmar ()
 {
-   Arma *aux = armamento;
-   armamento = NULL;
+   Arma *aux = _armamento;
+   _armamento = 0;
    return ( aux );
 }
 
@@ -151,7 +147,7 @@ Arma *Guerrero::desarmar ()
  */
 int Guerrero::ataque ()
 {
-   int maxPoder = _FACTOR_ATAQUE_ * energia * armamento->getPoder ();
+   int maxPoder = calculaMaxPoder ( _armamento->getPoder () );
    int resultado = rand () % maxPoder + 1;
 
    return ( resultado );
@@ -162,19 +158,47 @@ int Guerrero::ataque ()
  * @return Devuelve una cadena de texto conteniendo los valores de los atributos
  *         del objeto
  */
-string Guerrero::info () const
+string Guerrero::info ()
 {
-   string resultado;
    std::stringstream aux;
    
    aux << "Soy guerrero. Mi nombre es "
-       << nombre
+       << _nombre
        << ", mi energía es "
-       << energia
+       << _energia
        << " y puedo producir ataques de hasta "
-       << (int) ( _FACTOR_ATAQUE_ * energia * armamento->getPoder () )
+       << calculaMaxPoder ( _armamento->getPoder () )
        << " puntos de poder";
 
-   getline ( aux, resultado );
-   return ( resultado );
+   return ( aux.str () );
+}
+
+/**
+ * En este caso, no copia el nombre del guerrero (para evitar dos guerreros con
+ * el mismo nombre) ni el arma (un arma no puede estar en poder de dos guerreros
+ * a la vez)
+ * @brief Operador de asignación
+ * @param orig Objeto del que se copian los atributos
+ * @return Una referencia al propio objeto, para facilitar la asignación en
+ *         cascada (a=b=c)
+ */
+Guerrero& Guerrero::operator = (const Guerrero& orig)
+{
+   this->_energia = orig._energia;
+   
+   return ( *this );
+}
+
+/**
+ * El valor máximo de daño que puede producir un guerrero, dado el poder
+ * de un arma, depende de la energía vital que tenga el guerrero
+ * @brief Método para calcular el valor máximo de daño que puede producir
+ *        el guerrero, dado el poder de un arma
+ * @param valorBase Máximo daño que puede producir un arma
+ * @return El valor máximo de daño que puede producir el guerrero con esa
+ *         arma
+ */
+int Guerrero::calculaMaxPoder ( int valorBase )
+{
+   return ( int ( _FACTOR_ATAQUE_ * _energia * valorBase ) );
 }

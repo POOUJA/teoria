@@ -23,9 +23,14 @@ using std::string;
 class Guerrero
 {
    private:
-      string nombre;     ///< Nombre del guerrero
-      int energia;       ///< Energía vital. Un valor menor o igual a cero implica muerte
-      Arma *armamento;   ///< A través de este atributo se establece la asociación
+      string _nombre;     ///< Nombre del guerrero
+      int _energia;       ///< Energía vital. Un valor menor o igual a cero implica muerte
+      Arma *_armamento;   ///< A través de este atributo se establece la asociación
+
+      /// Factor a aplicar para calcular el valor de los ataques
+      static const double _FACTOR_ATAQUE_ = 0.001;
+      
+      int calculaMaxPoder ( int valorBase );
 
    public:
       Guerrero ( );
@@ -40,7 +45,8 @@ class Guerrero
       string getNombre ( ) const;
       Arma *desarmar ();
       int ataque ();
-      string info () const;
+      string info ();
+      Guerrero& operator= ( const Guerrero& orig );
 };
 
 #endif	/* GUERRERO_H */

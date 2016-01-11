@@ -2,7 +2,7 @@
  * @file main.cpp
  * Archivo con la función main
  * @author algarcia
- * @date 2015-09-25
+ * @date 2015-12-31
  */
 
 #include <cstdlib>
@@ -21,8 +21,10 @@ using namespace std;
 int main ( int argc, char** argv )
 {
    Armero *a;
-   Arma *b;
-   Guerrero *g1, *g2;
+   Arma *b, *c, *d;
+   Arma *armas[Guerrero::_MAX_AMMO_];
+   Guerrero *g;
+   int i, aux;
 
    // Inicializa el generador de números pseudoaleatorios
    srand ( time (0) );
@@ -33,41 +35,37 @@ int main ( int argc, char** argv )
 
    // Pide al armero que fabrique un arma
    b = a->creaArma ( "Excalibur" );
-   cout << b->info () << endl;
+   c = a->creaArma ( "Magnum 44" );
+   d = a->creaArma ( "AK-47" );
 
    // Crea un guerrero, y le entrega el arma
-   g1 = new Guerrero ( "Lancelot", 2500 );
-   g1->setArmamento (b);
+   g = new Guerrero ( "Lancelot", 2500 );
+   g->addArma (b);
    b = 0;
-   cout << g1->info () << endl;
+   g->addArma (c);
+   c = 0;
+   g->addArma (d);
+   d = 0;
+   cout << g->info () << endl;
 
    // El guerrero hace varios ataques de prueba
    cout << "Ataques de demostración:" << endl;
-   cout << g1->ataque () << endl;
-   cout << g1->ataque () << endl;
-   cout << g1->ataque () << endl;
+   cout << g->ataque (1) << endl;
+   cout << g->ataque (2) << endl;
+   cout << g->ataque (3) << endl;
 
-   // En primer lugar, hay que desarmar al guerrero antes de destruirlo
-   b = g1->desarmar ();
-   delete g1;
-   g1 = 0;
+   // Pasa a liberar recursos. En primer lugar, hay que desarmar al guerrero
+   // antes de destruirlo
+   aux = g->desarmar ( armas );
+   delete g;
+   g = 0;
 
-   // Reutiliza el arma, dándosela a otro guerrero
-   g2 = new Guerrero ( "Caballero negro", 3000 );
-   g2->setArmamento (b);
-   b = 0;
-   cout << g2->info () << endl;
-   cout << "Ataque de demostración:" << endl;
-   cout << g2->ataque () << endl;
-
-   // Desarma y destruye al segundo guerrero
-   b = g2->desarmar ();
-   delete g2;
-   g2 = 0;
-
-   // Destruye el arma
-   delete b;
-   b = 0;
+   // Destruye las armas
+   for ( i = 0; i < aux; i++ )
+   {
+      delete armas[i];
+      armas[i] = 0;
+   }
 
    // Destruye el armero
    delete a;
