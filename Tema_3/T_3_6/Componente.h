@@ -29,15 +29,19 @@ class Componente
       Componente ( );
       Componente ( const Componente& orig );
       virtual ~Componente ( );
-      void setPrecio ( float _precio );
+      void setPrecio ( float nPrecio );
       float getPrecio ( ) const;
-      void setNumSerie ( string _numSerie );
+      void setNumSerie ( string nNumSerie );
       string getNumSerie ( ) const;
-      void setModelo ( string _modelo );
+      void setModelo ( string nModelo );
       string getModelo ( ) const;
-      void setMarca ( string _marca );
+      void setMarca ( string nMarca );
       string getMarca ( ) const;
+      /**
+       * @brief Genera una cadena de texto "user-friendly" sobre el componente
+       * @return Una cadena de texto con información del componente
+       */
+      virtual string info () = 0;
 };
 
 #endif /* COMPONENTE_H */
-
