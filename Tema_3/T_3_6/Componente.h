@@ -38,11 +38,6 @@ class Componente
       void setMarca ( string nMarca );
       string getMarca ( ) const;
       string info ();
-      /**
-       * @brief Permite identificar el tipo de componente
-       * @return Una cadena de texto con el tipo de componente
-       */
-      virtual string tipoComponente () = 0;
 };
 
 #endif /* COMPONENTE_H */

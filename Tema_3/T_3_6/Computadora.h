@@ -21,6 +21,7 @@ using std::string;
 class Computadora
 {
    public:
+      /// Número máximo de piezas en una computadora
       static const int _MAX_COMP_ = 10;
 
    private:
@@ -37,6 +38,7 @@ class Computadora
       int getNPiezas ( ) const;
       void addPieza ( Componente* nuevaP );
       Componente* getPieza ( int cual );
+      Componente* quitaPieza ( int cual );
       void setCompradoEn ( int year );
       int getCompradoEn ( ) const;
       void setModelo ( string nModelo );

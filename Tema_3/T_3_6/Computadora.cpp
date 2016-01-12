@@ -22,7 +22,7 @@ Computadora::Computadora ( ): _marca ("---"), _modelo ("---"), _nPiezas(0),
 }
 
 /**
- * Hace copias de los componentes??????
+ * \b OJO: sólo copia los punteros a los componentes; no crea objetos nuevos
  * @brief Constructor de copia
  * @param orig Objeto del que se copian los atributos
  */
@@ -33,18 +33,46 @@ Computadora::Computadora ( const Computadora& orig ): _marca (orig._marca),
 {
    int i;
    
-   for ( i = 0 ; i < _)
+   for ( i = 0 ; i < _nPiezas; i++ )
+   {
+      _piezas[i] = orig._piezas[i];
+   }
 }
 
+/**
+ * Como la relación entre Computadora y Componente es agregación, no elimina los
+ * objetos agregados. Produce un mensaje de error si no se han roto las
+ * relaciones entre la computadora y sus piezas (véase Computadora::quitaPieza)
+ * antes de llamar al destructor.
+ * @brief Destructor
+ */
 Computadora::~Computadora ( )
 {
+   // Como lanzar excepciones en los destructores no es una buena práctica,
+   // simplemente se muestra un mensaje por la consola de errores
+
+   if ( _nPiezas > 0 )
+   {
+      std::cerr << "Computadora::~Computadora: se intenta eliminar una"
+                << " computadora sin quitarle las piezas primero" << std::endl;
+   }
 }
 
+/**
+ * @brief Método para consultar el número de piezas de la computadora
+ * @return El número de piezas de la computadora. Si no tiene piezas, devuelve 0
+ */
 int Computadora::getNPiezas ( ) const
 {
    return _nPiezas;
 }
 
+/**
+ * @brief Método para añadir una pieza más a la computadora
+ * @param nuevaP Puntero a la nueva pieza
+ * @throws std::out_of_range Si la computadora no admite más piezas (ver
+ *         Computadora::_MAX_COMP_)
+ */
 void Computadora::addPieza ( Componente* nuevaP )
 {
    
