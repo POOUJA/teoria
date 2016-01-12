@@ -8,12 +8,14 @@
 #ifndef PLACABASE_H
 #define PLACABASE_H
 
+#include "Componente.h"
+
 /**
  * Los objetos de esta clase representan placas base para la fabricación de
  * computadoras
  * @brief Placa base de computadora
  */
-class PlacaBase
+class PlacaBase: public Componente
 {
    public:
       /// Factores de forma para placas base en el mercado

@@ -37,11 +37,12 @@ class Componente
       string getModelo ( ) const;
       void setMarca ( string nMarca );
       string getMarca ( ) const;
+      string info ();
       /**
-       * @brief Genera una cadena de texto "user-friendly" sobre el componente
-       * @return Una cadena de texto con información del componente
+       * @brief Permite identificar el tipo de componente
+       * @return Una cadena de texto con el tipo de componente
        */
-      virtual string info () = 0;
+      virtual string tipoComponente () = 0;
 };
 
 #endif /* COMPONENTE_H */

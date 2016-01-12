@@ -7,12 +7,33 @@
 
 #include "Computadora.h"
 
-Computadora::Computadora ( )
+/**
+ * @brief Constructor por defecto. Asigna a los atributos valores por defecto
+ */
+Computadora::Computadora ( ): _marca ("---"), _modelo ("---"), _nPiezas(0),
+                              _compradoEn (1900)
 {
+   int i;
+   
+   for ( i = 0; i < _MAX_COMP_; i++ )
+   {
+      _piezas[i] = 0;
+   }
 }
 
-Computadora::Computadora ( const Computadora& orig )
+/**
+ * Hace copias de los componentes??????
+ * @brief Constructor de copia
+ * @param orig Objeto del que se copian los atributos
+ */
+Computadora::Computadora ( const Computadora& orig ): _marca (orig._marca),
+                                                      _modelo (orig._modelo),
+                                                      _compradoEn (orig._compradoEn),
+                                                      _nPiezas (orig._nPiezas)
 {
+   int i;
+   
+   for ( i = 0 ; i < _)
 }
 
 Computadora::~Computadora ( )
@@ -29,7 +50,7 @@ void Computadora::addPieza ( Componente* nuevaP )
    
 }
 
-Componente* Computadora::getPieza ( int cual ) const
+Componente* Computadora::getPieza ( int cual )
 {
    
 }
@@ -64,14 +85,9 @@ string Computadora::getMarca ( ) const
    return _marca;
 }
 
-void Computadora::setPrecio ( float nPrecio )
-{
-   this->_precio = nPrecio;
-}
-
 float Computadora::getPrecio ( ) const
 {
-   return _precio;
+   
 }
 
 string Computadora::info ()

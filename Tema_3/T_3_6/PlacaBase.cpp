@@ -69,12 +69,12 @@ int PlacaBase::getNPCIe ( ) const
    return _nPCIe;
 }
 
-void PlacaBase::setFForma ( factorDeForma _fForma )
+void PlacaBase::setFForma ( PlacaBase::FactorDeForma _fForma )
 {
    this->_fForma = _fForma;
 }
 
-factorDeForma PlacaBase::getFForma ( ) const
+PlacaBase::FactorDeForma PlacaBase::getFForma ( ) const
 {
    return _fForma;
 }

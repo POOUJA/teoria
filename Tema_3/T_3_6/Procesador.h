@@ -8,12 +8,14 @@
 #ifndef PROCESADOR_H
 #define PROCESADOR_H
 
+#include "Componente.h"
+
 /**
  * Los objetos de esta clase representan microprocesadores utilizados para la
  * fabricación de computadoras
  * @brief Microprocesador para computadoras
  */
-class Procesador
+class Procesador: public Componente
 {
    public:
       enum Arquitectura { x86_32, x86_64, ARM, ARM64, otra };

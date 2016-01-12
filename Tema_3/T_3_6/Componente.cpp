@@ -6,6 +6,7 @@
  */
 
 #include <stdexcept>
+#include <sstream>
 
 #include "Componente.h"
 
@@ -118,3 +119,18 @@ string Componente::getMarca ( ) const
    return _marca;
 }
 
+/**
+ * @brief Genera una cadena de texto "user-friendly" con los datos del componente
+ * @return Una cadena de texto con la información del componente 
+ */
+string Componente::info ()
+{
+   std::stringstream aux;
+   
+   aux << "Marca: " << _marca << "\t"
+       << "Modelo:" << _modelo << "\t"
+       << "S/N: " << _numSerie << "\t"
+       << "Precio: " << _precio << " Euros";
+   
+   return ( aux.str () );
+}

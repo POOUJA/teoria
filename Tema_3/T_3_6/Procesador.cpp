@@ -19,12 +19,12 @@ Procesador::~Procesador ( )
 {
 }
 
-void Procesador::setArq ( Arquitectura _arq )
+void Procesador::setArq ( Procesador::Arquitectura _arq )
 {
    this->_arq = _arq;
 }
 
-Arquitectura Procesador::getArq ( ) const
+Procesador::Arquitectura Procesador::getArq ( ) const
 {
    return _arq;
 }
