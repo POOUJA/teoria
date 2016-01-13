@@ -15,6 +15,7 @@
  * Inicializa los nombres de los jugadores a "p1" y "p2", y crea un nuevo
  * tablero
  * @brief Constructor por defecto
+ * @throws std::bad_alloc Si hay algún problema reservando memoria
  */
 TicTacToe::TicTacToe ( ): _jugadores{"p1","p2"}, _t(new Tablero()), _turno(0)
 {
@@ -33,6 +34,7 @@ TicTacToe::TicTacToe ( ): _jugadores{"p1","p2"}, _t(new Tablero()), _turno(0)
  * turno, pero no copia el puntero al tablero, sino que crea un tablero nuevo
  * @brief Constructor de copia
  * @param orig
+ * @throws std::bad_alloc Si hay algún problema reservando memoria
  */
 TicTacToe::TicTacToe ( const TicTacToe& orig ): _jugadores{orig._jugadores[0],
                                                            orig._jugadores[1]},
