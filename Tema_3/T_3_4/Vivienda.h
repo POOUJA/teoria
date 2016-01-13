@@ -24,7 +24,7 @@ class Vivienda
 
    private:
       string _direccion;                       ///< Calle, número, piso...
-      Dependencia *_dependencias[_MAX_HAB_];   ///< Habitaciones
+      Dependencia *_habitaciones[_MAX_HAB_];   ///< Habitaciones
       int _numH;                               ///< Número de habitaciones
       
       int repasaDependencias ();

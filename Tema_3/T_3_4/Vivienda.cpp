@@ -20,7 +20,7 @@ Vivienda::Vivienda ( ): _direccion ("---"), _numH (0)
    
    for ( i = 0; i < _MAX_HAB_; i++ )
    {
-      _dependencias[i] = 0;
+      _habitaciones[i] = 0;
    }
 }
 
@@ -40,7 +40,7 @@ Vivienda::Vivienda ( const Vivienda& orig ): _direccion (orig._direccion),
    {   
       for ( i = 0; i < _numH; i++ )
       {
-         _dependencias[i] = new Dependencia ( *orig._dependencias[i] );
+         _habitaciones[i] = new Dependencia ( *orig._habitaciones[i] );
       }
    }
    catch ( std::bad_alloc ex )
@@ -60,7 +60,7 @@ Vivienda::Vivienda ( string direccion ): _direccion(direccion), _numH(0)
    
    for ( i = 0; i < _MAX_HAB_; i++ )
    {
-      _dependencias[i] = 0;
+      _habitaciones[i] = 0;
    }
 }
 
@@ -74,8 +74,8 @@ Vivienda::~Vivienda ( )
    
    for ( i = 0; i < _numH; i++ )
    {
-      delete ( _dependencias[i] );
-      _dependencias[i] = 0;
+      delete ( _habitaciones[i] );
+      _habitaciones[i] = 0;
    }
 }
 
@@ -98,7 +98,7 @@ int Vivienda::addDependencia (string nombre, float superficie, bool estaLimpia)
    {
       try
       {
-         _dependencias [_numH] = new Dependencia ( nombre, superficie,
+         _habitaciones [_numH] = new Dependencia ( nombre, superficie,
                                                    estaLimpia );
          _numH++;
       }
@@ -137,10 +137,10 @@ int Vivienda::borraDependencia ( string nombre )
    
    while ( ( i < _numH ) && !hecho )
    {
-      if ( _dependencias[i]->getNombre () == nombre )
+      if ( _habitaciones[i]->getNombre () == nombre )
       {
-         delete _dependencias[i];
-         _dependencias[i] = 0;
+         delete _habitaciones[i];
+         _habitaciones[i] = 0;
          hecho = true;
       }
 
@@ -167,8 +167,8 @@ int Vivienda::borraDependencia ( int cual )
 {
    if ( ( cual > 0 ) && ( cual <= _numH ) )
    {
-      delete _dependencias[cual-1];
-      _dependencias[cual-1] = 0;
+      delete _habitaciones[cual-1];
+      _habitaciones[cual-1] = 0;
       return ( repasaDependencias () );
    }
    else
@@ -194,10 +194,10 @@ int Vivienda::borraDependencias ( string nombre )
    
    for ( i = 0; i < _numH; i++ )
    {
-      if ( _dependencias[i]->getNombre () == nombre )
+      if ( _habitaciones[i]->getNombre () == nombre )
       {
-         delete _dependencias[i];
-         _dependencias[i] = 0;
+         delete _habitaciones[i];
+         _habitaciones[i] = 0;
          hecho = true;
       }
    }
@@ -222,7 +222,7 @@ void Vivienda::limpiaDependencia ( int cual )
    {
       try
       {
-         _dependencias[cual]->limpiar ();
+         _habitaciones[cual]->limpiar ();
       }
       catch ( std::runtime_error ex )
       {
@@ -249,7 +249,7 @@ void Vivienda::ensuciaDependencia ( int cual )
    {
       try
       {
-         _dependencias[cual]->ensuciar ();
+         _habitaciones[cual]->ensuciar ();
       }
       catch ( std::runtime_error ex )
       {
@@ -273,9 +273,9 @@ void Vivienda::limpiezaGeneral ()
    
    for ( i = 0; i < _numH; i++ )
    {
-      if ( _dependencias[i]->estaLimpia () == false )
+      if ( _habitaciones[i]->estaLimpia () == false )
       {
-         _dependencias[i]->limpiar ();
+         _habitaciones[i]->limpiar ();
       }
    }
 }
@@ -292,7 +292,7 @@ float Vivienda::getSuperficie ()
    
    for ( i = 0; i < _numH; i++ )
    {
-      suma += _dependencias[i]->getSuperficie ();
+      suma += _habitaciones[i]->getSuperficie ();
    }
    
    return ( suma );
@@ -346,7 +346,7 @@ Vivienda &Vivienda::operator = (const Vivienda& orig)
    {   
       for ( i = 0; i < _numH; i++ )
       {
-         _dependencias[i] = new Dependencia ( *orig._dependencias[i] );
+         _habitaciones[i] = new Dependencia ( *orig._habitaciones[i] );
       }
    }
    catch ( std::bad_alloc ex )
@@ -374,7 +374,7 @@ string Vivienda::info ()
 
    for ( i = 0; i < _numH; i++ )
    {
-      ss << _dependencias[i]->info () << std::endl;
+      ss << _habitaciones[i]->info () << std::endl;
    }
 
    return ( ss.str () );
@@ -404,9 +404,9 @@ int Vivienda::repasaDependencias ()
 
    for ( i = 0; i < _MAX_HAB_; i++ )
    {
-      if ( _dependencias[i] != 0 )
+      if ( _habitaciones[i] != 0 )
       {
-         aux[contador] = _dependencias[i];
+         aux[contador] = _habitaciones[i];
          contador++;
       }
    }
@@ -414,14 +414,14 @@ int Vivienda::repasaDependencias ()
    // Copia de vuelta los punteros al array de dependencias
    for ( i = 0; i < contador; i++ )
    {
-      _dependencias[i] = aux[i];
+      _habitaciones[i] = aux[i];
       aux[i] = 0;
    }
    
    // Pone el resto de punteros del array de dependencias a 0
    for ( ; i< _MAX_HAB_; i++ )
    {
-      _dependencias[i] = 0;
+      _habitaciones[i] = 0;
    }
    
    _numH = contador;
