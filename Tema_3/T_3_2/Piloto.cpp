@@ -19,12 +19,14 @@ Piloto::Piloto ( ): _nombre ("---"), _puntos (0)
 }
 
 /**
+ * Copia los puntos en el campeonato, pero en el nombre añade la cadena "-2",
+ * para que se sepa que es una copia
  * @brief Constructor de copia
  * @param orig Objeto del que se copian los atributos
  */
-Piloto::Piloto ( const Piloto& orig ): _nombre (orig._nombre),
-                                       _puntos (orig._puntos)
+Piloto::Piloto ( const Piloto& orig ): _puntos (orig._puntos)
 {
+   _nombre = orig._nombre + " - 2";
 }
 
 /**

@@ -18,12 +18,14 @@ F1team::F1team ( ): _p1 (0), _p2 (0), _nombre ("---")
 }
 
 /**
+ * No copia los pilotos (no tiene sentido tener dos equipos con los mismos
+ * pilotos), y añade al nombre " - 2", para que se sepa que es una copia
  * @brief Constructor de copia
  * @param orig Objeto del que se copian los atributos
  */
-F1team::F1team ( const F1team& orig ): _p1 (orig._p1), _p2 (orig._p2),
-                                       _nombre (orig._nombre)
+F1team::F1team ( const F1team& orig ): _p1 (0), _p2 (0)
 {
+   _nombre = orig._nombre + " - 2";
 }
 
 /**
