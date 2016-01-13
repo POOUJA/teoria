@@ -1,4 +1,5 @@
-/** 
+/**
+ * @brief Declaración de la clase PlacaBase 
  * @file PlacaBase.h
  * @author algarcia
  *

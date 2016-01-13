@@ -1,4 +1,5 @@
 /** 
+ * @brief Declaración de la clase Computadora
  * @file Computadora.h
  * @author algarcia
  *
@@ -33,11 +34,12 @@ class Computadora
 
    public:
       Computadora ( );
+      Computadora ( string nMarca, string nModelo, int year );
       Computadora ( const Computadora& orig );
       virtual ~Computadora ( );
       int getNPiezas ( ) const;
       void addPieza ( Componente* nuevaP );
-      Componente* getPieza ( int cual );
+      Componente* getPieza ( int cual ) const;
       Componente* quitaPieza ( int cual );
       void setCompradoEn ( int year );
       int getCompradoEn ( ) const;

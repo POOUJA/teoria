@@ -1,4 +1,5 @@
-/** 
+/**
+ * @brief Declaración de la clase Componente
  * @file Componente.h
  * @author algarcia
  *

@@ -1,4 +1,5 @@
 /** 
+ * @brief Implementación de la clase PlacaBase
  * @file PlacaBase.cpp
  * @author algarcia
  * 

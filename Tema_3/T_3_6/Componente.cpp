@@ -1,4 +1,5 @@
 /** 
+ * @brief Implementación de la clase Componente
  * @file Componente.cpp
  * @author algarcia
  * 
@@ -20,14 +21,16 @@ Componente::Componente ( ): _marca ("---"), _modelo ("---"), _numSerie ("---"),
 }
 
 /**
+ * Copia todos los atributos, pero añade al número de serie la cadena " - 2",
+ * para que se vea que es una copia
  * @brief Constructor de copia
  * @param orig Objeto del que se copian los atributos
  */
 Componente::Componente ( const Componente& orig ): _marca (orig._marca),
                                                    _modelo (orig._modelo),
-                                                   _numSerie (orig._numSerie),
                                                    _precio (orig._precio)
 {
+   _numSerie = orig._numSerie + " - 2";
 }
 
 /**

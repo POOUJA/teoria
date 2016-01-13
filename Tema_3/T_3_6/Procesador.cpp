@@ -1,4 +1,5 @@
 /** 
+ * @brief Implementación de la clase Procesador
  * @file Procesador.cpp
  * @author algarcia
  * 

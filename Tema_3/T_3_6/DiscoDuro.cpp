@@ -1,4 +1,5 @@
-/** 
+/**
+ * @brief Implementación de la clase DiscoDuro 
  * @file DiscoDuro.cpp
  * @author algarcia
  * 
@@ -7,7 +8,16 @@
 
 #include "DiscoDuro.h"
 
+/**
+ * 
+ */
 DiscoDuro::DiscoDuro ( )
+{
+}
+
+DiscoDuro::DiscoDuro ( string marca, string modelo, string nSerie,
+                       float capacidad, string formato,
+                       TipoConexion conexion )
 {
 }
 

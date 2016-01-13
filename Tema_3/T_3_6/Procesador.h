@@ -1,4 +1,5 @@
 /** 
+ * @brief Declaración de la clase Procesador
  * @file Procesador.h
  * @author algarcia
  *
