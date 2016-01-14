@@ -33,18 +33,15 @@ Piloto::Piloto ( const Piloto& orig ): _puntos (orig._puntos)
  * @brief Constructor parametrizado
  * @param nNombre Nombre del nuevo piloto
  * @param nPuntos Puntos del piloto. Ha de ser un número mayor o igual a 0
- * @throws std::out_of_range Si el valor de puntos no es mayor o igual a 0
+ * @throws std::invalid_argument Si el valor de puntos no es mayor o igual a 0
  */
-Piloto::Piloto ( const string nNombre, const int nPuntos ): _nombre (nNombre)
+Piloto::Piloto ( const string nNombre, const int nPuntos ): _nombre (nNombre),
+                                                            _puntos (nPuntos)
 {
-   if ( nPuntos >= 0 )
+   if ( nPuntos < 0 )
    {
-      _puntos = nPuntos;
-   }
-   else
-   {
-      throw std::out_of_range ( "Piloto::Piloto: El valor de puntos no"
-                                " puede ser negativo" );
+      throw std::invalid_argument ( "Piloto::Piloto: El valor de puntos no"
+                                    " puede ser negativo" );
    }
 }
 
@@ -67,7 +64,7 @@ void Piloto::resetPuntos ()
  * @brief Método para sumar los puntos obtenidos en una carrera
  * @param puntosCarrera Puntos obtenidos en la última carrera. Debe ser un
  *        número mayor o igual a 0
- * @throws std::out_of_range Si el valor de puntosCarrera es negativo
+ * @throws std::invalid_argument Si el valor de puntosCarrera es negativo
  */
 void Piloto::addPuntos ( int puntosCarrera )
 {
@@ -77,8 +74,8 @@ void Piloto::addPuntos ( int puntosCarrera )
    }
    else
    {
-      throw std::out_of_range ( "Piloto::addPuntos: El valor de puntos no"
-                                " puede ser negativo" );
+      throw std::invalid_argument ( "Piloto::addPuntos: El valor de puntos no"
+                                    " puede ser negativo" );
    }
 }
 
