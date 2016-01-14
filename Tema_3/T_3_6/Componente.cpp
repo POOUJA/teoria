@@ -157,3 +157,20 @@ string Componente::info ()
    
    return ( aux.str () );
 }
+
+/**
+ * No tiene sentido que haya dos componentes con el mismo número de serie, así
+ * que copia todos los atributos menos éste último.
+ * @brief Operador de asignación
+ * @param orig Objeto del que se copian los atributos
+ * @return Una referencia al propio objeto, para permitir asignaciones en
+ *         cascada (a=b=c)
+ */
+Componente& Componente::operator = (const Componente& orig)
+{
+   _marca = orig._marca;
+   _modelo = orig._modelo;
+   _precio = orig._precio;
+   
+   return ( *this );
+}

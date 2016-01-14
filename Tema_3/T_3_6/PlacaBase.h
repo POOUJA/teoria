@@ -20,32 +20,40 @@ class PlacaBase: public Componente
 {
    public:
       /// Factores de forma para placas base en el mercado
-      enum FactorDeForma { ATX, MicroATX, MiniITX, NanoITX, PicoITX, otro };
+      enum FactorDeForma { ATX,        ///< 305x244 mm
+                           MicroATX,   ///< 244x244 mm
+                           MiniITX,    ///< 170x170 mm
+                           NanoITX,    ///< 120x120 mm
+                           PicoITX,    ///< 100x72 mm
+                           otro };
+      static FactorDeForma intoFactorDeForma ( int valor );
+      static bool isFactorDeForma ( int valor );
 
    private:
       FactorDeForma _fForma;   ///< Factor de forma de la placa base
       int _nPCIe;              ///< Número de puertos PCI Express
-      int _nUSB3;              ///< Número de puertos USB 3
-      int _nUSB2;              ///< Número de puertos USB 2
+      int _nUSB;               ///< Número de puertos USB
       string _chipset;         ///< Modelo de chipset que lleva instalado
       string _socket;          ///< Modelo de socket que tiene la placa
 
    public:
       PlacaBase ( );
+      PlacaBase ( string marca, string modelo, string nSerie, FactorDeForma fForma,
+                  int nPCIe, int nUSB, string chipset, string socket );
       PlacaBase ( const PlacaBase& orig );
       virtual ~PlacaBase ( );
-      void setSocket ( string _socket );
+      void setSocket ( string socket );
       string getSocket ( ) const;
-      void setChipset ( string _chipset );
+      void setChipset ( string chipset );
       string getChipset ( ) const;
-      void setNUSB2 ( int _nUSB2 );
-      int getNUSB2 ( ) const;
-      void setNUSB3 ( int _nUSB3 );
-      int getNUSB3 ( ) const;
-      void setNPCIe ( int _nPCIe );
+      void setNUSB ( int nUSB );
+      int getNUSB ( ) const;
+      void setNPCIe ( int nPCIe );
       int getNPCIe ( ) const;
-      void setFForma ( FactorDeForma _fForma );
+      void setFForma ( FactorDeForma fForma );
       FactorDeForma getFForma ( ) const;
+      string info ();
+      PlacaBase& operator= ( const PlacaBase& orig );
 };
 
 #endif /* PLACABASE_H */

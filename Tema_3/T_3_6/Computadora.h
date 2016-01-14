@@ -49,6 +49,7 @@ class Computadora
       string getMarca ( ) const;
       float getPrecio ( ) const;
       string info ();
+      Computadora& operator= ( const Computadora& orig );
 };
 
 #endif /* COMPUTADORA_H */

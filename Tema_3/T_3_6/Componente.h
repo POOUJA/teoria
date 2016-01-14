@@ -40,6 +40,7 @@ class Componente
       void setMarca ( string nMarca );
       string getMarca ( ) const;
       string info ();
+      Componente& operator= ( const Componente& orig );
 };
 
 #endif /* COMPONENTE_H */

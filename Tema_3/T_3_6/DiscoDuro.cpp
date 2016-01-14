@@ -7,6 +7,7 @@
  */
 
 #include <stdexcept>
+#include <sstream>
 
 #include "DiscoDuro.h"
 
@@ -38,7 +39,7 @@ DiscoDuro::TipoConexion DiscoDuro::intoTipoConexion (int valor)
  * @retval false Si el valor no se correponde con un valor del tipo antes
  *         indicado
  */
-bool DiscoDuro::checkTipoConexion ( int valor )
+bool DiscoDuro::isTipoConexion ( int valor )
 {
    if ( ( valor >= SATA ) && ( valor <= otra ) )
    {
@@ -83,7 +84,7 @@ DiscoDuro::DiscoDuro ( string marca, string modelo, string nSerie,
                                     " ser una cantidad positiva" );
    }
 
-   if ( checkTipoConexion (conexion) == false )
+   if ( isTipoConexion (conexion) == false )
    {
       throw std::invalid_argument ( "DiscoDuro::DiscoDuro: tipo de conexión"
                                     " incorrecto" );
@@ -115,7 +116,7 @@ DiscoDuro::~DiscoDuro ( )
  */
 void DiscoDuro::setConexion ( TipoConexion conexion )
 {
-   if ( checkTipoConexion ( conexion ) == true )
+   if ( isTipoConexion ( conexion ) == true )
    {
       this->_conexion = conexion;
    }
@@ -183,9 +184,33 @@ float DiscoDuro::getCapacidad ( ) const
 }
 
 /**
- * @brief Método para generar una cadena de texto con la información del disco
- * @return 
+ * @brief Método para generar un texto "user-friendly" sobre el disco
+ * @return Una cadena de texto con la información del disco
  */
 string DiscoDuro::info ()
 {
+   std::stringstream aux;
+
+   aux << "Disco duro. " << Componente::info () << std::endl
+       << "   Capacidad: " << _capacidad << "\tFormato: " << _formato;
+   
+   return ( aux.str () );
+}
+
+/**
+ * @brief Operador de asignación
+ * @param orig Objeto del que se copian los atributos
+ * @return Una referencia al mismo objeto, para que se puedan hacer asignaciones
+ *         en cascada (a=b=c)
+ */
+DiscoDuro& DiscoDuro::operator = (const DiscoDuro& orig)
+{
+   // Asigna los atributos heredados de Componente
+   this->Componente::operator = (orig);
+   
+   _capacidad = orig._capacidad;
+   _conexion = orig._conexion;
+   _formato = orig._formato;
+   
+   return ( *this );
 }

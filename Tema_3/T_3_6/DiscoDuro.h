@@ -29,7 +29,7 @@ class DiscoDuro: public Componente
                           SCSI,   ///< Small Computer Interface
                           otra };
       static TipoConexion intoTipoConexion ( int valor );
-      static bool checkTipoConexion ( int valor );
+      static bool isTipoConexion ( int valor );
 
    private:
       float _capacidad;         ///< Capacidad en Megabytes
@@ -49,6 +49,7 @@ class DiscoDuro: public Componente
       void setCapacidad ( float capacidad );
       float getCapacidad ( ) const;
       string info ();
+      DiscoDuro& operator= ( const DiscoDuro& orig );
 };
 
 #endif /* DISCODURO_H */

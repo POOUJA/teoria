@@ -277,3 +277,20 @@ string Computadora::info ()
 
    return ( aux.str () );   
 }
+
+/**
+ * No tiene sentido que haya dos computadoras con los mismos componentes, así
+ * que copia los atributos de tipos simples solamente
+ * @brief Operador de asignación
+ * @param orig Objeto del que se copian los atributos
+ * @return Una referencia al mismo objeto, para posibilitar las asignaciones en
+ *         cascada (a=b=c)
+ */
+Computadora& Computadora::operator = (const Computadora& orig)
+{
+   _compradoEn = orig._compradoEn;
+   _marca = orig._marca;
+   _modelo = orig._modelo;
+   
+   return ( *this );
+}
