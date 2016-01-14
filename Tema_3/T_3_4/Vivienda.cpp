@@ -341,6 +341,16 @@ Vivienda &Vivienda::operator = (const Vivienda& orig)
 
    _direccion = orig._direccion;
    _numH = orig._numH;
+   
+   // Si la vivienda ya tenía dependencias, las borra
+   if ( _numH > 0 )
+   {
+      for ( i = 0; i < _numH; i++ )
+      {
+         delete _habitaciones[i];
+         _habitaciones[i] = 0;
+      }
+   }
 
    try
    {   
