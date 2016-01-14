@@ -36,6 +36,7 @@ class TicTacToe
       const string getAnterior ();
       const string getInfoTablero ();
       bool movimiento ( int f, int c );
+      TicTacToe& operator= ( const TicTacToe& orig );
 };
 
 #endif	/* TICTACTOE_H */

@@ -216,3 +216,21 @@ bool TicTacToe::movimiento ( int f, int c )
 
    return ( resultado );
 }
+
+/**
+ * Asigna los nombres de los jugadores y a quién le corresponde el siguiente
+ * turno, pero no asigna el puntero al tablero, sino que asigna el contenido
+ * del tablero
+ * @brief Operador de asignación
+ * @param orig Objeto del que se copian los atributos
+ * @return Una referencia al propio objeto, para poder hacer asignaciones en
+ *         cascada (a=b=c)
+ * @throws std::bad_alloc Si hay problemas creando el nuevo tablero
+ */
+TicTacToe& TicTacToe::operator = (const TicTacToe& orig)
+{
+   _jugadores[0] = orig._jugadores[0];
+   _jugadores[1] = orig._jugadores[1];
+   _turno = orig._turno;
+   _t->operator = (*orig._t);
+}
