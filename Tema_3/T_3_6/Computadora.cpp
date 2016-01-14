@@ -39,7 +39,8 @@ Computadora::Computadora ( ): _marca ("---"), _modelo ("---"), _nPiezas(0),
 Computadora::Computadora ( string nMarca,
                            string nModelo, int year): _marca (nMarca),
                                                       _modelo (nModelo),
-                                                      _nPiezas (0)
+                                                      _nPiezas (0),
+                                                      _compradoEn (year)
 {
    int i;
    time_t tiempoActual;
@@ -54,11 +55,7 @@ Computadora::Computadora ( string nMarca,
    tiempoActual = time (0);
    fechaYhora = localtime ( &tiempoActual );
 
-   if ( ( year >= 1960 ) && ( year <= ( fechaYhora->tm_year + 1900 ) ) )
-   {
-      _compradoEn = year;
-   }
-   else
+   if ( ( year < 1960 ) || ( year > ( fechaYhora->tm_year + 1900 ) ) )
    {
       throw std::invalid_argument ( "Computadora::Computadora: el año no es"
                                     " correcto" );
@@ -121,7 +118,7 @@ int Computadora::getNPiezas ( ) const
  * @brief Método para añadir una pieza más a la computadora
  * @param nuevaP Puntero a la nueva pieza. Sólo se copia el puntero; no se crea
  *        un objeto nuevo
- * @throws std::out_of_range Si la computadora no admite más piezas (ver
+ * @throws std::length_error Si la computadora no admite más piezas (ver
  *         Computadora::_MAX_COMP_)
  */
 void Computadora::addPieza ( Componente* nuevaP )
@@ -133,7 +130,7 @@ void Computadora::addPieza ( Componente* nuevaP )
    }
    else
    {
-      throw std::out_of_range ( "Computadora::addPieza: no se pueden añadir"
+      throw std::length_error ( "Computadora::addPieza: no se pueden añadir"
                                 " más piezas" );
    }
 }

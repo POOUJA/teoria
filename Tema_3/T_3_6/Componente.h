@@ -28,6 +28,7 @@ class Componente
 
    public:
       Componente ( );
+      Componente ( string marca, string modelo, string nSerie, float precio);
       Componente ( const Componente& orig );
       virtual ~Componente ( );
       void setPrecio ( float nPrecio );

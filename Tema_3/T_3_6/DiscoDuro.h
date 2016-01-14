@@ -22,7 +22,14 @@ using std::string;
 class DiscoDuro: public Componente
 {
    public:
-      enum TipoConexion { SATA, IDE, EIDE, ATA };   ///< Tipos de conexiones
+      /// Tipos de conexiones
+      enum TipoConexion { SATA,   ///< Serial ATA
+                          IDE,    ///< Integrated Drive Electronics
+                          EIDE,   ///< Enhanced IDE
+                          SCSI,   ///< Small Computer Interface
+                          otra };
+      static TipoConexion intoTipoConexion ( int valor );
+      static bool checkTipoConexion ( int valor );
 
    private:
       float _capacidad;         ///< Capacidad en Megabytes
@@ -35,11 +42,11 @@ class DiscoDuro: public Componente
                   string formato, TipoConexion conexion );
       DiscoDuro ( const DiscoDuro& orig );
       virtual ~DiscoDuro ( );
-      void setConexion ( TipoConexion _conexion );
+      void setConexion ( TipoConexion conexion );
       TipoConexion getConexion ( ) const;
-      void setFormato ( string _formato );
+      void setFormato ( string formato );
       string getFormato ( ) const;
-      void setCapacidad ( float _capacidad );
+      void setCapacidad ( float capacidad );
       float getCapacidad ( ) const;
       string info ();
 };

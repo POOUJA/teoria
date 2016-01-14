@@ -21,6 +21,26 @@ Componente::Componente ( ): _marca ("---"), _modelo ("---"), _numSerie ("---"),
 }
 
 /**
+ * @brief Constructor parametrizado
+ * @param marca Marca del nuevo componente
+ * @param modelo Modelo del nuevo componente
+ * @param nSerie Número de serie del nuevo componente
+ * @param precio Precio del nuevo componente. No puede ser negativo
+ * @throws std::invalid_argument Si el precio que se pasa como parámetro no es
+ *         un número positivo
+ */
+Componente::Componente ( string marca, string modelo, string nSerie,
+                         float precio ): _marca (marca), _modelo (modelo),
+                                         _numSerie (nSerie), _precio (precio)
+{
+   if ( precio < 0 )
+   {
+      throw std::invalid_argument ( "Componente::Componente: el precio no puede"
+                                    " ser negativo" );
+   }
+}
+
+/**
  * Copia todos los atributos, pero añade al número de serie la cadena " - 2",
  * para que se vea que es una copia
  * @brief Constructor de copia
