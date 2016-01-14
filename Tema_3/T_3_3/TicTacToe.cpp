@@ -167,7 +167,7 @@ const string TicTacToe::getInfoTablero ()
  * @retval false Si la jugada no es ganadora
  * @throws std::out_of_range Si la posición indicada por f y c no es correcta
  *         (se sale del tablero)
- * @throws std::invalid_argument Si se intenta realizar el movimiento en una
+ * @throws std::runtime_error Si se intenta realizar el movimiento en una
  *         posición del tablero que no está libre
  */
 bool TicTacToe::movimiento ( int f, int c )
@@ -205,13 +205,13 @@ bool TicTacToe::movimiento ( int f, int c )
               << oor.what ();
       throw std::out_of_range ( mensaje.str () );
    }
-   catch ( std::invalid_argument ia )
+   catch ( std::runtime_error rt )
    {
       // El turno no puede avanzar, porque la jugada ha sido incorrecta
       _turno = turnoAnterior;
 
-      throw std::invalid_argument ( "TicTacToe::movimiento: la posición ya está"
-                                    " ocupada" );
+      throw std::runtime_error ( "TicTacToe::movimiento: la posición ya está"
+                                 " ocupada" );
    }
 
    return ( resultado );
