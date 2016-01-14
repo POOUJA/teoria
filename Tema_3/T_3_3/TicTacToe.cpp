@@ -233,4 +233,6 @@ TicTacToe& TicTacToe::operator = (const TicTacToe& orig)
    _jugadores[1] = orig._jugadores[1];
    _turno = orig._turno;
    _t->operator = (*orig._t);
+   
+   return ( *this );
 }
