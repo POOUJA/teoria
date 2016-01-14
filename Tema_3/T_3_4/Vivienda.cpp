@@ -43,9 +43,9 @@ Vivienda::Vivienda ( const Vivienda& orig ): _direccion (orig._direccion),
          _habitaciones[i] = new Dependencia ( *orig._habitaciones[i] );
       }
    }
-   catch ( std::bad_alloc ex )
+   catch ( std::bad_alloc ba )
    {
-      throw ex;
+      throw ba;
    }
 }
 
@@ -102,14 +102,14 @@ int Vivienda::addDependencia (string nombre, float superficie, bool estaLimpia)
                                                    estaLimpia );
          _numH++;
       }
-      catch ( std::invalid_argument ex1 )
+      catch ( std::invalid_argument ia )
       {
          throw std::invalid_argument ( "Vivienda::addDependencia: la superficie"
                                        " ha de ser un número positivo" );
       }
-      catch ( std::bad_alloc ex2 )
+      catch ( std::bad_alloc ba )
       {
-         throw ex2;
+         throw ba;
       }
    }
    else
@@ -224,7 +224,7 @@ void Vivienda::limpiaDependencia ( int cual )
       {
          _habitaciones[cual]->limpiar ();
       }
-      catch ( std::runtime_error ex )
+      catch ( std::runtime_error rt )
       {
          throw std::runtime_error ( "Vivienda::limpiaDependencia: la habitación"
                                     " ya está limpia" );
@@ -251,7 +251,7 @@ void Vivienda::ensuciaDependencia ( int cual )
       {
          _habitaciones[cual]->ensuciar ();
       }
-      catch ( std::runtime_error ex )
+      catch ( std::runtime_error rt )
       {
          throw std::runtime_error ( "Vivienda::ensuciaDependencia: la habitación"
                                     " ya está sucia" );
