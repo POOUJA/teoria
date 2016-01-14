@@ -363,6 +363,8 @@ Vivienda &Vivienda::operator = (const Vivienda& orig)
    {
       throw ex;
    }
+   
+   return ( *this );
 }
 
 /**
