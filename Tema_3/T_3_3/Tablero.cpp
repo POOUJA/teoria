@@ -128,34 +128,6 @@ bool Tablero::setPos ( int f, int c, char jugador )
 }
 
 /**
- * @brief Método para generar una representación en modo texto del estado del
- *        tablero
- * @return Un texto multilínea que representa el tablero, con 'X' representando
- *         las celdas ocupadas por el jugador 1, y 'O' para el jugador 2
- */
-string Tablero::info ()
-{
-   std::stringstream aux;
-   int f;
-
-   aux << "-------------"
-       << std::endl;
-
-   for ( f = 0; f < 3; f++ )
-   {
-      aux << "| "
-          << _tablero[f][0] << " | "
-          << _tablero[f][1] << " | "
-          << _tablero[f][2] << " |"
-          << std::endl
-          << "-------------"
-          << std::endl;
-   }
-
-   return ( aux.str () );
-}
-
-/**
  * Copia los valores almacenados en las posiciones de un tablero en otro
  * @brief Operador de asignación
  * @param orig Objeto del que se copia la información

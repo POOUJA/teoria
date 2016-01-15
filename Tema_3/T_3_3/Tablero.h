@@ -35,7 +35,6 @@ class Tablero
       virtual ~Tablero ( );
       char getPos ( int f, int c );
       bool setPos ( int f, int c, char jugador );
-      string info ();
       Tablero& operator= ( const Tablero& orig );
 };
 

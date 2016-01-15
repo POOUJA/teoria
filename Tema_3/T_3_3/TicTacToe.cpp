@@ -145,17 +145,6 @@ const string TicTacToe::getAnterior ()
 }
 
 /**
- * @brief Método para consultar visualmente el estado del tablero
- * @return Una representación en modo texto del estado del tablero, en la que
- *         las posiciones libres están señaladas con '-', las ocupadas por el
- *         jugador 1 con 'X', y las ocupadas por el jugador 2 con 'O'
- */
-const string TicTacToe::getInfoTablero ()
-{
-   return ( _t->info () );
-}
-
-/**
  * Según a qué jugador le toque hacer el movimiento, aplica la jugada
  * correspondiente, colocando una 'X' o una 'O' en el tablero
  * @brief Método para llevar a cabo una jugada
