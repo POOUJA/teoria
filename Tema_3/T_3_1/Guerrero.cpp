@@ -7,9 +7,10 @@
 
 #include "Guerrero.h"
 
-#include <stdlib.h>   // Para usar rand
-#include <sstream>    // Para usar stringstream
-#include <iostream>   // Para usar cerr
+#include <stdlib.h>    // Para usar rand
+#include <sstream>     // Para usar stringstream
+#include <iostream>    // Para usar cerr
+#include <stdexcept>   // Para usar std::invalid_argument
 
 /**
  * @brief Constructor por defecto
@@ -157,26 +158,6 @@ int Guerrero::ataque ()
    int resultado = rand () % maxPoder + 1;
 
    return ( resultado );
-}
-
-/**
- * @brief Información del objeto
- * @return Devuelve una cadena de texto conteniendo los valores de los atributos
- *         del objeto
- */
-string Guerrero::info ()
-{
-   std::stringstream aux;
-   
-   aux << "Soy guerrero. Mi nombre es "
-       << _nombre
-       << ", mi energía es "
-       << _energia
-       << " y puedo producir ataques de hasta "
-       << calculaMaxPoder ( _armamento->getPoder () )
-       << " puntos de poder";
-
-   return ( aux.str () );
 }
 
 /**

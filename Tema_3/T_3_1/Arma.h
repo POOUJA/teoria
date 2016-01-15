@@ -30,7 +30,6 @@ class Arma
       string getNombre ( ) const;
       void setPoder ( int nPoder );
       int getPoder ( ) const;
-      string info () const;
       Arma& operator= ( const Arma& orig );
 };
 

@@ -157,26 +157,6 @@ int Armero::ataque ()
 }
 
 /**
- * @brief Información del objeto
- * @return Devuelve una cadena de texto conteniendo los valores de los atributos
- *         del objeto
- */
-string Armero::info () const
-{
-   std::stringstream aux;
-   
-   aux << "Soy armero. Mi nombre es "
-       << _nombre
-       << ", mi energía es "
-       << _energia
-       << " y puedo producir armas de hasta "
-       << _maxPoderArma
-       << " puntos de poder";
-
-   return ( aux.str () );
-}
-
-/**
  * En este caso, no asigna el nombre del armero, para que no haya dos con el
  * mismo nombre
  * @brief Operador de asignación
