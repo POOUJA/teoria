@@ -181,36 +181,6 @@ int F1team::getPtosConstructores () const
 }
 
 /**
- * @brief Método para generar una cadena "user-friendly" de información
- * @return Una cadena de texto incluyendo la información del equipo y los
- *         pilotos que lo forman
- */
-string F1team::info () const
-{
-   std::stringstream aux;
-
-   if ( ( _p1 != 0 ) && ( _p2 != 0 ) )
-   {
-      aux << "Equipo "
-          << _nombre
-          << std::endl
-          << "Pilotos: "
-          << _p1->getNombre ()
-          << " y "
-          << _p2->getNombre ()
-          << std::endl
-          << "Puntos en el campeonato de constructores: "
-          << getPtosConstructores ();
-   }
-   else
-   {
-      aux << "Equipo de nueva creación. Sin datos todavía";
-   }
-
-   return ( aux.str () );
-}
-
-/**
  * @brief Operador de asignación
  * @param orig Objeto del que se copian los valores de los atributos
  * @return Una referencia al propio objeto, para su uso en asignaciones en

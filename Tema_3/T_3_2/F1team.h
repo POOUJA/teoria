@@ -38,7 +38,6 @@ class F1team
       Piloto* getP1 ( ) const;
       void sumaPtosCarrera ( int ptosP1, int ptosP2 );
       int getPtosConstructores () const;
-      string info ( ) const;
       F1team& operator= ( const F1team& orig );
 };
 

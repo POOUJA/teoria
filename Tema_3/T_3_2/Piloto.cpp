@@ -107,24 +107,6 @@ string Piloto::getNombre ( ) const
 }
 
 /**
- * @brief Método para generar una cadena "user-friendly" de información
- * @return Una cadena de texto incluyendo los valores de los atributos del
- *         objeto 
- */
-string Piloto::info () const
-{
-   std::stringstream aux;
-   
-   aux << "Soy un piloto de Fórmula 1. Mi nombre es "
-       << _nombre
-       << " y llevo acumulados "
-       << _puntos
-       << " en el campeonato actual";
-
-   return ( aux.str () );
-}
-
-/**
  * @brief Operador de asignación
  * @param orig Objeto del que se copian los atributos
  * @return Una referencia al propio objeto, para posibilitar las asignaciones en

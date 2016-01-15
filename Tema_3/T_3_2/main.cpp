@@ -22,8 +22,8 @@ int main ( int argc, char** argv )
    Piloto *vettel = new Piloto ( "Sebastian", 0 );
    F1team *mc = new F1team ( alonso, button, "McLaren F1 Team" );
    
-   cout << alonso->info () << endl;
-   cout << mc->info () << endl;
+   cout << info (*alonso) << endl;
+   cout << info (*mc) << endl;
 
    try
    {
@@ -37,10 +37,10 @@ int main ( int argc, char** argv )
    }
 
    mc->sumaPtosCarrera ( 10, 8 );
-   cout << mc->info () << endl;
+   cout << info (*mc) << endl;
    
    mc->setP2 ( vettel );
-   cout << mc->info () << endl;
+   cout << info (*mc) << endl;
 
    delete ( mc );
    mc = 0;
