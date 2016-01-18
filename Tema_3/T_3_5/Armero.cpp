@@ -28,18 +28,15 @@ Armero::Armero ( ): _energia (1000), _nombre("---"), _maxPoderArma(100)
  *        comprobaciones sobre él
  * @param nMPArma Valor máximo de poder para las armas que cree el armero. Ha
  *        de ser un número positivo
- * @throws std::out_of_range Si el valor máximo de poder para las armas no es
+ * @throws std::invalid_argument Si el valor máximo de poder para las armas no es
  *            positivo
  */
-Armero::Armero ( string nNombre, int nMPArma ): _energia (1000), _nombre(nNombre)
+Armero::Armero ( string nNombre, int nMPArma ): _energia (1000), _nombre(nNombre),
+                                                _maxPoderArma (nMPArma)
 {
-   if ( nMPArma > 0 )
+   if ( nMPArma <= 0 )
    {
-      _maxPoderArma = nMPArma;
-   }
-   else
-   {
-      throw std::out_of_range ( "Armero::Armero: valor fuera de rango" );
+      throw std::invalid_argument ( "Armero::Armero: valor fuera de rango" );
    }
 }
 
@@ -104,7 +101,7 @@ string Armero::getNombre ( ) const
  * @brief Modificador para el atributo Armero::_maxPoderArma
  * @param nMaxPoderArma Nuevo valor para el poder máximo de las armas producidas.
  *        Ha de ser un valor positivo
- * @throws std::out_of_range Si el valor del parámetro no es positivo
+ * @throws std::invalid_argument Si el valor del parámetro no es positivo
  */
 void Armero::setMaxPoderArma ( int nMaxPoderArma )
 {
@@ -114,7 +111,7 @@ void Armero::setMaxPoderArma ( int nMaxPoderArma )
    }
    else
    {
-      throw std::out_of_range ( "Armero::setMaxPoderArma: valor fuera de rango" );
+      throw std::invalid_argument ( "Armero::setMaxPoderArma: valor fuera de rango" );
    }
 }
 

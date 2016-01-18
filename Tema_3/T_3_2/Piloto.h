@@ -31,7 +31,6 @@ class Piloto
       int getPuntos ( ) const;
       void setNombre ( string nNombre );
       string getNombre ( ) const;
-      string info ( ) const;
       Piloto& operator= ( const Piloto& orig );
 };
 

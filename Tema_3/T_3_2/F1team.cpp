@@ -18,12 +18,14 @@ F1team::F1team ( ): _p1 (0), _p2 (0), _nombre ("---")
 }
 
 /**
+ * No copia los pilotos (no tiene sentido tener dos equipos con los mismos
+ * pilotos), y añade al nombre " - 2", para que se sepa que es una copia
  * @brief Constructor de copia
  * @param orig Objeto del que se copian los atributos
  */
-F1team::F1team ( const F1team& orig ): _p1 (orig._p1), _p2 (orig._p2),
-                                       _nombre (orig._nombre)
+F1team::F1team ( const F1team& orig ): _p1 (0), _p2 (0)
 {
+   _nombre = orig._nombre + " - 2";
 }
 
 /**
@@ -176,36 +178,6 @@ int F1team::getPtosConstructores () const
    }
    
    return ( aux );
-}
-
-/**
- * @brief Método para generar una cadena "user-friendly" de información
- * @return Una cadena de texto incluyendo la información del equipo y los
- *         pilotos que lo forman
- */
-string F1team::info () const
-{
-   std::stringstream aux;
-
-   if ( ( _p1 != 0 ) && ( _p2 != 0 ) )
-   {
-      aux << "Equipo "
-          << _nombre
-          << std::endl
-          << "Pilotos: "
-          << _p1->getNombre ()
-          << " y "
-          << _p2->getNombre ()
-          << std::endl
-          << "Puntos en el campeonato de constructores: "
-          << getPtosConstructores ();
-   }
-   else
-   {
-      aux << "Equipo de nueva creación. Sin datos todavía";
-   }
-
-   return ( aux.str () );
 }
 
 /**

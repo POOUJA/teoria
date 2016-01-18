@@ -36,17 +36,14 @@ Arma::Arma ( const Arma& orig ): _poder(orig._poder)
  * Comprueba que el nuevo valor para Arma::poder sea >= 0
  * @param nNombre Texto a asignar como nombre del arma. No se hacen comprobaciones
  * @param nPoder Valor de poder para la nueva arma
- * @throws std::out_of_range Si el valor de nPoder es < 0
+ * @throws std::invalid_argument Si el valor de nPoder es < 0
  */
-Arma::Arma (const string nNombre, const int nPoder): _nombre(nNombre)
+Arma::Arma (const string nNombre, const int nPoder): _nombre(nNombre),
+                                                     _poder (nPoder)
 {
-   if ( nPoder >= 0 )
+   if ( nPoder < 0 )
    {
-      _poder = nPoder;
-   }
-   else
-   {
-      throw std::out_of_range ( "Arma::Arma: el valor ha de ser >= 0" );
+      throw std::invalid_argument ( "Arma::Arma: el poder ha de ser >= 0" );
    }
 }
 
@@ -79,7 +76,7 @@ string Arma::getNombre ( ) const
  * @brief Modificador para el atributo Arma::_poder
  * @param nPoder Nuevo valor de poder para el arma. Se hace la comprobación de
  *        que su valor sea >= 0
- * @throws std::out_of_range Si el valor de nPoder es < 0
+ * @throws std::invalid_argument Si el valor de nPoder es < 0
  */
 void Arma::setPoder ( int nPoder )
 {
@@ -89,7 +86,7 @@ void Arma::setPoder ( int nPoder )
    }
    else
    {
-      throw std::out_of_range ( "Arma::setPoder: el valor ha de ser >= 0" );
+      throw std::invalid_argument ( "Arma::setPoder: el valor ha de ser >= 0" );
    }
 }
 
@@ -100,24 +97,6 @@ void Arma::setPoder ( int nPoder )
 int Arma::getPoder ( ) const
 {
    return _poder;
-}
-
-/**
- * @brief Información del arma
- * @return Devuelve una cadena de texto conteniendo los valores de los atributos
- *         del arma
- */
-string Arma::info () const
-{
-   std::stringstream aux;
-   
-   aux << "Soy un arma. Mi nombre es "
-       << _nombre
-       << " y mi poder es de "
-       << _poder
-       << " puntos";
-
-   return ( aux.str () );
 }
 
 /**

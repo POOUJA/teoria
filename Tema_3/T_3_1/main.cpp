@@ -10,8 +10,10 @@
 #include <stdlib.h>
 #include <time.h>
 
+#include "Arma.h"
 #include "Armero.h"
 #include "Guerrero.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -29,17 +31,17 @@ int main ( int argc, char** argv )
 
    // Crea un nuevo armero
    a = new Armero ( "Merlín", 500 );
-   cout << a->info () << endl;
+   cout << info (*a) << endl;
 
    // Pide al armero que fabrique un arma
    b = a->creaArma ( "Excalibur" );
-   cout << b->info () << endl;
+   cout << info (*b) << endl;
 
    // Crea un guerrero, y le entrega el arma
    g1 = new Guerrero ( "Lancelot", 2500 );
    g1->setArmamento (b);
    b = 0;
-   cout << g1->info () << endl;
+   cout << info (*g1) << endl;
 
    // El guerrero hace varios ataques de prueba
    cout << "Ataques de demostración:" << endl;
@@ -56,7 +58,7 @@ int main ( int argc, char** argv )
    g2 = new Guerrero ( "Caballero negro", 3000 );
    g2->setArmamento (b);
    b = 0;
-   cout << g2->info () << endl;
+   cout << info (*g2) << endl;
    cout << "Ataque de demostración:" << endl;
    cout << g2->ataque () << endl;
 

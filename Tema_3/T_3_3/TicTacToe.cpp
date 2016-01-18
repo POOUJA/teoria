@@ -15,6 +15,7 @@
  * Inicializa los nombres de los jugadores a "p1" y "p2", y crea un nuevo
  * tablero
  * @brief Constructor por defecto
+ * @throws std::bad_alloc Si hay algún problema reservando memoria
  */
 TicTacToe::TicTacToe ( ): _jugadores{"p1","p2"}, _t(new Tablero()), _turno(0)
 {
@@ -33,6 +34,7 @@ TicTacToe::TicTacToe ( ): _jugadores{"p1","p2"}, _t(new Tablero()), _turno(0)
  * turno, pero no copia el puntero al tablero, sino que crea un tablero nuevo
  * @brief Constructor de copia
  * @param orig
+ * @throws std::bad_alloc Si hay algún problema reservando memoria
  */
 TicTacToe::TicTacToe ( const TicTacToe& orig ): _jugadores{orig._jugadores[0],
                                                            orig._jugadores[1]},
@@ -143,17 +145,6 @@ const string TicTacToe::getAnterior ()
 }
 
 /**
- * @brief Método para consultar visualmente el estado del tablero
- * @return Una representación en modo texto del estado del tablero, en la que
- *         las posiciones libres están señaladas con '-', las ocupadas por el
- *         jugador 1 con 'X', y las ocupadas por el jugador 2 con 'O'
- */
-const string TicTacToe::getInfoTablero ()
-{
-   return ( _t->info () );
-}
-
-/**
  * Según a qué jugador le toque hacer el movimiento, aplica la jugada
  * correspondiente, colocando una 'X' o una 'O' en el tablero
  * @brief Método para llevar a cabo una jugada
@@ -165,7 +156,7 @@ const string TicTacToe::getInfoTablero ()
  * @retval false Si la jugada no es ganadora
  * @throws std::out_of_range Si la posición indicada por f y c no es correcta
  *         (se sale del tablero)
- * @throws std::invalid_argument Si se intenta realizar el movimiento en una
+ * @throws std::runtime_error Si se intenta realizar el movimiento en una
  *         posición del tablero que no está libre
  */
 bool TicTacToe::movimiento ( int f, int c )
@@ -203,14 +194,34 @@ bool TicTacToe::movimiento ( int f, int c )
               << oor.what ();
       throw std::out_of_range ( mensaje.str () );
    }
-   catch ( std::invalid_argument ia )
+   catch ( std::runtime_error rt )
    {
       // El turno no puede avanzar, porque la jugada ha sido incorrecta
       _turno = turnoAnterior;
 
-      throw std::invalid_argument ( "TicTacToe::movimiento: la posición ya está"
-                                    " ocupada" );
+      throw std::runtime_error ( "TicTacToe::movimiento: la posición ya está"
+                                 " ocupada" );
    }
 
    return ( resultado );
+}
+
+/**
+ * Asigna los nombres de los jugadores y a quién le corresponde el siguiente
+ * turno, pero no asigna el puntero al tablero, sino que asigna el contenido
+ * del tablero
+ * @brief Operador de asignación
+ * @param orig Objeto del que se copian los atributos
+ * @return Una referencia al propio objeto, para poder hacer asignaciones en
+ *         cascada (a=b=c)
+ * @throws std::bad_alloc Si hay problemas creando el nuevo tablero
+ */
+TicTacToe& TicTacToe::operator = (const TicTacToe& orig)
+{
+   _jugadores[0] = orig._jugadores[0];
+   _jugadores[1] = orig._jugadores[1];
+   _turno = orig._turno;
+   _t->operator = (*orig._t);
+   
+   return ( *this );
 }

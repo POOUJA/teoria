@@ -19,30 +19,29 @@ Piloto::Piloto ( ): _nombre ("---"), _puntos (0)
 }
 
 /**
+ * Copia los puntos en el campeonato, pero en el nombre añade la cadena "-2",
+ * para que se sepa que es una copia
  * @brief Constructor de copia
  * @param orig Objeto del que se copian los atributos
  */
-Piloto::Piloto ( const Piloto& orig ): _nombre (orig._nombre),
-                                       _puntos (orig._puntos)
+Piloto::Piloto ( const Piloto& orig ): _puntos (orig._puntos)
 {
+   _nombre = orig._nombre + " - 2";
 }
 
 /**
  * @brief Constructor parametrizado
  * @param nNombre Nombre del nuevo piloto
  * @param nPuntos Puntos del piloto. Ha de ser un número mayor o igual a 0
- * @throws std::out_of_range Si el valor de puntos no es mayor o igual a 0
+ * @throws std::invalid_argument Si el valor de puntos no es mayor o igual a 0
  */
-Piloto::Piloto ( const string nNombre, const int nPuntos ): _nombre (nNombre)
+Piloto::Piloto ( const string nNombre, const int nPuntos ): _nombre (nNombre),
+                                                            _puntos (nPuntos)
 {
-   if ( nPuntos >= 0 )
+   if ( nPuntos < 0 )
    {
-      _puntos = nPuntos;
-   }
-   else
-   {
-      throw std::out_of_range ( "Piloto::Piloto: El valor de puntos no"
-                                " puede ser negativo" );
+      throw std::invalid_argument ( "Piloto::Piloto: El valor de puntos no"
+                                    " puede ser negativo" );
    }
 }
 
@@ -65,7 +64,7 @@ void Piloto::resetPuntos ()
  * @brief Método para sumar los puntos obtenidos en una carrera
  * @param puntosCarrera Puntos obtenidos en la última carrera. Debe ser un
  *        número mayor o igual a 0
- * @throws std::out_of_range Si el valor de puntosCarrera es negativo
+ * @throws std::invalid_argument Si el valor de puntosCarrera es negativo
  */
 void Piloto::addPuntos ( int puntosCarrera )
 {
@@ -75,8 +74,8 @@ void Piloto::addPuntos ( int puntosCarrera )
    }
    else
    {
-      throw std::out_of_range ( "Piloto::addPuntos: El valor de puntos no"
-                                " puede ser negativo" );
+      throw std::invalid_argument ( "Piloto::addPuntos: El valor de puntos no"
+                                    " puede ser negativo" );
    }
 }
 
@@ -105,24 +104,6 @@ void Piloto::setNombre ( string nNombre )
 string Piloto::getNombre ( ) const
 {
    return _nombre;
-}
-
-/**
- * @brief Método para generar una cadena "user-friendly" de información
- * @return Una cadena de texto incluyendo los valores de los atributos del
- *         objeto 
- */
-string Piloto::info () const
-{
-   std::stringstream aux;
-   
-   aux << "Soy un piloto de Fórmula 1. Mi nombre es "
-       << _nombre
-       << " y llevo acumulados "
-       << _puntos
-       << " en el campeonato actual";
-
-   return ( aux.str () );
 }
 
 /**

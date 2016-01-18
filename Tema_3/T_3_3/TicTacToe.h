@@ -30,12 +30,12 @@ class TicTacToe
       virtual ~TicTacToe ( );
       void setJugador1 ( const string& j1 );
       void setJugador2 ( const string& j2 );
-      const string getJugador1 ();
-      const string getJugador2 ();
-      const string getSiguiente ();
-      const string getAnterior ();
-      const string getInfoTablero ();
+      string getJugador1 ();
+      string getJugador2 ();
+      string getSiguiente ();
+      string getAnterior ();
       bool movimiento ( int f, int c );
+      TicTacToe& operator= ( const TicTacToe& orig );
 };
 
 #endif	/* TICTACTOE_H */

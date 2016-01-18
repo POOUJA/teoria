@@ -7,9 +7,10 @@
 
 #include "Guerrero.h"
 
-#include <stdlib.h>   // Para usar rand
-#include <sstream>    // Para usar stringstream
-#include <iostream>   // Para usar cerr
+#include <stdlib.h>    // Para usar rand
+#include <sstream>     // Para usar stringstream
+#include <iostream>    // Para usar cerr
+#include <stdexcept>   // Para usar std::invalid_argument
 
 /**
  * @brief Constructor por defecto
@@ -25,12 +26,18 @@ Guerrero::Guerrero ( ): _nombre ("---"), _armamento (0), _energia (1000)
  * 
  * Crea un guerrero desarmado, con el nombre y la energía que se le indican
  * @param nNombre Texto con el nombre a asignar al nuevo guerrero
- * @param nEnergia Valor de energía a asignar al guerrero
+ * @param nEnergia Valor de energía a asignar al guerrero. Ha de ser positivo
+ * @throws std::invalid_argument Si el valor de energía no es un número positivo
  */
 Guerrero::Guerrero ( string nNombre, int nEnergia ): _nombre (nNombre),
                                                      _armamento (0),
                                                      _energia (nEnergia)
 {
+   if ( nEnergia <= 0 )
+   {
+      throw std::invalid_argument ( "Guerrero::Guerrero: la energía vital ha de"
+                                    " ser un valor positivo" );
+   }
 }
 
 /**
@@ -151,26 +158,6 @@ int Guerrero::ataque ()
    int resultado = rand () % maxPoder + 1;
 
    return ( resultado );
-}
-
-/**
- * @brief Información del objeto
- * @return Devuelve una cadena de texto conteniendo los valores de los atributos
- *         del objeto
- */
-string Guerrero::info ()
-{
-   std::stringstream aux;
-   
-   aux << "Soy guerrero. Mi nombre es "
-       << _nombre
-       << ", mi energía es "
-       << _energia
-       << " y puedo producir ataques de hasta "
-       << calculaMaxPoder ( _armamento->getPoder () )
-       << " puntos de poder";
-
-   return ( aux.str () );
 }
 
 /**

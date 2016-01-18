@@ -93,7 +93,7 @@ char Tablero::getPos ( int f, int c )
  * @throws std::out_of_range Si los valores de fila o columna no están en el
  *         rango de 1 a 3, o si para identificar al jugador no se utiliza 'X' o
  *         'O'
- * @throws std::invalid_argument Si la posición que se intenta ocupar no está
+ * @throws std::runtime_error Si la posición que se intenta ocupar no está
  *         libre (ya ha sido tomada por otro jugador anteriormente)
  */
 bool Tablero::setPos ( int f, int c, char jugador )
@@ -118,41 +118,13 @@ bool Tablero::setPos ( int f, int c, char jugador )
    
    if ( _tablero[f-1][c-1] != '-' )
    {
-      throw std::invalid_argument ( "Tablero::setPos: la posición no está"
-                                    " libre" );
+      throw std::runtime_error ( "Tablero::setPos: la posición no está"
+                                 " libre" );
    }
    
    _tablero[f-1][c-1] = jugador;
    
    return ( checkMovimientoGanador ( f-1, c-1 ) );
-}
-
-/**
- * @brief Método para generar una representación en modo texto del estado del
- *        tablero
- * @return Un texto multilínea que representa el tablero, con 'X' representando
- *         las celdas ocupadas por el jugador 1, y 'O' para el jugador 2
- */
-string Tablero::info ()
-{
-   std::stringstream aux;
-   int f;
-
-   aux << "-------------"
-       << std::endl;
-
-   for ( f = 0; f < 3; f++ )
-   {
-      aux << "| "
-          << _tablero[f][0] << " | "
-          << _tablero[f][1] << " | "
-          << _tablero[f][2] << " |"
-          << std::endl
-          << "-------------"
-          << std::endl;
-   }
-
-   return ( aux.str () );
 }
 
 /**
