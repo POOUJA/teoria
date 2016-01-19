@@ -11,7 +11,8 @@
 
 
 /**
- * @brief Información del arma
+ * @brief Información de un arma
+ * @param a Referencia al arma de la que se extrae la información
  * @return Devuelve una cadena de texto conteniendo los valores de los atributos
  *         del arma
  */
@@ -29,7 +30,8 @@ string info ( const Arma& a )
 }
 
 /**
- * @brief Información del armero
+ * @brief Información de un armero
+ * @param a Referencia al armero del que se extrae la información
  * @return Devuelve una cadena de texto conteniendo los valores de los atributos
  *         del objeto
  */
@@ -49,7 +51,8 @@ string info ( const Armero& a )
 }
 
 /**
- * @brief Información del guerrero
+ * @brief Información de un guerrero
+ * @param g Referencia al guerrero del que se extrae la información
  * @return Devuelve una cadena de texto conteniendo los valores de los atributos
  *         del objeto
  */
