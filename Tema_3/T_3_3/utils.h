@@ -1,4 +1,5 @@
 /** 
+ * @brief Declaración del módulo de utilidades
  * @file utils.h
  * @author algarcia
  *

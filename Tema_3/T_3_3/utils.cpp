@@ -1,4 +1,5 @@
-/** 
+/**
+ * @brief Implementación del módulo de utilidades
  * @file utils.cpp
  * @author algarcia
  * 
