@@ -10,8 +10,9 @@
 #include <sstream>
 
 /**
- * @brief Función para generar una representación en modo texto del estado del
+ * @brief Función para generar una representación en modo texto del estado de un
  *        tablero
+ * @param t Referencia al tablero del que se obtiene la información
  * @return Un texto multilínea que representa el tablero, con 'X' representando
  *         las celdas ocupadas por el jugador 1, y 'O' para el jugador 2
  */
@@ -38,7 +39,8 @@ string info ( Tablero& t )
 }
 
 /**
- * @brief Función para consultar visualmente el estado de la partida
+ * @brief Función para consultar visualmente el estado de una partida
+ * @param ttt Referencia a la partida de la que se obtiene la información
  * @return Un texto con los jugadores, a quién le toca el siguiente turno, y 
  *         una representación en modo texto del estado del tablero, en la que
  *         las posiciones libres están señaladas con '-', las ocupadas por el
