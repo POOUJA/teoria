@@ -10,6 +10,7 @@
 #include <stdexcept>
 
 #include "TicTacToe.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -23,14 +24,14 @@ int main ( int argc, char** argv )
 {
    bool partidaTerminada = false;
    int fila, columna;
-   TicTacToe *partida = new TicTacToe ();
+   TicTacToe* partida = new TicTacToe ();
    
    partida->setJugador1 ( "Pepe" );
    partida->setJugador2 ( "Manolo" );
    
    while ( !partidaTerminada )
    {
-      cout << partida->getInfoTablero ();
+      cout << info ( *partida );
       cout << "Turno de " << partida->getSiguiente () << endl;
       cout << "Fila: ";
       cin >> fila;
@@ -54,7 +55,7 @@ int main ( int argc, char** argv )
       }
    }
 
-   cout << partida->getInfoTablero ();
+   cout << info ( *partida );
    cout << "Ganador: " << partida->getAnterior ();
 
    // IMPORTANTE: no olvidar el liberar los recursos del heap utilizados   

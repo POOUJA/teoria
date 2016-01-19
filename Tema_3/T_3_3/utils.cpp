@@ -47,9 +47,10 @@ string info ( TicTacToe& ttt )
 {
    std::stringstream aux;
    
-   aux << "Jugador 1: " << ttt.getJugador1 () << std::endl
-       << "Jugador 2: " << ttt.getJugador2 () << std::endl;
-      *********
-   return ( _t->info () );
+   aux << "Jugador 1: " << ttt.getJugador1 () << ".\t"
+       << "Jugador 2: " << ttt.getJugador2 () << std::endl
+       << "Estado actual del tablero:" << std::endl
+       << info ( *(ttt.getTablero ()) );
+   return ( aux.str () );
 }
 

@@ -105,7 +105,7 @@ void TicTacToe::setJugador2 ( const string& j2 )
  * @brief Método para consultar el nombre del primer jugador
  * @return El nombre del primer jugador
  */
-const string TicTacToe::getJugador1 ()
+string TicTacToe::getJugador1 ()
 {
    return ( _jugadores[0] );
 }
@@ -114,7 +114,7 @@ const string TicTacToe::getJugador1 ()
  * @brief Método para consultar el nombre del segundo jugador
  * @return El nombre del segundo jugador
  */
-const string TicTacToe::getJugador2 ()
+string TicTacToe::getJugador2 ()
 {
    return ( _jugadores[1] );
 }
@@ -124,7 +124,7 @@ const string TicTacToe::getJugador2 ()
  *        la partida
  * @return El nombre del jugador en cuestión
  */
-const string TicTacToe::getSiguiente ()
+string TicTacToe::getSiguiente ()
 {
    return ( _jugadores[_turno] );
 }
@@ -134,7 +134,7 @@ const string TicTacToe::getSiguiente ()
  *        último movimiento
  * @return El nombre del jugador en cuestión
  */
-const string TicTacToe::getAnterior ()
+string TicTacToe::getAnterior ()
 {
    if ( _turno == 0 )
    {
@@ -142,6 +142,15 @@ const string TicTacToe::getAnterior ()
    }
 
    return ( _jugadores[0] );
+}
+
+/**
+ * @brief Método para consultar el tablero de la partida
+ * @return Un puntero al tablero de la partida
+ */
+Tablero* TicTacToe::getTablero ()
+{
+   return ( _t );
 }
 
 /**

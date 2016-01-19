@@ -14,8 +14,8 @@
 
 using std::string;
 
-string info ( const Tablero& t );
-string info ( const TicTacToe& ttt );
+string info ( Tablero& t );
+string info ( TicTacToe& ttt );
 
 #endif   /* UTILS_H */
 
