@@ -9,6 +9,7 @@
 #include <iostream>
 
 #include "Vivienda.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -33,7 +34,7 @@ int main ( int argc, char** argv )
    v->addDependencia ( "Salón-comedor", 20, 0 );
    
    // Muestra un resumen de la vivienda
-   cout << v->info ();
+   cout << info (*v);
 
    // Libera los recursos antes de terminar
    delete v;

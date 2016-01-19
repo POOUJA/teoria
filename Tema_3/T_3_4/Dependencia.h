@@ -35,7 +35,6 @@ class Dependencia
       void setNombre ( string nNombre );
       string getNombre ( ) const;
       Dependencia& operator= ( const Dependencia& orig);
-      string info () const;
 };
 
 #endif	/* DEPENDENCIA_H */

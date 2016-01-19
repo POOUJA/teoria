@@ -161,25 +161,3 @@ Dependencia& Dependencia::operator = (const Dependencia& orig)
 
    return ( *this );
 }
-
-/**
- * @brief Método para obtener información extendida de la dependencia
- * @return Una cadena de texto con los datos de la dependencia
- */
-string Dependencia::info () const
-{
-   std::stringstream ss;
-   
-   ss << _nombre << ", " << _superficie << " metros cuadrados, ";
-
-   if ( _limpia == true )
-   {
-      ss << "limpia";
-   }
-   else
-   {
-      ss << "sucia";
-   }
-
-   return ( ss.str () );
-}

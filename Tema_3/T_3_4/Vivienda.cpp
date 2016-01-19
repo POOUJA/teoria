@@ -211,6 +211,27 @@ int Vivienda::borraDependencias ( string nombre )
 }
 
 /**
+ * @brief Método para consultar una de las habitaciones de la vivienda
+ * @param cual Índice de la dependencia a consultar. Su valor ha de estar en el
+ *        intervalo [1, número de habitaciones]
+ * @return Un puntero a la habitación consultada
+ * @throws std::out_of_range Si el índice no se corresponde con ninguna
+ *         habitación de la vivienda
+ */
+Dependencia* Vivienda::getDependencia ( int cual )
+{
+   if ( ( cual > 0 ) && ( cual <= _numH ) )
+   {
+      return ( _habitaciones[cual-1] );
+   }
+   else
+   {
+      throw std::out_of_range ( "Vivienda::getDependencia: el índice no se"
+                                " corresponde con ninguna habitación" );
+   }
+}
+
+/**
  * @brief Método para cambiar el estado de una dependencia de "sucia" a "limpia"
  * @param cual Índice de la dependencia a limpiar
  * @throws std::out_of_range Si se pasa como parámetro un índice incorrecto
@@ -365,31 +386,6 @@ Vivienda &Vivienda::operator = (const Vivienda& orig)
    }
    
    return ( *this );
-}
-
-/**
- * @brief Método para obtener un texto informativo sobre las características de
- *        la vivienda
- * @return Un texto con información detallada de la vivienda y sus habitaciones
- */
-string Vivienda::info ()
-{
-   std::stringstream ss;
-   int i;
-   float sup;
-   sup = getSuperficie ();
-   
-   ss << "Vivienda ubicada en " << _direccion << std::endl
-      << "Número de habitaciones: " << _numH << std::endl
-      << "Superficie total: " << sup << " metros cuadrados" << std::endl
-      << "Habitaciones:" << std::endl;
-
-   for ( i = 0; i < _numH; i++ )
-   {
-      ss << _habitaciones[i]->info () << std::endl;
-   }
-
-   return ( ss.str () );
 }
 
 /**
