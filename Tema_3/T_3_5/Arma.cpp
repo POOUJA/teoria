@@ -100,24 +100,6 @@ int Arma::getPoder ( ) const
 }
 
 /**
- * @brief Información del arma
- * @return Devuelve una cadena de texto conteniendo los valores de los atributos
- *         del arma
- */
-string Arma::info () const
-{
-   std::stringstream aux;
-   
-   aux << "Soy un arma. Mi nombre es "
-       << _nombre
-       << " y mi poder es de "
-       << _poder
-       << " puntos";
-
-   return ( aux.str () );
-}
-
-/**
  * En este caso, no asigna el nombre, para evitar dos armas con el mismo nombre
  * @brief Operador de asignación
  * @param orig Objeto del que se copian los atributos
