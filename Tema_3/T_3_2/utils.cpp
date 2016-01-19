@@ -10,6 +10,7 @@
 
 /**
  * @brief Función para generar una cadena "user-friendly" de información
+ * @param f Referencia al equipo de F1 del que se extrae la información
  * @return Una cadena de texto incluyendo la información del equipo y los
  *         pilotos que lo forman
  */
@@ -40,6 +41,7 @@ string info ( F1team& t )
 
 /**
  * @brief Función para generar una cadena "user-friendly" de información
+ * @param p Referencia al piloto del que se extrae la información
  * @return Una cadena de texto incluyendo los valores de los atributos del
  *         objeto 
  */
