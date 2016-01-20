@@ -5,10 +5,9 @@
  * @date 2015-10-21
  */
 
-#include "Armero.h"
 #include <stdlib.h>    // Para usar rand
-#include <sstream>     // Para usar stringstream
-#include <stdexcept>   // Para usar la excepción out_of_range
+#include <stdexcept>   // Para usar la excepción std::out_of_range
+#include "Armero.h"
 
 /**
  * @brief Constructor por defecto

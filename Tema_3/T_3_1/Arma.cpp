@@ -5,9 +5,8 @@
  * @date 2015-10-21
  */
 
-#include "Arma.h"
-#include <sstream>     // Para usar stringstream
 #include <stdexcept>   // Para usar std::out_of_range
+#include "Arma.h"
 
 /**
  * @brief Constructor por defecto

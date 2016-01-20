@@ -5,12 +5,11 @@
  * @date 2015-10-20
  */
 
-#include "Guerrero.h"
-
 #include <stdlib.h>    // Para usar rand
-#include <sstream>     // Para usar stringstream
 #include <iostream>    // Para usar cerr
 #include <stdexcept>   // Para usar std::invalid_argument
+#include "Guerrero.h"
+
 
 /**
  * @brief Constructor por defecto

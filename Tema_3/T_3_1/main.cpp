@@ -5,10 +5,8 @@
  * @date 2015-09-25
  */
 
-#include <cstdlib>
-#include <iostream>
-#include <stdlib.h>
-#include <time.h>
+#include <iostream>   // Para usar cout
+#include <stdlib.h>   // Para usar srand
 
 #include "Arma.h"
 #include "Armero.h"
