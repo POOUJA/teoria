@@ -5,8 +5,7 @@
  * @date 2015-12-09
  */
 
-#include <sstream>
-#include <stdexcept>
+#include <stdexcept>   // Para utilizar excepciones estándar
 #include "F1team.h"
 
 /**

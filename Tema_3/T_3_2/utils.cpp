@@ -5,7 +5,7 @@
  * @date 15 de enero de 2016
  */
 
-#include <sstream>
+#include <sstream>   // Para utilizar stringstream
 #include "utils.h"
 
 /**

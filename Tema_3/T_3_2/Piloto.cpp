@@ -5,9 +5,8 @@
  * @date 2015-12-09
  */
 
-#include "Piloto.h"
-#include <sstream>     // Para usar stringstream
 #include <stdexcept>   // Para usar std::out_of_range
+#include "Piloto.h"
 
 /**
  * @brief Constructor por defecto de la clase

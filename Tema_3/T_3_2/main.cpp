@@ -5,9 +5,8 @@
  * @date 2015-12-09
  */
 
-#include <cstdlib>
-#include <iostream>
-#include <stdexcept>
+#include <iostream>    // Para usar cout
+#include <stdexcept>   // Para usar las excepciones estándar
 #include "F1team.h"
 #include "utils.h"
 
