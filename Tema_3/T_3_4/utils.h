@@ -10,7 +10,7 @@
 
 #include "Vivienda.h"
 
-string info ( Dependencia& d );
+string info ( const Dependencia& d );
 string info ( Vivienda& v );
 
 #endif   /* UTILS_H */

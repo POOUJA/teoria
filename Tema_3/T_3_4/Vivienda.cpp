@@ -5,8 +5,7 @@
  * @date 2015-12-11
  */
 
-#include <stdexcept>
-#include <sstream>
+#include <stdexcept>   // Para utilizar las excepciones estándar
 
 #include "Vivienda.h"
 
@@ -218,11 +217,11 @@ int Vivienda::borraDependencias ( string nombre )
  * @throws std::out_of_range Si el índice no se corresponde con ninguna
  *         habitación de la vivienda
  */
-Dependencia* Vivienda::getDependencia ( int cual )
+const Dependencia& Vivienda::getDependencia ( int cual )
 {
    if ( ( cual > 0 ) && ( cual <= _numH ) )
    {
-      return ( _habitaciones[cual-1] );
+      return ( *(_habitaciones[cual-1]) );
    }
    else
    {

@@ -5,8 +5,7 @@
  * @date 2015-12-11
  */
 
-#include <cstdlib>
-#include <iostream>
+#include <iostream>   // Para utilizar cout
 
 #include "Vivienda.h"
 #include "utils.h"

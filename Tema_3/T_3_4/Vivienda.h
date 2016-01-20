@@ -38,7 +38,7 @@ class Vivienda
       int borraDependencia ( string nombre );
       int borraDependencia ( int cual );
       int borraDependencias ( string nombre );
-      Dependencia *getDependencia ( int cual );
+      const Dependencia& getDependencia ( int cual );
       void limpiaDependencia ( int cual );
       void ensuciaDependencia ( int cual );
       void limpiezaGeneral ();

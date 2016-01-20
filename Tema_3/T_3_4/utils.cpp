@@ -5,7 +5,7 @@
  * @date 19 de enero de 2016
  */
 
-#include <sstream>
+#include <sstream>   // Para utilizar stringstream
 #include "utils.h"
 
 /**
@@ -13,7 +13,7 @@
  * @param d Referencia a la dependencia a tratar
  * @return Una cadena de texto con los datos de la dependencia
  */
-string info ( Dependencia& d )
+string info ( const Dependencia& d )
 {
    std::stringstream ss;
    
@@ -51,7 +51,7 @@ string info ( Vivienda& v )
 
    for ( i = 1; i <= v.getNumDependencias (); i++ )
    {
-      ss << info ( *(v.getDependencia (i)) ) << std::endl;
+      ss << info ( v.getDependencia (i) ) << std::endl;
    }
 
    return ( ss.str () );

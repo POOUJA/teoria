@@ -5,9 +5,7 @@
  * @date 2015-12-11
  */
 
-#include <stdexcept>
-#include <sstream>
-
+#include <stdexcept>   // Para utilizar las excepciones estándar
 #include "Dependencia.h"
 
 /**
