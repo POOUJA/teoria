@@ -18,15 +18,15 @@ string info ( F1team& t )
 {
    std::stringstream aux;
 
-   if ( ( t.getP1 () != 0 ) && ( t.getP2 () != 0 ) )
+   if ( ( t.existeP1 () ) && ( t.existeP2 () ) )
    {
       aux << "Equipo "
           << t.getNombre ()
           << std::endl
           << "Pilotos: "
-          << t.getP1 ()->getNombre ()
+          << t.getP1 ().getNombre ()
           << " y "
-          << t.getP2 ()->getNombre ()
+          << t.getP2 ().getNombre ()
           << std::endl
           << "Puntos en el campeonato de constructores: "
           << t.getPtosConstructores ();

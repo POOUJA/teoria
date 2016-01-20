@@ -9,6 +9,7 @@
 #include <iostream>
 #include <stdexcept>
 #include "F1team.h"
+#include "utils.h"
 
 using namespace std;
 

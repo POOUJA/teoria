@@ -98,12 +98,28 @@ void F1team::setP2 ( Piloto* nP2 )
 }
 
 /**
- * @brief Observador (getter) para el atributo F1team::_p2
- * @return Un puntero al segundo piloto del equipo
+ * @brief Método para comprobar si el equipo tiene segundo piloto
+ * @retval true Si el equipo tiene segundo piloto
+ * @retval false Si el equipo no tiene segundo piloto
  */
-Piloto* F1team::getP2 ( ) const
+bool F1team::existeP2 ()
 {
-   return _p2;
+   return ( _p2 != 0 );
+}
+
+/**
+ * @brief Observador (getter) para el atributo F1team::_p2
+ * @return Una referencia al segundo piloto del equipo
+ * @throws std::runtime_error Si el equipo no tiene aún segundo piloto
+ */
+Piloto& F1team::getP2 ( ) const
+{
+   if ( _p2 == 0 )
+   {
+      throw std::runtime_error ( "F1team::getP2: no hay segundo piloto" );
+   }
+
+   return (*_p2);
 }
 
 /**
@@ -124,12 +140,28 @@ void F1team::setP1 ( Piloto* nP1 )
 }
 
 /**
- * @brief Observador (getter) para el atributo F1team::_p1
- * @return Un puntero al primer piloto del equipo
+ * @brief Método para comprobar si el equipo tiene primer piloto
+ * @retval true Si el equipo tiene primer piloto
+ * @retval false Si el equipo no tiene primer piloto
  */
-Piloto* F1team::getP1 ( ) const
+bool F1team::existeP1 ()
 {
-   return _p1;
+   return ( _p1 != 0 );
+}
+
+/**
+ * @brief Observador (getter) para el atributo F1team::_p1
+ * @return Una referencia al primer piloto del equipo
+ * @throws std::runtime_error Si el equipo no tiene aún primer piloto
+ */
+Piloto& F1team::getP1 ( ) const
+{
+   if ( _p1 == 0 )
+   {
+      throw std::runtime_error ( "F1team::getP1: no hay primer piloto" );
+   }
+
+   return (*_p1);
 }
 
 /**

@@ -33,9 +33,11 @@ class F1team
       void setNombre ( string nNombre );
       string getNombre ( ) const;
       void setP2 ( Piloto* nP2 );
-      Piloto* getP2 ( ) const;
+      bool existeP2 ();
+      Piloto& getP2 ( ) const;
       void setP1 ( Piloto* nP1 );
-      Piloto* getP1 ( ) const;
+      bool existeP1 ();
+      Piloto& getP1 ( ) const;
       void sumaPtosCarrera ( int ptosP1, int ptosP2 );
       int getPtosConstructores () const;
       F1team& operator= ( const F1team& orig );
