@@ -5,7 +5,8 @@
  * @date 15 de enero de 2016
  */
 
-#include <sstream>   // Para utilizar stringstream
+#include <sstream>
+#include <stdexcept>   // Para utilizar stringstream
 #include "utils.h"
 
 /**
@@ -18,22 +19,23 @@ string info ( F1team& t )
 {
    std::stringstream aux;
 
-   if ( ( t.existeP1 () ) && ( t.existeP2 () ) )
+   aux << "Equipo "
+       << t.getNombre ()
+       << std::endl
+       << "Pilotos: ";
+
+   try
    {
-      aux << "Equipo "
-          << t.getNombre ()
-          << std::endl
-          << "Pilotos: "
-          << t.getP1 ().getNombre ()
+      aux << t.getP1 ().getNombre ()
           << " y "
           << t.getP2 ().getNombre ()
           << std::endl
           << "Puntos en el campeonato de constructores: "
           << t.getPtosConstructores ();
    }
-   else
+   catch ( std::runtime_error re )
    {
-      aux << "Equipo de nueva creación. Sin datos todavía";
+      aux << "Equipo de nueva creación. Sin datos de pilotos todavía";
    }
 
    return ( aux.str () );
