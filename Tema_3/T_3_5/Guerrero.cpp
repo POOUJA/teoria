@@ -238,7 +238,7 @@ Arma *Guerrero::desarmar ( int cual )
       _armamento[i] = 0;
 
       // Si es necesario, compacta el array de armas      
-      if ( cual < _numArmas )
+      if ( cual < ( _numArmas - 1 ) )
       {
          while ( i < ( _numArmas - 1 ) )
          {
