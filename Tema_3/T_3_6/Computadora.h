@@ -39,7 +39,7 @@ class Computadora
       virtual ~Computadora ( );
       int getNPiezas ( ) const;
       void addPieza ( Componente* nuevaP );
-      Componente* getPieza ( int cual ) const;
+      Componente& getPieza ( int cual ) const;
       Componente* quitaPieza ( int cual );
       void setCompradoEn ( int year );
       int getCompradoEn ( ) const;
@@ -48,7 +48,6 @@ class Computadora
       void setMarca ( string nMarca );
       string getMarca ( ) const;
       float getPrecio ( ) const;
-      string info ();
       Computadora& operator= ( const Computadora& orig );
 };
 

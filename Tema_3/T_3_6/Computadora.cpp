@@ -139,19 +139,57 @@ void Computadora::addPieza ( Componente* nuevaP )
  * @brief Método para consultar una pieza de la computadora según su índice
  * @param cual Índice de la pieza a consultar. Su valor ha de estar en el rango
  *        [0, número de piezas - 1]
- * @return Un puntero a la pieza solicitada
+ * @return Una referencia a la pieza solicitada
  * @throws std::out_of_range Si el índice solicitado no corresponde con ninguna
  *         pieza de la computadora
  */
-Componente* Computadora::getPieza ( int cual ) const
+Componente& Computadora::getPieza ( int cual ) const
 {
    if ( ( cual >= 0 ) && ( cual < _nPiezas ) )
    {
-      return ( _piezas [cual] );
+      return ( *(_piezas [cual]) );
    }
    else
    {
       throw std::out_of_range ( "Computadora::getPieza: valor de índice"
+                                " incorrecto" );
+   }
+}
+
+/**
+ * @brief Método para quitar una pieza a una computadora
+ * @param cual Índice de la pieza a quitar. Su valor ha de estar en el intervalo
+ *        [0, número de piezas - 1]
+ * @return Un puntero a la pieza eliminada de la computadora
+ * @throws std::out_of_range Si el índice que se pasa como parámetro no
+ *         corresponde con ninguna pieza de la computadora
+ */
+Componente* Computadora::quitaPieza (int cual)
+{
+   Componente *aux;
+   int i;
+
+   if ( ( cual >= 0 ) && ( cual < _nPiezas ) )
+   {
+      aux = _piezas [cual];
+      _piezas[cual] = 0;
+
+      // Si es necesario, compacta el array de piezas
+      if ( cual < ( _nPiezas - 1 ) )
+      {
+         i = cual;
+         while ( i < ( _nPiezas - 1 ) )
+         {
+            _piezas[i] = _piezas[i+1];
+            i++;
+         }
+      }
+
+      return ( aux );
+   }
+   else
+   {
+      throw std::out_of_range ( "Computadora::quitaPieza: valor de índice"
                                 " incorrecto" );
    }
 }
@@ -247,35 +285,6 @@ float Computadora::getPrecio ( ) const
    }
 
    return ( suma );
-}
-
-/**
- * @brief Método para generar un texto con la información de la computadora
- * @return Un texto con información de la computadora y cada uno de sus
- *         componentes
- */
-string Computadora::info ()
-{
-   std::stringstream aux;
-   int i;
-
-   aux << "- Computadora marca " << _marca << ", modelo " << _modelo << std::endl
-       << "  Comprada el año " << _compradoEn;
-   
-   if ( _nPiezas > 0 )
-   {
-      aux << std::endl
-          << "  Compuesta por " << _nPiezas << " componentes:" << std::endl;
-
-      for ( i = 0; i < _nPiezas; i++ )
-      {
-         aux << "  " << i+1 << ": " << _piezas[i]->info () << std::endl;
-      }
-   }
-
-   aux << std::endl;
-
-   return ( aux.str () );   
 }
 
 /**

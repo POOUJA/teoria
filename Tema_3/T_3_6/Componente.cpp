@@ -143,22 +143,6 @@ string Componente::getMarca ( ) const
 }
 
 /**
- * @brief Genera una cadena de texto "user-friendly" con los datos del componente
- * @return Una cadena de texto con la información del componente 
- */
-string Componente::info ()
-{
-   std::stringstream aux;
-   
-   aux << "Marca: " << _marca << "\t"
-       << "Modelo:" << _modelo << "\t"
-       << "S/N: " << _numSerie << "\t"
-       << "Precio: " << _precio << " Euros";
-   
-   return ( aux.str () );
-}
-
-/**
  * No tiene sentido que haya dos componentes con el mismo número de serie, así
  * que copia todos los atributos menos éste último.
  * @brief Operador de asignación

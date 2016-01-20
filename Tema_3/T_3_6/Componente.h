@@ -39,7 +39,6 @@ class Componente
       string getModelo ( ) const;
       void setMarca ( string nMarca );
       string getMarca ( ) const;
-      string info ();
       Componente& operator= ( const Componente& orig );
 };
 
