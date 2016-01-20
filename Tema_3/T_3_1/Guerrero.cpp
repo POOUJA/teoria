@@ -84,9 +84,15 @@ void Guerrero::setArmamento ( Arma* nArmamento )
 /**
  * @brief Observador para el atributo Guerrero::_armamento
  * @return Una referencia al arma del guerrero
+ * @throws std::runtime_error Si el guerrero no tiene arma asociada
  */
 const Arma& Guerrero::getArmamento ( )
 {
+   if ( _armamento == 0 )
+   {
+      throw std::runtime_error ( "Guerrero::getArmamento: no hay arma asociada" );
+   }
+
    return ( *_armamento );
 }
 
@@ -112,11 +118,16 @@ int Guerrero::getEnergia ( ) const
 /**
  * @brief Método para conocer el máximo poder destructor de los ataques del
  *        guerrero
- * @return El valor numérico máximo que pueden tener los ataques del guerrero 
+ * @return El valor numérico máximo que pueden tener los ataques del guerrero
  */
 int Guerrero::getMaxPoder ()
 {
-   return ( calculaMaxPoder ( _armamento->getPoder () ) );
+   if ( _armamento != 0 )
+   {
+      return ( calculaMaxPoder ( _armamento->getPoder () ) );
+   }
+
+   return ( 0 );   // Está desarmado
 }
 
 /**
@@ -163,7 +174,7 @@ Arma *Guerrero::desarmar ()
  */
 int Guerrero::ataque ()
 {
-   int maxPoder = calculaMaxPoder ( _armamento->getPoder () );
+   int maxPoder = getMaxPoder ();
    int resultado = rand () % maxPoder + 1;
 
    return ( resultado );
