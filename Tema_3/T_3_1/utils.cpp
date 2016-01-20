@@ -65,7 +65,7 @@ string info ( Guerrero& g )
        << ", mi energía es "
        << g.getEnergia ()
        << " y puedo producir ataques de hasta "
-       << g.calculaMaxPoder ( g.getArmamento ()->getPoder () )
+       << g.getMaxPoder ()
        << " puntos de poder";
 
    return ( aux.str () );

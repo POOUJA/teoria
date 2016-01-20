@@ -29,6 +29,8 @@ class Guerrero
 
       /// Factor a aplicar para calcular el valor de los ataques
       static const double _FACTOR_ATAQUE_ = 0.001;
+
+      int calculaMaxPoder ( int valorBase );
       
    public:
       Guerrero ( );
@@ -36,13 +38,13 @@ class Guerrero
       Guerrero ( const Guerrero& orig );
       virtual ~Guerrero ( );
       void setArmamento ( Arma* nArmamento );
-      Arma* getArmamento ( ) const;
+      const Arma& getArmamento ( );
       void setEnergia ( int nEnergia );
       int getEnergia ( ) const;
+      int getMaxPoder ();
       void setNombre ( string nNombre );
       string getNombre ( ) const;
       Arma *desarmar ();
-      int calculaMaxPoder ( int valorBase );
       int ataque ();
       Guerrero& operator= ( const Guerrero& orig );
 };

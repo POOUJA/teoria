@@ -84,11 +84,11 @@ void Guerrero::setArmamento ( Arma* nArmamento )
 
 /**
  * @brief Observador para el atributo Guerrero::_armamento
- * @return Un puntero al arma del guerrero
+ * @return Una referencia al arma del guerrero
  */
-Arma* Guerrero::getArmamento ( ) const
+const Arma& Guerrero::getArmamento ( )
 {
-   return _armamento;
+   return ( *_armamento );
 }
 
 /**
@@ -108,6 +108,16 @@ void Guerrero::setEnergia ( int nEnergia )
 int Guerrero::getEnergia ( ) const
 {
    return _energia;
+}
+
+/**
+ * @brief Método para conocer el máximo poder destructor de los ataques del
+ *        guerrero
+ * @return El valor numérico máximo que pueden tener los ataques del guerrero 
+ */
+int Guerrero::getMaxPoder ()
+{
+   return ( calculaMaxPoder ( _armamento->getPoder () ) );
 }
 
 /**
