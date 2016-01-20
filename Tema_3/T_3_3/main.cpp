@@ -5,9 +5,9 @@
  * @date 2015-12-17
  */
 
-#include <cstdlib>
-#include <iostream>
-#include <stdexcept>
+//#include <cstdlib>
+#include <iostream>    // Para utilizar cout
+#include <stdexcept>   // Para utilizar las excepciones estándar
 
 #include "TicTacToe.h"
 #include "utils.h"
@@ -22,14 +22,14 @@ using namespace std;
  */
 int main ( int argc, char** argv )
 {
-   bool partidaTerminada = false;
+   int partidaTerminada = 0;
    int fila, columna;
    TicTacToe* partida = new TicTacToe ();
    
    partida->setJugador1 ( "Pepe" );
    partida->setJugador2 ( "Manolo" );
    
-   while ( !partidaTerminada )
+   while ( partidaTerminada == 0 )
    {
       cout << info ( *partida );
       cout << "Turno de " << partida->getSiguiente () << endl;
@@ -47,7 +47,7 @@ int main ( int argc, char** argv )
               << "La posición no es correcta. Inténtelo de nuevo" << endl
               << "==============================================" << endl;
       }
-      catch ( std::invalid_argument ex )
+      catch ( std::runtime_error ex )
       {
          cout << "=================================================" << endl
               << "La posición ya estaba ocupada. Inténtelo de nuevo" << endl
@@ -56,7 +56,15 @@ int main ( int argc, char** argv )
    }
 
    cout << info ( *partida );
-   cout << "Ganador: " << partida->getAnterior ();
+
+   if ( partidaTerminada == 1 )
+   {
+      cout << "Ganador: " << partida->getAnterior () << endl;
+   }
+   else   // partidaTerminada == 2
+   {
+      cout << "El resultado es un empate" << endl;
+   }
 
    // IMPORTANTE: no olvidar el liberar los recursos del heap utilizados   
    delete ( partida );

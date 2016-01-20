@@ -34,8 +34,8 @@ class TicTacToe
       string getJugador2 ();
       string getSiguiente ();
       string getAnterior ();
-      Tablero* getTablero ();
-      bool movimiento ( int f, int c );
+      Tablero& getTablero ();
+      int movimiento ( int f, int c );
       TicTacToe& operator= ( const TicTacToe& orig );
 };
 

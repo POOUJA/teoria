@@ -6,8 +6,8 @@
  * @date 15 de enero de 2016
  */
 
+#include <sstream>   // Para utilizar stringstream
 #include "utils.h"
-#include <sstream>
 
 /**
  * @brief Función para generar una representación en modo texto del estado de un
@@ -50,10 +50,10 @@ string info ( TicTacToe& ttt )
 {
    std::stringstream aux;
    
-   aux << "Jugador 1: " << ttt.getJugador1 () << ".\t"
-       << "Jugador 2: " << ttt.getJugador2 () << std::endl
+   aux << "Jugador 1 (X): " << ttt.getJugador1 () << ".\t"
+       << "Jugador 2 (O): " << ttt.getJugador2 () << std::endl
        << "Estado actual del tablero:" << std::endl
-       << info ( *(ttt.getTablero ()) );
+       << info ( ttt.getTablero () );
    return ( aux.str () );
 }
 

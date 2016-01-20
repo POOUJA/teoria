@@ -6,9 +6,8 @@
  * @date 2015-12-17
  */
 
-#include <stdexcept>
-#include <sstream>
-
+#include <stdexcept>   // Para utilizar las excepciones estándar
+#include <sstream>     // Para utilizar stringstream
 #include "TicTacToe.h"
 
 /**
@@ -146,11 +145,11 @@ string TicTacToe::getAnterior ()
 
 /**
  * @brief Método para consultar el tablero de la partida
- * @return Un puntero al tablero de la partida
+ * @return Una referencia al tablero de la partida
  */
-Tablero* TicTacToe::getTablero ()
+Tablero& TicTacToe::getTablero ()
 {
-   return ( _t );
+   return ( *_t );
 }
 
 /**
@@ -161,17 +160,18 @@ Tablero* TicTacToe::getTablero ()
  *        movimiento
  * @param c Columna del tablero donde el jugador correspondiente quiere hacer el
  *        movimiento
- * @retval true Si la jugada es ganadora; por tanto, acaba la partida
- * @retval false Si la jugada no es ganadora
+ * @retval 0 Si la jugada no es ganadora
+ * @retval 1 Si la jugada es ganadora; por tanto, acaba la partida
+ * @retval 2 Si la partida ha terminado con un empate
  * @throws std::out_of_range Si la posición indicada por f y c no es correcta
  *         (se sale del tablero)
  * @throws std::runtime_error Si se intenta realizar el movimiento en una
  *         posición del tablero que no está libre
  */
-bool TicTacToe::movimiento ( int f, int c )
+int TicTacToe::movimiento ( int f, int c )
 {
    char marca;
-   bool resultado;
+   int resultado;
    int turnoAnterior;
    std::stringstream mensaje;
 

@@ -5,9 +5,7 @@
  * @date 2015-12-17
  */
 
-#include <stdexcept>
-#include <sstream>
-
+#include <stdexcept>   // Para utilizar las excepciones estándar
 #include "Tablero.h"
 
 /**
@@ -87,16 +85,17 @@ char Tablero::getPos ( int f, int c )
  * @param jugador Tendrá valor 'X' o 'O' (sensible a mayúsculas y minúsculas)
  *        para indicar qué jugador (1 o 2, respectivamente) ha ocupado la
  *        posición
- * @retval true Si el movimiento implica que el jugador en cuestión ha ganado la
+ * @retval 0 Si la partida aún no ha terminado
+ * @retval 1 Si el movimiento implica que el jugador en cuestión ha ganado la
  *         partida
- * @retval false Si la partida aún no ha terminado
+ * @retval 2 Si hay un empate
  * @throws std::out_of_range Si los valores de fila o columna no están en el
  *         rango de 1 a 3, o si para identificar al jugador no se utiliza 'X' o
  *         'O'
  * @throws std::runtime_error Si la posición que se intenta ocupar no está
  *         libre (ya ha sido tomada por otro jugador anteriormente)
  */
-bool Tablero::setPos ( int f, int c, char jugador )
+int Tablero::setPos ( int f, int c, char jugador )
 {
    if ( ( f < 1 ) || ( f > 3 ) )
    {
@@ -124,7 +123,7 @@ bool Tablero::setPos ( int f, int c, char jugador )
    
    _tablero[f-1][c-1] = jugador;
    
-   return ( checkMovimientoGanador ( f-1, c-1 ) );
+   return ( checkMovimiento ( f-1, c-1 ) );
 }
 
 /**
@@ -151,14 +150,15 @@ Tablero& Tablero::operator= ( const Tablero& orig )
 
 /**
  * Comprueba si en la fila, la columna, o en alguna de las diagonales, se ha
- * completado el tres en raya
+ * completado el tres en raya, o si se ha llenado el tablero
  * @brief Método para comprobar si una jugada es ganadora
  * @param f Fila de la jugada a comprobar. El rango de valores es de 0 a 2
  * @param c Columna de la jugada a comprobar. El rango de valores es de 0 a 2
- * @retval true Si la jugada ha resultado en una combinación ganadora
- * @retval false Si la jugada NO ha resultado en una combinación ganadora
+ * @retval 1 Si la jugada ha resultado en una combinación ganadora
+ * @retval 0 Si la jugada NO ha resultado en una combinación ganadora
+ * @retval 2 Si el tablero se ha llenado y no hay ganador
  */
-bool Tablero::checkMovimientoGanador (int f, int c)
+int Tablero::checkMovimiento (int f, int c)
 {
    int contC, contF;
    int i;
@@ -185,7 +185,7 @@ bool Tablero::checkMovimientoGanador (int f, int c)
    
    if ( ( contC == 3 ) || ( contF == 3 ) )
    {
-      return ( true );
+      return ( 1 );
    }
 
    // Comprueba la diagonal principal
@@ -194,7 +194,7 @@ bool Tablero::checkMovimientoGanador (int f, int c)
       if ( ( _tablero[0][0] == _tablero[1][1] )
            && ( _tablero[0][0] == _tablero[2][2] ) )
       {
-         return ( true );
+         return ( 1 );
       }
    }
    
@@ -204,10 +204,28 @@ bool Tablero::checkMovimientoGanador (int f, int c)
       if ( ( _tablero[0][2] == _tablero[1][1] )
            && ( _tablero[0][2] == _tablero [2][0] ) )
       {
-         return ( true );
+         return ( 1 );
       }
    }
 
-   return ( false );
+   // Comprueba si en el tablero quedan posiciones sin ocupar
+   i = 0;
+   for ( contF = 0; contF < 3; contF++ )
+   {
+      for ( contC = 0; contC < 3; contC ++ )
+      {
+         if ( _tablero[contF][contC] == '-' )
+         {
+            i++;
+         }
+      }
+   }
+   
+   if ( i == 0 )
+   {
+      return ( 2 );   // Empate
+   }
+
+   return ( 0 );
 }
 

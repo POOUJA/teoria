@@ -27,14 +27,14 @@ class Tablero
    private:
       char _tablero[3][3];   ///< Posiciones
 
-      bool checkMovimientoGanador ( int f, int c );
+      int checkMovimiento ( int f, int c );
 
    public:
       Tablero ( );
       Tablero ( const Tablero& orig );
       virtual ~Tablero ( );
       char getPos ( int f, int c );
-      bool setPos ( int f, int c, char jugador );
+      int setPos ( int f, int c, char jugador );
       Tablero& operator= ( const Tablero& orig );
 };
 
