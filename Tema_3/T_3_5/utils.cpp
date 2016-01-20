@@ -6,8 +6,8 @@
  * @date 19 de enero de 2016
  */
 
+#include <sstream>   // Para utilizar stringstream
 #include "utils.h"
-#include <sstream>
 
 
 /**
@@ -58,13 +58,37 @@ string info ( const Armero& a )
 string info ( Guerrero& g )
 {
    std::stringstream aux;
+   int i, nArmas;
    
+   nArmas = g.getNumArmas ();
    aux << "Soy guerrero. Mi nombre es "
        << g.getNombre ()
        << ", mi energía es "
        << g.getEnergia ()
-       << " y puedo producir ataques de hasta "
-       << g.calculaMaxPoder ( g.getArmamento ()->getPoder () )
+       << " y tengo "
+       << nArmas
+       << " armas";
+   
+   if ( nArmas > 0 )
+   {
+      aux << ":"
+          << std::endl
+          << "-------------------------"
+          << std::endl;
+
+      for ( i = 1; i <= nArmas; i++ )
+      {
+         aux << "\t"
+             << info ( g.getArma (i) )
+             << std::endl;
+      }
+      
+      aux << "-------------------------";
+   }
+
+   aux << std::endl
+       << "Puedo producir ataques de hasta "
+       << g.getMaxPoder ()
        << " puntos de poder";
 
    return ( aux.str () );

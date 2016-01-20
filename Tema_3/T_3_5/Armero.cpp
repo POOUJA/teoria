@@ -5,10 +5,9 @@
  * @date 2015-12-31
  */
 
-#include "Armero.h"
 #include <stdlib.h>    // Para usar rand
-#include <sstream>     // Para usar stringstream
 #include <stdexcept>   // Para usar la excepción out_of_range
+#include "Armero.h"
 
 /**
  * @brief Constructor por defecto
@@ -154,26 +153,6 @@ Arma* Armero::creaArma ( string nombreArma )
 int Armero::ataque ()
 {
    return ( 0 );   // Un armero no puede atacar
-}
-
-/**
- * @brief Información del objeto
- * @return Devuelve una cadena de texto conteniendo los valores de los atributos
- *         del objeto
- */
-string Armero::info () const
-{
-   std::stringstream aux;
-   
-   aux << "Soy armero. Mi nombre es "
-       << _nombre
-       << ", mi energía es "
-       << _energia
-       << " y puedo producir armas de hasta "
-       << _maxPoderArma
-       << " puntos de poder";
-
-   return ( aux.str () );
 }
 
 /**

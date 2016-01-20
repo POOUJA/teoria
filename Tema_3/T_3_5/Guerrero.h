@@ -42,16 +42,16 @@ class Guerrero
       Guerrero ( const Guerrero& orig );
       virtual ~Guerrero ( );
       void addArma ( Arma* nArma );
-      Arma* getArma ( int cual ) const;
+      Arma& getArma ( int cual ) const;
       int getNumArmas () const;
       void setEnergia ( int nEnergia );
       int getEnergia ( ) const;
+      int getMaxPoder ();
       void setNombre ( string nNombre );
       string getNombre ( ) const;
       Arma *desarmar ( int cual );
       int desarmar ( Arma* (&armas)[_MAX_AMMO_] );
       int ataque ( int armaElegida );
-      string info ();
       Guerrero& operator= ( const Guerrero& orig );
 };
 

@@ -5,13 +5,14 @@
  * @date 2015-12-31
  */
 
-#include <cstdlib>
-#include <iostream>
-#include <stdlib.h>
-#include <time.h>
+//#include <cstdlib>
+#include <iostream>   // Para usar cout
+#include <stdlib.h>   // Para usar srand
+//#include <time.h>
 
 #include "Armero.h"
 #include "Guerrero.h"
+#include "utils.h"
 
 using namespace std;
 
@@ -31,7 +32,7 @@ int main ( int argc, char** argv )
 
    // Crea un nuevo armero
    a = new Armero ( "Merlín", 500 );
-   cout << a->info () << endl;
+   cout << info (*a) << endl;
 
    // Pide al armero que fabrique un arma
    b = a->creaArma ( "Excalibur" );
@@ -46,7 +47,7 @@ int main ( int argc, char** argv )
    c = 0;
    g->addArma (d);
    d = 0;
-   cout << g->info () << endl;
+   cout << info (*g) << endl;
 
    // El guerrero hace varios ataques de prueba
    cout << "Ataques de demostración:" << endl;

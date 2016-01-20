@@ -5,12 +5,10 @@
  * @date 2015-12-31
  */
 
-#include "Guerrero.h"
-
 #include <stdlib.h>   // Para usar rand
-#include <sstream>    // Para usar stringstream
-#include <iostream>
-#include <stdexcept>   // Para usar cerr
+#include <iostream>    // Para usar cerr
+#include <stdexcept>   // Para usar las excepciones estándar
+#include "Guerrero.h"
 
 /**
  * @brief Constructor por defecto
@@ -126,15 +124,15 @@ void Guerrero::addArma ( Arma* nArma )
  * @brief Método para consultar un arma de un guerrero
  * @param cual Índice del arma que se quiere consultar. Su valor ha de estar en
  *        el rango [1, número de armas del guerrero]
- * @return Un puntero al arma del guerrero
+ * @return Una referencia al arma del guerrero
  * @throws std::out_of_range Si se utiliza un índice que no se corresponde con
  *         ningún arma
  */
-Arma* Guerrero::getArma ( int cual ) const
+Arma& Guerrero::getArma ( int cual ) const
 {
    if ( ( cual > 0 ) && (cual <= _numArmas ) )
    {
-      return ( _armamento[cual-1] );
+      return ( *(_armamento[cual-1]) );
    }
    else
    {
@@ -169,6 +167,34 @@ void Guerrero::setEnergia ( int nEnergia )
 int Guerrero::getEnergia ( ) const
 {
    return _energia;
+}
+
+/**
+ * @brief Consultar del máximo poder destructivo de los ataques
+ * @return El máximo poder destructivo del guerrero. Si no está armado,
+ *         devuelve 0
+ */
+int Guerrero::getMaxPoder ()
+{
+   int i, max, aux;
+
+   // Aquí buscamos el arma más poderosa, y devolvemos el ataque más fuerte que
+   // se puede hacer con esa arma
+   
+   if ( _numArmas != 0 )
+   {
+      max = _armamento[0]->getPoder ();
+
+      for ( i = 1; i < _numArmas; i++ )
+      {
+         aux = _armamento[i]->getPoder ();
+         max = ( aux > max ) ? aux : max;
+      }
+      
+      return ( calculaMaxPoder ( max ) );
+   }
+
+   return ( 0 );   // Está desarmado
 }
 
 /**
@@ -276,54 +302,6 @@ int Guerrero::ataque ( int armaElegida )
    {
       throw std::out_of_range ( "Guerrero::ataque: elección de arma incorrecta" );
    }
-}
-
-/**
- * @brief Información del objeto
- * @return Devuelve una cadena de texto conteniendo los valores de los atributos
- *         del objeto
- */
-string Guerrero::info ()
-{
-   std::stringstream aux;
-   int i, maxPoderArma, maxPoderAtaque;
-   
-   aux << "Soy guerrero. Mi nombre es "
-       << _nombre
-       << ", mi energía es "
-       << _energia
-       << " y tengo "
-       << _numArmas
-       << " armas";
-   
-   if ( _numArmas > 0 )
-   {
-      aux << ":"
-          << std::endl
-          << "-------------------------"
-          << std::endl;
-
-      maxPoderArma = 0;
-      for ( i = 0; i < _numArmas; i++ )
-      {
-         aux << "\t"
-             << _armamento[i]->info ()
-             << std::endl;
-         
-         maxPoderArma = ( _armamento[i]->getPoder () > maxPoderArma ) ?
-                        _armamento[i]->getPoder () : maxPoderArma;
-      }
-      
-      maxPoderAtaque = calculaMaxPoder ( maxPoderArma );
-
-      aux << "-------------------------"
-          << std::endl
-          << "Puedo producir ataques de hasta "
-          << maxPoderAtaque
-          << " puntos de poder";
-   }
-
-   return ( aux.str () );
 }
 
 /**
