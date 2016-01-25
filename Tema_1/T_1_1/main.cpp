@@ -1,5 +1,5 @@
 /** 
- * @brief Fichero principal del ejemplo de teor脤a T_1_1
+ * @brief Fichero principal del ejemplo de teor蘟 T_1_1
  * @file main.cpp
  * @author Victor M. Rivas (vrivas@ujaen.es)
  * @date 11 de Enero de 2016, 13:13
@@ -10,13 +10,13 @@
 using namespace std;
 
 /**
- * Struct que contiene los datos impresincidibles que necesito saber de mis parejas para las pr路cticas
+ * Struct que contiene los datos impresincidibles que necesito saber de mis parejas para las pr穋ticas
  */
 struct ParejaDePracticas {
-    /// Nombre de mi compa脪ero/a
+    /// Nombre de mi compa襡ro/a
     string nombre;
 
-    /// Tel脠fono
+    /// Tel萬ono
     string telefono;
 
     /// Email
@@ -24,9 +24,9 @@ struct ParejaDePracticas {
 };
 
 /**
- * Funci脹n que me devuelve los datos de mi compa脪ero en una sola l脤nea
+ * Funci踤 que me devuelve los datos de mi compa襡ro en una sola l蘮ea
  * @param pareja La pareja para una determinada asignatura
- * @param error C脹digo de error que devuelvo si ocurre algo err脹neo
+ * @param error C踕igo de error que devuelvo si ocurre algo err踤eo
  * @return Los datos d emi pareja concatenados
  */
 string parejaDePracticas_concatenar_datos(struct ParejaDePracticas& pareja, int& error) {
@@ -39,48 +39,48 @@ string parejaDePracticas_concatenar_datos(struct ParejaDePracticas& pareja, int&
 }
 
 /**
- * @brief Funci脹n principal
- * @param argc N藱mero de argumentos
+ * @brief Funci踤 principal
+ * @param argc N?mero de argumentos
  * @param argv Caracteres que forman dichos argumentos
- * @post Crea varios structs con mis parejas de pr路cticas
+ * @post Crea varios structs con mis parejas de pr穋ticas
  */
 int main(int argc, char** argv) {
     ParejaDePracticas poo, fundamentos, algebra;
     int error = 0;
     string cadena = "";
 
-    // Datos de mi pareja de pr路cticas para POO
+    // Datos de mi pareja de pr穋ticas para POO
     poo.nombre = "Jose Lopez Perez";
     poo.telefono = "555123321";
     poo.email = "jlopez@jlopez.es";
 
-    // Datos de mi pareja de pr路cticas para fundamentos
+    // Datos de mi pareja de pr穋ticas para fundamentos
     fundamentos.nombre = "";
     fundamentos.telefono = "???";
     fundamentos.email = "las vacas del pueblo ya se han escapao, riau, riau";
 
-    // Datos de mi pareja de pr路cticas para algebra
+    // Datos de mi pareja de pr穋ticas para algebra
     algebra.nombre = "luis@gmail.com";
     algebra.telefono = "555654345566654434";
     algebra.email = "Luis Sanchez Sanchez";
 
     cadena = parejaDePracticas_concatenar_datos(poo, error);
     if (error != 0) {
-        cerr << "T_1_1: main: Hubo alg藱n problema al mostrar la pareja de pr路cticas de POO" << endl;
+        cerr << "T_1_1: main: Hubo alg?n problema al mostrar la pareja de pr穋ticas de POO" << endl;
     } else {
-        cout << "Pareja de pr路cticas de POO: " << cadena << endl;
+        cout << "Pareja de pr穋ticas de POO: " << cadena << endl;
     }
     cadena = parejaDePracticas_concatenar_datos(fundamentos, error);
     if (error != 0) {
-        cerr << "T_1_1: main: Hubo alg藱n problema al mostrar la pareja de pr路cticas de Fundamentos" << endl;
+        cerr << "T_1_1: main: Hubo alg?n problema al mostrar la pareja de pr穋ticas de Fundamentos" << endl;
     } else {
-        cout << "Pareja de pr路cticas de Fundamentos: " << cadena << endl;
+        cout << "Pareja de pr穋ticas de Fundamentos: " << cadena << endl;
     }
     cadena = parejaDePracticas_concatenar_datos(algebra, error);
     if (error != 0) {
-        cerr << "T_1_1: main: Hubo alg藱n problema al mostrar la pareja de pr路cticas de Algebra" << endl;
+        cerr << "T_1_1: main: Hubo alg?n problema al mostrar la pareja de pr穋ticas de Algebra" << endl;
     } else {
-        cout << "Pareja de pr路cticas de Algebra: " << cadena << endl;
+        cout << "Pareja de pr穋ticas de Algebra: " << cadena << endl;
     }
 
     return 0;
