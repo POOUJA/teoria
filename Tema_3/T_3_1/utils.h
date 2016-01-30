@@ -16,9 +16,12 @@
 
 using std::string;
 
-string info ( const Arma& a );
-string info ( const Armero& a );
-string info ( Guerrero& g );
+namespace t31_utils
+{
+   string info ( const Arma& a );
+   string info ( const Armero& a );
+   string info ( Guerrero& g );
+}
 
 #endif   /* UTILS_H */
 

@@ -15,7 +15,7 @@
  * @return Una cadena de texto incluyendo la información del equipo y los
  *         pilotos que lo forman
  */
-string info ( F1team& t )
+string t32_utils::info ( F1team& t )
 {
    std::stringstream aux;
 
@@ -47,7 +47,7 @@ string info ( F1team& t )
  * @return Una cadena de texto incluyendo los valores de los atributos del
  *         objeto 
  */
-string info ( Piloto &p )
+string t32_utils::info ( Piloto &p )
 {
    std::stringstream aux;
    

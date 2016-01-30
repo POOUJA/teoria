@@ -15,6 +15,7 @@
 #include "utils.h"
 
 using namespace std;
+using namespace t35_utils;
 
 /**
  * Función principal. Crea objetos, utiliza métodos y libera recursos

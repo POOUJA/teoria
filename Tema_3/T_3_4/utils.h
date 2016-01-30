@@ -10,8 +10,11 @@
 
 #include "Vivienda.h"
 
-string info ( const Dependencia& d );
-string info ( Vivienda& v );
+namespace t34_utils
+{
+   string info ( const Dependencia& d );
+   string info ( Vivienda& v );
+}
 
 #endif   /* UTILS_H */
 

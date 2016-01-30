@@ -14,9 +14,11 @@
 
 using std::string;
 
-
-string info ( F1team& t );
-string info ( Piloto& p );
+namespace t32_utils
+{
+   string info ( F1team& t );
+   string info ( Piloto& p );
+}
 
 
 #endif   /* UTILS_H */

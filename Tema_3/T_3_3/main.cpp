@@ -13,6 +13,7 @@
 #include "utils.h"
 
 using namespace std;
+using namespace t33_utils;
 
 /**
  * Se hace uso de la clase TicTacToe para llevar el control de la partida. Se

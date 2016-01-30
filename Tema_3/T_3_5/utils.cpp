@@ -16,7 +16,7 @@
  * @return Devuelve una cadena de texto conteniendo los valores de los atributos
  *         del arma
  */
-string info ( const Arma& a )
+string t35_utils::info ( const Arma& a )
 {
    std::stringstream aux;
    
@@ -35,7 +35,7 @@ string info ( const Arma& a )
  * @return Devuelve una cadena de texto conteniendo los valores de los atributos
  *         del objeto
  */
-string info ( const Armero& a )
+string t35_utils::info ( const Armero& a )
 {
    std::stringstream aux;
    
@@ -55,7 +55,7 @@ string info ( const Armero& a )
  * @return Devuelve una cadena de texto conteniendo los valores de los atributos
  *         del objeto
  */
-string info ( Guerrero& g )
+string t35_utils::info ( Guerrero& g )
 {
    std::stringstream aux;
    int i, nArmas;

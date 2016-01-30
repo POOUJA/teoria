@@ -16,7 +16,7 @@
  * @return Un texto multilínea que representa el tablero, con 'X' representando
  *         las celdas ocupadas por el jugador 1, y 'O' para el jugador 2
  */
-string info ( Tablero& t )
+string t33_utils::info ( Tablero& t )
 {
    std::stringstream aux;
    int f;
@@ -46,7 +46,7 @@ string info ( Tablero& t )
  *         las posiciones libres están señaladas con '-', las ocupadas por el
  *         jugador 1 con 'X', y las ocupadas por el jugador 2 con 'O'
  */
-string info ( TicTacToe& ttt )
+string t33_utils::info ( TicTacToe& ttt )
 {
    std::stringstream aux;
    

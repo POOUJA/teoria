@@ -15,8 +15,11 @@
 
 using std::string;
 
-string info ( Tablero& t );
-string info ( TicTacToe& ttt );
+namespace t33_utils
+{
+   string info ( Tablero& t );
+   string info ( TicTacToe& ttt );
+}
 
 #endif   /* UTILS_H */
 

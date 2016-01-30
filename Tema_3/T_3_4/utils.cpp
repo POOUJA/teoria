@@ -13,7 +13,7 @@
  * @param d Referencia a la dependencia a tratar
  * @return Una cadena de texto con los datos de la dependencia
  */
-string info ( const Dependencia& d )
+string t34_utils::info ( const Dependencia& d )
 {
    std::stringstream ss;
    
@@ -37,7 +37,7 @@ string info ( const Dependencia& d )
  * @param v Referencia a la vivienda a tratar
  * @return Un texto con información detallada de la vivienda y sus habitaciones
  */
-string info ( Vivienda& v )
+string t34_utils::info ( Vivienda& v )
 {
    std::stringstream ss;
    int i;
