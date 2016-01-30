@@ -48,7 +48,6 @@ class DiscoDuro: public Componente
       string getFormato ( ) const;
       void setCapacidad ( float capacidad );
       float getCapacidad ( ) const;
-      string info ();
       DiscoDuro& operator= ( const DiscoDuro& orig );
 };
 

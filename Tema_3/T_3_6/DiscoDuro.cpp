@@ -60,7 +60,7 @@ DiscoDuro::DiscoDuro ( ): Componente(), _capacidad (0), _conexion (otra),
 }
 
 /**
- * Inicializa un objeto con todos los parámetros
+ * Inicializa un objeto DiscoDuro con todos los parámetros, y a precio 0
  * @brief Constructor parametrizado
  * @param marca Marca del disco duro
  * @param modelo Modelo del disco duro
@@ -181,20 +181,6 @@ void DiscoDuro::setCapacidad ( float capacidad )
 float DiscoDuro::getCapacidad ( ) const
 {
    return _capacidad;
-}
-
-/**
- * @brief Método para generar un texto "user-friendly" sobre el disco
- * @return Una cadena de texto con la información del disco
- */
-string DiscoDuro::info ()
-{
-   std::stringstream aux;
-
-   aux << "Disco duro. " << Componente::info () << std::endl
-       << "   Capacidad: " << _capacidad << "\tFormato: " << _formato;
-   
-   return ( aux.str () );
 }
 
 /**

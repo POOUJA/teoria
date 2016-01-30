@@ -19,7 +19,14 @@
 class Procesador: public Componente
 {
    public:
-      enum Arquitectura { x86_32, x86_64, ARM, ARM64, otra };
+      /// Tipos de arquitectura
+      enum Arquitectura { x86_32,   ///< Intel IA-32 (32 bits)
+                          x86_64,   ///< Intel IA-64, o AMD64 (64 bits)
+                          ARM,      ///< ARM (32 bits)
+                          ARM64,    ///< ARM (64 bits)
+                          otra };
+      static Arquitectura intoArquitectura ( int valor );
+      static bool isArquitectura ( int valor );
 
    private:
       float _velocidad;    ///< Velocidad de reloj del procesador en GHz

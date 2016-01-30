@@ -207,22 +207,53 @@ int PlacaBase::getNPCIe ( ) const
    return _nPCIe;
 }
 
+/**
+ * @brief Método para cambiar el factor de forma de la placa
+ * @param fForma Identificador del factor de forma. Valor del tipo
+ *        PlacaBase::FactorDeForma
+ * @throws std::invalid_argument Si el valor que se pasa no identifica un factor
+ *         de forma
+ */
 void PlacaBase::setFForma ( PlacaBase::FactorDeForma fForma )
 {
-   this->_fForma = fForma;
+   if ( isFactorDeForma ( fForma ) == true )
+   {
+      this->_fForma = fForma;
+   }
+   else
+   {
+      throw std::invalid_argument ( "PlacaBase::setFForma: factor de forma no"
+                                    " válido" );
+   }
 }
 
+/**
+ * @brief Método para consultar el factor de forma de la placa
+ * @return Un valor del tipo PlacaBase::FactorDeForma, identificando el factor
+ *         de forma de la placa
+ */
 PlacaBase::FactorDeForma PlacaBase::getFForma ( ) const
 {
    return _fForma;
 }
 
-string PlacaBase::info ()
-{
-   
-}
-
+/**
+ * @brief Operador de asignación
+ * @param orig Objeto del que se copian los atributos
+ * @return Una referencia al propio objeto, para poder hacer asignaciones en
+ *         cascada (a=b=c)
+ */
 PlacaBase& PlacaBase::operator= ( const PlacaBase& orig )
 {
+   // Asigna los atributos heredados
+   this->Componente::operator = (orig);
+   
+   // Asigna el resto de atributos
+   _chipset = orig._chipset;
+   _fForma = orig._fForma;
+   _nPCIe = orig._nPCIe;
+   _nUSB = orig._nUSB;
+   _socket = orig._socket;
+
    return ( *this );
 }
