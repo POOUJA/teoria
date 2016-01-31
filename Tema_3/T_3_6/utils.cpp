@@ -23,7 +23,7 @@ string t36_utils::info ( const Componente& c )
    std::stringstream aux;
    
    aux << "Marca: " << c.getMarca () << "\t"
-       << "Modelo:" << c.getModelo () << "\t"
+       << "Modelo: " << c.getModelo () << "\t"
        << "S/N: " << c.getNumSerie () << "\t"
        << "Precio: " << c.getPrecio () << " Euros";
    
@@ -31,6 +31,10 @@ string t36_utils::info ( const Componente& c )
 }
 
 /**
+ * A la hora de añadir la información de los componentes individuales, utiliza
+ * la función t36_utils::info genérica para Componente. En el tema 4 veremos
+ * cómo conseguir determinar en tiempo de ejecución cuál es la clase exacta de
+ * cada objeto
  * @brief Método para generar un texto con la información de una computadora
  * @param c Referencia a la computadora a procesar
  * @return Un texto con información de la computadora y cada uno de sus
@@ -58,6 +62,8 @@ string t36_utils::info ( const Computadora& c )
          aux << "  " << i+1 << ": "
              << info ( c.getPieza (i) ) << std::endl;
       }
+
+      aux << "  Coste de la computadora: " << c.getPrecio ();
    }
 
    aux << std::endl;
@@ -67,6 +73,7 @@ string t36_utils::info ( const Computadora& c )
 
 /**
  * @brief Método para generar un texto "user-friendly" sobre el disco
+ * @param dd Referencia al objeto de clase DiscoDuro a procesar
  * @return Una cadena de texto con la información del disco
  */
 string t36_utils::info ( DiscoDuro& dd )
@@ -74,7 +81,7 @@ string t36_utils::info ( DiscoDuro& dd )
    std::stringstream aux;
 
    aux << "Disco duro. "
-       << info ( dynamic_cast<Componente&> (dd) )
+       << info ( dynamic_cast<Componente&> (dd) )   // Lo veremos en el tema 4
        << std::endl
        << "   Capacidad: " << dd.getCapacidad ()
        << "\tFormato: " << dd.getFormato ();
@@ -84,6 +91,7 @@ string t36_utils::info ( DiscoDuro& dd )
 
 /**
  * @brief Método para generar un texto "user-friendly" sobre la placa base
+ * @param pb Referencia al objeto de clase PlacaBase a procesar
  * @return Una cadena de texto con la información de la placa base
  */
 string t36_utils::info ( PlacaBase& pb )
@@ -91,13 +99,32 @@ string t36_utils::info ( PlacaBase& pb )
    std::stringstream aux;
 
    aux << "Placa base. "
-       << info ( dynamic_cast<Componente&> (pb) )
+       << info ( dynamic_cast<Componente&> (pb) )   // Lo veremos en el tema 4
        << std::endl
        << "   Factor de forma: " << pb.getFForma ()
        << "\tNúmero de slots PCIe: " << pb.getNPCIe () << std::endl
        << "   Número de puertos USB: " << pb.getNUSB ()
        << "\tChipset: " << pb.getChipset () << std::endl
        << "   Socket: " << pb.getSocket ();
+   
+   return ( aux.str () );
+}
+
+/**
+ * @brief Método para generar un texto "user-friendly" sobre un procesador
+ * @param p Referencia al objeto de clase Procesador a procesar
+ * @return Una cadena de texto con la información del procesador
+ */
+string t36_utils::info ( Procesador& p )
+{
+   std::stringstream aux;
+
+   aux << "Procesador. "
+       << info ( dynamic_cast<Componente&> (p) )   // Lo veremos en el tema 4
+       << std::endl
+       << "   Arquitectura: " << p.getArq ()
+       << "\tSocket: " << p.getSocket () << std::endl
+       << "   Velocidad en gigahercios: " << p.getVelocidad ();
    
    return ( aux.str () );
 }

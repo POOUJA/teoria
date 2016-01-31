@@ -14,6 +14,7 @@
 #include "Componente.h"
 #include "DiscoDuro.h"
 #include "PlacaBase.h"
+#include "Procesador.h"
 
 using std::string;
 
@@ -23,6 +24,7 @@ namespace t36_utils
    string info ( const Computadora& c );
    string info ( DiscoDuro& dd );
    string info ( PlacaBase& pb );
+   string info ( Procesador& p );
 }
 
 #endif   /* UTILS_H */

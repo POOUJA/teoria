@@ -185,6 +185,7 @@ Componente* Computadora::quitaPieza (int cual)
          }
       }
 
+      _nPiezas--;
       return ( aux );
    }
    else

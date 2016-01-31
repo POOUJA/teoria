@@ -6,6 +6,8 @@
  * @date 11 de enero de 2016
  */
 
+#include <stdexcept>
+
 #include "Procesador.h"
 
 /**
@@ -48,46 +50,157 @@ bool Procesador::isArquitectura ( int valor )
    }
 }
 
-
-Procesador::Procesador ( )
+/**
+ * Inicializa los atributos a sus valores por defecto: socket "---",
+ * arquitectura \em otra y velocidad 0
+ * @brief Constructor por defecto
+ */
+Procesador::Procesador ( ): Componente (), _arq (otra), _socket ("---"),
+                            _velocidad(0)
 {
 }
 
-Procesador::Procesador ( const Procesador& orig )
+/**
+ * @brief Constructor parametrizado. Inicializa el procesador con precio 0
+ * @param marca Marca del procesador. Cadena de texto sin restricciones
+ * @param modelo Modelo del procesador. Cadena de texto sin restricciones
+ * @param nSerie Número de serie del procesador. Cadena de texto sin
+ *        restricciones
+ * @param nVelocidad Velocidad del procesador en gigahercios. Ha de ser un valor
+ *        mayor o igual a cero
+ * @param nArquitectura Identificador de la arquitectura del procesador. Ha de
+ *        ser un valor válido del tipo Procesador::Arquitectura
+ * @param nSocket Socket del procesador. Cadena de texto sin restricciones
+ * @throws std::invalid_argument Si la velocidad es un número negativo, o si el
+ *         valor de arquitectura no es válido
+ */
+Procesador::Procesador ( string marca, string modelo, string nSerie,
+                         float velocidad, Arquitectura arquitectura,
+                         string socket ): Componente ( marca, modelo, nSerie, 0 ),
+                                          _arq (arquitectura), _socket (socket),
+                                          _velocidad (velocidad)
+{
+   if ( velocidad < 0 )
+   {
+      throw std::invalid_argument ( "Procesador::Procesador: valor de velocidad"
+                                    " no válido" );
+   }
+   
+   if ( isArquitectura ( arquitectura ) == false )
+   {
+      throw std::invalid_argument ( "Procesador::Procesador: identificador de"
+                                    " arquitectura incorrecto no válido" );
+   }
+}
+
+/**
+ * @brief Constructor de copia
+ * @param orig Objeto del que se copian los atributos
+ */
+Procesador::Procesador ( const Procesador& orig ): Componente (orig),
+                                                   _arq (orig._arq),
+                                                   _socket (orig._socket),
+                                                   _velocidad (orig._velocidad)
 {
 }
 
+/**
+ * @brief Destructor
+ */
 Procesador::~Procesador ( )
 {
 }
 
-void Procesador::setArq ( Procesador::Arquitectura _arq )
+/**
+ * @brief Método para cambiar la arquitectura del procesador
+ * @param nArq Un valor del tipo Procesador::Arquitectura, que identifica la
+ *        nueva arquitectura del procesador
+ * @throws std::invalid_argument Si el parámetro no es un valor válido del tipo
+ */
+void Procesador::setArq ( Procesador::Arquitectura arq )
 {
-   this->_arq = _arq;
+   if ( isArquitectura (arq) == true )
+   {
+      this->_arq = arq;
+   }
+   else
+   {
+      throw std::invalid_argument ( "Procesador::setArq: valor de arquitectura"
+                                    " no válido" );
+   }
 }
 
+/**
+ * @brief Método para consultar el tipo de arquitectura del procesador
+ * @return El identificador de la arquitectura del procesador
+ */
 Procesador::Arquitectura Procesador::getArq ( ) const
 {
    return _arq;
 }
 
-void Procesador::setSocket ( string _socket )
+/**
+ * @brief Método para cambiar el socket del procesador
+ * @param nSocket Texto con la descripción del nuevo socket
+ */
+void Procesador::setSocket ( string socket )
 {
-   this->_socket = _socket;
+   this->_socket = socket;
 }
 
+/**
+ * @brief Método para consultar el socket del procesador
+ * @return Un texto con la descripción del socket del procesador
+ */
 string Procesador::getSocket ( ) const
 {
    return _socket;
 }
 
-void Procesador::setVelocidad ( float _velocidad )
+/**
+ * @brief Método para cambiar la velocidad nominal del procesador
+ * @param nVelocidad Velocidad del procesador en gigahercios. Ha de ser un
+ *        número mayor o igual a cero
+ * @throws std::invalid_argument Si se intenta asignar al procesador una
+ *         velocidad negativa
+ */
+void Procesador::setVelocidad ( float velocidad )
 {
-   this->_velocidad = _velocidad;
+   if ( velocidad >= 0 )
+   {
+      this->_velocidad = velocidad;
+   }
+   else
+   {
+      throw std::invalid_argument ( "Procesador::setVelocidad: valor de"
+                                    " velocidad incorrecto" );
+   }
 }
 
+/**
+ * @brief Método para consultar la velocidad del procesador
+ * @return La velocidad del procesador en gigahercios
+ */
 float Procesador::getVelocidad ( ) const
 {
    return _velocidad;
 }
 
+/**
+ * @brief Operador de asignación
+ * @param orig Objeto del que se copian los datos
+ * @return Una referencia al propio objeto, para posibilitar las asignaciones en
+ *         cascada (a=b=c)
+ */
+Procesador& Procesador::operator = (const Procesador& orig)
+{
+   // Asigna los atributos heredados
+   this->Componente::operator = (orig);
+
+   // Asigna el resto de atributos
+   _arq = orig._arq;
+   _socket = orig._socket;
+   _velocidad = orig._velocidad;
+
+   return ( *this );
+}

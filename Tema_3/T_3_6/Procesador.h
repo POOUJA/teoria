@@ -35,14 +35,17 @@ class Procesador: public Componente
 
    public:
       Procesador ( );
+      Procesador ( string marca, string modelo, string nSerie, float velocidad,
+                   Arquitectura arquitectura, string socket );
       Procesador ( const Procesador& orig );
       virtual ~Procesador ( );
-      void setArq ( Arquitectura _arq );
+      void setArq ( Arquitectura arq );
       Arquitectura getArq ( ) const;
-      void setSocket ( string _socket );
+      void setSocket ( string socket );
       string getSocket ( ) const;
-      void setVelocidad ( float _velocidad );
+      void setVelocidad ( float velocidad );
       float getVelocidad ( ) const;
+      Procesador& operator= ( const Procesador& orig );
 };
 
 #endif /* PROCESADOR_H */
