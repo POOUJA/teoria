@@ -238,6 +238,18 @@ PlacaBase::FactorDeForma PlacaBase::getFForma ( ) const
 }
 
 /**
+ * Redefinición del método de la superclase. Se añade más información al número
+ * de serie, para dejar claro que se trata de una placa base
+ * @brief Método para consultar el número de serie de la placa base
+ * @return Una cadena de texto que empieza por "PB-", con el número de serie de
+ *         la placa base
+ */
+string PlacaBase::getNumSerie ()
+{
+   return ( "PB-" + Componente::getNumSerie () );
+}
+
+/**
  * @brief Operador de asignación
  * @param orig Objeto del que se copian los atributos
  * @return Una referencia al propio objeto, para poder hacer asignaciones en

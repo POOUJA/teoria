@@ -187,6 +187,18 @@ float Procesador::getVelocidad ( ) const
 }
 
 /**
+ * Redefinición del método de la superclase. Se añade más información al número
+ * de serie, para dejar claro que se trata de un procesador
+ * @brief Método para consultar el número de serie del procesador
+ * @return Una cadena de texto que empieza por "P-", con el número de serie del
+ *         procesador
+ */
+string Procesador::getNumSerie ()
+{
+   return ( "P-" + Componente::getNumSerie () );
+}
+
+/**
  * @brief Operador de asignación
  * @param orig Objeto del que se copian los datos
  * @return Una referencia al propio objeto, para posibilitar las asignaciones en

@@ -52,6 +52,7 @@ class PlacaBase: public Componente
       int getNPCIe ( ) const;
       void setFForma ( FactorDeForma fForma );
       FactorDeForma getFForma ( ) const;
+      string getNumSerie ();
       PlacaBase& operator= ( const PlacaBase& orig );
 };
 

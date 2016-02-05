@@ -184,6 +184,18 @@ float DiscoDuro::getCapacidad ( ) const
 }
 
 /**
+ * Redefinición del método de la superclase. Se añade más información al número
+ * de serie, para dejar claro que se trata de un disco duro
+ * @brief Método para consultar el número de serie del disco duro
+ * @return Una cadena de texto que empieza por "DD-", con el número de serie del
+ *         disco duro
+ */
+string DiscoDuro::getNumSerie ()
+{
+   return ( "DD-" + Componente::getNumSerie () );
+}
+
+/**
  * @brief Operador de asignación
  * @param orig Objeto del que se copian los atributos
  * @return Una referencia al mismo objeto, para que se puedan hacer asignaciones

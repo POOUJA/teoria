@@ -46,7 +46,7 @@ int main ( int argc, char** argv )
 
    p1->setPrecio (80);
    p2->setPrecio (80);
-
+   
    // Muestra la información de algunos componentes individuales, para que se
    // vea la diferencia entre unas funciones de información y otras
    cout << info (*pb1) << endl;

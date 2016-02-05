@@ -81,7 +81,11 @@ string t36_utils::info ( DiscoDuro& dd )
    std::stringstream aux;
 
    aux << "Disco duro. "
-       << info ( dynamic_cast<Componente&> (dd) )   // Lo veremos en el tema 4
+       // << info ( dynamic_cast<Componente&> (dd) )   // Lo veremos en el tema 4
+       << "Marca: " << dd.getMarca () << "\t"
+       << "Modelo: " << dd.getModelo () << "\t"
+       << "S/N: " << dd.getNumSerie () << "\t"
+       << "Precio: " << dd.getPrecio () << " Euros"
        << std::endl
        << "   Capacidad: " << dd.getCapacidad ()
        << "\tFormato: " << dd.getFormato ();
@@ -99,7 +103,11 @@ string t36_utils::info ( PlacaBase& pb )
    std::stringstream aux;
 
    aux << "Placa base. "
-       << info ( dynamic_cast<Componente&> (pb) )   // Lo veremos en el tema 4
+       // << info ( dynamic_cast<Componente&> (pb) )   // Lo veremos en el tema 4
+       << "Marca: " << pb.getMarca () << "\t"
+       << "Modelo: " << pb.getModelo () << "\t"
+       << "S/N: " << pb.getNumSerie () << "\t"
+       << "Precio: " << pb.getPrecio () << " Euros"
        << std::endl
        << "   Factor de forma: " << pb.getFForma ()
        << "\tNúmero de slots PCIe: " << pb.getNPCIe () << std::endl
@@ -120,7 +128,11 @@ string t36_utils::info ( Procesador& p )
    std::stringstream aux;
 
    aux << "Procesador. "
-       << info ( dynamic_cast<Componente&> (p) )   // Lo veremos en el tema 4
+       // << info ( dynamic_cast<Componente&> (p) )   // Lo veremos en el tema 4
+       << "Marca: " << p.getMarca () << "\t"
+       << "Modelo: " << p.getModelo () << "\t"
+       << "S/N: " << p.getNumSerie () << "\t"
+       << "Precio: " << p.getPrecio () << " Euros"
        << std::endl
        << "   Arquitectura: " << p.getArq ()
        << "\tSocket: " << p.getSocket () << std::endl
