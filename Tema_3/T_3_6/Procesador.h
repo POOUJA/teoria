@@ -45,7 +45,7 @@ class Procesador: public Componente
       string getSocket ( ) const;
       void setVelocidad ( float velocidad );
       float getVelocidad ( ) const;
-      virtual string getNumSerie ();
+      string getNumSerie ();
       Procesador& operator= ( const Procesador& orig );
 };
 
