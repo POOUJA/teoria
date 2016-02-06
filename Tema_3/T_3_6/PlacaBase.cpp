@@ -246,7 +246,7 @@ PlacaBase::FactorDeForma PlacaBase::getFForma ( ) const
  */
 string PlacaBase::getNumSerie ()
 {
-   return ( "PB-" + Componente::getNumSerie () );
+   return ( "PB-" + _numSerie );
 }
 
 /**

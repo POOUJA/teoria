@@ -20,7 +20,7 @@ using std::string;
  */
 class Componente
 {
-   private:
+   protected:
       string _marca;      ///< Marca del componente
       string _modelo;     ///< Modelo del componente
       string _numSerie;   ///< Número de serie del componente

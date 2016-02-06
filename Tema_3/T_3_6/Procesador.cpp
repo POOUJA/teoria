@@ -195,7 +195,7 @@ float Procesador::getVelocidad ( ) const
  */
 string Procesador::getNumSerie ()
 {
-   return ( "P-" + Componente::getNumSerie () );
+   return ( "P-" + _numSerie );
 }
 
 /**

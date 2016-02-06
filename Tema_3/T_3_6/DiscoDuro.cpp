@@ -192,7 +192,7 @@ float DiscoDuro::getCapacidad ( ) const
  */
 string DiscoDuro::getNumSerie ()
 {
-   return ( "DD-" + Componente::getNumSerie () );
+   return ( "DD-" + _numSerie );
 }
 
 /**
