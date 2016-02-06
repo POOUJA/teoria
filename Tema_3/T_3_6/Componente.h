@@ -34,7 +34,7 @@ class Componente
       void setPrecio ( float nPrecio );
       float getPrecio ( ) const;
       void setNumSerie ( string nNumSerie );
-      string getNumSerie ( ) const;
+      virtual string getNumSerie ( ) const;
       void setModelo ( string nModelo );
       string getModelo ( ) const;
       void setMarca ( string nMarca );
