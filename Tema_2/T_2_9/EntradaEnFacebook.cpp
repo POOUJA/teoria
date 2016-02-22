@@ -13,17 +13,17 @@
  * @param texto Texto del comentario en Facebook
  * @param maxComentarios Máximo número de comentarios que se permiten para esta entrada
  */
-EntradaEnFacebook::EntradaEnFacebook(const Usuario& usuario, std::string texto, int maxComentarios)
+EntradaEnFacebook::EntradaEnFacebook(const Usuario& _usuario, std::string _texto, int _maxComentarios)
 try :
-    usuario(usuario) // Lanza una excepción si el nombre del usuario está vacío
-    , texto(texto)
-    , maxComentarios(maxComentarios)
+    usuario(_usuario) // Lanza una excepción si el nombre del usuario está vacío
+    , texto(_texto)
+    , maxComentarios(_maxComentarios)
     , numComentarios(0)
     , comentarios(0) {
     // Estos throw NO serían capturados por el catch que acompaña al try anterior
-    if (maxComentarios <= 0) throw std::string("EntradaEnFacebook.cpp, constructor: el valor de maxComentarios debe ser mayor que 0");
-    if (maxComentarios > 100) throw std::string("EntradaEnFacebook.cpp, constructor: el valor de maxComentarios debe ser menor que 100");
-    comentarios = new std::string[maxComentarios];
+    if (_maxComentarios <= 0) throw std::string("EntradaEnFacebook.cpp, constructor: el valor de maxComentarios debe ser mayor que 0");
+    if (_maxComentarios > 100) throw std::string("EntradaEnFacebook.cpp, constructor: el valor de maxComentarios debe ser menor que 100");
+    comentarios = new std::string[_maxComentarios];
 } catch (std::string e) {
     // Este catch solo podría capturar excepciones lanzadas en los constructores de sus atributos
     std::cerr << "Error en constructor por defecto de EntradaEnFacebook: " << e << std::endl;
