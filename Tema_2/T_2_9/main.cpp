@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
         
         cout << "3) Creando una entrada con un usuario sin nombre...\n";
         unUsuario.setNombre("");
-        EntradaEnFacebook entrada( Usuario(unUsuario), "En la Feria de San Lucas", 10);
+        EntradaEnFacebook entrada( unUsuario, "En la Feria de San Lucas", 10);
 
     } catch (string e) {
         cerr << "  Error: " << e << endl;
