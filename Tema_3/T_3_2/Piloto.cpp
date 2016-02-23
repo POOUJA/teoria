@@ -113,8 +113,11 @@ string Piloto::getNombre ( ) const
  */
 Piloto& Piloto::operator = (const Piloto& orig)
 {
-   this->_puntos = orig._puntos;
-   this->_nombre = orig._nombre;
+   if ( this != &orig )
+   {
+      this->_puntos = orig._puntos;
+      this->_nombre = orig._nombre;
+   }
 
    return ( *this );
 }

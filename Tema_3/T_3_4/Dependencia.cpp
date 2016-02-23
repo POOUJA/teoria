@@ -153,9 +153,12 @@ string Dependencia::getNombre ( ) const
  */
 Dependencia& Dependencia::operator = (const Dependencia& orig)
 {
-   _nombre = orig._nombre;
-   _superficie = orig._superficie;
-   _limpia = orig._limpia;
+   if ( this != &orig )
+   {
+      _nombre = orig._nombre;
+      _superficie = orig._superficie;
+      _limpia = orig._limpia;
+   }
 
    return ( *this );
 }

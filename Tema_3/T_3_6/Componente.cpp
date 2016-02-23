@@ -152,9 +152,12 @@ string Componente::getMarca ( ) const
  */
 Componente& Componente::operator = (const Componente& orig)
 {
-   _marca = orig._marca;
-   _modelo = orig._modelo;
-   _precio = orig._precio;
-   
+   if ( this != &orig )
+   {
+      _marca = orig._marca;
+      _modelo = orig._modelo;
+      _precio = orig._precio;
+   }
+
    return ( *this );
 }

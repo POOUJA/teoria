@@ -298,9 +298,12 @@ float Computadora::getPrecio ( ) const
  */
 Computadora& Computadora::operator = (const Computadora& orig)
 {
-   _compradoEn = orig._compradoEn;
-   _marca = orig._marca;
-   _modelo = orig._modelo;
-   
+   if ( this != &orig )
+   {
+      _compradoEn = orig._compradoEn;
+      _marca = orig._marca;
+      _modelo = orig._modelo;
+   }
+
    return ( *this );
 }

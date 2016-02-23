@@ -219,9 +219,12 @@ int F1team::getPtosConstructores () const
  */
 F1team& F1team::operator = (const F1team& orig)
 {
-   _nombre = orig._nombre;
-   _p1 = orig._p1;
-   _p2 = orig._p2;
+   if ( this != &orig )
+   {
+      _nombre = orig._nombre;
+      _p1 = orig._p1;
+      _p2 = orig._p2;
+   }
    
    return ( *this );
 }

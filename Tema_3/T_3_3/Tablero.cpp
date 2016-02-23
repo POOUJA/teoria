@@ -136,12 +136,15 @@ int Tablero::setPos ( int f, int c, char jugador )
 Tablero& Tablero::operator= ( const Tablero& orig )
 {
    int i,j;
-
-   for ( i = 0; i < 3; i++ )
+   
+   if ( this != &orig )
    {
-      for ( j = 0; j < 3; j++ )
+      for ( i = 0; i < 3; i++ )
       {
-         _tablero[i][j] = orig._tablero[i][j];
+         for ( j = 0; j < 3; j++ )
+         {
+            _tablero[i][j] = orig._tablero[i][j];
+         }
       }
    }
 

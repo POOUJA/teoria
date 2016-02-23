@@ -227,10 +227,13 @@ int TicTacToe::movimiento ( int f, int c )
  */
 TicTacToe& TicTacToe::operator = (const TicTacToe& orig)
 {
-   _jugadores[0] = orig._jugadores[0];
-   _jugadores[1] = orig._jugadores[1];
-   _turno = orig._turno;
-   _t->operator = (*orig._t);
+   if ( this != &orig )
+   {
+      _jugadores[0] = orig._jugadores[0];
+      _jugadores[1] = orig._jugadores[1];
+      _turno = orig._turno;
+      _t->operator= (*orig._t);
+   }
    
    return ( *this );
 }

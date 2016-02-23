@@ -19,8 +19,6 @@ int main ( int argc, char** argv )
    int i, nC;
    Componente *aux;
    
-   throw string ( "hola");
-
    // Crea computadoras y componentes
    Computadora *c1 = new Computadora ( "IBM", "PC", 1981 );
    Computadora *c2 = new Computadora ( "Apple", "Macintosh", 1984 );

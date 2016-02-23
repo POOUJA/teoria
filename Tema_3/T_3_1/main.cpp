@@ -21,58 +21,53 @@ using namespace t31_utils;
  */
 int main ( int argc, char** argv )
 {
-   Armero *a;
-   Arma *b;
-   Guerrero *g1, *g2;
+   Armero merlin ( "Merlín", 500 );
+   Arma *espada;
+   Guerrero *lanci, *blacki;
 
    // Inicializa el generador de números pseudoaleatorios
    srand ( time (0) );
 
    // Crea un nuevo armero
-   a = new Armero ( "Merlín", 500 );
-   cout << info (*a) << endl;
+   cout << info (merlin) << endl;
 
    // Pide al armero que fabrique un arma
-   b = a->creaArma ( "Excalibur" );
-   cout << info (*b) << endl;
+   espada = merlin.creaArma ( "Excalibur" );
+   cout << info (*espada) << endl;
 
    // Crea un guerrero, y le entrega el arma
-   g1 = new Guerrero ( "Lancelot", 2500 );
-   g1->setArmamento (b);
-   b = 0;
-   cout << info (*g1) << endl;
+   lanci = new Guerrero ( "Lancelot", 2500 );
+   lanci->setArmamento (espada);
+   espada = 0;
+   cout << info (*lanci) << endl;
 
    // El guerrero hace varios ataques de prueba
    cout << "Ataques de demostración:" << endl;
-   cout << g1->ataque () << endl;
-   cout << g1->ataque () << endl;
-   cout << g1->ataque () << endl;
+   cout << lanci->ataque () << endl;
+   cout << lanci->ataque () << endl;
+   cout << lanci->ataque () << endl;
 
    // En primer lugar, hay que desarmar al guerrero antes de destruirlo
-   b = g1->desarmar ();
-   delete g1;
-   g1 = 0;
+   espada = lanci->desarmar ();
+   delete lanci;
+   lanci = 0;
 
    // Reutiliza el arma, dándosela a otro guerrero
-   g2 = new Guerrero ( "Caballero negro", 3000 );
-   g2->setArmamento (b);
-   b = 0;
-   cout << info (*g2) << endl;
+   blacki = new Guerrero ( "Caballero negro", 3000 );
+   blacki->setArmamento (espada);
+   espada = 0;
+   cout << info (*blacki) << endl;
    cout << "Ataque de demostración:" << endl;
-   cout << g2->ataque () << endl;
+   cout << blacki->ataque () << endl;
 
    // Desarma y destruye al segundo guerrero
-   b = g2->desarmar ();
-   delete g2;
-   g2 = 0;
+   espada = blacki->desarmar ();
+   delete blacki;
+   blacki = 0;
 
    // Destruye el arma
-   delete b;
-   b = 0;
-
-   // Destruye el armero
-   delete a;
-   a = 0;
+   delete espada;
+   espada = 0;
 
    return 0;
 }

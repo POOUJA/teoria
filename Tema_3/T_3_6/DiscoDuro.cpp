@@ -203,12 +203,15 @@ string DiscoDuro::getNumSerie ()
  */
 DiscoDuro& DiscoDuro::operator = (const DiscoDuro& orig)
 {
-   // Asigna los atributos heredados de Componente
-   this->Componente::operator = (orig);
-   
-   _capacidad = orig._capacidad;
-   _conexion = orig._conexion;
-   _formato = orig._formato;
+   if ( this != &orig )
+   {
+      // Asigna los atributos heredados de Componente
+      this->Componente::operator = (orig);
+
+      _capacidad = orig._capacidad;
+      _conexion = orig._conexion;
+      _formato = orig._formato;
+   }
    
    return ( *this );
 }

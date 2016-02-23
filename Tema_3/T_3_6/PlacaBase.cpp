@@ -257,15 +257,18 @@ string PlacaBase::getNumSerie ()
  */
 PlacaBase& PlacaBase::operator= ( const PlacaBase& orig )
 {
-   // Asigna los atributos heredados
-   this->Componente::operator = (orig);
-   
-   // Asigna el resto de atributos
-   _chipset = orig._chipset;
-   _fForma = orig._fForma;
-   _nPCIe = orig._nPCIe;
-   _nUSB = orig._nUSB;
-   _socket = orig._socket;
+   if ( this != &orig )
+   {
+      // Asigna los atributos heredados
+      this->Componente::operator = (orig);
+
+      // Asigna el resto de atributos
+      _chipset = orig._chipset;
+      _fForma = orig._fForma;
+      _nPCIe = orig._nPCIe;
+      _nUSB = orig._nUSB;
+      _socket = orig._socket;
+   }
 
    return ( *this );
 }

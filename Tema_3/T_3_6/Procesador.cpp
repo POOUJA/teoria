@@ -206,13 +206,16 @@ string Procesador::getNumSerie ()
  */
 Procesador& Procesador::operator = (const Procesador& orig)
 {
-   // Asigna los atributos heredados
-   this->Componente::operator = (orig);
+   if ( this != &orig )
+   {
+      // Asigna los atributos heredados
+      this->Componente::operator = (orig);
 
-   // Asigna el resto de atributos
-   _arq = orig._arq;
-   _socket = orig._socket;
-   _velocidad = orig._velocidad;
+      // Asigna el resto de atributos
+      _arq = orig._arq;
+      _socket = orig._socket;
+      _velocidad = orig._velocidad;
+   }
 
    return ( *this );
 }

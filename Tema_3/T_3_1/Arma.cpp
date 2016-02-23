@@ -107,7 +107,10 @@ int Arma::getPoder ( ) const
  */
 Arma& Arma::operator = (const Arma& orig)
 {
-   this->_poder = orig._poder;
-   
+   if ( this != &orig )
+   {
+      this->_poder = orig._poder;
+   }
+
    return ( *this );
 }

@@ -165,8 +165,11 @@ int Armero::ataque ()
  */
 Armero& Armero::operator = (const Armero& orig)
 {
-   this->_energia = orig._energia;
-   this->_maxPoderArma = orig._maxPoderArma;
-   
+   if ( this != &orig )
+   {
+      this->_energia = orig._energia;
+      this->_maxPoderArma = orig._maxPoderArma;
+   }
+
    return ( *this );
 }

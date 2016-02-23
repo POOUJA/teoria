@@ -191,7 +191,10 @@ int Guerrero::ataque ()
  */
 Guerrero& Guerrero::operator = (const Guerrero& orig)
 {
-   this->_energia = orig._energia;
+   if ( this != &orig )
+   {
+      this->_energia = orig._energia;
+   }
    
    return ( *this );
 }

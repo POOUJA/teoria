@@ -358,30 +358,33 @@ int Vivienda::getNumDependencias () const
 Vivienda &Vivienda::operator = (const Vivienda& orig)
 {
    int i;
-
-   _direccion = orig._direccion;
-   _numH = orig._numH;
    
-   // Si la vivienda ya tenía dependencias, las borra
-   if ( _numH > 0 )
+   if ( this != &orig )
    {
-      for ( i = 0; i < _numH; i++ )
-      {
-         delete _habitaciones[i];
-         _habitaciones[i] = 0;
-      }
-   }
+      _direccion = orig._direccion;
+      _numH = orig._numH;
 
-   try
-   {   
-      for ( i = 0; i < _numH; i++ )
+      // Si la vivienda ya tenía dependencias, las borra
+      if ( _numH > 0 )
       {
-         _habitaciones[i] = new Dependencia ( *orig._habitaciones[i] );
+         for ( i = 0; i < _numH; i++ )
+         {
+            delete _habitaciones[i];
+            _habitaciones[i] = 0;
+         }
       }
-   }
-   catch ( std::bad_alloc ex )
-   {
-      throw ex;
+
+      try
+      {   
+         for ( i = 0; i < _numH; i++ )
+         {
+            _habitaciones[i] = new Dependencia ( *orig._habitaciones[i] );
+         }
+      }
+      catch ( std::bad_alloc ex )
+      {
+         throw ex;
+      }
    }
    
    return ( *this );
