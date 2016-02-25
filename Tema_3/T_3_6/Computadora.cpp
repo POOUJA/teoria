@@ -123,16 +123,14 @@ int Computadora::getNPiezas ( ) const
  */
 void Computadora::addPieza ( Componente* nuevaP )
 {
-   if ( _nPiezas < _MAX_COMP_ )
-   {
-      _piezas [_nPiezas] = nuevaP;
-      _nPiezas++;
-   }
-   else
+   if ( _nPiezas >= _MAX_COMP_ )
    {
       throw std::length_error ( "Computadora::addPieza: no se pueden añadir"
                                 " más piezas" );
    }
+
+   _piezas [_nPiezas] = nuevaP;
+   _nPiezas++;
 }
 
 /**
@@ -145,15 +143,13 @@ void Computadora::addPieza ( Componente* nuevaP )
  */
 Componente& Computadora::getPieza ( int cual ) const
 {
-   if ( ( cual >= 0 ) && ( cual < _nPiezas ) )
-   {
-      return ( *(_piezas [cual]) );
-   }
-   else
+   if ( ( cual < 0 ) || ( cual >= _nPiezas ) )
    {
       throw std::out_of_range ( "Computadora::getPieza: valor de índice"
                                 " incorrecto" );
    }
+
+   return ( *(_piezas [cual]) );
 }
 
 /**
@@ -169,30 +165,28 @@ Componente* Computadora::quitaPieza (int cual)
    Componente *aux;
    int i;
 
-   if ( ( cual >= 0 ) && ( cual < _nPiezas ) )
-   {
-      aux = _piezas [cual];
-      _piezas[cual] = 0;
-
-      // Si es necesario, compacta el array de piezas
-      if ( cual < ( _nPiezas - 1 ) )
-      {
-         i = cual;
-         while ( i < ( _nPiezas - 1 ) )
-         {
-            _piezas[i] = _piezas[i+1];
-            i++;
-         }
-      }
-
-      _nPiezas--;
-      return ( aux );
-   }
-   else
+   if ( ( cual < 0 ) || ( cual >= _nPiezas ) )
    {
       throw std::out_of_range ( "Computadora::quitaPieza: valor de índice"
                                 " incorrecto" );
    }
+
+   aux = _piezas [cual];
+   _piezas[cual] = 0;
+
+   // Si es necesario, compacta el array de piezas
+   if ( cual < ( _nPiezas - 1 ) )
+   {
+      i = cual;
+      while ( i < ( _nPiezas - 1 ) )
+      {
+         _piezas[i] = _piezas[i+1];
+         i++;
+      }
+   }
+
+   _nPiezas--;
+   return ( aux );
 }
 
 /**
@@ -210,15 +204,13 @@ void Computadora::setCompradoEn ( int year )
    tiempoActual = time (0);
    fechaYhora = localtime ( &tiempoActual );
 
-   if ( ( year >= 1960 ) && ( year <= ( fechaYhora->tm_year + 1900 ) ) )
-   {
-      _compradoEn = year;
-   }
-   else
+   if ( ( year < 1960 ) || ( year > fechaYhora->tm_year + 1900 ) )
    {
       throw std::invalid_argument ( "Computadora::setCompradoEn: el año no es"
                                     " correcto" );
    }
+
+   _compradoEn = year;
 }
 
 /**

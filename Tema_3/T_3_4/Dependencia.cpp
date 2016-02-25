@@ -60,15 +60,13 @@ Dependencia::~Dependencia ( )
  */
 void Dependencia::limpiar ()
 {
-   if ( _limpia == false )
-   {
-      _limpia = true;
-   }
-   else
+   if ( _limpia == true )
    {
       throw std::runtime_error ( "Dependencia::limpiar: se intenta limpiar una"
                                  " habitación que ya está limpia" );
    }
+
+   _limpia = true;
 }
 
 /**
@@ -78,15 +76,13 @@ void Dependencia::limpiar ()
  */
 void Dependencia::ensuciar ()
 {
-   if ( _limpia == true )
-   {
-      _limpia = false;
-   }
-   else
+   if ( _limpia == false )
    {
       throw std::runtime_error ( "Dependencia::ensuciar: se intenta ensuciar una"
                                  " habitación que ya está sucia" );
    }
+
+   _limpia = false;
 }
 
 /**
@@ -107,15 +103,13 @@ bool Dependencia::estaLimpia () const
  */
 void Dependencia::setSuperficie ( float nSuperficie )
 {
-   if ( nSuperficie > 0 )
-   {
-      this->_superficie = nSuperficie;
-   }
-   else
+   if ( nSuperficie <= 0 )
    {
       throw std::invalid_argument ( "Dependencia::setSuperficie: el valor de"
                                     " superficie ha de ser un número positivo" );
    }
+
+   _superficie = nSuperficie;
 }
 
 /**

@@ -93,28 +93,25 @@ Vivienda::~Vivienda ( )
  */
 int Vivienda::addDependencia (string nombre, float superficie, bool estaLimpia)
 {
-   if ( _numH < _MAX_HAB_ )
-   {
-      try
-      {
-         _habitaciones [_numH] = new Dependencia ( nombre, superficie,
-                                                   estaLimpia );
-         _numH++;
-      }
-      catch ( std::invalid_argument ia )
-      {
-         throw std::invalid_argument ( "Vivienda::addDependencia: la superficie"
-                                       " ha de ser un número positivo" );
-      }
-      catch ( std::bad_alloc ba )
-      {
-         throw ba;
-      }
-   }
-   else
+   if ( _numH >= _MAX_HAB_ )
    {
       throw std::length_error ( "Vivienda::addDependencia: la vivienda no admite"
                                 " más habitaciones" );
+   }
+
+   try
+   {
+      _habitaciones [_numH] = new Dependencia ( nombre, superficie, estaLimpia );
+      _numH++;
+   }
+   catch ( std::invalid_argument ia )
+   {
+      throw std::invalid_argument ( "Vivienda::addDependencia: la superficie"
+                                    " ha de ser un número positivo" );
+   }
+   catch ( std::bad_alloc ba )
+   {
+      throw ba;
    }
 
    return ( _numH );
@@ -164,17 +161,15 @@ int Vivienda::borraDependencia ( string nombre )
  */
 int Vivienda::borraDependencia ( int cual )
 {
-   if ( ( cual > 0 ) && ( cual <= _numH ) )
-   {
-      delete _habitaciones[cual-1];
-      _habitaciones[cual-1] = 0;
-      return ( repasaDependencias () );
-   }
-   else
+   if ( ( cual <= 0 ) || ( cual > _numH ) )
    {
       throw std::out_of_range ( "Vivienda::borraDependencia: el índice no se"
                                 " corresponde con ninguna habitación" );
    }
+
+   delete _habitaciones[cual-1];
+   _habitaciones[cual-1] = 0;
+   return ( repasaDependencias () );
 }
 
 /**
@@ -219,68 +214,64 @@ int Vivienda::borraDependencias ( string nombre )
  */
 const Dependencia& Vivienda::getDependencia ( int cual )
 {
-   if ( ( cual > 0 ) && ( cual <= _numH ) )
-   {
-      return ( *(_habitaciones[cual-1]) );
-   }
-   else
+   if ( ( cual <= 0 ) || ( cual > _numH ) )
    {
       throw std::out_of_range ( "Vivienda::getDependencia: el índice no se"
                                 " corresponde con ninguna habitación" );
    }
+
+   return ( *(_habitaciones[cual-1]) );
 }
 
 /**
  * @brief Método para cambiar el estado de una dependencia de "sucia" a "limpia"
- * @param cual Índice de la dependencia a limpiar
+ * @param cual Índice de la dependencia a limpiar. Debe estar en el rango [1,
+ *        número de habitaciones]
  * @throws std::out_of_range Si se pasa como parámetro un índice incorrecto
  * @throws std::runtime_error Si la dependencia ya estaba limpia
  */
 void Vivienda::limpiaDependencia ( int cual )
 {
-   if ( ( cual > 0 ) && ( cual <= _numH ) )
-   {
-      try
-      {
-         _habitaciones[cual]->limpiar ();
-      }
-      catch ( std::runtime_error rt )
-      {
-         throw std::runtime_error ( "Vivienda::limpiaDependencia: la habitación"
-                                    " ya está limpia" );
-      }
-   }
-   else
+   if ( ( cual <= 0 ) || ( cual > _numH ) )
    {
       throw std::out_of_range ( "Vivienda::limpiaDependencia: el índice no se"
                                 " corresponde con ninguna habitación" );
+   }
+      
+   try
+   {
+      _habitaciones[cual-1]->limpiar ();
+   }
+   catch ( std::runtime_error rt )
+   {
+      throw std::runtime_error ( "Vivienda::limpiaDependencia: la habitación ya"
+                                 " está limpia" );
    }
 }
 
 /**
  * @brief Método para cambiar el estado de una dependencia de "limpia" a "sucia"
- * @param cual Índice de la dependencia a ensuciar
+ * @param cual Índice de la dependencia a ensuciar. Su valor ha de estar en el
+ *        rango [1, número de habitaciones]
  * @throws std::out_of_range Si se pasa como parámetro un índice incorrecto
  * @throws std::runtime_error Si la dependencia ya estaba sucia
  */
 void Vivienda::ensuciaDependencia ( int cual )
 {
-   if ( ( cual > 0 ) && ( cual <= _numH ) )
-   {
-      try
-      {
-         _habitaciones[cual]->ensuciar ();
-      }
-      catch ( std::runtime_error rt )
-      {
-         throw std::runtime_error ( "Vivienda::ensuciaDependencia: la habitación"
-                                    " ya está sucia" );
-      }
-   }
-   else
+   if ( ( cual <= 0 ) || ( cual > _numH ) )
    {
       throw std::out_of_range ( "Vivienda::ensuciaDependencia: el índice no se"
                                 " corresponde con ninguna habitación" );
+   }
+      
+   try
+   {
+      _habitaciones[cual]->ensuciar ();
+   }
+   catch ( std::runtime_error rt )
+   {
+      throw std::runtime_error ( "Vivienda::ensuciaDependencia: la habitación"
+                                 " ya está sucia" );
    }
 }
 

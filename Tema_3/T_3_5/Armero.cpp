@@ -104,14 +104,12 @@ string Armero::getNombre ( ) const
  */
 void Armero::setMaxPoderArma ( int nMaxPoderArma )
 {
-   if ( nMaxPoderArma > 0 )
-   {
-      this->_maxPoderArma = nMaxPoderArma;
-   }
-   else
+   if ( nMaxPoderArma <= 0 )
    {
       throw std::invalid_argument ( "Armero::setMaxPoderArma: valor fuera de rango" );
    }
+
+   this->_maxPoderArma = nMaxPoderArma;
 }
 
 /**

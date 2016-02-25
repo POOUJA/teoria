@@ -67,15 +67,13 @@ void Piloto::resetPuntos ()
  */
 void Piloto::addPuntos ( int puntosCarrera )
 {
-   if ( puntosCarrera >= 0 )
-   {
-      this->_puntos = puntosCarrera;
-   }
-   else
+   if ( puntosCarrera < 0 )
    {
       throw std::invalid_argument ( "Piloto::addPuntos: El valor de puntos no"
                                     " puede ser negativo" );
    }
+
+   _puntos += puntosCarrera;
 }
 
 /**

@@ -119,15 +119,13 @@ Procesador::~Procesador ( )
  */
 void Procesador::setArq ( Procesador::Arquitectura arq )
 {
-   if ( isArquitectura (arq) == true )
-   {
-      this->_arq = arq;
-   }
-   else
+   if ( isArquitectura (arq) == false )
    {
       throw std::invalid_argument ( "Procesador::setArq: valor de arquitectura"
                                     " no válido" );
    }
+
+   this->_arq = arq;
 }
 
 /**
@@ -166,15 +164,13 @@ string Procesador::getSocket ( ) const
  */
 void Procesador::setVelocidad ( float velocidad )
 {
-   if ( velocidad >= 0 )
-   {
-      this->_velocidad = velocidad;
-   }
-   else
+   if ( velocidad < 0 )
    {
       throw std::invalid_argument ( "Procesador::setVelocidad: valor de"
                                     " velocidad incorrecto" );
    }
+
+   this->_velocidad = velocidad;
 }
 
 /**

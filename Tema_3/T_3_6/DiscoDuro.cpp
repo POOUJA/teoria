@@ -116,15 +116,13 @@ DiscoDuro::~DiscoDuro ( )
  */
 void DiscoDuro::setConexion ( TipoConexion conexion )
 {
-   if ( isTipoConexion ( conexion ) == true )
-   {
-      this->_conexion = conexion;
-   }
-   else
+   if ( isTipoConexion ( conexion ) == false )
    {
       throw std::invalid_argument ( "DiscoDuro::setConexion: el tipo de conexión"
                                     " no es correcto" );
    }
+
+   this->_conexion = conexion;
 }
 
 /**
@@ -163,15 +161,13 @@ string DiscoDuro::getFormato ( ) const
  */
 void DiscoDuro::setCapacidad ( float capacidad )
 {
-   if ( capacidad > 0 )
-   {
-      this->_capacidad = capacidad;
-   }
-   else
+   if ( capacidad <= 0 )
    {
       throw std::invalid_argument ( "DiscoDuro::setCapacidad: el valor de"
                                     " capacidad ha de ser positivo" );
    }
+
+   this->_capacidad = capacidad;
 }
 
 /**

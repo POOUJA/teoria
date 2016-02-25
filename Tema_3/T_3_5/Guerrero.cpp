@@ -105,16 +105,14 @@ Guerrero::~Guerrero ( )
  */
 void Guerrero::addArma ( Arma* nArma )
 {
-   if ( _numArmas < _MAX_AMMO_ )
-   {
-      _armamento[_numArmas] = nArma;
-      _numArmas++;
-   }
-   else
+   if ( _numArmas >= _MAX_AMMO_ )
    {
       throw std::length_error ( "Guerrero::addArma: el guerrero no puede llevar"
                                 " más armas consigo" );
    }
+
+   _armamento[_numArmas] = nArma;
+   _numArmas++;
 }
 
 /**
@@ -130,15 +128,13 @@ void Guerrero::addArma ( Arma* nArma )
  */
 Arma& Guerrero::getArma ( int cual ) const
 {
-   if ( ( cual > 0 ) && (cual <= _numArmas ) )
-   {
-      return ( *(_armamento[cual-1]) );
-   }
-   else
+   if ( ( cual <= 0 ) || ( cual > _numArmas ) )
    {
       throw std::out_of_range ( "Guerrero::getArma: el guerrero no posee el arma"
                                 " solicitada" );
    }
+
+   return ( *(_armamento[cual-1]) );
 }
 
 /**
@@ -230,30 +226,28 @@ Arma *Guerrero::desarmar ( int cual )
 {
    int i;
    Arma *aDevolver = 0;
-   
-   if ( ( cual > 0 ) && ( cual <= _numArmas ) )
-   {
-      i = cual-1;
-      aDevolver = _armamento[i];
-      _armamento[i] = 0;
 
-      // Si es necesario, compacta el array de armas      
-      if ( cual < ( _numArmas - 1 ) )
-      {
-         while ( i < ( _numArmas - 1 ) )
-         {
-            _armamento[i] = _armamento[i+1];
-            i++;
-         }
-      }
-      
-      return ( aDevolver );
-   }
-   else
+   if ( ( cual <= 0 ) || ( cual > _numArmas ) )
    {
       throw std::out_of_range ( "Guerrero::desarmar: el guerrero no tiene esa"
                                 " arma" );
    }
+
+   i = cual-1;
+   aDevolver = _armamento[i];
+   _armamento[i] = 0;
+
+   // Si es necesario, compacta el array de armas      
+   if ( cual < ( _numArmas - 1 ) )
+   {
+      while ( i < ( _numArmas - 1 ) )
+      {
+         _armamento[i] = _armamento[i+1];
+         i++;
+      }
+   }
+
+   return ( aDevolver );
 }
 
 /**
@@ -292,16 +286,14 @@ int Guerrero::ataque ( int armaElegida )
    int maxPoder;
    int resultado;
    
-   if ( ( armaElegida > 0 ) && ( armaElegida <= _numArmas ) )
-   {
-      maxPoder = calculaMaxPoder ( _armamento[armaElegida-1]->getPoder () );
-      resultado = rand () % maxPoder + 1;
-      return ( resultado );
-   }
-   else
+   if ( ( armaElegida <= 0 ) || ( armaElegida > _numArmas ) )
    {
       throw std::out_of_range ( "Guerrero::ataque: elección de arma incorrecta" );
    }
+   
+   maxPoder = calculaMaxPoder ( _armamento[armaElegida-1]->getPoder () );
+   resultado = rand () % maxPoder + 1;
+   return ( resultado );
 }
 
 /**

@@ -44,7 +44,7 @@ class Guerrero
       int getMaxPoder ();
       void setNombre ( string nNombre );
       string getNombre ( ) const;
-      Arma *desarmar ();
+      Arma* desarmar ();
       int ataque ();
       Guerrero& operator= ( const Guerrero& orig );
 };

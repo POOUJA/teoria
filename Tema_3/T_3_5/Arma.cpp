@@ -80,14 +80,12 @@ string Arma::getNombre ( ) const
  */
 void Arma::setPoder ( int nPoder )
 {
-   if ( nPoder >= 0 )
-   {
-      this->_poder = nPoder;
-   }
-   else
+   if ( nPoder < 0 )
    {
       throw std::invalid_argument ( "Arma::setPoder: el valor ha de ser >= 0" );
    }
+
+   this->_poder = nPoder;
 }
 
 /**

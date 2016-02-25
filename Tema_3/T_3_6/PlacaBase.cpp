@@ -160,15 +160,13 @@ string PlacaBase::getChipset ( ) const
  */
 void PlacaBase::setNUSB ( int nUSB )
 {
-   if ( nUSB >= 0 )
-   {
-      this->_nUSB = nUSB;
-   }
-   else
+   if ( nUSB < 0 )
    {
       throw std::invalid_argument ( "PlacaBase::setNUSB: el número de puertos"
                                     " no puede ser negativo" );
    }
+
+   this->_nUSB = nUSB;
 }
 
 /**
@@ -187,15 +185,13 @@ int PlacaBase::getNUSB ( ) const
  */
 void PlacaBase::setNPCIe ( int nPCIe )
 {
-   if ( nPCIe >= 0 )
-   {
-      this->_nPCIe = nPCIe;
-   }
-   else
+   if ( nPCIe < 0 )
    {
       throw std::invalid_argument ( "PlacaBase::setNPCIe: el número de puertos"
                                     " no puede ser negativo" );
    }
+
+   this->_nPCIe = nPCIe;
 }
 
 /**
@@ -216,15 +212,13 @@ int PlacaBase::getNPCIe ( ) const
  */
 void PlacaBase::setFForma ( PlacaBase::FactorDeForma fForma )
 {
-   if ( isFactorDeForma ( fForma ) == true )
-   {
-      this->_fForma = fForma;
-   }
-   else
+   if ( isFactorDeForma ( fForma ) == false )
    {
       throw std::invalid_argument ( "PlacaBase::setFForma: factor de forma no"
                                     " válido" );
    }
+
+   this->_fForma = fForma;
 }
 
 /**

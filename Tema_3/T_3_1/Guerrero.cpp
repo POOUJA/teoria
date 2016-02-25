@@ -157,7 +157,7 @@ string Guerrero::getNombre ( ) const
  * modo, no se podrá reutilizar el arma para asignarla a otro guerrero
  * @return El puntero al arma que tenía asociada el guerrero
  */
-Arma *Guerrero::desarmar ()
+Arma* Guerrero::desarmar ()
 {
    Arma *aux = _armamento;
    _armamento = 0;

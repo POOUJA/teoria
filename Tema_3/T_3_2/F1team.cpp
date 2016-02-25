@@ -86,14 +86,12 @@ string F1team::getNombre ( ) const
  */
 void F1team::setP2 ( Piloto* nP2 )
 {
-   if ( nP2 != 0 )
-   {
-      this->_p2 = nP2;
-   }
-   else
+   if ( nP2 == 0 )
    {
       throw std::invalid_argument ( "F1team::setP2: valor incorrecto de parámetro" );
    }
+
+   this->_p2 = nP2;
 }
 
 /**
@@ -128,14 +126,12 @@ Piloto& F1team::getP2 ( ) const
  */
 void F1team::setP1 ( Piloto* nP1 )
 {
-   if ( nP1 != 0 )
-   {
-      _p1 = nP1;
-   }
-   else
+   if ( nP1 == 0 )
    {
       throw std::invalid_argument ( "F1team::setP1: valor incorrecto de parámetro" );
    }
+
+   _p1 = nP1;
 }
 
 /**
@@ -174,24 +170,20 @@ Piloto& F1team::getP1 ( ) const
  */
 void F1team::sumaPtosCarrera ( int ptosP1, int ptosP2 )
 {
-   if ( ( _p1 != 0 ) && ( _p2 != 0 ) )
+   if ( ( _p1 == 0 ) || ( _p2 == 0 ) )
    {
-      if ( ( ptosP1 >= 0 ) && ( ptosP2 >= 0 ) )
-      {
-         _p1->addPuntos ( ptosP1 );
-         _p2->addPuntos ( ptosP2 );
-      }
-      else
-      {
-         throw std::invalid_argument ( "F1team::sumaPtosCarrera: un piloto no"
-                                       " puede tener puntuación negativa" );
-      }
+      throw std::logic_error ( "F1team::sumaPtosCarrera: el equipo no tiene los"
+                               "dos pilotos asignados todavía" );
    }
-   else
+
+   if ( ( ptosP1 < 0 ) || ( ptosP2 < 0 ) )
    {
-      throw std::logic_error ( "F1team::sumaPtosCarrera: el equipo no tiene"
-                               " pilotos aún" );
+      throw std::invalid_argument ( "F1team::sumaPtosCarrera: un piloto no"
+                                    " puede tener puntuación negativa" );
    }
+
+   _p1->addPuntos ( ptosP1 );
+   _p2->addPuntos ( ptosP2 );
 }
 
 /**

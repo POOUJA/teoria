@@ -63,20 +63,18 @@ Componente::~Componente ( )
 /**
  * Permite fijar el precio de un componente en euros
  * @brief Modificador para el atributo Componente::_precio
- * @param nPrecio Nuevo precio para el componente
+ * @param nPrecio Nuevo precio para el componente. Debe ser un número no negativo
  * @throws std::invalid_argument Si el valor de nPrecio es negativo
  */
 void Componente::setPrecio ( float nPrecio )
 {
-   if ( nPrecio >= 0 )
-   {
-      this->_precio = nPrecio;
-   }
-   else
+   if ( nPrecio < 0 )
    {
       throw std::invalid_argument ( "Componente::setPrecio: el precio ha de ser"
                                     " una cantidad positiva" );
    }
+
+   this->_precio = nPrecio;
 }
 
 /**
