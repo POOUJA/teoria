@@ -23,7 +23,8 @@ int main ( int argc, char** argv )
 {
    Armero merlin ( "Merlín", 500 );
    Arma *espada;
-   Guerrero *lanci, *blacki;
+   Guerrero *lanci;
+   Guerrero blacki ( "Caballero negro", 3000 );
 
    // Inicializa el generador de números pseudoaleatorios
    srand ( time (0) );
@@ -53,17 +54,14 @@ int main ( int argc, char** argv )
    lanci = 0;
 
    // Reutiliza el arma, dándosela a otro guerrero
-   blacki = new Guerrero ( "Caballero negro", 3000 );
-   blacki->setArmamento (espada);
+   blacki.setArmamento (espada);
    espada = 0;
-   cout << info (*blacki) << endl;
+   cout << info (blacki) << endl;
    cout << "Ataque de demostración:" << endl;
-   cout << blacki->ataque () << endl;
+   cout << blacki.ataque () << endl;
 
-   // Desarma y destruye al segundo guerrero
-   espada = blacki->desarmar ();
-   delete blacki;
-   blacki = 0;
+   // Desarma al segundo guerrero
+   espada = blacki.desarmar ();
 
    // Destruye el arma
    delete espada;
