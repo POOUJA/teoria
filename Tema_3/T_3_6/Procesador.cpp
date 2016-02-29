@@ -183,14 +183,14 @@ float Procesador::getVelocidad ( ) const
 }
 
 /**
- * Redefinición del método de la superclase. Se añade más información al número
- * de serie, para dejar claro que se trata de un procesador
  * @brief Método para consultar el número de serie del procesador
  * @return Una cadena de texto que empieza por "P-", con el número de serie del
  *         procesador
  */
 string Procesador::getNumSerie ()
 {
+   /* Redefinición del método de la superclase. Se añade más información al
+    * número de serie, para dejar claro que se trata de un procesador */
    return ( "P-" + _numSerie );
 }
 

@@ -30,7 +30,7 @@ int main ( int argc, char** argv )
    {
       mc->setP2 ( 0 );
    }
-   catch ( invalid_argument ex )
+   catch ( std::invalid_argument &ex )
    {
       cout << "-----Excepción capturada----- Mensaje: "
            << ex.what ()
