@@ -42,13 +42,13 @@ int main ( int argc, char** argv )
       {
          partidaTerminada = partida->movimiento (fila, columna);
       }
-      catch ( std::out_of_range ex )
+      catch ( std::out_of_range &ex )
       {
          cout << "==============================================" << endl
               << "La posición no es correcta. Inténtelo de nuevo" << endl
               << "==============================================" << endl;
       }
-      catch ( std::runtime_error ex )
+      catch ( std::runtime_error &ex )
       {
          cout << "=================================================" << endl
               << "La posición ya estaba ocupada. Inténtelo de nuevo" << endl

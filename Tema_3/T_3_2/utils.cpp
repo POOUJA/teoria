@@ -33,7 +33,7 @@ string t32_utils::info ( F1team& t )
           << "Puntos en el campeonato de constructores: "
           << t.getPtosConstructores ();
    }
-   catch ( std::runtime_error re )
+   catch ( std::runtime_error &re )
    {
       aux << "Equipo de nueva creación. Sin datos de pilotos todavía";
    }

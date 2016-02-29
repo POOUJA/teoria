@@ -192,7 +192,7 @@ int TicTacToe::movimiento ( int f, int c )
    {
       resultado = _t->setPos ( f, c, marca );
    }
-   catch ( std::out_of_range oor )
+   catch ( std::out_of_range &oor )
    {
       // El turno no puede avanzar, porque la jugada ha sido incorrecta
       _turno = turnoAnterior;
@@ -203,7 +203,7 @@ int TicTacToe::movimiento ( int f, int c )
               << oor.what ();
       throw std::out_of_range ( mensaje.str () );
    }
-   catch ( std::runtime_error rt )
+   catch ( std::runtime_error &rt )
    {
       // El turno no puede avanzar, porque la jugada ha sido incorrecta
       _turno = turnoAnterior;
