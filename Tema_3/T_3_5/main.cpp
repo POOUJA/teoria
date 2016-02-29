@@ -24,7 +24,7 @@ int main ( int argc, char** argv )
 {
    Armero *a;
    Arma *b, *c, *d;
-   Arma *armas[Guerrero::_MAX_AMMO_];
+   Arma *armas[Guerrero::_MAX_ARMAS_];
    Guerrero *g;
    int i, aux;
 

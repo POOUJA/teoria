@@ -19,7 +19,7 @@ Guerrero::Guerrero ( ): _nombre ("---"), _numArmas (0), _energia (1000)
 {
    int i;
    
-   for ( i = 0; i < _MAX_AMMO_; i++ )
+   for ( i = 0; i < _MAX_ARMAS_; i++ )
    {
       _armamento[i] = 0;
    }
@@ -46,7 +46,7 @@ Guerrero::Guerrero ( string nNombre, int nEnergia ): _nombre (nNombre),
                                     " vital ha de ser positivo" );
    }
 
-   for ( i = 0; i < _MAX_AMMO_; i++ )
+   for ( i = 0; i < _MAX_ARMAS_; i++ )
    {
       _armamento[i] = 0;
    }
@@ -67,7 +67,7 @@ Guerrero::Guerrero ( const Guerrero& orig ): _numArmas (0),
 
    _nombre = orig._nombre + " - 2";   // Para evitar nombres duplicados
    
-   for ( i = 0; i < _MAX_AMMO_; i++ )
+   for ( i = 0; i < _MAX_ARMAS_; i++ )
    {
       _armamento[i] = 0;
    }
@@ -105,7 +105,7 @@ Guerrero::~Guerrero ( )
  */
 void Guerrero::addArma ( Arma* nArma )
 {
-   if ( _numArmas >= _MAX_AMMO_ )
+   if ( _numArmas >= _MAX_ARMAS_ )
    {
       throw std::length_error ( "Guerrero::addArma: el guerrero no puede llevar"
                                 " más armas consigo" );
@@ -257,11 +257,11 @@ Arma *Guerrero::desarmar ( int cual )
  *        este método. Los valores que tuviera almacenados se borrarán
  * @return El número de armas que se le han quitado al guerrero
  */
-int Guerrero::desarmar ( Arma* (&armas)[_MAX_AMMO_] )
+int Guerrero::desarmar ( Arma* (&armas)[_MAX_ARMAS_] )
 {
    int i;
    
-   for ( i = 0; i < _MAX_AMMO_; i++ )
+   for ( i = 0; i < _MAX_ARMAS_; i++ )
    {
       armas[i] = _armamento[i];
       _armamento[i] = 0;

@@ -23,12 +23,13 @@ using std::string;
 class Guerrero
 {
    public:
-      static const int _MAX_AMMO_ = 10;   ///< Número máximo de armas que puede tener un guerrero
+      /// Número máximo de armas que puede tener un guerrero
+      static const int _MAX_ARMAS_ = 10;
    
    private:
       string _nombre;                 ///< Nombre del guerrero
       int _energia;   ///< Energía vital. Un valor menor o igual a cero implica muerte
-      Arma *_armamento[_MAX_AMMO_];   ///< A través de este atributo se establece la asociación
+      Arma *_armamento[_MAX_ARMAS_];   ///< A través de este atributo se establece la asociación
       int _numArmas;   ///< Número de armas que tiene el guerrero en cada momento
 
       /// Factor a aplicar para calcular el valor de los ataques
@@ -50,7 +51,7 @@ class Guerrero
       void setNombre ( string nNombre );
       string getNombre ( ) const;
       Arma *desarmar ( int cual );
-      int desarmar ( Arma* (&armas)[_MAX_AMMO_] );
+      int desarmar ( Arma* (&armas)[_MAX_ARMAS_] );
       int ataque ( int armaElegida );
       Guerrero& operator= ( const Guerrero& orig );
 };
