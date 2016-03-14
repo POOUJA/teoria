@@ -237,6 +237,19 @@ Arma *Guerrero::desarmar ( int cual )
    aDevolver = _armamento[i];
    _armamento[i] = 0;
 
+   /*
+    * El array de armas queda con un hueco, correspondiente al arma que se quita
+    * al guerrero. Tenemos dos opciones:
+    * 
+    * 1- Si el orden en que están las armas NO importa, podemos simplemente mover
+    *    el último valor del vector a la posición borrada:
+    * 
+    * _armamento[i] = _armamento[_numArmas-1];
+    * 
+    * 2- Si el orden en que están las armas importa, tenemos que desplazar todos
+    *    los valores almacenados en el array de armas una posición hacia la
+    *    izquierda. Esto se hace en el siguiente código
+    */
    // Si es necesario, compacta el array de armas      
    if ( cual < ( _numArmas - 1 ) )
    {
@@ -246,6 +259,13 @@ Arma *Guerrero::desarmar ( int cual )
          i++;
       }
    }
+
+   // Hay un arma menos en el array. Optemos por la opción 1 o la 2, hay que
+   // poner a 0 la última posición que estaba ocupada antes del borrado
+   _armamento[_numArmas-1] = 0;
+   
+   // Hay un arma menos ahora
+   _numArmas--;
 
    return ( aDevolver );
 }
