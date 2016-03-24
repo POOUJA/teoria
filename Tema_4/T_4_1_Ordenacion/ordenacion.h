@@ -17,7 +17,7 @@ void intercambia(T &a, T &b) {
     b=c;
 }
 
-/**Ordena un vector de elementos de menor a mayor utilizando el algoritmo de la burbuja
+/**Ordena un vector de elementos de menor a mayor utilizando el algoritmo de selección
   @pre Los elementos tienen sobrecargado el operador < */
 template<typename T>
 void Ordena( T valores[], int numValores) {
