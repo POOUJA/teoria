@@ -46,7 +46,6 @@ void Visualiza(Ejemplar* elementos[], int numElementos ) {
 template<class T>
 bool GuardaCSV(T* elementos[], int numElementos, std::string nombreFichero ) {
     std::ofstream f;
-    std::string linea;
     bool guardado=false;
 
     f.open(nombreFichero.c_str());
@@ -54,8 +53,7 @@ bool GuardaCSV(T* elementos[], int numElementos, std::string nombreFichero ) {
     if (f.good()) {
         for ( int i=0; i<numElementos; i++ ) {
             //Polimorfismo de métodos usando la interfaz ItemCSV
-            linea=linea+elementos[i]->toCSV();
-            f << linea << std::endl;
+            f << elementos[i]->toCSV() << std::endl;
         };
         f.close();
         guardado=true;
