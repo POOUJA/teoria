@@ -16,9 +16,11 @@
  */
 class EntradaEnFacebook {
 public:
-    EntradaEnFacebook(std::string texto = "", int maxComentarios=10);
+    EntradaEnFacebook(int id = 0, std::string texto = "", int maxComentarios=10);
     EntradaEnFacebook(const EntradaEnFacebook& orig);
     virtual ~EntradaEnFacebook();
+    void SetId(int id);
+    int GetId() const;
     void SetTexto(std::string texto);
     std::string GetTexto() const;
     int GetMaxComentarios() const;
@@ -26,10 +28,14 @@ public:
     std::string GetComentario( int pos) const;
     void AddComentario( std::string nuevoComentario );
     
+    bool operator==( const EntradaEnFacebook& otro);
     bool operator<=( const EntradaEnFacebook& otro);
     EntradaEnFacebook& operator=(const EntradaEnFacebook& otro);
     
 private:
+    /// Identificador de entrada
+    int id;
+    
     /// Texto inicial de la entrada en Facebook
     std::string texto;
     

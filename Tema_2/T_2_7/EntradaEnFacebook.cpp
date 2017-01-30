@@ -11,11 +11,13 @@
  * @brief Constructor por defecto de la clase
  * @param nombre Nombre del personaje
  */
-EntradaEnFacebook::EntradaEnFacebook(std::string texto, int maxComentarios) :
-texto(texto)
-, maxComentarios(maxComentarios)
-, numComentarios(0)
-, comentarios(0) {
+EntradaEnFacebook::EntradaEnFacebook(int id, std::string texto, int maxComentarios)
+    :id(id)
+    , texto(texto)
+    , maxComentarios(maxComentarios)
+    , numComentarios(0)
+    , comentarios(0) {
+
     if (maxComentarios > 0) {
         comentarios = new std::string[maxComentarios];
     }
@@ -25,16 +27,17 @@ texto(texto)
  * @brief Constructor de copia, PRRIMERA VERSION: Se copian las direcciones de los punteros
  * @param orig Objeto cuyos datos se van a copiar
  */
-EntradaEnFacebook::EntradaEnFacebook(const EntradaEnFacebook& orig) : // Si quieres usar este costructor de copia debes poner entre comentarios el de abajo
-texto(orig.texto)
-, maxComentarios(orig.maxComentarios)
-, numComentarios(0)
-, comentarios(0) {
+EntradaEnFacebook::EntradaEnFacebook(const EntradaEnFacebook& orig) // Si quieres usar este costructor de copia debes poner entre comentarios el de abajo
+    : id(orig.id)
+    , texto(orig.texto)
+    , maxComentarios(orig.maxComentarios)
+    , numComentarios(orig.numComentarios)
+    , comentarios(0) {
+    
     comentarios = new std::string[maxComentarios];
     for (int i = 0; i < orig.numComentarios; ++i) {
         comentarios[i] = orig.comentarios[i];
     }
-    numComentarios = orig.numComentarios;
 }
 
 /**
@@ -47,6 +50,14 @@ EntradaEnFacebook::~EntradaEnFacebook() {
         delete [] comentarios;
         comentarios = 0;
     }
+}
+
+void EntradaEnFacebook::SetId(int id) {
+    this->id = id;
+}
+
+int EntradaEnFacebook::GetId() const {
+    return id;
 }
 
 /**
@@ -102,6 +113,16 @@ void EntradaEnFacebook::AddComentario(std::string nuevoComentario) {
         comentarios[numComentarios++] = nuevoComentario;
     }
 }
+
+/**
+ * @brief Compara dos entras a partir de su id
+ * @param otro Entrada cuyos datos se quieren comparar
+ * @post Devuelve true si ambas entradas tienen el mismo id
+ */
+bool EntradaEnFacebook::operator==(const EntradaEnFacebook& otro) {
+    return id==otro.id;
+}
+
 
 /**
  * @brief Compara alfabéticamente dos entras en función del texto que contienen
