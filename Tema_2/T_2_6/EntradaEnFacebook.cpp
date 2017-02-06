@@ -1,4 +1,4 @@
-/** 
+/**
  * @brief Implmentación de los métodos de la clase EntradaEnFacebook
  * @file EntradaEnFacebook.cpp
  * @author Victor M. Rivas Santos <vrivas@ujaen.es>
@@ -9,7 +9,8 @@
 
 /**
  * @brief Constructor por defecto de la clase
- * @param nombre Nombre del personaje
+ * @param texto Texto de la entrada
+ * @param maxComentarios Número máximo de comentarios admitidos a la entrada
  */
 EntradaEnFacebook::EntradaEnFacebook(std::string texto, int maxComentarios) :
 texto(texto)
@@ -22,7 +23,7 @@ texto(texto)
 }
 
 /**
- * @brief Constructor de copia, PRRIMERA VERSION: Se copian las direcciones de los punteros
+ * @brief Constructor de copia, PRIMERA VERSION: Se copian las direcciones de los punteros
  * @param orig Objeto cuyos datos se van a copiar
  */
 EntradaEnFacebook::EntradaEnFacebook(const EntradaEnFacebook& orig) : // Si quieres usar este costructor de copia debes poner entre comentarios el de abajo
@@ -70,7 +71,7 @@ std::string EntradaEnFacebook::GetTexto() const {
 
 /**
  * @brief Devuelve el máximo número de comentarios que puede tener la entrada
- * @post Devuelve el máximo número de comentarios que puede tener la entrada 
+ * @post Devuelve el máximo número de comentarios que puede tener la entrada
  */
 int EntradaEnFacebook::GetMaxComentarios() const {
     return maxComentarios;
