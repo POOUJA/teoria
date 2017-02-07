@@ -8,7 +8,7 @@
 #include "EntradaEnFacebook.h"
 
 /**
- * @brief Constructor por defecto de la clase
+ * @brief Constructor por defecto parametrizado de la clase
  * @param texto Texto de la entrada
  * @param maxComentarios Número máximo de comentarios admitidos a la entrada
  */
@@ -34,7 +34,7 @@ EntradaEnFacebook::EntradaEnFacebook(const EntradaEnFacebook& orig) // Si quiere
     , maxComentarios(orig.maxComentarios)
     , numComentarios(orig.numComentarios)
     , comentarios(0) {
-    
+
     comentarios = new std::string[maxComentarios];
     for (int i = 0; i < orig.numComentarios; ++i) {
         comentarios[i] = orig.comentarios[i];
