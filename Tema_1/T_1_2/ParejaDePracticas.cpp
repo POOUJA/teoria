@@ -33,7 +33,7 @@ ParejaDePracticas::~ParejaDePracticas() {
 }
 
 void ParejaDePracticas::setEmail(std::string email) {
-    if (email == "") throw (std::string) "ParejaDePracticas:setEmail: El valor para email está vacío";
+    if (email == "") throw std::string( "ParejaDePracticas:setEmail: El valor para email está vacío");
     this->email = email;
 }
 
@@ -42,7 +42,7 @@ std::string ParejaDePracticas::getEmail() const {
 }
 
 void ParejaDePracticas::setTelefono(std::string telefono) {
-    if (telefono == "") throw (std::string) "ParejaDePracticas:setTelefono: El valor para teléfono está vacío";
+    if (telefono == "") throw std::string ("ParejaDePracticas:setTelefono: El valor para teléfono está vacío");
     this->telefono = telefono;
 }
 
@@ -51,7 +51,7 @@ std::string ParejaDePracticas::getTelefono() const {
 }
 
 void ParejaDePracticas::setNombre(std::string nombre) {
-    if (nombre == "") throw (std::string) "ParejaDePracticas:setNombre: El valor para nombre está vacío";
+    if (nombre == "") throw std::string ("ParejaDePracticas:setNombre: El valor para nombre está vacío");
     this->nombre = nombre;
 }
 
