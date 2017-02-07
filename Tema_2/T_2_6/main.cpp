@@ -18,7 +18,7 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     // Creamos una entrada automática
-    EntradaEnFacebook entrada("Hoy mi gato se ha dormido encima de la lavadora", 30);
+    EntradaEnFacebook entrada(1, "Hoy mi gato se ha dormido encima de la lavadora", 30);
 
     // Añadimos comentarios
     entrada.AddComentario("Qué lindo tu gato!");
@@ -35,7 +35,7 @@ int main(int argc, char** argv) {
 
     // Ahroa creamos una entrada dinámica
     EntradaEnFacebook *otraEntrada = 0;
-    otraEntrada = new EntradaEnFacebook("No pillo los ejemplos de POO", 30);
+    otraEntrada = new EntradaEnFacebook(2, "No pillo los ejemplos de POO", 30);
 
     // Añadimos comentarios
     otraEntrada->AddComentario("Ánimo!! El primer año no es fácil");

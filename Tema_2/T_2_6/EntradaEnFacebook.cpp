@@ -12,13 +12,15 @@
  * @param texto Texto de la entrada
  * @param maxComentarios Número máximo de comentarios admitidos a la entrada
  */
-EntradaEnFacebook::EntradaEnFacebook(std::string texto, int maxComentarios) :
-texto(texto)
-, maxComentarios(maxComentarios)
-, numComentarios(0)
-, comentarios(0){
-    if( maxComentarios>0 ) {
-    comentarios=new std::string[maxComentarios];
+EntradaEnFacebook::EntradaEnFacebook(int id, std::string texto, int maxComentarios)
+    :id(id)
+    , texto(texto)
+    , maxComentarios(maxComentarios)
+    , numComentarios(0)
+    , comentarios(0) {
+
+    if (maxComentarios > 0) {
+        comentarios = new std::string[maxComentarios];
     }
 }
 
@@ -26,16 +28,17 @@ texto(texto)
  * @brief Constructor de copia, PRIMERA VERSION: Se copian las direcciones de los punteros
  * @param orig Objeto cuyos datos se van a copiar
  */
-EntradaEnFacebook::EntradaEnFacebook(const EntradaEnFacebook& orig) : // Si quieres usar este costructor de copia debes poner entre comentarios el de abajo
-texto(orig.texto)
-, maxComentarios(orig.maxComentarios)
-, numComentarios(0)
-, comentarios(0) {
+EntradaEnFacebook::EntradaEnFacebook(const EntradaEnFacebook& orig) // Si quieres usar este costructor de copia debes poner entre comentarios el de abajo
+    : id(orig.id)
+    , texto(orig.texto)
+    , maxComentarios(orig.maxComentarios)
+    , numComentarios(orig.numComentarios)
+    , comentarios(0) {
+    
     comentarios = new std::string[maxComentarios];
     for (int i = 0; i < orig.numComentarios; ++i) {
         comentarios[i] = orig.comentarios[i];
     }
-    numComentarios = orig.numComentarios;
 }
 
 /**
@@ -48,6 +51,14 @@ EntradaEnFacebook::~EntradaEnFacebook() {
         delete [] comentarios;
         comentarios = 0;
     }
+}
+
+void EntradaEnFacebook::SetId(int id) {
+    this->id = id;
+}
+
+int EntradaEnFacebook::GetId() const {
+    return id;
 }
 
 /**
