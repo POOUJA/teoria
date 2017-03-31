@@ -65,22 +65,22 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/t_3_4: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/t_3_4 ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/Dependencia.o: Dependencia.cpp 
+${OBJECTDIR}/Dependencia.o: Dependencia.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Dependencia.o Dependencia.cpp
 
-${OBJECTDIR}/Vivienda.o: Vivienda.cpp 
+${OBJECTDIR}/Vivienda.o: Vivienda.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Vivienda.o Vivienda.cpp
 
-${OBJECTDIR}/main.o: main.cpp 
+${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
-${OBJECTDIR}/utils.o: utils.cpp 
+${OBJECTDIR}/utils.o: utils.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/utils.o utils.cpp
@@ -91,7 +91,6 @@ ${OBJECTDIR}/utils.o: utils.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/t_3_4
 
 # Subprojects
 .clean-subprojects:

@@ -16,7 +16,7 @@
 Vivienda::Vivienda ( ): _direccion ("---"), _numH (0)
 {
    int i;
-   
+
    for ( i = 0; i < _MAX_HAB_; i++ )
    {
       _habitaciones[i] = 0;
@@ -36,7 +36,7 @@ Vivienda::Vivienda ( const Vivienda& orig ): _direccion (orig._direccion),
    int i;
 
    try
-   {   
+   {
       for ( i = 0; i < _numH; i++ )
       {
          _habitaciones[i] = new Dependencia ( *orig._habitaciones[i] );
@@ -56,7 +56,7 @@ Vivienda::Vivienda ( const Vivienda& orig ): _direccion (orig._direccion),
 Vivienda::Vivienda ( string direccion ): _direccion(direccion), _numH(0)
 {
    int i;
-   
+
    for ( i = 0; i < _MAX_HAB_; i++ )
    {
       _habitaciones[i] = 0;
@@ -70,7 +70,7 @@ Vivienda::Vivienda ( string direccion ): _direccion(direccion), _numH(0)
 Vivienda::~Vivienda ( )
 {
    int i;
-   
+
    for ( i = 0; i < _numH; i++ )
    {
       delete ( _habitaciones[i] );
@@ -130,7 +130,7 @@ int Vivienda::borraDependencia ( string nombre )
 {
    int i = 0;
    bool hecho = false;
-   
+
    while ( ( i < _numH ) && !hecho )
    {
       if ( _habitaciones[i]->getNombre () == nombre )
@@ -142,7 +142,7 @@ int Vivienda::borraDependencia ( string nombre )
 
       i++;
    }
-   
+
    if ( hecho )
    {
       return ( repasaDependencias () );
@@ -185,7 +185,7 @@ int Vivienda::borraDependencias ( string nombre )
 {
    int i = 0;
    bool hecho = false;
-   
+
    for ( i = 0; i < _numH; i++ )
    {
       if ( _habitaciones[i]->getNombre () == nombre )
@@ -195,7 +195,7 @@ int Vivienda::borraDependencias ( string nombre )
          hecho = true;
       }
    }
-   
+
    if ( hecho )
    {
       return ( repasaDependencias () );
@@ -237,7 +237,7 @@ void Vivienda::limpiaDependencia ( int cual )
       throw std::out_of_range ( "Vivienda::limpiaDependencia: el índice no se"
                                 " corresponde con ninguna habitación" );
    }
-      
+
    try
    {
       _habitaciones[cual-1]->limpiar ();
@@ -263,7 +263,7 @@ void Vivienda::ensuciaDependencia ( int cual )
       throw std::out_of_range ( "Vivienda::ensuciaDependencia: el índice no se"
                                 " corresponde con ninguna habitación" );
    }
-      
+
    try
    {
       _habitaciones[cual]->ensuciar ();
@@ -281,7 +281,7 @@ void Vivienda::ensuciaDependencia ( int cual )
 void Vivienda::limpiezaGeneral ()
 {
    int i;
-   
+
    for ( i = 0; i < _numH; i++ )
    {
       if ( _habitaciones[i]->estaLimpia () == false )
@@ -300,12 +300,12 @@ float Vivienda::getSuperficie ()
 {
    float suma = 0;
    int i;
-   
+
    for ( i = 0; i < _numH; i++ )
    {
       suma += _habitaciones[i]->getSuperficie ();
    }
-   
+
    return ( suma );
 }
 
@@ -349,11 +349,10 @@ int Vivienda::getNumDependencias () const
 Vivienda &Vivienda::operator = (const Vivienda& orig)
 {
    int i;
-   
+
    if ( this != &orig )
    {
       _direccion = orig._direccion;
-      _numH = orig._numH;
 
       // Si la vivienda ya tenía dependencias, las borra
       if ( _numH > 0 )
@@ -365,11 +364,14 @@ Vivienda &Vivienda::operator = (const Vivienda& orig)
          }
       }
 
+      _numH = 0;
+
       try
-      {   
+      {
          for ( i = 0; i < _numH; i++ )
          {
             _habitaciones[i] = new Dependencia ( *orig._habitaciones[i] );
+            _numH++;
          }
       }
       catch ( std::bad_alloc &ex )
@@ -377,7 +379,7 @@ Vivienda &Vivienda::operator = (const Vivienda& orig)
          throw ex;
       }
    }
-   
+
    return ( *this );
 }
 
@@ -392,7 +394,7 @@ int Vivienda::repasaDependencias ()
 {
    int i, contador;
    Dependencia *aux[_MAX_HAB_];
-   
+
    // Utiliza un array auxiliar, que inicializa a 0
    for ( i = 0; i < _MAX_HAB_; i++ )
    {
@@ -411,20 +413,20 @@ int Vivienda::repasaDependencias ()
          contador++;
       }
    }
-   
+
    // Copia de vuelta los punteros al array de dependencias
    for ( i = 0; i < contador; i++ )
    {
       _habitaciones[i] = aux[i];
       aux[i] = 0;
    }
-   
+
    // Pone el resto de punteros del array de dependencias a 0
    for ( ; i< _MAX_HAB_; i++ )
    {
       _habitaciones[i] = 0;
    }
-   
+
    _numH = contador;
    return ( _numH );
 }
