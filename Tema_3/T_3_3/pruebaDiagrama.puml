@@ -1,0 +1,37 @@
+@startuml
+
+hide circle
+skinparam classAttributeIconSize 0
+
+class Tablero {
+   - _tablero: carácter[3,3]
+   - checkMovimiento ( f: entero, c: entero )
+   + Tablero ()
+   + Tablero ( orig: Tablero )
+   + ~Tablero ()
+   + getPos ( f: entero, c: entero ): carácter
+   + setPos ( f: entero, c: entero, jugador: carácter ): entero
+   + operator= ( orig: Tablero ): Tablero
+}
+
+class TicTacToe {
+   - _jugadores: texto[2]
+   - _turno: entero
+   + TicTacToe ( )
+   + TicTacToe ( orig: TicTacToe )
+   + TicTacToe ( jugador1: texto, jugador2: texto )
+   + ~TicTacToe ( )
+   + setJugador1 ( j1: texto )
+   + setJugador2 ( j2: texto )
+   + getJugador1 (): texto
+   + getJugador2 (): texto
+   + getSiguiente (): texto
+   + getAnterior (): texto
+   + getTablero (): Tablero
+   + movimiento ( f: entero, c: entero ): entero
+   + operator= ( orig: TicTacToe ): TicTacToe
+}
+
+TicTacToe *--- "tablero\n1" Tablero
+
+@enduml
