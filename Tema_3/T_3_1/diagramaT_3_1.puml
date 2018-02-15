@@ -1,0 +1,62 @@
+@startuml
+hide circle
+skinparam monochrome true
+skinparam classAttributeIconSize 0
+Arma <.. Armero
+Arma <-- Guerrero
+
+Class Guerrero {
+   - _nombre: string
+   - _energia: int
+   - _armamento: Arma*
+   - calculaMaxPoder ( valorBase: int ): int
+   + Guerrero ( )
+   + Guerrero ( nNombre: string, nEnergia: int = 1000 )
+   + Guerrero ( orig: Guerrero& )
+   + ~Guerrero ( )
+   + setArmamento ( nArmamento: Arma* ): void
+   + getArmamento ( ): Arma&
+   + setEnergia ( nEnergia: int ): void
+   + getEnergia ( ): int
+   + getMaxPoder ( ): int
+   + setNombre ( nNombre: string ): void
+   + getNombre ( ): string
+   + desarmar ( ): Arma*
+   + ataque (): int
+   + operator= ( orig: Guerrero& ): Guerrero&
+}
+
+Class Arma {
+   - _poder: int
+   - _nombre: string
+   + Arma ( )
+   + Arma ( orig: Arma& )
+   + Arma ( nNombre: string, nPoder: int = 0 )
+   + ~Arma ( )
+   + setNombre ( nNombre: string ): void
+   + getNombre ( ): string
+   + setPoder ( nPoder: int ): void
+   + getPoder ( ): int
+   + operator= ( orig: Arma& ): Arma&
+}
+
+Class Armero {
+   - _energia: int
+   - _nombre: string
+   - _maxPoderArma: int
+   + Armero ( )
+   + Armero ( nNombre: string, nMPArma: int = 100 )
+   + Armero ( orig: Armero& )
+   + ~Armero ( )
+   + setEnergia ( nEnergia: int ): void
+   + getEnergia ( ): int
+   + setNombre ( nNombre: string ): void
+   + getNombre ( ): string
+   + setMaxPoderArma ( nMaxPoderArma: int ): void
+   + getMaxPoderArma ( ): int
+   + creaArma ( nombreArma: string ): Arma*
+   + ataque (): int
+   + operator= ( orig: Armero& ): Armero&
+}
+
+@enduml
