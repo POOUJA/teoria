@@ -21,22 +21,24 @@ using namespace t31_utils;
  */
 int main ( int argc, char** argv )
 {
+   // Crea un armero
    Armero merlin ( "Merlín", 500 );
    Arma *espada;
    Guerrero *lanci;
+   // Crea un guerrero
    Guerrero blacki ( "Caballero negro", 3000 );
 
    // Inicializa el generador de números pseudoaleatorios
    srand ( time (0) );
 
-   // Crea un nuevo armero
+   // Muestra los datos del armero para comprobarlo
    cout << info (merlin) << endl;
 
    // Pide al armero que fabrique un arma
    espada = merlin.creaArma ( "Excalibur" );
    cout << info (*espada) << endl;
 
-   // Crea un guerrero, y le entrega el arma
+   // Crea un guerrero en memoria dinámica, y le entrega el arma
    lanci = new Guerrero ( "Lancelot", 2500 );
    lanci->setArmamento (espada);
    espada = 0;

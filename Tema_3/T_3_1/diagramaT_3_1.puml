@@ -2,6 +2,7 @@
 hide circle
 skinparam monochrome true
 skinparam classAttributeIconSize 0
+
 Arma <.. Armero
 Arma <-- Guerrero
 
