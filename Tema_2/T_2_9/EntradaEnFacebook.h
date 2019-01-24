@@ -17,7 +17,8 @@
  */
 class EntradaEnFacebook {
 public:
-    EntradaEnFacebook(const Usuario &usuario=Usuario(), std::string texto = "", int maxComentarios=10);
+    EntradaEnFacebook() = default;
+    EntradaEnFacebook(const Usuario &usuario, std::string texto, int maxComentarios);
     EntradaEnFacebook(const EntradaEnFacebook& orig);
     virtual ~EntradaEnFacebook();
     void SetTexto(std::string texto);
@@ -35,16 +36,16 @@ private:
     Usuario usuario;
     
     /// Texto inicial de la entrada en Facebook
-    std::string texto;
+    std::string texto="";
     
     /// Vector que guarda los comentarios de la gente a esta entrada
-    std::string *comentarios;
+    std::string *comentarios=nullptr;
     
     /// Máximo número de comentarios que admitimos
-    int maxComentarios;
+    int maxComentarios=10;
     
     /// Número real de comentarios que tenemos en cada momento, siempre <=maxComentarios
-    int numComentarios;
+    int numComentarios=0;
 };
 
 #endif	/* ENTRADAENFACEBOOK_H */

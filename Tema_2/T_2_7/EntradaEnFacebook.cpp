@@ -16,7 +16,7 @@ EntradaEnFacebook::EntradaEnFacebook(int id, std::string texto, int maxComentari
     , texto(texto)
     , maxComentarios(maxComentarios)
     , numComentarios(0)
-    , comentarios(0) {
+    , comentarios(nullptr) {
 
     if (maxComentarios > 0) {
         comentarios = new std::string[maxComentarios];
@@ -32,7 +32,7 @@ EntradaEnFacebook::EntradaEnFacebook(const EntradaEnFacebook& orig) // Si quiere
     , texto(orig.texto)
     , maxComentarios(orig.maxComentarios)
     , numComentarios(orig.numComentarios)
-    , comentarios(0) {
+    , comentarios(nullptr) {
     
     comentarios = new std::string[maxComentarios];
     for (int i = 0; i < orig.numComentarios; ++i) {
@@ -48,7 +48,7 @@ EntradaEnFacebook::~EntradaEnFacebook() {
     // Liberamos la memoria que se reservó en el constructor
     if (comentarios) {
         delete [] comentarios;
-        comentarios = 0;
+        comentarios = nullptr;
     }
 }
 

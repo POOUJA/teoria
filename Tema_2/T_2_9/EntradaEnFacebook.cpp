@@ -19,7 +19,7 @@ try :
     , texto(_texto)
     , maxComentarios(_maxComentarios)
     , numComentarios(0)
-    , comentarios(0) {
+    , comentarios(nullptr) {
     // Estos throw NO serían capturados por el catch que acompaña al try anterior
     if (_maxComentarios <= 0) throw std::string("EntradaEnFacebook.cpp, constructor: el valor de maxComentarios debe ser mayor que 0");
     if (_maxComentarios > 100) throw std::string("EntradaEnFacebook.cpp, constructor: el valor de maxComentarios debe ser menor que 100");
@@ -40,7 +40,7 @@ try :
     , texto(orig.texto)
     , maxComentarios(orig.maxComentarios)
     , numComentarios(0)
-    , comentarios(0) {
+    , comentarios(nullptr) {
     comentarios = new std::string[maxComentarios];
     for (int i = 0; i < orig.numComentarios; ++i) {
         comentarios[i] = orig.comentarios[i];
@@ -59,7 +59,7 @@ EntradaEnFacebook::~EntradaEnFacebook() {
     // Liberamos la memoria que se reservó en el constructor
     if (comentarios) {
         delete [] comentarios;
-        comentarios = 0;
+        comentarios = nullptr;
     }
 }
 
@@ -117,7 +117,7 @@ void EntradaEnFacebook::AddComentario(std::string nuevoComentario) {
     if (numComentarios < maxComentarios) {
         comentarios[numComentarios++] = nuevoComentario;
     } else {
-        throw (std::string) "EntradaEnFacebook.cpp, método AddComentario: No se pueden añadir más comentarios a esta entrada";
+        throw std::string ("EntradaEnFacebook.cpp, método AddComentario: No se pueden añadir más comentarios a esta entrada");
     }
 }
 
@@ -142,7 +142,7 @@ EntradaEnFacebook& EntradaEnFacebook::operator=(const EntradaEnFacebook& orig) {
         maxComentarios = orig.maxComentarios;
         if (comentarios) {
             delete [] comentarios;
-            comentarios = 0;
+            comentarios = nullptr;
         }
         if (maxComentarios > 0) {
             comentarios = new std::string[maxComentarios];

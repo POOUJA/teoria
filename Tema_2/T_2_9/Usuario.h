@@ -11,13 +11,14 @@
 
 class Usuario {
 public:
-    Usuario(std::string nombre = "anonymous");
+    Usuario() = default;
+    Usuario(std::string nombre);
     Usuario(const Usuario& orig);
     virtual ~Usuario();
     void setNombre(std::string nombre);
     std::string getNombre() const;
 private:
-    std::string nombre;
+    std::string nombre="anonymous";
 };
 
 #endif	/* USUARIO_H */

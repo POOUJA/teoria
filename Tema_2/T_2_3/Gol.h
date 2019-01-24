@@ -32,8 +32,8 @@ public:                                                     // Métodos públicos
 private:
     bool minutoEsCorrecto(int minuto) const;                // Método privado  
 private:
-    std::string jugador;                                    // Atributo
-    int minuto;                                             // Atributo
+    std::string jugador="";                                 // Atributo
+    int minuto=0;                                           // Atributo
 };
 
 #endif	/* GOL_H */

@@ -16,7 +16,8 @@
  */
 class MiExcepcion {
 public:
-    MiExcepcion(std::string texto = "");
+    MiExcepcion() = default;
+    MiExcepcion(std::string texto );
     MiExcepcion(const MiExcepcion& orig);
     virtual ~MiExcepcion();
     void SetTexto(std::string texto);
@@ -24,7 +25,7 @@ public:
 
 private:
     /// Texto explicatorio de la excepción
-    std::string texto;
+    std::string texto="";
 };
 
 #endif	/* MIEXCEPCION_H */

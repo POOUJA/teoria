@@ -67,32 +67,32 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/t_4_6_rtti: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/t_4_6_rtti ${OBJECTFILES} ${LDLIBSOPTIONS}
 
-${OBJECTDIR}/Catalogo.o: Catalogo.cpp 
+${OBJECTDIR}/Catalogo.o: Catalogo.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Catalogo.o Catalogo.cpp
 
-${OBJECTDIR}/Ejemplar.o: Ejemplar.cpp 
+${OBJECTDIR}/Ejemplar.o: Ejemplar.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Ejemplar.o Ejemplar.cpp
 
-${OBJECTDIR}/Libro.o: Libro.cpp 
+${OBJECTDIR}/Libro.o: Libro.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Libro.o Libro.cpp
 
-${OBJECTDIR}/Revista.o: Revista.cpp 
+${OBJECTDIR}/Revista.o: Revista.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Revista.o Revista.cpp
 
-${OBJECTDIR}/main.o: main.cpp 
+${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
-${OBJECTDIR}/util_catalogo.o: util_catalogo.cpp 
+${OBJECTDIR}/util_catalogo.o: util_catalogo.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/util_catalogo.o util_catalogo.cpp
@@ -103,7 +103,6 @@ ${OBJECTDIR}/util_catalogo.o: util_catalogo.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/t_4_6_rtti
 
 # Subprojects
 .clean-subprojects:

@@ -11,9 +11,21 @@
  * @brief Constructor por defecto de la clase
  * @param nombre Nombre del personaje
  */
-Personaje::Personaje(std::string nombre, std::string* apellidoFamilia) :
-nombre(nombre)
-, apellidoFamilia(apellidoFamilia) {
+Personaje::Personaje(std::string nombre, std::string* apellidoFamilia):
+    nombre(nombre),
+    apellidoFamilia(apellidoFamilia) {
+}
+/**
+ * @brief Constructor por defecto
+ */
+Personaje::Personaje():
+    Personaje("",nullptr) {  //Llamada a constructor parametrizado
+}
+/**
+ * @brief Constructor parametrizado (solo nombre)
+ */
+Personaje::Personaje(std::string nombre):
+    Personaje(nombre,nullptr) {
 }
 
 /**

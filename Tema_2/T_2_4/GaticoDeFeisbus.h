@@ -34,7 +34,7 @@ public:
     
 private:
     /// Número de "Me gusta" que ha recibido.
-    int numMeGusta;
+    int numMeGusta=0;
 };
 
 

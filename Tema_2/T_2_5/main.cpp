@@ -23,8 +23,8 @@ int main(int argc, char** argv) {
     //Familia lannister("Lannister"), stark("Stark");
     string lannister = "Lannister", stark = "Stark";
 
-    // Creamos un par de personajes
-    Personaje tyrion("Tyrion", &lannister), robb("Robb", &stark);
+    // Creamos algunos personajes
+    Personaje tyrion("Tyrion", &lannister), robb("Robb", &stark), khaleesi("Khaleesi");
 
     // Creamos copia de Robb
     Personaje copiaRobb(robb);

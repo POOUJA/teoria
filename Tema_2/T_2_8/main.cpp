@@ -70,7 +70,7 @@ int main(int argc, char** argv) {
     cout << "+ Finalmente, usamos un puntero a la clase excepción" << endl << endl;
 
     try {
-        int *variableNoInicializada = 0;
+        int *variableNoInicializada = nullptr;
         if (!variableNoInicializada) {
             throw new MiExcepcion("Función main: No puede accederse al contenido de un puntero a NULL");
         }
@@ -82,7 +82,7 @@ int main(int argc, char** argv) {
     } catch (MiExcepcion *e) {
         cerr << "Error: " << e->GetTexto() << endl;
         delete e;
-        e = 0;
+        e = nullptr;
     }
     cout << endl;
 

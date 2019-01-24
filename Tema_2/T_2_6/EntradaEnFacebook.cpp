@@ -49,7 +49,7 @@ EntradaEnFacebook::~EntradaEnFacebook() {
     // Liberamos la memoria que se reservó en el constructor
     if (comentarios) {
         delete [] comentarios;
-        comentarios = 0;
+        comentarios = nullptr;
     }
 }
 

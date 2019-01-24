@@ -17,7 +17,9 @@
  */
 class Personaje {
 public:
-    Personaje(std::string nombre = "", std::string* apellidoFamilia = 0);
+    Personaje();
+    Personaje(std::string nombre, std::string* apellidoFamilia );
+    Personaje(std::string nombre );
     Personaje(const Personaje& orig);
     virtual ~Personaje();
     void SetNombre(std::string nombre);
@@ -25,8 +27,8 @@ public:
     void SetApellidoFamilia(std::string* apellidoFamilia);
     std::string* GetApellidoFamilia() const;
 private:
-    std::string nombre;
-    std::string *apellidoFamilia;
+    std::string nombre="";         //Objeto cadena inicializado por defecto
+    std::string *apellidoFamilia=nullptr; //los punteros deben inicializarse
 };
 
 #endif	/* PERSONAJE_H */

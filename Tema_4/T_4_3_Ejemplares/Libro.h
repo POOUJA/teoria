@@ -32,9 +32,9 @@ public:
 
     virtual std::string toCSV() const;
     virtual void fromCSV(std::string linea);
-
+    
 private:
-
+    int a;
 };
 
 #endif	/* LIBRO_H */
