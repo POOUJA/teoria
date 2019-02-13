@@ -41,7 +41,7 @@ int main ( int argc, char** argv )
    // Crea un guerrero en memoria dinámica, y le entrega el arma
    lanci = new Guerrero ( "Lancelot", 2500 );
    lanci->setArmamento (espada);
-   espada = 0;
+   espada = nullptr;
    cout << info (*lanci) << endl;
 
    // El guerrero hace varios ataques de prueba
@@ -53,11 +53,11 @@ int main ( int argc, char** argv )
    // En primer lugar, hay que desarmar al guerrero antes de destruirlo
    espada = lanci->desarmar ();
    delete lanci;
-   lanci = 0;
+   lanci = nullptr;
 
    // Reutiliza el arma, dándosela a otro guerrero
    blacki.setArmamento (espada);
-   espada = 0;
+   espada = nullptr;
    cout << info (blacki) << endl;
    cout << "Ataque de demostración:" << endl;
    cout << blacki.ataque () << endl;
@@ -67,7 +67,7 @@ int main ( int argc, char** argv )
 
    // Destruye el arma
    delete espada;
-   espada = 0;
+   espada = nullptr;
 
    return 0;
 }

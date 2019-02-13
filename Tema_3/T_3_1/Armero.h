@@ -20,16 +20,17 @@ using std::string;
  * entre el armero y el arma durante el juego, más allá del instante de la
  * creación del objeto de clase Arma.
  */
-class Armero
+class Armero final
 {
    private:
-      int    _energia;        ///< Energía vital del armero. Un valor negativo implica muerte
-      string _nombre;         ///< Nombre del armero
-      int    _maxPoderArma;   ///< Máximo poder destructivo de las armas creadas. Debe ser > 0
+      int    _energia=1000;        ///< Energía vital del armero. Un valor negativo implica muerte
+      string _nombre="";         ///< Nombre del armero
+      int    _maxPoderArma=100;   ///< Máximo poder destructivo de las armas creadas. Debe ser > 0
 
    public:
-      Armero ( );
-      Armero ( string nNombre, int nMPArma = 100 );
+      Armero ( ) = default;
+      Armero ( string nNombre);
+      Armero ( string nNombre, int nMPArma);
       Armero ( const Armero& orig );
       virtual ~Armero ( );
       void setEnergia ( int nEnergia );

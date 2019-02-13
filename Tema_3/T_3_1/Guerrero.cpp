@@ -10,13 +10,14 @@
 #include <stdexcept>   // Para usar std::invalid_argument
 #include "Guerrero.h"
 
-
 /**
- * @brief Constructor por defecto
+ * @brief Constructor parametrizado
  * 
- * Fija el nombre a "---", la energía a 1000, y está desarmado
+ * Crea un guerrero desarmado, con el nombre que se le indica y energia 1000
+ * @param nNombre Texto con el nombre a asignar al nuevo guerrero
  */
-Guerrero::Guerrero ( ): _nombre ("---"), _armamento (0), _energia (1000)
+Guerrero::Guerrero ( string nNombre):
+    Guerrero(nNombre,1000)
 {
 }
 
@@ -28,9 +29,10 @@ Guerrero::Guerrero ( ): _nombre ("---"), _armamento (0), _energia (1000)
  * @param nEnergia Valor de energía a asignar al guerrero. Ha de ser positivo
  * @throws std::invalid_argument Si el valor de energía no es un número positivo
  */
-Guerrero::Guerrero ( string nNombre, int nEnergia ): _nombre (nNombre),
-                                                     _armamento (0),
-                                                     _energia (nEnergia)
+Guerrero::Guerrero ( string nNombre, int nEnergia ): 
+    _nombre (nNombre),
+    _armamento (nullptr),
+    _energia (nEnergia)
 {
    if ( nEnergia <= 0 )
    {
@@ -47,7 +49,7 @@ Guerrero::Guerrero ( string nNombre, int nEnergia ): _nombre (nNombre),
  * que no tiene sentido que tenga la misma arma que el original
  * @param orig Objeto del que se copian los atributos
  */
-Guerrero::Guerrero ( const Guerrero& orig ): _armamento (0),
+Guerrero::Guerrero ( const Guerrero& orig ): _armamento (nullptr),
                                              _energia (orig._energia)
 {
    _nombre = orig._nombre + " - 2";   // Para evitar nombres duplicados
@@ -64,7 +66,7 @@ Guerrero::~Guerrero ( )
 {
    // Como lanzar excepciones en los destructores no es una buena práctica,
    // simplemente se muestra un mensaje por la consola de errores
-   if ( _armamento != 0 )
+   if ( _armamento != nullptr )
    {
       std::cerr << "Guerrero::~Guerrero: se destruye un guerrero sin "
                 << "desarmarlo previamente";
@@ -88,12 +90,12 @@ void Guerrero::setArmamento ( Arma* nArmamento )
  */
 const Arma& Guerrero::getArmamento ( )
 {
-   if ( _armamento == 0 )
+   if ( _armamento == nullptr )
    {
       throw std::runtime_error ( "Guerrero::getArmamento: no hay arma asociada" );
    }
 
-   return ( *_armamento );
+   return  *_armamento ;
 }
 
 /**
@@ -122,12 +124,12 @@ int Guerrero::getEnergia ( ) const
  */
 int Guerrero::getMaxPoder ()
 {
-   if ( _armamento != 0 )
+   if ( _armamento != nullptr )
    {
       return ( calculaMaxPoder ( _armamento->getPoder () ) );
    }
 
-   return ( 0 );   // Está desarmado
+   return  0 ;   // Está desarmado
 }
 
 /**
@@ -160,8 +162,8 @@ string Guerrero::getNombre ( ) const
 Arma* Guerrero::desarmar ()
 {
    Arma *aux = _armamento;
-   _armamento = 0;
-   return ( aux );
+   _armamento = nullptr;
+   return aux ;
 }
 
 /**
@@ -177,7 +179,7 @@ int Guerrero::ataque ()
    int maxPoder = getMaxPoder ();
    int resultado = rand () % maxPoder + 1;
 
-   return ( resultado );
+   return resultado;
 }
 
 /**
@@ -196,7 +198,7 @@ Guerrero& Guerrero::operator = (const Guerrero& orig)
       this->_energia = orig._energia;
    }
    
-   return ( *this );
+   return  *this ;
 }
 
 /**
@@ -210,5 +212,5 @@ Guerrero& Guerrero::operator = (const Guerrero& orig)
  */
 int Guerrero::calculaMaxPoder ( int valorBase )
 {
-   return ( int ( _FACTOR_ATAQUE_ * _energia * valorBase ) );
+   return  int ( _FACTOR_ATAQUE_ * _energia * valorBase ) ;
 }

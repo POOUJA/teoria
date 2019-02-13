@@ -9,15 +9,6 @@
 #include "Arma.h"
 
 /**
- * @brief Constructor por defecto
- * 
- * Fija el poder a 0, y el nombre a "---"
- */
-Arma::Arma ( ): _nombre("---"), _poder(0)
-{
-}
-
-/**
  * @brief Constructor de copia
  * 
  * Cambia el nombre del objeto nuevo, añadiéndole " - 2" al final, para que se
@@ -37,14 +28,28 @@ Arma::Arma ( const Arma& orig ): _poder(orig._poder)
  * @param nPoder Valor de poder para la nueva arma
  * @throws std::invalid_argument Si el valor de nPoder es < 0
  */
-Arma::Arma (const string nNombre, const int nPoder): _nombre(nNombre),
-                                                     _poder (nPoder)
+Arma::Arma (const string nNombre, const int nPoder):
+    _nombre(nNombre),
+    _poder (nPoder)
 {
    if ( nPoder < 0 )
    {
       throw std::invalid_argument ( "Arma::Arma: el poder ha de ser >= 0" );
    }
 }
+/**
+ * @brief Constructor parametrizado
+ * 
+ * @param nNombre Texto a asignar como nombre del arma
+ * @post Crea un arma con el nombre indicado y poder 0
+ * @throws std::invalid_argument Si el valor de nPoder es < 0
+ */
+Arma::Arma (const string nNombre): 
+    Arma(nNombre,0)
+{
+}
+
+
 
 /**
  * @brief Destructor
