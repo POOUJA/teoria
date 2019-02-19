@@ -20,13 +20,13 @@
  */
 DiscoDuro::TipoConexion DiscoDuro::intoTipoConexion (int valor)
 {
-   if ( ( valor >= SATA ) && ( valor <= otra ) )
+   if ( ( valor >= SATA ) && ( valor <= OTRA ) )
    {
       return ( DiscoDuro::TipoConexion ( valor ) );
    }
    else
    {
-      return ( otra );
+      return ( OTRA );
    }
 }
 
@@ -41,7 +41,7 @@ DiscoDuro::TipoConexion DiscoDuro::intoTipoConexion (int valor)
  */
 bool DiscoDuro::isTipoConexion ( int valor )
 {
-   if ( ( valor >= SATA ) && ( valor <= otra ) )
+   if ( ( valor >= SATA ) && ( valor <= OTRA ) )
    {
       return ( true );
    }
@@ -51,13 +51,6 @@ bool DiscoDuro::isTipoConexion ( int valor )
    }
 }
 
-/**
- * @brief Constructor por defecto. Inicializa los atributos a valores por defecto
- */
-DiscoDuro::DiscoDuro ( ): Componente(), _capacidad (0), _conexion (otra),
-                          _formato ("---")
-{
-}
 
 /**
  * Inicializa un objeto DiscoDuro con todos los parámetros, y a precio 0
@@ -76,19 +69,14 @@ DiscoDuro::DiscoDuro ( string marca, string modelo, string nSerie,
                        TipoConexion conexion ): Componente (marca, modelo, nSerie, 0),
                                                 _capacidad (capacidad),
                                                 _formato (formato),
-                                                _conexion (conexion)
-{
-   if ( capacidad <= 0 )
-   {
-      throw std::invalid_argument ( "DiscoDuro::DiscoDuro: la capacidad ha de"
-                                    " ser una cantidad positiva" );
-   }
-
-   if ( isTipoConexion (conexion) == false )
-   {
-      throw std::invalid_argument ( "DiscoDuro::DiscoDuro: tipo de conexión"
-                                    " incorrecto" );
-   }
+                                                _conexion (conexion) {
+    try {
+        this->setCapacidad(capacidad); //Validar y asignar o lanza std::invalid_argument
+        this->setConexion(conexion); //Validar y asignar o lanza std::invalid_argument
+    } catch (std::invalid_argument &e) {
+        //Añadimos id del método al error y relanzamos la excepción
+        throw std::invalid_argument("[DiscoDuro::DiscoDuro] " + std::string(e.what()));
+    }
 }
 
 /**

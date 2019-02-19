@@ -19,13 +19,13 @@
  */
 PlacaBase::FactorDeForma PlacaBase::intoFactorDeForma (int valor)
 {
-   if ( ( valor >= ATX ) && ( valor <= otro ) )
+   if ( ( valor >= ATX ) && ( valor <= OTRO ) )
    {
       return ( PlacaBase::FactorDeForma ( valor ) );
    }
    else
    {
-      return ( otro );
+      return ( OTRO );
    }
 }
 
@@ -40,7 +40,7 @@ PlacaBase::FactorDeForma PlacaBase::intoFactorDeForma (int valor)
  */
 bool PlacaBase::isFactorDeForma ( int valor )
 {
-   if ( ( valor >= ATX ) && ( valor <= otro ) )
+   if ( ( valor >= ATX ) && ( valor <= OTRO ) )
    {
       return ( true );
    }
@@ -48,14 +48,6 @@ bool PlacaBase::isFactorDeForma ( int valor )
    {
       return ( false );
    }
-}
-
-/**
- * @brief Constructor por defecto. Inicializa los atributos
- */
-PlacaBase::PlacaBase ( ): Componente (), _fForma (otro), _nPCIe (0), _nUSB (0),
-                          _chipset ("---"), _socket ("---")
-{
 }
 
 /**
@@ -73,28 +65,22 @@ PlacaBase::PlacaBase ( ): Componente (), _fForma (otro), _nPCIe (0), _nUSB (0),
  */
 PlacaBase::PlacaBase ( string marca, string modelo, string nSerie,
                        FactorDeForma fForma, int nPCIe, int nUSB, string chipset,
-                       string socket ): Componente (marca, modelo, nSerie, 0),
-                                        _fForma (fForma), _nPCIe (nPCIe),
-                                        _nUSB (nUSB), _chipset (chipset),
-                                        _socket (socket)
+                       string socket ):
+        Componente (marca, modelo, nSerie, 0),
+        _fForma (fForma), _nPCIe (nPCIe),
+        _nUSB (nUSB), _chipset (chipset),
+        _socket (socket)
 {
-   if ( isFactorDeForma (fForma) == false )
-   {
-      throw std::invalid_argument ( "PlacaBase::PlacaBase: el factor de forma"
-                                    " no es correcto" );
-   }
-   
-   if ( nPCIe < 0 )
-   {
-      throw std::invalid_argument ( "PlacaBase::PlacaBase: el número de puertos"
-                                    " PCIe no es correcto" );
-   }
 
-   if ( nUSB < 0 )
-   {
-      throw std::invalid_argument ( "PlacaBase::PlacaBase: el número de puertos"
-                                    " USB no es correcto" );
-   }
+    try {
+        this->setFForma(fForma); //Validar y asignar o excepción std::invalid_argument
+        this->setNUSB(nUSB);
+        this->setNPCIe(nPCIe);
+    }catch(std::invalid_argument &e) {
+        //Añadimos id del método al error y relanzamos la excepción
+        throw std::invalid_argument( "[PlacaBase::PlacaBase] "+std::string(e.what()) );
+    }
+
 }
 
 /**

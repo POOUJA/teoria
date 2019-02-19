@@ -26,11 +26,11 @@ class Computadora
       static const int _MAX_COMP_ = 10;
 
    private:
-      string _marca;                     ///< Marca de la computadora
-      string _modelo;                    ///< Modelo de la computadora
-      int _compradoEn;                   ///< Año en que fue comprada
+      string _marca="---";                     ///< Marca de la computadora
+      string _modelo="----";                    ///< Modelo de la computadora
+      int _compradoEn=1960;                   ///< Año en que fue comprada
       Componente* _piezas[_MAX_COMP_];   ///< Piezas de la computadora
-      int _nPiezas;                      ///< Número de piezas de la computadora
+      int _nPiezas=0;                      ///< Número de piezas de la computadora
 
    public:
       Computadora ( );

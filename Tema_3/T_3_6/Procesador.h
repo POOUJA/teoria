@@ -24,17 +24,17 @@ class Procesador: public Componente
                           x86_64,   ///< Intel IA-64, o AMD64 (64 bits)
                           ARM,      ///< ARM (32 bits)
                           ARM64,    ///< ARM (64 bits)
-                          otra };
+                          OTRA };
       static Arquitectura intoArquitectura ( int valor );
       static bool isArquitectura ( int valor );
 
    private:
-      float _velocidad;    ///< Velocidad de reloj del procesador en GHz
-      string _socket;      ///< Modelo de socket al que se ajusta el procesador
-      Arquitectura _arq;   ///< Arquitectura del procesador
+      float _velocidad=0;        ///< Velocidad de reloj del procesador en GHz
+      string _socket="---";      ///< Modelo de socket al que se ajusta el procesador
+      Arquitectura _arq=OTRA;    ///< Arquitectura del procesador
 
    public:
-      Procesador ( );
+      Procesador ( ) = default;
       Procesador ( string marca, string modelo, string nSerie, float velocidad,
                    Arquitectura arquitectura, string socket );
       Procesador ( const Procesador& orig );
