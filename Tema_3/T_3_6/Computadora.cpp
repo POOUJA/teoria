@@ -277,6 +277,10 @@ float Computadora::getPrecio ( ) const
  * No tiene sentido que haya dos computadoras con los mismos componentes, así
  * que copia los atributos de tipos simples solamente y elimina piezas en computadora
  * asignada
+ * @note Aquí estamos implementando una relación de agregación, así que NO es
+ *       responsabilidad de la clase Computadora el eliminar sus componentes.
+ *       Será responsabilidad de quien utilice esta clase el sacar los
+ *       componentes y destruirlos ANTES de hacer una asignación
  * @brief Operador de asignación
  * @param orig Objeto del que se copian los atributos
  * @return Una referencia al mismo objeto, para posibilitar las asignaciones en
@@ -290,11 +294,11 @@ Computadora& Computadora::operator = (const Computadora& orig)
       _marca = orig._marca;
       _modelo = orig._modelo;
       
-      //Eliminamos piezas de la computadora actual
-      for (int i = 0; i < _nPiezas; i++) {
-            _piezas[i]=nullptr;
-
-       }
+      // Ponemos a nullptr los punteros a las piezas de la computadora actual
+      for (int i = 0; i < _nPiezas; i++)
+      {
+         _piezas[i]=nullptr;
+      }
    }
 
    return ( *this );
