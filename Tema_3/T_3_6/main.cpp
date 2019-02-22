@@ -145,6 +145,9 @@ void v2_objetos_dinamicos (  )
    cout << info (*p1) << endl;
 
    // Asigna los componentes a las computadoras
+   // IMPORTANTE: como Computadora implementa una relación de AGREGACIÓN, NO es
+   // responsable de destruir los objetos de clase Componente. Estos se deberán
+   // destruir más adelante en esta misma función
    c1->addPieza (pb1);
    pb1 = nullptr;
    c1->addPieza (dd1);
@@ -164,7 +167,8 @@ void v2_objetos_dinamicos (  )
    cout << info (*c2) << endl;
    
    // Libera los recursos. A las computadoras tiene que quitarle los componentes
-   // antes de liberarlas
+   // antes de liberarlas, ya que EN LAS COMPUTADORAS ESTAMOS AGREGANDO OBJETOS
+   // EN MEMORIA DINÁMICA 
    nC = c1->getNPiezas ();
    for ( i = 0; i < nC; i++ )
    {
