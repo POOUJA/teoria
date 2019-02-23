@@ -9,14 +9,6 @@
 #include "Dependencia.h"
 
 /**
- * Inicializa una dependencia con superficie 0, nombre "---" y sucia
- * @brief Constructor por defecto
- */
-Dependencia::Dependencia ( ): _nombre ("---"), _superficie(0), _limpia (false)
-{
-}
-
-/**
  * @brief Constructor de copia
  * @param orig
  */

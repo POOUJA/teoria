@@ -18,12 +18,12 @@ using std::string;
 class Dependencia
 {
    private:
-      string _nombre;      ///< Nombre de la dependencia
-      float _superficie;   ///< Superficie en metros cuadrados
-      bool _limpia;        ///< Indica si la dependencia está limpia
+      string _nombre = "";      ///< Nombre de la dependencia
+      float _superficie = 0;   ///< Superficie en metros cuadrados
+      bool _limpia = true;        ///< Indica si la dependencia está limpia
 
    public:
-      Dependencia ( );
+      Dependencia ( ) = default;
       Dependencia ( const Dependencia& orig );
       Dependencia ( string nombre, float superficie, bool estaLimpia );
       virtual ~Dependencia ( );

@@ -13,13 +13,13 @@
  * La dirección inicial de la vivienda es "---", sin habitaciones
  * @brief Constructor por defecto
  */
-Vivienda::Vivienda ( ): _direccion ("---"), _numH (0)
+Vivienda::Vivienda ( ): _direccion (""), _numH (0)
 {
    int i;
 
    for ( i = 0; i < _MAX_HAB_; i++ )
    {
-      _habitaciones[i] = 0;
+      _habitaciones[i] = nullptr;
    }
 }
 
@@ -59,7 +59,7 @@ Vivienda::Vivienda ( string direccion ): _direccion(direccion), _numH(0)
 
    for ( i = 0; i < _MAX_HAB_; i++ )
    {
-      _habitaciones[i] = 0;
+      _habitaciones[i] = nullptr;
    }
 }
 
@@ -74,7 +74,7 @@ Vivienda::~Vivienda ( )
    for ( i = 0; i < _numH; i++ )
    {
       delete ( _habitaciones[i] );
-      _habitaciones[i] = 0;
+      _habitaciones[i] = nullptr;
    }
 }
 
@@ -136,7 +136,7 @@ int Vivienda::borraDependencia ( string nombre )
       if ( _habitaciones[i]->getNombre () == nombre )
       {
          delete _habitaciones[i];
-         _habitaciones[i] = 0;
+         _habitaciones[i] = nullptr;
          hecho = true;
       }
 
@@ -168,7 +168,7 @@ int Vivienda::borraDependencia ( int cual )
    }
 
    delete _habitaciones[cual-1];
-   _habitaciones[cual-1] = 0;
+   _habitaciones[cual-1] = nullptr;
    return ( repasaDependencias () );
 }
 
@@ -191,7 +191,7 @@ int Vivienda::borraDependencias ( string nombre )
       if ( _habitaciones[i]->getNombre () == nombre )
       {
          delete _habitaciones[i];
-         _habitaciones[i] = 0;
+         _habitaciones[i] = nullptr;
          hecho = true;
       }
    }
@@ -360,7 +360,7 @@ Vivienda &Vivienda::operator = (const Vivienda& orig)
          for ( i = 0; i < _numH; i++ )
          {
             delete _habitaciones[i];
-            _habitaciones[i] = 0;
+            _habitaciones[i] = nullptr;
          }
       }
 
@@ -398,7 +398,7 @@ int Vivienda::repasaDependencias ()
    // Utiliza un array auxiliar, que inicializa a 0
    for ( i = 0; i < _MAX_HAB_; i++ )
    {
-      aux[i] = 0;
+      aux[i] = nullptr;
    }
 
    // Copia los punteros que son distintos de 0 en el array auxiliar, y los va
@@ -418,13 +418,13 @@ int Vivienda::repasaDependencias ()
    for ( i = 0; i < contador; i++ )
    {
       _habitaciones[i] = aux[i];
-      aux[i] = 0;
+      aux[i] = nullptr;
    }
 
    // Pone el resto de punteros del array de dependencias a 0
    for ( ; i< _MAX_HAB_; i++ )
    {
-      _habitaciones[i] = 0;
+      _habitaciones[i] = nullptr;
    }
 
    _numH = contador;

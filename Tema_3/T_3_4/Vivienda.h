@@ -23,9 +23,9 @@ class Vivienda
       static const int _MAX_HAB_ = 10;
 
    private:
-      string _direccion;                       ///< Calle, número, piso...
+      string _direccion = "";                       ///< Calle, número, piso...
       Dependencia *_habitaciones[_MAX_HAB_];   ///< Habitaciones
-      int _numH;                               ///< Número de habitaciones
+      int _numH = 0;                               ///< Número de habitaciones
       
       int repasaDependencias ();
 
