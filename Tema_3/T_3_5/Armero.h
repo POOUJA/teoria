@@ -23,13 +23,14 @@ using std::string;
 class Armero
 {
    private:
-      int    _energia;        ///< Energía vital del armero. Un valor negativo implica muerte
-      string _nombre;         ///< Nombre del armero
-      int    _maxPoderArma;   ///< Máximo poder destructivo de las armas creadas. Debe ser > 0
+      int    _energia = 1000;        ///< Energía vital del armero. Un valor negativo implica muerte
+      string _nombre = "";         ///< Nombre del armero
+      int    _maxPoderArma = 100;   ///< Máximo poder destructivo de las armas creadas. Debe ser > 0
 
    public:
-      Armero ( );
-      Armero ( string nNombre, int nMPArma = 100 );
+      Armero ( ) = default;
+      Armero ( string nNombre, int nMPArma );
+      Armero ( string nNombre );
       Armero ( const Armero& orig );
       virtual ~Armero ( );
       void setEnergia ( int nEnergia );

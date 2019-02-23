@@ -10,16 +10,6 @@
 #include "Armero.h"
 
 /**
- * @brief Constructor por defecto
- * 
- * Inicializa la energía vital a 1000, el nombre a "---" y el poder máximo de
- * las armas que cree a 100
- */
-Armero::Armero ( ): _energia (1000), _nombre("---"), _maxPoderArma(100)
-{
-}
-
-/**
  * @brief Constructor parametrizado
  * 
  * Inicializa la energía vital a 1000
@@ -37,6 +27,17 @@ Armero::Armero ( string nNombre, int nMPArma ): _energia (1000), _nombre(nNombre
    {
       throw std::invalid_argument ( "Armero::Armero: valor fuera de rango" );
    }
+}
+
+/**
+ * @brief Constructor parametrizado
+ * 
+ * Inicializa la energía vital a 1000
+ * @param nNombre Texto con el nombre que se asigna al armero. No se hacen
+ *        comprobaciones sobre él
+ */
+Armero::Armero ( string nNombre): Armero(nNombre, 100)
+{
 }
 
 /**

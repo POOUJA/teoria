@@ -18,13 +18,14 @@ using std::string;
 class Arma
 {
    private:
-      int    _poder;    ///< Poder para infligir daño del arma. Ha de ser >= 0
-      string _nombre;   ///< Nombre del arma para identificarla
+      int    _poder = 0;    ///< Poder para infligir daño del arma. Ha de ser >= 0
+      string _nombre = "";   ///< Nombre del arma para identificarla
 
    public:
-      Arma ( );
+      Arma ( ) = default;
       Arma ( const Arma& orig );
-      Arma ( const string nNombre, const int nPoder=0 );
+      Arma ( const string nNombre, const int nPoder );
+      Arma ( const string nNombre );
       virtual ~Arma ( );
       void setNombre ( string nNombre );
       string getNombre ( ) const;

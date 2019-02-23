@@ -15,13 +15,13 @@
  * 
  * Fija el nombre a "---", la energía a 1000, y está desarmado
  */
-Guerrero::Guerrero ( ): _nombre ("---"), _numArmas (0), _energia (1000)
+Guerrero::Guerrero ( ): _nombre (""), _numArmas (0), _energia (1000)
 {
    int i;
    
    for ( i = 0; i < _MAX_ARMAS_; i++ )
    {
-      _armamento[i] = 0;
+      _armamento[i] = nullptr;
    }
 }
 
@@ -48,7 +48,7 @@ Guerrero::Guerrero ( string nNombre, int nEnergia ): _nombre (nNombre),
 
    for ( i = 0; i < _MAX_ARMAS_; i++ )
    {
-      _armamento[i] = 0;
+      _armamento[i] = nullptr;
    }
 }
 
@@ -69,7 +69,7 @@ Guerrero::Guerrero ( const Guerrero& orig ): _numArmas (0),
    
    for ( i = 0; i < _MAX_ARMAS_; i++ )
    {
-      _armamento[i] = 0;
+      _armamento[i] = nullptr;
    }
 }
 
@@ -88,7 +88,7 @@ Guerrero::~Guerrero ( )
    
    for ( i = 0; i < _numArmas; i++ )
    {
-      if ( _armamento[i] != 0 )
+      if ( _armamento[i] != nullptr )
       {
          std::cerr << "Guerrero::~Guerrero: se destruye un guerrero sin "
                    << "desarmarlo previamente";
@@ -235,7 +235,7 @@ Arma *Guerrero::desarmar ( int cual )
 
    i = cual-1;
    aDevolver = _armamento[i];
-   _armamento[i] = 0;
+   _armamento[i] = nullptr;
 
    /*
     * El array de armas queda con un hueco, correspondiente al arma que se quita
@@ -284,7 +284,7 @@ int Guerrero::desarmar ( Arma* (&armas)[_MAX_ARMAS_] )
    for ( i = 0; i < _MAX_ARMAS_; i++ )
    {
       armas[i] = _armamento[i];
-      _armamento[i] = 0;
+      _armamento[i] = nullptr;
    }
    
    return ( _numArmas );

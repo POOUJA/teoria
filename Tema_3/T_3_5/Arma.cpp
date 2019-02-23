@@ -10,15 +10,6 @@
 
 
 /**
- * @brief Constructor por defecto
- * 
- * Fija el poder a 0, y el nombre a "---"
- */
-Arma::Arma ( ): _nombre("---"), _poder(0)
-{
-}
-
-/**
  * @brief Constructor de copia
  * 
  * Cambia el nombre del objeto nuevo, añadiéndole " - 2" al final, para que se
@@ -45,6 +36,15 @@ Arma::Arma (const string nNombre, const int nPoder): _nombre(nNombre),
    {
       throw std::invalid_argument ( "Arma::Arma: el valor ha de ser >= 0" );
    }
+}
+
+/**
+ * @brief Constructor parametrizado
+ * 
+ * @param nNombre Texto a asignar como nombre del arma. No se hacen comprobaciones
+ */
+Arma::Arma (const string nNombre): Arma(nNombre, 0)
+{
 }
 
 /**

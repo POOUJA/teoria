@@ -43,11 +43,11 @@ int main ( int argc, char** argv )
    // Crea un guerrero, y le entrega el arma
    g = new Guerrero ( "Lancelot", 2500 );
    g->addArma (b);
-   b = 0;
+   b = nullptr;
    g->addArma (c);
-   c = 0;
+   c = nullptr;
    g->addArma (d);
-   d = 0;
+   d = nullptr;
    cout << info (*g) << endl;
 
    // El guerrero hace varios ataques de prueba
@@ -60,18 +60,18 @@ int main ( int argc, char** argv )
    // antes de destruirlo
    aux = g->desarmar ( armas );
    delete g;
-   g = 0;
+   g = nullptr;
 
    // Destruye las armas
    for ( i = 0; i < aux; i++ )
    {
       delete armas[i];
-      armas[i] = 0;
+      armas[i] = nullptr;
    }
 
    // Destruye el armero
    delete a;
-   a = 0;
+   a = nullptr;
 
    return 0;
 }
