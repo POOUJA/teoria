@@ -69,7 +69,7 @@ int main ( int argc, char** argv )
 
    // IMPORTANTE: no olvidar el liberar los recursos del heap utilizados   
    delete ( partida );
-   partida = 0;
+   partida = nullptr;
 
    return 0;
 }

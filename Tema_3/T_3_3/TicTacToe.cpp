@@ -79,7 +79,7 @@ TicTacToe::TicTacToe ( const string& jugador1,
 TicTacToe::~TicTacToe ( )
 {
    delete _t;
-   _t = 0;
+   _t = nullptr;
 }
 
 /**
