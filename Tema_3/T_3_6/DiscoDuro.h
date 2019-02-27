@@ -27,21 +27,22 @@ class DiscoDuro: public Componente
                           IDE,    ///< Integrated Drive Electronics
                           EIDE,   ///< Enhanced IDE
                           SCSI,   ///< Small Computer Interface
-                          otra };
+                          OTRA };
       static TipoConexion intoTipoConexion ( int valor );
       static bool isTipoConexion ( int valor );
 
    private:
-      float _capacidad;         ///< Capacidad en Megabytes
-      string _formato;          ///< Formato (dimensiones) del disco (2.5", 3.5"...)
-      TipoConexion _conexion;   ///< Tipo de conexión
+      float _capacidad=0;         ///< Capacidad en Megabytes
+      string _formato="---";          ///< Formato (dimensiones) del disco (2.5", 3.5"...)
+      TipoConexion _conexion=OTRA;   ///< Tipo de conexión
 
    public:
-      DiscoDuro ( );
+      DiscoDuro ( ) = default;
       DiscoDuro ( string marca, string modelo, string nSerie, float capacidad,
                   string formato, TipoConexion conexion );
       DiscoDuro ( const DiscoDuro& orig );
-      virtual ~DiscoDuro ( );
+      
+      virtual ~DiscoDuro ( ) override;
       void setConexion ( TipoConexion conexion );
       TipoConexion getConexion ( ) const;
       void setFormato ( string formato );

@@ -25,23 +25,23 @@ class PlacaBase: public Componente
                            MiniITX,    ///< 170x170 mm
                            NanoITX,    ///< 120x120 mm
                            PicoITX,    ///< 100x72 mm
-                           otro };
+                           OTRO };
       static FactorDeForma intoFactorDeForma ( int valor );
       static bool isFactorDeForma ( int valor );
 
    private:
-      FactorDeForma _fForma;   ///< Factor de forma de la placa base
-      int _nPCIe;              ///< Número de puertos PCI Express
-      int _nUSB;               ///< Número de puertos USB
-      string _chipset;         ///< Modelo de chipset que lleva instalado
-      string _socket;          ///< Modelo de socket que tiene la placa
+      FactorDeForma _fForma=OTRO;   ///< Factor de forma de la placa base
+      int _nPCIe=0;              ///< Número de puertos PCI Express
+      int _nUSB=0;               ///< Número de puertos USB
+      string _chipset="---";         ///< Modelo de chipset que lleva instalado
+      string _socket="---";          ///< Modelo de socket que tiene la placa
 
    public:
-      PlacaBase ( );
+      PlacaBase ( ) = default;
       PlacaBase ( string marca, string modelo, string nSerie, FactorDeForma fForma,
                   int nPCIe, int nUSB, string chipset, string socket );
       PlacaBase ( const PlacaBase& orig );
-      virtual ~PlacaBase ( );
+      virtual ~PlacaBase ( ) override;
       void setSocket ( string socket );
       string getSocket ( ) const;
       void setChipset ( string chipset );

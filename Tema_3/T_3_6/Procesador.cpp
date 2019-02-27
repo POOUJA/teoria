@@ -19,13 +19,13 @@
  */
 Procesador::Arquitectura Procesador::intoArquitectura (int valor)
 {
-   if ( ( valor >= x86_32 ) && ( valor <= otra ) )
+   if ( ( valor >= x86_32 ) && ( valor <= OTRA ) )
    {
       return ( Procesador::Arquitectura ( valor ) );
    }
    else
    {
-      return ( otra );
+      return ( OTRA );
    }
 }
 
@@ -40,7 +40,7 @@ Procesador::Arquitectura Procesador::intoArquitectura (int valor)
  */
 bool Procesador::isArquitectura ( int valor )
 {
-   if ( ( valor >= x86_32 ) && ( valor <= otra ) )
+   if ( ( valor >= x86_32 ) && ( valor <= OTRA ) )
    {
       return ( true );
    }
@@ -48,16 +48,6 @@ bool Procesador::isArquitectura ( int valor )
    {
       return ( false );
    }
-}
-
-/**
- * Inicializa los atributos a sus valores por defecto: socket "---",
- * arquitectura \em otra y velocidad 0
- * @brief Constructor por defecto
- */
-Procesador::Procesador ( ): Componente (), _arq (otra), _socket ("---"),
-                            _velocidad(0)
-{
 }
 
 /**
@@ -80,17 +70,14 @@ Procesador::Procesador ( string marca, string modelo, string nSerie,
                                           _arq (arquitectura), _socket (socket),
                                           _velocidad (velocidad)
 {
-   if ( velocidad < 0 )
-   {
-      throw std::invalid_argument ( "Procesador::Procesador: valor de velocidad"
-                                    " no válido" );
-   }
-   
-   if ( isArquitectura ( arquitectura ) == false )
-   {
-      throw std::invalid_argument ( "Procesador::Procesador: identificador de"
-                                    " arquitectura incorrecto no válido" );
-   }
+
+    try {
+        this->setVelocidad(velocidad); //Validar y asignar o lanza std::invalid_argument
+        this->setArq(arquitectura);
+    }catch(std::invalid_argument &e) {
+        //Añadimos id del método al error y relanzamos la excepción
+        throw std::invalid_argument( "[Procesador::Procesador] "+std::string(e.what()) );
+    }
 }
 
 /**

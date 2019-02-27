@@ -21,13 +21,13 @@ using std::string;
 class Componente
 {
    protected:
-      string _marca;      ///< Marca del componente
-      string _modelo;     ///< Modelo del componente
-      string _numSerie;   ///< Número de serie del componente
-      float _precio;      ///< Precio del componente
+      string _marca="---";      ///< Marca del componente
+      string _modelo="---";     ///< Modelo del componente
+      string _numSerie="000000000000";   ///< Número de serie del componente
+      float _precio=0;      ///< Precio del componente
 
    public:
-      Componente ( );
+      Componente () = default;
       Componente ( string marca, string modelo, string nSerie, float precio);
       Componente ( const Componente& orig );
       virtual ~Componente ( );

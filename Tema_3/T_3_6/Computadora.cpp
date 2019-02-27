@@ -15,15 +15,9 @@
 /**
  * @brief Constructor por defecto. Asigna a los atributos valores por defecto
  */
-Computadora::Computadora ( ): _marca ("---"), _modelo ("---"), _nPiezas(0),
-                              _compradoEn (1960)
+Computadora::Computadora ( ): Computadora("---","---", 1960)
 {
-   int i;
    
-   for ( i = 0; i < _MAX_COMP_; i++ )
-   {
-      _piezas[i] = 0;
-   }
 }
 
 /**
@@ -48,18 +42,17 @@ Computadora::Computadora ( string nMarca,
    
    for ( i = 0; i < _MAX_COMP_; i++ )
    {
-      _piezas [i] = 0;
+      _piezas [i] = nullptr;
    }
 
-   // Toma la fecha  y hora actuales
-   tiempoActual = time (0);
-   fechaYhora = localtime ( &tiempoActual );
+   //Comprueba y asigna o lanza std::invalid_argument. Evitamos repetir código
+   try {
+        this->setCompradoEn(year);
+    } catch (std::invalid_argument &e) {
+        //Añadimos id del método al error y relanzamos la excepción
+        throw std::invalid_argument("[Computadora::Computadora] " + std::string(e.what()));
+    }
 
-   if ( ( year < 1960 ) || ( year > ( fechaYhora->tm_year + 1900 ) ) )
-   {
-      throw std::invalid_argument ( "Computadora::Computadora: el año no es"
-                                    " correcto" );
-   }
 }
 
 /**
@@ -82,7 +75,7 @@ Computadora::Computadora ( const Computadora& orig ): _compradoEn (orig._comprad
 
    for ( i = 0 ; i < _nPiezas; i++ )
    {
-      _piezas[i] = 0;
+      _piezas[i] = nullptr;
    }
 }
 
@@ -172,7 +165,7 @@ Componente* Computadora::quitaPieza (int cual)
    }
 
    aux = _piezas [cual];
-   _piezas[cual] = 0;
+   _piezas[cual] = nullptr;
 
    // Si es necesario, compacta el array de piezas
    if ( cual < ( _nPiezas - 1 ) )
@@ -282,7 +275,12 @@ float Computadora::getPrecio ( ) const
 
 /**
  * No tiene sentido que haya dos computadoras con los mismos componentes, así
- * que copia los atributos de tipos simples solamente
+ * que copia los atributos de tipos simples solamente y elimina piezas en computadora
+ * asignada
+ * @note Aquí estamos implementando una relación de agregación, así que NO es
+ *       responsabilidad de la clase Computadora el eliminar sus componentes.
+ *       Será responsabilidad de quien utilice esta clase el sacar los
+ *       componentes y destruirlos ANTES de hacer una asignación
  * @brief Operador de asignación
  * @param orig Objeto del que se copian los atributos
  * @return Una referencia al mismo objeto, para posibilitar las asignaciones en
@@ -295,6 +293,12 @@ Computadora& Computadora::operator = (const Computadora& orig)
       _compradoEn = orig._compradoEn;
       _marca = orig._marca;
       _modelo = orig._modelo;
+      
+      // Ponemos a nullptr los punteros a las piezas de la computadora actual
+      for (int i = 0; i < _nPiezas; i++)
+      {
+         _piezas[i]=nullptr;
+      }
    }
 
    return ( *this );

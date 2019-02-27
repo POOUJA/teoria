@@ -12,15 +12,6 @@
 #include "Componente.h"
 
 /**
- * Crea un nuevo componente con valores por defecto
- * @brief Constructor por defecto
- */
-Componente::Componente ( ): _marca ("---"), _modelo ("---"), _numSerie ("---"),
-                            _precio (0)
-{
-}
-
-/**
  * @brief Constructor parametrizado
  * @param marca Marca del nuevo componente
  * @param modelo Modelo del nuevo componente
@@ -33,11 +24,13 @@ Componente::Componente ( string marca, string modelo, string nSerie,
                          float precio ): _marca (marca), _modelo (modelo),
                                          _numSerie (nSerie), _precio (precio)
 {
-   if ( precio < 0 )
-   {
-      throw std::invalid_argument ( "Componente::Componente: el precio no puede"
-                                    " ser negativo" );
-   }
+   
+    try {
+        this->setPrecio(precio);
+    }catch(std::invalid_argument &e) {
+        //Añadimos id del método al error y relanzamos la excepción
+        throw std::invalid_argument( "[Componente::Componente] "+std::string(e.what()) );
+    }
 }
 
 /**
