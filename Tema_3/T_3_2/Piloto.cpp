@@ -8,14 +8,7 @@
 #include <stdexcept>   // Para usar std::out_of_range
 #include "Piloto.h"
 
-/**
- * @brief Constructor por defecto de la clase
- * 
- * Inicializa el nombre a "---", y los puntos a 0
- */
-Piloto::Piloto ( ): _nombre ("---"), _puntos (0)
-{
-}
+using std::string;
 
 /**
  * Copia los puntos en el campeonato, pero en el nombre añade la cadena "-2",
@@ -48,8 +41,7 @@ Piloto::Piloto ( const string nNombre, const int nPuntos ): _nombre (nNombre),
  * @brief Destructor
  */
 Piloto::~Piloto ( )
-{
-}
+{ }
 
 /**
  * @brief Método para poner el contador de puntos acumulados a 0

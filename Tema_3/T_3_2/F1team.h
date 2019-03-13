@@ -20,18 +20,19 @@
 class F1team
 {
    private:
-      Piloto *_p1;      ///< Puntero al primer piloto
-      Piloto *_p2;      ///< Puntero al segundo piloto
-      string _nombre;   ///< Nombre del equipo
+      Piloto *_p1 = nullptr;           ///< Puntero al primer piloto
+      Piloto *_p2 = nullptr;           ///< Puntero al segundo piloto
+      std::string _nombre = "";        ///< Nombre del equipo
 
    public:
-      F1team ( );
+      F1team ( ) = default;
       F1team ( const F1team& orig );
-      F1team ( Piloto *nP1, Piloto *nP2, string nNombre );
-      F1team ( Piloto &nP1, Piloto &nP2, string nNombre );
+      F1team ( Piloto *nP1, Piloto *nP2, std::string nNombre );
+      F1team ( Piloto &nP1, Piloto &nP2, std::string nNombre );
+      F1team ( std::string nNombre );
       virtual ~F1team ( );
-      void setNombre ( string nNombre );
-      string getNombre ( ) const;
+      void setNombre ( std::string nNombre );
+      std::string getNombre ( ) const;
       void setP2 ( Piloto* nP2 );
       bool existeP2 ();
       Piloto& getP2 ( ) const;

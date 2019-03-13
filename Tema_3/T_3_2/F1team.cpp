@@ -8,13 +8,7 @@
 #include <stdexcept>   // Para utilizar excepciones estándar
 #include "F1team.h"
 
-/**
- * Inicializa los punteros a 0, y el nombre a "---"
- * @brief Constructor por defecto
- */
-F1team::F1team ( ): _p1 (0), _p2 (0), _nombre ("---")
-{
-}
+using std::string;
 
 /**
  * No copia los pilotos (no tiene sentido tener dos equipos con los mismos
@@ -22,7 +16,7 @@ F1team::F1team ( ): _p1 (0), _p2 (0), _nombre ("---")
  * @brief Constructor de copia
  * @param orig Objeto del que se copian los atributos
  */
-F1team::F1team ( const F1team& orig ): _p1 (0), _p2 (0)
+F1team::F1team ( const F1team& orig ): _p1 (nullptr), _p2 (nullptr)
 {
    _nombre = orig._nombre + " - 2";
 }
@@ -35,8 +29,7 @@ F1team::F1team ( const F1team& orig ): _p1 (0), _p2 (0)
  */
 F1team::F1team ( Piloto *nP1, Piloto *nP2, string nNombre ): _p1 (nP1), _p2 (nP2),
                                                              _nombre (nNombre)
-{
-}
+{ }
 
 /**
  * @brief Constructor parametrizado
@@ -44,10 +37,15 @@ F1team::F1team ( Piloto *nP1, Piloto *nP2, string nNombre ): _p1 (nP1), _p2 (nP2
  * @param nP2 Referencia al segundo piloto del equipo
  * @param nNombre Texto con el nombre del equipo
  */
-F1team::F1team ( Piloto &nP1, Piloto &nP2, string nNombre ): _p1 (&nP1), _p2 (&nP2),
-                                                             _nombre (nNombre)
-{
-}
+F1team::F1team ( Piloto &nP1, Piloto &nP2, string nNombre ): F1team ( &nP1, &nP2, nNombre )
+{ }
+
+/**
+ * @brief Constructor parametrizado
+ * @param nNombre Texto con el nombre del equipo
+ */
+F1team::F1team (std::string nNombre): F1team ( nullptr, nullptr, nNombre )
+{ }
 
 /**
  * @brief Destructor
@@ -57,8 +55,8 @@ F1team::F1team ( Piloto &nP1, Piloto &nP2, string nNombre ): _p1 (&nP1), _p2 (&n
  */
 F1team::~F1team ( )
 {
-   _p1 = 0;
-   _p2 = 0;
+   _p1 = nullptr;
+   _p2 = nullptr;
 }
 
 /**
