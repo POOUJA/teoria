@@ -16,7 +16,7 @@ class ExNoEncontrado: public std::logic_error {
 public:
     ExNoEncontrado(std::string error="[NoEncontrado] Elemento no disponible"):std::logic_error(error) {};
     ExNoEncontrado(const ExNoEncontrado& orig):logic_error(orig) {};
-    virtual ~ExNoEncontrado() throw() {};
+    virtual ~ExNoEncontrado() noexcept {};
 private:
 
 };

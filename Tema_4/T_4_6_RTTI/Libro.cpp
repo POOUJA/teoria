@@ -13,8 +13,7 @@
 /**Constructor de un libro a partir de su información básica
    @throw std::domain_error si algún atributo no es válido para un libro*/
 Libro::Libro( std::string isbn, std::string titulo, unsigned int anio, unsigned int edicion,
-              std::string autor, std::string editorial, float precio)
-              throw (std::domain_error)
+              std::string autor, std::string editorial, float precio)              
     try 
             :Ejemplar(isbn,titulo,editorial,precio) {
         //inicializamos atributos con métodos set para comprobaciones de valores válidos de dominio
@@ -24,18 +23,12 @@ Libro::Libro( std::string isbn, std::string titulo, unsigned int anio, unsigned 
         setEdicion(edicion);
     } catch (std::domain_error &e ) {
         //relanzamos excepciones de Ejemplar o de inicialización de atributos propios
-        throw e;
+        throw std::domain_error(std::string("[Libro::Libro] Error en inicialización: ")+
+                                std::string( e.what() ) );
     }
 
-/**Constructor de copia*/
-Libro::Libro(const Libro& orig): Ejemplar(orig),
-                                _autor(orig._autor),
-                                _anioPublicacion(orig._anioPublicacion),
-                                _edicion(orig._edicion) {
-}
-
 /**Destructor*/
-Libro::~Libro() {
+Libro::~Libro() noexcept{
     std::cerr << "Destruyendo libro de " << _autor << " ";
 }
 
@@ -75,13 +68,13 @@ unsigned int Libro::getEdicion() const {
 
 /**Establece como ID de un libro su isbn
    @throw std::domain_error si el ISBN no tiene un formato válido*/
-void Libro::setID(std::string isbn) throw (std::domain_error) {
+void Libro::setID(std::string isbn) {
     setIsbn(isbn); //El identificador de un libro es su ISBN
 }
 
 /**Asigna un ISBN según el formato adecuado
   @throw std::domain_error si el ISBN no tiene un formato válido*/
-void Libro::setIsbn(std::string isbn) throw (std::domain_error){
+void Libro::setIsbn(std::string isbn){
     //FIXME: Verificar con más detalle formato del ISBN
     if (isbn.length()<10)
         throw std::domain_error("[Libro::setISBN] el ISBN debe tener al menos 10 dígitos");
@@ -118,7 +111,7 @@ std::string Libro::toCSV() const {
  @pos Modifica los atributos del libro si linea contiene la información requerida
  @throw ExConversion si la línea CSV no tiene el formato adecuado
  @throw std::domain_error si algún dato para el libro no es válido*/
-void Libro::fromCSV(std::string linea) throw (ExConversion,std::domain_error) {
+void Libro::fromCSV(std::string linea) {
 
     std::stringstream ss(linea);
     std::string lineaEjemplar,campo;

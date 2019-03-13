@@ -18,7 +18,7 @@ public:
       @post La copia generada debe ser liberada por quién la solicita
     */
     virtual Duplicable* copia(void) const = 0;
-    virtual ~Duplicable() {};
+    virtual ~Duplicable() noexcept {} ;
 private:
 
 };

@@ -19,12 +19,15 @@ public:
     static const int MAXEJEMPLARES = 100; /*< número máximo de ejemplares en el Catálogo*/
 private:
     Ejemplar** ejemplares; /*< Vector de punteros a ejemplares del catálogo*/
-    unsigned int _numEjemplares; /*< Número de ejemplares en el catálogo*/
-    unsigned int _posIteracion; /*< Elemento del catálogo sobre el que itera el usuario*/
+    unsigned int _numEjemplares = 0; /*< Número de ejemplares en el catálogo*/
+    unsigned int _posIteracion  = 0; /*< Elemento del catálogo sobre el que itera el usuario*/
 public:
     Catalogo();
     Catalogo(const Catalogo& orig);
-    virtual ~Catalogo();
+    virtual ~Catalogo() noexcept;
+    
+    //No permitimos la asignación de un catálogo
+    Catalogo& operator=(const Catalogo &orig) = delete;
     
     void nuevoLibro(const Libro &libro);
     void nuevaRevista(const Revista &revista);
@@ -33,14 +36,14 @@ public:
     void borraEjemplar(std::string idEjemplar);
     Ejemplar& buscaEjemplar(std::string idEjemplar);
     Ejemplar& ejemplarAlAzar();
-    void guardaEnFichero(std::string nombreFichero) throw (std::runtime_error);
-    void recuperaDeFichero(std::string nombreFichero ) throw (std::runtime_error,std::logic_error);
+    void guardaEnFichero(std::string nombreFichero);
+    void recuperaDeFichero(std::string nombreFichero ) ;
     int getNumEjemplares() const;
     void vaciar();
     
     //Métodos para iteración
     void iniciaIteracion();
-    Ejemplar& siguienteEjemplar() throw (std::out_of_range);
+    Ejemplar& siguienteEjemplar() ;
     bool finalIteracion();
     
 private:

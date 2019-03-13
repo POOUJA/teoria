@@ -12,30 +12,33 @@
 
 class Revista: public Ejemplar {
 private:
-    unsigned int _numero;
-    unsigned int _anio;
+    unsigned int _numero = 0;
+    unsigned int _anio = 1800;
 public:
-  
-    Revista( std::string ISSN="ISSN 0000-0000",  std::string titulo="Sin titulo",
-             unsigned int anio=1800, unsigned int numero=0,
-             std::string editorial="Sin especificar", float precio=0)
-                throw (std::domain_error);
-    Revista(const Revista& orig);
-    virtual ~Revista();
+    Revista() = default; 
+    Revista( std::string ISSN,  std::string titulo,
+             unsigned int anio, unsigned int numero,
+             std::string editorial, float precio);
+
+    //Copia y asignación por defecto
+    Revista(const Revista& orig) = default;
+    virtual Revista& operator=(const Revista& orig) = default;
+
+    virtual ~Revista() noexcept override;
     void setAnio(unsigned int _anio);
     unsigned int getAnio() const;
     void setNumero(unsigned int _numero);
     unsigned int getNumero() const;
-    virtual void setID(std::string issn) throw (std::domain_error);
-    void setISSN(std::string issn) throw (std::domain_error);
+    virtual void setID(std::string issn) override;
+    void setISSN(std::string issn) ;
     std::string getISSN() const;
 
     //Interfaz ItemCSV
-    virtual std::string toCSV() const;
-    virtual void fromCSV(std::string linea) throw (ExConversion,std::domain_error);
+    virtual std::string toCSV() const override;
+    virtual void fromCSV(std::string linea) override;
     
     //Interfaz Duplicable
-    virtual Duplicable* copia() const;
+    virtual Duplicable* copia() const noexcept override ;
 
 private:
 

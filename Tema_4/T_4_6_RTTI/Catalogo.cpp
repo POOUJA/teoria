@@ -33,7 +33,7 @@ Catalogo::Catalogo(const Catalogo& orig): _numEjemplares(orig._numEjemplares)
     }            
 }
 /**Destructor*/
-Catalogo::~Catalogo() {
+Catalogo::~Catalogo() noexcept {
     std::cout << "Destruyendo catálogo" << std::endl;
     vaciar(); //Eliminamos ejemplares que queden
     delete[] ejemplares; //Liberamos el vector de punteros
@@ -85,7 +85,7 @@ void Catalogo::nuevoEjemplar(const Ejemplar& ejemplar) {
  @throw NoEncontrado si el ejemplar en cuestión no está en el catálogo*/
 Ejemplar& Catalogo::buscaEjemplar(std::string idEjemplar) {
 
-   int posEncontrado=BuscaElemento(ejemplares,_numEjemplares,idEjemplar);
+   int posEncontrado=buscaElemento(ejemplares,_numEjemplares,idEjemplar);
    if (posEncontrado<0) 
        throw ExNoEncontrado("[Catalogo::buscaEjemplar] el ejemplar no se encuentra en el Catálogo");
    return *ejemplares[posEncontrado];
@@ -95,7 +95,7 @@ Ejemplar& Catalogo::buscaEjemplar(std::string idEjemplar) {
  @throw NoEncontrado si el ejemplar en cuestión no está en el catálogo
 */
 void Catalogo::borraEjemplar(std::string idEjemplar) {
-   int posEncontrado=BuscaElemento(ejemplares,_numEjemplares,idEjemplar);
+   int posEncontrado=buscaElemento(ejemplares,_numEjemplares,idEjemplar);
    if (posEncontrado<0) 
        throw ExNoEncontrado("[Catalogo::borraEjemplar] el ejemplar "+idEjemplar
                             +" no se encuentra en el Catálogo");
@@ -119,7 +119,7 @@ Ejemplar& Catalogo::ejemplarAlAzar() {
 
 /** Guarda los ejemplares del catálogo en un fichero 
  @throw std::runtime_error si no se pueden volcar los datos al fichero*/
-void Catalogo::guardaEnFichero(std::string nombreFichero) throw (std::runtime_error) {
+void Catalogo::guardaEnFichero(std::string nombreFichero) {
     std::ofstream f;
     std::string linea;
     
@@ -149,8 +149,7 @@ void Catalogo::guardaEnFichero(std::string nombreFichero) throw (std::runtime_er
     @throw std::logic_error si encuentra algún ejemplar que no es válido
     @throw std::runtime_error si no se puede acceder al fichero
  */
-void Catalogo::recuperaDeFichero(std::string nombreFichero) 
-                throw (std::runtime_error,std::logic_error){
+void Catalogo::recuperaDeFichero(std::string nombreFichero) {
     std::ifstream f;
     std::string tipo,linea;
     
@@ -197,7 +196,7 @@ void Catalogo::iniciaIteracion()  {
    @pre No se ha modificado el catálogo tras iniciar la iteración
    @throw   std::out_of_range si no hay elementos o si se ha intentado obtener un 
  *          ejemplar habiendo finalizado la iteración*/
-Ejemplar& Catalogo::siguienteEjemplar()  throw (std::out_of_range){
+Ejemplar& Catalogo::siguienteEjemplar() {
     if (_numEjemplares==0 || _posIteracion>=_numEjemplares) {
         throw std::out_of_range("[Catalogo::siguiente] No más ejemplares en el catálogo");
     }
