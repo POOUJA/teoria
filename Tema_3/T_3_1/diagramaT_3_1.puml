@@ -4,12 +4,11 @@ skinparam monochrome true
 skinparam classAttributeIconSize 0
 
 Arma <.. Armero
-Arma <-- Guerrero
+Arma "0..1" <-- "1" Guerrero: armamento
 
 Class Guerrero {
    - _nombre: string
    - _energia: int
-   - _armamento: Arma*
    - calculaMaxPoder ( valorBase: int ): int
    + Guerrero ( )
    + Guerrero ( nNombre: string, nEnergia: int = 1000 )

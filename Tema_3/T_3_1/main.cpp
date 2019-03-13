@@ -23,8 +23,8 @@ int main ( int argc, char** argv )
 {
    // Crea un armero
    Armero merlin ( "Merlín", 500 );
-   Arma *espada;
-   Guerrero *lanci;
+   Arma* espada = nullptr;
+   Guerrero* lanci = nullptr;
    // Crea un guerrero
    Guerrero blacki ( "Caballero negro", 3000 );
 

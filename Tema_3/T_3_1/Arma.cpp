@@ -28,9 +28,8 @@ Arma::Arma ( const Arma& orig ): _poder(orig._poder)
  * @param nPoder Valor de poder para la nueva arma
  * @throws std::invalid_argument Si el valor de nPoder es < 0
  */
-Arma::Arma (const string nNombre, const int nPoder):
-    _nombre(nNombre),
-    _poder (nPoder)
+Arma::Arma (const string nNombre, const int nPoder): _nombre(nNombre),
+                                                     _poder (nPoder)
 {
    if ( nPoder < 0 )
    {
@@ -44,10 +43,8 @@ Arma::Arma (const string nNombre, const int nPoder):
  * @post Crea un arma con el nombre indicado y poder 0
  * @throws std::invalid_argument Si el valor de nPoder es < 0
  */
-Arma::Arma (const string nNombre): 
-    Arma(nNombre,0)
-{
-}
+Arma::Arma (const string nNombre): Arma(nNombre,0)
+{ }
 
 
 
@@ -55,8 +52,7 @@ Arma::Arma (const string nNombre):
  * @brief Destructor
  */
 Arma::~Arma ( )
-{
-}
+{ }
 
 /**
  * @brief Modificador para el atributo Arma::_nombre

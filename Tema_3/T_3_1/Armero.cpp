@@ -17,10 +17,8 @@
  * @param nNombre Texto con el nombre que se asigna al armero. No se hacen
  *        comprobaciones sobre él
  */
-Armero::Armero ( string nNombre):
-    Armero(nNombre,100)                                                
-{
-}
+Armero::Armero ( string nNombre): Armero(nNombre,100)                                                
+{ }
 
 
 /**
@@ -34,9 +32,9 @@ Armero::Armero ( string nNombre):
  * @throws std::invalid_argument Si el valor máximo de poder para las armas no
  *         es positivo
  */
-Armero::Armero ( string nNombre, int nMPArma ):
-    _energia (1000), _nombre(nNombre),
-    _maxPoderArma (nMPArma)
+Armero::Armero ( string nNombre, int nMPArma ): _energia (1000),
+                                                _nombre(nNombre),
+                                                _maxPoderArma (nMPArma)
 {
    if ( nMPArma <= 0 )
    {
@@ -51,9 +49,8 @@ Armero::Armero ( string nNombre, int nMPArma ):
  * haya dos armeros con el mismo nombre
  * @param orig Objeto del que copia los atributos
  */
-Armero::Armero ( const Armero& orig ):
-    _energia (orig._energia),
-    _maxPoderArma (orig._maxPoderArma)
+Armero::Armero ( const Armero& orig ): _energia (orig._energia),
+                                       _maxPoderArma (orig._maxPoderArma)
 {
    _nombre = orig._nombre + " - 2";   // Para no tener dos armeros con el mismo nombre
 }
@@ -62,8 +59,7 @@ Armero::Armero ( const Armero& orig ):
  * @brief Destructor de la clase
  */
 Armero::~Armero ( )
-{
-}
+{ }
 
 /**
  * @brief Modificador para el atributo Armero::_energia

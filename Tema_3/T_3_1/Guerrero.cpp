@@ -16,10 +16,8 @@
  * Crea un guerrero desarmado, con el nombre que se le indica y energia 1000
  * @param nNombre Texto con el nombre a asignar al nuevo guerrero
  */
-Guerrero::Guerrero ( string nNombre):
-    Guerrero(nNombre,1000)
-{
-}
+Guerrero::Guerrero ( string nNombre): Guerrero(nNombre,1000)
+{ }
 
 /**
  * @brief Constructor parametrizado
@@ -29,10 +27,9 @@ Guerrero::Guerrero ( string nNombre):
  * @param nEnergia Valor de energía a asignar al guerrero. Ha de ser positivo
  * @throws std::invalid_argument Si el valor de energía no es un número positivo
  */
-Guerrero::Guerrero ( string nNombre, int nEnergia ): 
-    _nombre (nNombre),
-    _armamento (nullptr),
-    _energia (nEnergia)
+Guerrero::Guerrero ( string nNombre, int nEnergia ): _nombre (nNombre),
+                                                     _armamento (nullptr),
+                                                     _energia (nEnergia)
 {
    if ( nEnergia <= 0 )
    {
