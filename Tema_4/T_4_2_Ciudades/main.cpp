@@ -47,13 +47,13 @@ int main(int argc, char** argv) {
     std::cout << "Localizaciones de ciudades a visitar" << std::endl;
     Visualiza(posicionCiudades,NUMCIUDADES);
         
-    Ordena(posicionCiudades,NUMCIUDADES);
+    ordena(posicionCiudades,NUMCIUDADES);
 
     std::cout << "Localizaciones ordenadas por distancia al origen" << std::endl;
     Visualiza(posicionCiudades,NUMCIUDADES);
     
     std::cout << "¿Está Cáceres entre las ciudades a visitar? ";
-    int posCaceres=BuscaElemento(posicionCiudades, NUMCIUDADES, Caceres);
+    int posCaceres=buscaElemento(posicionCiudades, NUMCIUDADES, Caceres);
     if (posCaceres>=0){
         std::cout << " Sí,en las coordenadas ";
         Visualiza( posicionCiudades[posCaceres] );

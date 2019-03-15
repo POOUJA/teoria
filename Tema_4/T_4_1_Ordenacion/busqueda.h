@@ -15,7 +15,7 @@
    @post Devuelve -1 si el elemento no se encuentra en el vector
  */
 template<typename T>
-int BuscaElemento(T elementos[], int numElementos, const T& elemento) {
+int buscaElemento(T elementos[], int numElementos, const T& elemento) {
 
     int posEncontrado=-1;
     

@@ -14,9 +14,10 @@
 template<typename T>
 class Punto2D {						
 private:
-    T _x,_y;
+    T _x = 0,_y = 0;
 public:
-    Punto2D(T x=0, T y=0);
+    Punto2D() = default;
+    Punto2D(T x, T y);
     Punto2D(const Punto2D& orig);	
     virtual ~Punto2D();
 

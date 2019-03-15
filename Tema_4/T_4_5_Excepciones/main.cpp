@@ -27,7 +27,7 @@ const std::string FICHEROEJEMPLARES="ejemplares.csv"; /*< Fichero donde se almac
  * @throws ExNoEncontrado si no existe un elemento con el identificador indicado */
 void BorraEjemplar(Ejemplar* ejemplares[], unsigned int &numEjemplares, std::string identificador)
                     throw (ExNoEncontrado) {
-    int posEjemplar=BuscaElemento(ejemplares, numEjemplares,identificador);
+    int posEjemplar=buscaElemento(ejemplares, numEjemplares,identificador);
     if (posEjemplar<0) 
         throw ExNoEncontrado("[BorraEjemplar] el ejemplar "+identificador+" no existe");
     delete ejemplares[posEjemplar];

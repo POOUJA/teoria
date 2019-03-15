@@ -20,7 +20,7 @@ void intercambia(T &a, T &b) {
 /**Ordena un vector de elementos de menor a mayor utilizando el algoritmo de selección
   @pre Los elementos tienen sobrecargado el operador < */
 template<typename T>
-void Ordena( T valores[], int numValores) {
+void ordena( T valores[], int numValores) {
     int posMenor;
     
     for (int i = 0; i < numValores-1; i++) {

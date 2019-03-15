@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
     
     int valor=1;
     std::cout << "Buscar valor " << valor << std::endl;
-    int posicion=BuscaElemento(elementos,NUMELEMENTOS,valor);
+    int posicion=buscaElemento(elementos,NUMELEMENTOS,valor);
     std::cout << "El elemento " << valor;
     if (posicion>=0) {
         std::cout << " está en la posición " << posicion;
@@ -46,7 +46,7 @@ int main(int argc, char** argv) {
     std::cout << std::endl;
     
     std::cout << "Ordenamos el vector" << std::endl;
-    Ordena(elementos,NUMELEMENTOS);
+    ordena(elementos,NUMELEMENTOS);
     Visualiza(elementos,NUMELEMENTOS);
        
     return 0;

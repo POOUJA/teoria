@@ -103,7 +103,7 @@ int main(int argc, char** argv) {
 
     //Búsqueda de un ejemplar en el vector de ejemplar
     Libro ejemAux("9788467016901"); //Vamos a buscar el Quijote
-    int posQuijote=BuscaElemento(ejemplares,NUMEJEMPLARES,ejemAux);
+    int posQuijote=buscaElemento(ejemplares,NUMEJEMPLARES,ejemAux);
     if (posQuijote>=0) { 
         std::cout   << "Hay un ejemplar de "
                     << ejemplares[posQuijote]->getTitulo() //enlace estático
@@ -111,7 +111,7 @@ int main(int argc, char** argv) {
     }
     
     //Búsqueda de un ejemplar a partir de su identificador
-    int posMuy=BuscaElemento(ejemplares,NUMEJEMPLARES,"ISSN 1130-40810");
+    int posMuy=buscaElemento(ejemplares,NUMEJEMPLARES,"ISSN 1130-40810");
     if (posMuy>=0) {
         std::cout   << "Hay un ejemplar de "
                     << ejemplares[posMuy]->getTitulo()
