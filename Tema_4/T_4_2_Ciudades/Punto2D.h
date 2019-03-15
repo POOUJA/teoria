@@ -18,7 +18,10 @@ private:
 public:
     Punto2D() = default;
     Punto2D(T x, T y);
-    Punto2D(const Punto2D& orig);	
+
+    Punto2D(const Punto2D& orig) = default;
+    Punto2D& operator=(const Punto2D &orig) = default;
+
     virtual ~Punto2D();
 
     void setY(T _y);
@@ -26,7 +29,6 @@ public:
     void setX(T _x);
     T getX() const;
 
-    Punto2D& operator=(const Punto2D &orig);
     bool igualA(const Punto2D& p) const;
     bool operator==(const Punto2D& p) const;
     float distanciaA(const Punto2D& p) const;
@@ -39,11 +41,6 @@ private:
 /**Constructor defecto/parametrizado*/
 template<typename T>
 Punto2D<T>::Punto2D(T x, T y):_x(x),_y(y) {  //La plantilla de clase se denomina Punto2D<T>
-}
-
-/**Constructor de copia*/
-template<typename T>
-Punto2D<T>::Punto2D(const Punto2D& orig):_x(orig._x),_y(orig._y) {
 }
 
 /**Destructor*/
@@ -66,16 +63,6 @@ void Punto2D<T>::setX(T _x) {
 template<typename T>
 T Punto2D<T>::getX() const {
     return _x;
-}
-
-/**Operador de asignación*/
-template<typename T>
-Punto2D<T>& Punto2D<T>::operator=(const Punto2D &orig) {
-    if (&orig!=this) {
-        _x=orig._x;
-        _y=orig._y;
-    };
-    return *this;
 }
 
 /**Comprueba si un dos puntos son iguales*/

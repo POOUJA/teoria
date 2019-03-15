@@ -16,14 +16,14 @@ using namespace std;
 
 /**Visualiza un punto del plano*/
 template<typename T>
-void Visualiza( const Punto2D<T> &punto) {
+void visualiza( const Punto2D<T> &punto) {
     std::cout <<"(" << punto.getX() << "," << punto.getY() << ")";
 }
 /**Visualiza un vector de puntos del plano*/
 template<typename T>
-void Visualiza( const Punto2D<T> puntos[], int numPuntos) {
+void visualiza( const Punto2D<T> puntos[], int numPuntos) {
     for (int i = 0; i < numPuntos; i++) {
-        Visualiza(puntos[i]);
+        visualiza(puntos[i]);
         std::cout << std::endl;
     }
 }
@@ -45,18 +45,18 @@ int main(int argc, char** argv) {
     std::cout << "Recorrido turístico" << std::endl;
     
     std::cout << "Localizaciones de ciudades a visitar" << std::endl;
-    Visualiza(posicionCiudades,NUMCIUDADES);
+    visualiza(posicionCiudades,NUMCIUDADES);
         
     ordena(posicionCiudades,NUMCIUDADES);
 
     std::cout << "Localizaciones ordenadas por distancia al origen" << std::endl;
-    Visualiza(posicionCiudades,NUMCIUDADES);
+    visualiza(posicionCiudades,NUMCIUDADES);
     
     std::cout << "¿Está Cáceres entre las ciudades a visitar? ";
     int posCaceres=buscaElemento(posicionCiudades, NUMCIUDADES, Caceres);
     if (posCaceres>=0){
         std::cout << " Sí,en las coordenadas ";
-        Visualiza( posicionCiudades[posCaceres] );
+        visualiza( posicionCiudades[posCaceres] );
         std::cout << " y es la número " << posCaceres+1 << " a visitar, a "
                   << posicionCiudades[posCaceres].distanciaAlOrigen() << " kms.";
         std::cout << std::endl;
