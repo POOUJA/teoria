@@ -10,13 +10,12 @@
 
 #include "Ejemplar.h"
 
-Ejemplar::Ejemplar(std::string identificador, std::string titulo, std::string editorial, float precio)
-    :_identificador(identificador),_titulo(titulo),_editorial(editorial),_precio(precio) {
+Ejemplar::Ejemplar(std::string identificador) : _identificador(identificador) {
+
 }
 
-Ejemplar::Ejemplar(const Ejemplar& orig)
-    :_identificador(orig._identificador),_titulo(orig._titulo),
-     _editorial(orig._editorial),_precio(orig._precio){
+Ejemplar::Ejemplar(std::string identificador, std::string titulo, std::string editorial, float precio)
+    :_identificador(identificador),_titulo(titulo),_editorial(editorial),_precio(precio) {
 }
 
 Ejemplar::~Ejemplar() {

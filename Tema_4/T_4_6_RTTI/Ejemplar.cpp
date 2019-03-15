@@ -10,6 +10,12 @@
 
 #include "Ejemplar.h"
 
+Ejemplar::Ejemplar(std::string identificador): _identificador(identificador) {
+    if (identificador.length()<5) {
+        throw std::domain_error("[Ejemplar::Ejemplar] el identificador de un ejemplar debe tener al menos 5 caracteres");
+    }
+}
+
 /**Inicializa un ejemplar a partir de sus atributos
    @throw std::domain_error si algún atributo no es válido para un ejemplar*/
 Ejemplar::Ejemplar(std::string identificador, std::string titulo, std::string editorial, float precio)         

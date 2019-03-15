@@ -13,15 +13,22 @@
 /** Clase para cualquier ejemplar de un catálogo de una biblioteca*/
 class Ejemplar {
 private:
-    std::string _identificador;
-    std::string _titulo;
-    std::string _editorial;
-    float _precio;
+    std::string _titulo = "No especificado";
+    std::string _editorial = "No especificada";
+    std::string _identificador = "000000000";
+    float _precio = 0;
+
 public:
-    Ejemplar(std::string identificador="000000000", std::string titulo="No especificado",
-             std::string editorial="No especificada", float precio=0);
-    Ejemplar(const Ejemplar& orig);
-    virtual ~Ejemplar();
+    Ejemplar() = default;
+    Ejemplar(std::string identificador);;
+    Ejemplar(std::string identificador, std::string titulo,
+             std::string editorial, float precio);
+
+    //Copia y asignación por defecto
+    Ejemplar(const Ejemplar& orig) = default;
+    virtual Ejemplar& operator=(const Ejemplar& orig) = default;
+    
+    virtual ~Ejemplar() noexcept;
 
     void setID(std::string identificador);
     std::string getID() const;

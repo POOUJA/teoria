@@ -23,6 +23,9 @@ protected:
     std::string _identificador = "000000000";
 public:
     Ejemplar() = default;
+
+    Ejemplar(std::string identificador);;
+
     Ejemplar(std::string identificador, std::string titulo,
              std::string editorial, float precio);
     
