@@ -10,16 +10,17 @@
 
 #include "Ejemplar.h"
 
-Ejemplar::Ejemplar(std::string identificador, std::string titulo, std::string editorial, float precio)
-    :_identificador(identificador),_titulo(titulo),_editorial(editorial),_precio(precio) {
+Ejemplar::Ejemplar(std::string identificador): _identificador(identificador) {
 }
 
-Ejemplar::Ejemplar(const Ejemplar& orig)
-    :_identificador(orig._identificador),_titulo(orig._titulo),
-     _editorial(orig._editorial),_precio(orig._precio){
+
+/**Inicializa un ejemplar a partir de sus atributos*/
+Ejemplar::Ejemplar(std::string identificador, std::string titulo, std::string editorial, float precio)         
+        :_identificador(identificador) {
 }
 
-Ejemplar::~Ejemplar() {
+
+Ejemplar::~Ejemplar() noexcept {
         std::cerr << "Destruyendo ejemplar " << _titulo << std::endl;
 }
 
@@ -28,6 +29,8 @@ std::string Ejemplar::getID() const {
 }
 
 void Ejemplar::setPrecio(float precio) {
+    if (precio<0)
+        throw std::domain_error("[Ejemplar::setPrecio] El precio de un ejemplar no puede ser negativo");
     this->_precio = precio;
 }
 

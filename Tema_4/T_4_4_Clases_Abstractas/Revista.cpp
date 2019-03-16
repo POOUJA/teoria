@@ -10,20 +10,18 @@
 
 #include "Revista.h"
 
+Revista::Revista(std::string issn) :
+    Ejemplar(issn) {
+}
+
 /**Construye una revista a partir de su información básica*/
 Revista::Revista(   std::string ISSN, std::string titulo, unsigned int anio, unsigned int numero,
                     std::string editorial, float precio)
     : Ejemplar(ISSN,titulo, editorial, precio), _anio(anio), _numero(numero) {
 }
 
-/**Constructor de copia*/
-Revista::Revista(const Revista& orig)
-    :Ejemplar(orig),_anio(orig._anio),_numero(orig._numero){
-
-}
-
 /**Destructor*/
-Revista::~Revista() {
+Revista::~Revista() noexcept {
     std::cerr << "Destruyendo revista año " << _anio << " ";
 }
 

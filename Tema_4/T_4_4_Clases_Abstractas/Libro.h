@@ -13,15 +13,25 @@
 
 class Libro: public Ejemplar {
 private:
-    std::string _autor;
-    unsigned int _edicion;
-    unsigned int _anioPublicacion;
+    std::string _autor            = "Desconocido";
+    unsigned int _edicion         = 1;
+    unsigned int _anioPublicacion = 0;
     
 public:
-    Libro(std::string isbn="",std::string titulo="Sin titulo", unsigned int anio=0, unsigned int edicion=1, std::string autor="Desconocido", std::string editorial="No especificada", float precio=0);
-    Libro(const Libro& orig);
-    virtual ~Libro();
-    void setAnioPublicacion(unsigned int _anioPublicacion);
+    Libro() = default;
+
+    Libro(std::string isbn);
+    
+    Libro(std::string isbn, std::string titulo, unsigned int anio,
+          unsigned int edicion, std::string autor, 
+          std::string editorial, float precio);
+        
+    //Copia y asignación por defecto
+    Libro(const Libro& orig) = default;
+    virtual Libro& operator=(const Libro& orig) = default;
+    
+    virtual ~Libro() noexcept override;
+    void setAnioPublicacion(unsigned int anioPublicacion);
     unsigned int getAnioPublicacion() const;
     void setEdicion(unsigned int _edicion);
     unsigned int getEdicion() const;
@@ -30,11 +40,11 @@ public:
     void setAutor(std::string _autor);
     std::string getAutor() const;
 
-    virtual std::string toCSV() const;
-    virtual void fromCSV(std::string linea);
+    virtual std::string toCSV() const override;
+    virtual void fromCSV(std::string linea) override;
 
     //Implementación de método vitual puro de clase abstracta Ejemplar
-    virtual void setID(std::string identificador);
+    virtual void setID(std::string identificador) override;
     
 private:
 

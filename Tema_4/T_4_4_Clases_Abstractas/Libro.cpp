@@ -1,4 +1,4 @@
-/** 
+/** Implementación de la clase Libro
  * @file   Libro.cpp
  * @author jrbalsas
  *
@@ -11,6 +11,9 @@
 #include <iostream>
 
 
+Libro::Libro(std::string isbn) :
+    Ejemplar(isbn) {
+}
 
 /**Constructor de un libro a partir de su información básica*/
 Libro::Libro( std::string isbn, std::string titulo, unsigned int anio, unsigned int edicion,
@@ -21,15 +24,8 @@ Libro::Libro( std::string isbn, std::string titulo, unsigned int anio, unsigned 
             _edicion(edicion){
 }
 
-/**Constructor de copia*/
-Libro::Libro(const Libro& orig): Ejemplar(orig),
-                                _autor(orig._autor),
-                                _anioPublicacion(orig._anioPublicacion),
-                                _edicion(orig._edicion) {
-}
-
 /**Destructor*/
-Libro::~Libro() {
+Libro::~Libro() noexcept{
     std::cerr << "Destruyendo libro de " << _autor << " ";
 }
 

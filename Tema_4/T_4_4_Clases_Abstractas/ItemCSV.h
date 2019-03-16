@@ -19,7 +19,7 @@ public:
     virtual std::string toCSV() const=0;
     virtual void fromCSV(std::string linea)=0;
     
-    virtual ~ItemCSV() {};
+    virtual ~ItemCSV() noexcept {} ;
 private:
 
 };

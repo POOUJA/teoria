@@ -11,16 +11,21 @@
 
 class Revista: public Ejemplar {
 private:
-    unsigned int _numero;
-    unsigned int _anio;
+    unsigned int _numero = 0;
+    unsigned int _anio = 1800;
 public:
-  
-    Revista( std::string ISSN="",  std::string titulo="Sin titulo",
-             unsigned int anio=0, unsigned int numero=0,
-             std::string editorial="Sin especificar", float precio=0);
+    Revista() = default; 
+    Revista(std::string issn);
 
-    Revista(const Revista& orig);
-    virtual ~Revista();
+    Revista( std::string ISSN,  std::string titulo,
+             unsigned int anio, unsigned int numero,
+             std::string editorial, float precio);
+  
+    //Copia y asignación por defecto
+    Revista(const Revista& orig) = default;
+    virtual Revista& operator=(const Revista& orig) = default;
+
+    virtual ~Revista() noexcept override;
     void setAnio(unsigned int _anio);
     unsigned int getAnio() const;
     void setNumero(unsigned int _numero);
@@ -29,11 +34,11 @@ public:
     std::string getISSN() const;
 
     //Interfaz ItemCSV
-    virtual std::string toCSV() const;
-    virtual void fromCSV(std::string linea);
+    virtual std::string toCSV() const override;
+    virtual void fromCSV(std::string linea) override;
 
     //Implementación de método vitual puro de clase abstracta Ejemplar
-    virtual void setID(std::string identificador);
+    virtual void setID(std::string identificador) override;
     
 private:
 
