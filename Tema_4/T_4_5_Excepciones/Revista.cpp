@@ -10,11 +10,15 @@
 
 #include "Revista.h"
 
+Revista::Revista(std::string issn) :
+    Ejemplar(issn) {
+       setISSN(issn); //Aunque ISSN está inicializado como ID ejemplar, verificamos que es válido
+}
+
 /**Construye una revista a partir de su información básica
    @throw std::domain_error si algún atributo no es válido para una revista*/
 Revista::Revista(   std::string ISSN, std::string titulo, unsigned int anio, unsigned int numero,
                     std::string editorial, float precio) 
-                throw (std::domain_error)
     try
         : Ejemplar(ISSN,titulo, editorial, precio) {
         //inicializamos atributos con métodos set para comprobaciones de valores válidos de dominio
@@ -23,17 +27,12 @@ Revista::Revista(   std::string ISSN, std::string titulo, unsigned int anio, uns
         setNumero(numero);
     } catch (std::domain_error &e ) {
         //relanzamos excepciones de Ejemplar o de inicialización de atributos propios
-        throw e;
+        throw std::domain_error(std::string("[Revista::Revista] Error de inicialización: ")+
+                                std::string(e.what()) );
     }
 
-/**Constructor de copia*/
-Revista::Revista(const Revista& orig)
-    :Ejemplar(orig),_anio(orig._anio),_numero(orig._numero){
-
-}
-
 /**Destructor*/
-Revista::~Revista() {
+Revista::~Revista() noexcept {
     std::cerr << "Destruyendo revista año " << _anio << " ";
 }
 
@@ -65,13 +64,13 @@ unsigned int Revista::getNumero() const {
 
 /**Establece como ID de una revista su issn
    @throw std::domain_error si el ISSN no tiene un formato válido*/
-void Revista::setID(std::string issn) throw (std::domain_error) {
+void Revista::setID(std::string issn)  {
     setISSN(issn); //El identificador de una revista es su ISBN
 }
 
 /**Asigna un ISBN según el formato adecuado
   @throw std::domain_error si el ISSN no tiene un formato válido*/
-void Revista::setISSN(std::string issn) throw (std::domain_error) {
+void Revista::setISSN(std::string issn) {
     //FIXME: Verificar con más detalle formato del ISSN
     if (issn.substr(0,4)!="ISSN")
         throw std::domain_error("[Revista::setISSN] el ISSN debe comenzar por ISSN");
@@ -102,7 +101,7 @@ std::string Revista::toCSV() const {
  @pos Modifica los atributos de la revista si linea contiene la información requerida
  @throw ExConversion si la línea CSV no tiene el formato adecuado
  @throw std::domain_error si algún dato para la revista no es válido*/
-void Revista::fromCSV(std::string linea) throw (ExConversion,std::domain_error){
+void Revista::fromCSV(std::string linea) {
 
     std::stringstream ss(linea);
     std::string lineaEjemplar;

@@ -10,6 +10,11 @@
 
 #include <iostream>
 
+Libro::Libro(std::string isbn) :
+    Ejemplar(isbn) {
+        setIsbn(isbn); //Aunque ISBN está inicializado como ejemplar, verificamos que es válido
+}
+
 /**Constructor de un libro a partir de su información básica
    @throw std::domain_error si algún atributo no es válido para un libro*/
 Libro::Libro( std::string isbn, std::string titulo, unsigned int anio, unsigned int edicion,

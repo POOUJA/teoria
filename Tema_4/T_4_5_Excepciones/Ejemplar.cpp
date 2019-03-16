@@ -10,10 +10,12 @@
 
 #include "Ejemplar.h"
 
+Ejemplar::Ejemplar(std::string identificador): _identificador(identificador) {
+}
+
 /**Inicializa un ejemplar a partir de sus atributos
    @throw std::domain_error si algún atributo no es válido para un ejemplar*/
-Ejemplar::Ejemplar(std::string identificador, std::string titulo, std::string editorial, float precio) 
-        throw (std::domain_error)
+Ejemplar::Ejemplar(std::string identificador, std::string titulo, std::string editorial, float precio)        
         :_identificador(identificador)
 {
     if (identificador.length()<5) {
@@ -26,14 +28,7 @@ Ejemplar::Ejemplar(std::string identificador, std::string titulo, std::string ed
     setPrecio(precio);
 }
 
-/**Constructor de copia*/
-Ejemplar::Ejemplar(const Ejemplar& orig)
-    :_identificador(orig._identificador),_titulo(orig._titulo),
-     _editorial(orig._editorial),_precio(orig._precio){
-    //No hace falta llamar a set puesto que orig debe ser válido
-}
-
-Ejemplar::~Ejemplar() {
+Ejemplar::~Ejemplar() noexcept {
         std::cerr << "Destruyendo ejemplar " << _titulo << std::endl;
 }
 
@@ -91,7 +86,7 @@ std::string Ejemplar::toCSV() const{
    @pre línea tiene el formato identificador;titulo;editorial;precio
    @throw ExConversion si hay algún error en el proceso de conversión
    @throw std::domain_error si algún dato para el ejemplar no es válido*/
-void Ejemplar::fromCSV(std::string linea) throw (ExConversion,std::domain_error) {
+void Ejemplar::fromCSV(std::string linea) {
     std::stringstream ss(linea);
     std::string campo;
     float valor;

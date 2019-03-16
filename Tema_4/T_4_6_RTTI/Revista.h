@@ -15,7 +15,9 @@ private:
     unsigned int _numero = 0;
     unsigned int _anio = 1800;
 public:
-    Revista() = default; 
+    Revista() = default;
+    Revista(std::string issn);
+
     Revista( std::string ISSN,  std::string titulo,
              unsigned int anio, unsigned int numero,
              std::string editorial, float precio);

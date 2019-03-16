@@ -15,16 +15,24 @@
 /** Clase para cualquier ejemplar de un catálogo de una biblioteca*/
 class Ejemplar: public ItemCSV {
 private:
-    std::string _titulo;
-    std::string _editorial;
-    float _precio;
+    std::string _titulo = "No especificado";
+    std::string _editorial = "No especificada";
+    float _precio = 0;
 protected:
-    std::string _identificador;
+    std::string _identificador = "000000000";
 public:
-    Ejemplar(std::string identificador="000000000", std::string titulo="No especificado",
-             std::string editorial="No especificada", float precio=0) throw (std::domain_error);
-    Ejemplar(const Ejemplar& orig);
-    virtual ~Ejemplar();
+    Ejemplar() = default;
+
+    Ejemplar(std::string identificador);;
+
+    Ejemplar(std::string identificador, std::string titulo,
+             std::string editorial, float precio);
+    
+    //Copia y asignación por defecto
+    Ejemplar(const Ejemplar& orig) = default;
+    virtual Ejemplar& operator=(const Ejemplar& orig) = default;
+    
+    virtual ~Ejemplar() noexcept;
 
     virtual void setID(std::string identificador)=0; //Método virtual puro
     std::string getID() const;
@@ -35,8 +43,8 @@ public:
     void setTitulo(std::string titulo);
     std::string getTitulo() const;
    
-    virtual std::string toCSV() const;
-    virtual void fromCSV(std::string linea) throw (ExConversion,std::domain_error);
+    virtual std::string toCSV() const override;
+    virtual void fromCSV(std::string linea) override;
 
     virtual bool igualA(const Ejemplar& c) const;
     virtual bool operator==(const Ejemplar& c) const;

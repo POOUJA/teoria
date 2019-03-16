@@ -18,6 +18,9 @@ private:
     
 public:
     Libro() = default;
+
+    Libro(std::string isbn);
+
     Libro(std::string isbn, std::string titulo, unsigned int anio,
           unsigned int edicion, std::string autor, 
           std::string editorial, float precio);
@@ -26,7 +29,7 @@ public:
     Libro(const Libro& orig) = default;
     virtual Libro& operator=(const Libro& orig) = default;
     
-    virtual ~Libro() noexcept;
+    virtual ~Libro() noexcept override;
     void setAnioPublicacion(unsigned int anioPublicacion);
     unsigned int getAnioPublicacion() const;
     void setEdicion(unsigned int edicion);

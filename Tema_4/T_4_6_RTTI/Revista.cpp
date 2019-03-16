@@ -10,6 +10,11 @@
 
 #include "Revista.h"
 
+Revista::Revista(std::string issn) :
+    Ejemplar(issn) {
+}
+
+
 /**Construye una revista a partir de su información básica
    @throw std::domain_error si algún atributo no es válido para un libro*/
 Revista::Revista(   std::string ISSN, std::string titulo, unsigned int anio, unsigned int numero,

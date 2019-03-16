@@ -25,7 +25,7 @@ const std::string FICHEROEJEMPLARES="ejemplares.csv"; /*< Fichero donde se almac
  * @pos Se reduce en una unidad el parámetro numEjemplares
  * @pos Los elementos restantes se reagrupan al comienzo del vector. Puede variar el orden y posición de los elementos restantes
  * @throws ExNoEncontrado si no existe un elemento con el identificador indicado */
-void BorraEjemplar(Ejemplar* ejemplares[], unsigned int &numEjemplares, std::string identificador)
+void borraEjemplar(Ejemplar* ejemplares[], unsigned int &numEjemplares, std::string identificador)
                     throw (ExNoEncontrado) {
     int posEjemplar=buscaElemento(ejemplares, numEjemplares,identificador);
     if (posEjemplar<0) 
@@ -44,7 +44,7 @@ void BorraEjemplar(Ejemplar* ejemplares[], unsigned int &numEjemplares, std::str
  * @pos devuelve en numEjemplares el nuevo número de ejemplares almacenados en el vector
  * @throw std::out_of_range si no hay espacio en el vector
   */
-void NuevoEjemplar(Ejemplar* ejemplares[], unsigned int &numEjemplares, Ejemplar *ejemplar) 
+void nuevoEjemplar(Ejemplar* ejemplares[], unsigned int &numEjemplares, Ejemplar *ejemplar) 
                     throw (std::out_of_range) {
     if (numEjemplares>=MAXEJEMPLARES)
         throw std::out_of_range("[NuevoEjemplar] se ha intentado sobrepasar el tamaño del vector");
@@ -58,7 +58,7 @@ void NuevoEjemplar(Ejemplar* ejemplares[], unsigned int &numEjemplares, Ejemplar
    @pre la clase T implementa la interfaz ItemCSV
    @return devuelve un valór lógico indicando si la operación ha tenido éxito*/
 template<class T>
-void GuardaCSV(T* elementos[], int numElementos, std::string nombreFichero ) {
+void guardaCSV(T* elementos[], int numElementos, std::string nombreFichero ) {
     std::ofstream f;
     std::string linea;
 
@@ -77,21 +77,21 @@ void GuardaCSV(T* elementos[], int numElementos, std::string nombreFichero ) {
 }
 
 /**Visualiza elementos que implementan la Interfaz CSV*/
-void Visualiza(const ItemCSV &item ) {
+void visualiza(const ItemCSV &item ) {
     //Polimorfismo de objetos mediante referencias en paso de parámetro
     //Polimorfismo de método en llamada a método según el tipo de ejemplar (enlace dinámico)
     std::cout << item.toCSV();
 }
 
 /**Visualiza los ejemplares de un vector*/
-void Visualiza(Ejemplar* elementos[], int numElementos ) {
+void visualiza(Ejemplar* elementos[], int numElementos ) {
     std::cout << "Ejemplares del catálogo" << std::endl
               << "======================="
               << std::endl;
     for (int i = 0; i < numElementos; i++) {
         std::cout << i+1 << ".- ";
         //Poliformismo de objetos mediante referencia
-        Visualiza(*elementos[i]);
+        visualiza(*elementos[i]);
         std::cout << std::endl;
     }
     std::cout << std::endl;
@@ -137,13 +137,13 @@ int main(int argc, char** argv) {
         Ejemplar *previstaMUY=new Revista(revistaMUY);
         Ejemplar *plibroQuijote=new Libro(libroQuijote);
 
-        NuevoEjemplar(ejemplares,numEjemplares,previstaMUY);
-        NuevoEjemplar(ejemplares,numEjemplares,plibroQuijote);
-        NuevoEjemplar(ejemplares,numEjemplares,
+        nuevoEjemplar(ejemplares,numEjemplares,previstaMUY);
+        nuevoEjemplar(ejemplares,numEjemplares,plibroQuijote);
+        nuevoEjemplar(ejemplares,numEjemplares,
                       new Libro("8497320409","C++ Estandar",2001,1,"Enrique Hernández Orallo","Paraninfo",12));
-        NuevoEjemplar(ejemplares,numEjemplares,new Libro(libroPOO));
+        nuevoEjemplar(ejemplares,numEjemplares,new Libro(libroPOO));
         //El siguiente ejemplar no se podrá añadir por falta de espacio en el vector
-        NuevoEjemplar(ejemplares,numEjemplares,new Libro(libroPOO));
+        nuevoEjemplar(ejemplares,numEjemplares,new Libro(libroPOO));
 
     } catch (std::bad_alloc &e) {
         std::cerr <<  "[main] No hay memoria para crear más ejemplares "<< std::endl;
@@ -160,11 +160,11 @@ int main(int argc, char** argv) {
         //Continuamos el programa aunque no se han añadido todos los elementos
     }
     //Visualizamos todos los ejemplares
-    Visualiza(ejemplares,numEjemplares);
+    visualiza(ejemplares,numEjemplares);
    
     std::string cadena="11111111"; 
     try {
-        BorraEjemplar(ejemplares,numEjemplares,cadena);
+        borraEjemplar(ejemplares,numEjemplares,cadena);
         //No se ejecuta puesto que el ejemplar no existe
         std::cout << "Ejemplar " << cadena << " borrado con éxito" << std::endl;
     } catch (ExNoEncontrado &e) {
@@ -175,7 +175,7 @@ int main(int argc, char** argv) {
     
     //Volcamos los ejemplares a disco
     try {
-        GuardaCSV(ejemplares,numEjemplares,FICHEROEJEMPLARES);
+        guardaCSV(ejemplares,numEjemplares,FICHEROEJEMPLARES);
         std::cout << "Ejemplares almacenados en " << FICHEROEJEMPLARES << std::endl;
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;

@@ -16,7 +16,7 @@ class ExConversion: public std::logic_error {
 public:
     ExConversion(std::string error="[ExConversion] Fallo en conversión de datos"):std::logic_error(error) {};
     ExConversion(const ExConversion& orig):logic_error(orig) {};
-    virtual ~ExConversion() throw() {};
+    virtual ~ExConversion() noexcept override{};
 private:
 
 };
