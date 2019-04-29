@@ -23,9 +23,9 @@ void utilCatalogo::visualiza(Catalogo &catalogo) {
 void utilCatalogo::visualiza(Ejemplar& ejemplar) {
     //Usamos RTTI para determinar cómo se visualiza cada tipo de ejemplar
     //Se utiliza conversión a puntero para evitar capturar excepciones de conversión)
-    if (dynamic_cast<Libro*>( &ejemplar )!=0) 
+    if (dynamic_cast<Libro*>( &ejemplar )!=nullptr) 
         visualiza(dynamic_cast<Libro&>( ejemplar ));
-    else if (dynamic_cast<Revista*>( &ejemplar )!=0) 
+    else if (dynamic_cast<Revista*>( &ejemplar )!=nullptr) 
         visualiza(dynamic_cast<Revista&>( ejemplar ));
     else {
         std::cout << "==============================" << std::endl;
