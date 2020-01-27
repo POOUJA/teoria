@@ -169,7 +169,8 @@ bool EntradaEnFacebook::operator<= ( const EntradaEnFacebook& otro )
  */
 EntradaEnFacebook& EntradaEnFacebook::operator= ( const EntradaEnFacebook& orig )
 {  if ( this != &orig )   // Comprueba que no se está intentando hacer a=a
-   {  _texto = orig._texto;
+   {  _id = orig._id;
+      _texto = orig._texto;
       if ( _maxComentarios != orig._maxComentarios )
       {  // Si el bloque de comentarios tiene distinto tamaño, hay que
          // desecharlo y crear uno nuevo
