@@ -1,4 +1,4 @@
-/** 
+/**
  * @brief Fichero principal del ejemplo de teoría T_2_"
  * @file main.cpp
  * @author Victor M. Rivas (vrivas@ujaen.es)
@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include "CalculadoraIVA.h"
-using namespace std;
+
 
 /**
  * @brief Función principal
@@ -17,8 +17,8 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     CalculadoraIVA calculadora( 21 );
-    cout << "El IVA de un producto que cuesta 80 euros es "
-            << calculadora.aplicar( 80 ) << endl;
+    std::cout << "El IVA de un producto que cuesta 80 euros es "
+              << calculadora.aplicar( 80 ) << std::endl;
     return 0;
 }
 

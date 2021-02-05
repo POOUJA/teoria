@@ -1,4 +1,4 @@
-/** 
+/**
  * @brief Fichero principal del ejemplo de teoría T_2_3
  * @file main.cpp
  * @author Victor M. Rivas (vrivas@ujaen.es)
@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include "Gol.h"
-using namespace std;
+
 
 /**
  * @brief Función principal
@@ -17,10 +17,10 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     Gol primerGol( "Alex Cruz", 23 );
-    cout << "Ejemplo Teoria T_2_3" << endl;
-    cout << "El gol fue marcado por " << primerGol.GetJugador()
-            << " en el minuto " << primerGol.GetMinuto() << endl;
-    
+    std::cout << "Ejemplo Teoria T_2_3" << std::endl
+              << "El gol fue marcado por " << primerGol.GetJugador()
+              << " en el minuto " << primerGol.GetMinuto() << std::endl;
+
     // Incorrecto: cout << "El gol fue marcado por " << primerGol.jugador
     return 0;
 }

@@ -1,4 +1,4 @@
-/** 
+/**
  * @brief Ejemplo T_2_8 de teoría: Excepciones con clases
  * @file main.cpp
  * @author Victor M. Rivas Santos <vrivas@ujaen.es>
@@ -8,7 +8,7 @@
 #include <iostream>
 #include <cstdlib>
 #include "MiExcepcion.h"
-using namespace std;
+
 
 /**
  * @brief Divide a entre b comprobando que b no sea 0
@@ -30,29 +30,29 @@ float dividir( float a, float b) {
  */
 int main(int argc, char** argv) {
 
-    cout << "Ejemplo de teoría T_2_8: Excepciones con clases" << endl;
+    std::cout << "Ejemplo de teoría T_2_8: Excepciones con clases" << std::endl;
 
     // Primero creamos una excepción, para luego lanzarla
-    cout << "+ En primer lugar creamos un objeto excepción que luego lanzaremos" << endl;
+    std::cout << "+ En primer lugar creamos un objeto excepción que luego lanzaremos" << std::endl;
     MiExcepcion fueraDeRango("Función main: La posición indicada está fuera del rango válido");
 
     std::string profesores[] = {"José Ramón Balsas", "Angel Luis García", "Victor Rivas"};
     try {
         for (int i = 0; i < 5; ++i) {
             if (i < 3) {
-                cout << "    - Profesor " << i << ": " << profesores[i] << endl;
+                std::cout << "    - Profesor " << i << ": " << profesores[i] << std::endl;
             } else {
                 throw fueraDeRango;
             }
         }
     } catch (MiExcepcion &e) {
-        cerr << "Error: " << e.GetTexto() << endl;
+        std::cerr << "Error: " << e.GetTexto() << std::endl;
     }
-    cout << endl;
+    std::cout << std::endl;
 
-    cout << "+ En segundo lugar, usamos una excepción creada en el propio throw (dentro de la función dividir)" 
-            << endl 
-            << endl;
+    std::cout << "+ En segundo lugar, usamos una excepción creada en el propio throw (dentro de la función dividir)"
+              << std::endl
+              << std::endl;
 
     try {
         double notaDePracticas = 7.3;
@@ -60,33 +60,33 @@ int main(int argc, char** argv) {
         int numEjerciciosSinHacer = 0;
         // La siguiente instrucción no llega a ejecutarse, salvo que cambiemos el valor de numEjerciciosSinHacer
         // Nótese que el throw se hace en el función dividir yq ue la excepción se captura aquí.
-        cout << "    - Nota final: " << dividir (notaDePracticas + notaDeTeoria, numEjerciciosSinHacer )<< endl;
+        std::cout << "    - Nota final: " << dividir (notaDePracticas + notaDeTeoria, numEjerciciosSinHacer )<< std::endl;
     } catch (MiExcepcion &e) {
-        cerr << "Error: " << e.GetTexto() << endl;
+        std::cerr << "Error: " << e.GetTexto() << std::endl;
     }
 
-    cout << endl;
+    std::cout << std::endl;
 
-    cout << "+ Finalmente, usamos un puntero a la clase excepción" << endl << endl;
+    std::cout << "+ Finalmente, usamos un puntero a la clase excepción" << std::endl << std::endl;
 
     try {
         int *variableNoInicializada = nullptr;
         if (!variableNoInicializada) {
             throw new MiExcepcion("Función main: No puede accederse al contenido de un puntero a NULL");
         }
-        
+
         // Las siguientes instrucciones no se ejecutan, salvo que hagamos un new para la variableNoInicializada
         *variableNoInicializada = 6;
-        cout << "    - El contenido de variableNoInicialidada es  "
-                << *variableNoInicializada << endl;
+        std::cout << "    - El contenido de variableNoInicialidada es  "
+                  << *variableNoInicializada << std::endl;
     } catch (MiExcepcion *e) {
-        cerr << "Error: " << e->GetTexto() << endl;
+        std::cerr << "Error: " << e->GetTexto() << std::endl;
         delete e;
         e = nullptr;
     }
-    cout << endl;
+    std::cout << std::endl;
 
-    cout << "+ El programa finaliza correctamente." << endl;
+    std::cout << "+ El programa finaliza correctamente." << std::endl;
     return 0;
 }
 

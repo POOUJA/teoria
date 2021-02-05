@@ -1,4 +1,4 @@
-/** 
+/**
  * @brief Ejemplo T_2_6 de teoría: Entrada de Facebook
  * @file main.cpp
  * @author Victor M. Rivas Santos <vrivas@ujaen.es>
@@ -8,7 +8,7 @@
 #include <iostream>
 #include <cstdlib>
 #include "EntradaEnFacebook.h"
-using namespace std;
+
 
 /**
  * @brief Función principal
@@ -27,10 +27,10 @@ int main(int argc, char** argv) {
     entrada.AddComentario("Ja, ja... espero que no le dé por meterse dentro");
 
     // Mostramos los datos almacenados
-    cout << "Entrada: " << endl
-            << "    " << entrada.GetTexto() << endl;
+    std::cout << "Entrada: " << std::endl
+              << "    " << entrada.GetTexto() << std::endl;
     for (int i = 0; i < entrada.GetNumComentarios(); ++i) {
-        cout << "         - " << entrada.GetComentario(i) << endl;
+        std::cout << "         - " << entrada.GetComentario(i) << std::endl;
     }
 
 
@@ -43,10 +43,10 @@ int main(int argc, char** argv) {
     otraEntrada->AddComentario("¿Te los has descargado de GitHub? Yo lo hice y me funcionó");
 
     // Mostramos los datos almacenados
-    cout << "Entrada: " << endl
-            << "    " << otraEntrada->GetTexto() << endl;
+    std::cout << "Entrada: " << std::endl
+              << "    " << otraEntrada->GetTexto() << std::endl;
     for (int i = 0; i < otraEntrada->GetNumComentarios(); ++i) {
-        cout << "         - " << otraEntrada->GetComentario(i) << endl;
+        std::cout << "         - " << otraEntrada->GetComentario(i) << std::endl;
     }
 
     // Llamamos explícitamente al destructor del objeto dinámico
@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
         delete otraEntrada;
         otraEntrada=0;
     }
-    
+
     // No es necesario llamar al destructor del objeto automático.
     return 0;
 }

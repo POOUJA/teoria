@@ -1,4 +1,4 @@
-/** 
+/**
  * @brief Fichero principal del ejemplo de teoría T_2_1
  * @file main.cpp
  * @author Victor M. Rivas (vrivas@ujaen.es)
@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "Circulo.h"
-using namespace std;
+
 
 /**
  * @brief Función principal
@@ -19,8 +19,8 @@ using namespace std;
 int main(int argc, char** argv) {
     Circulo rueda;
     rueda.SetRadio(12);
-    cout << "Ejemplo T_2_1" << endl;
-    cout << "El radio de la rueda es " << rueda.GetRadio() << endl;
+    std::cout << "Ejemplo T_2_1" << std::endl
+              << "El radio de la rueda es " << rueda.GetRadio() << std::endl;
     return 0;
 }
 

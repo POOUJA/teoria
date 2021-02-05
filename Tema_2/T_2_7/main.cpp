@@ -8,7 +8,7 @@
 #include <iostream>
 #include <cstdlib>
 #include "EntradaEnFacebook.h"
-using namespace std;
+
 
 /**
  * @brief Función principal
@@ -17,7 +17,7 @@ using namespace std;
  * @return 0 si todo funciona bien; distinto de 0 en otro caso.
  */
 int main ( int argc, char** argv )
-{  cout << "Ejemplo de teoría T_2_7: Sobrecarga de operadores" << endl;
+{  std::cout << "Ejemplo de teoría T_2_7: Sobrecarga de operadores" << std::endl;
 
    // Creamos primera entrada
    EntradaEnFacebook entrada ( 1, "Hoy mi gato se ha dormido encima de la lavadora", 30);
@@ -38,82 +38,82 @@ int main ( int argc, char** argv )
    otraEntrada.AddComentario ( "Jo... anda que invitas, ya te vale." );
 
    // Primera parte: comprobación del operador <=
-   cout << "En primer lugar comprobamos el uso del operador <=" << endl
-        << "Para ello, comparamos las entradas y las escribimos en orden alfabético" << endl;
+   std::cout << "En primer lugar comprobamos el uso del operador <=" << std::endl
+             << "Para ello, comparamos las entradas y las escribimos en orden alfabético" << std::endl;
 
    if ( entrada <= otraEntrada )
    {  // Mostramos los datos almacenados empezando por la primera
-      cout << "+ Los datos de la variable entrada son: " << endl
-           << "    " << entrada.GetTexto() << endl;
+      std::cout << "+ Los datos de la variable entrada son: " << std::endl
+                << "    " << entrada.GetTexto() << std::endl;
 
       for ( int i = 0; i < entrada.GetNumComentarios(); ++i )
-      {  cout << "         - " << entrada.GetComentario(i) << endl;
+      {  std::cout << "         - " << entrada.GetComentario(i) << std::endl;
       }
 
-      cout << "+ Los datos de la variable otraEntrada son: " << endl
-           << "    " << otraEntrada.GetTexto() << endl;
+      std::cout << "+ Los datos de la variable otraEntrada son: " << std::endl
+                << "    " << otraEntrada.GetTexto() << std::endl;
       for ( int i = 0; i < otraEntrada.GetNumComentarios(); ++i )
-      {  cout << "         - " << otraEntrada.GetComentario(i) << endl;
+      {  std::cout << "         - " << otraEntrada.GetComentario(i) << std::endl;
       }
    }
    else
    {  // Mostramos los datos almacenados empezando por la segunda
-      cout << "+ Los datos de la variable otraEntrada son: " << endl
-           << "    " << otraEntrada.GetTexto() << endl;
+      std::cout << "+ Los datos de la variable otraEntrada son: " << std::endl
+                << "    " << otraEntrada.GetTexto() << std::endl;
       for ( int i = 0; i < otraEntrada.GetNumComentarios(); ++i )
-      {  cout << "         - " << otraEntrada.GetComentario(i) << endl;
+      {  std::cout << "         - " << otraEntrada.GetComentario(i) << std::endl;
       }
 
-      cout << "+ Los datos de la variable entrada son: " << endl
-           << "    " << entrada.GetTexto() << endl;
+      std::cout << "+ Los datos de la variable entrada son: " << std::endl
+                << "    " << entrada.GetTexto() << std::endl;
       for ( int i = 0; i < entrada.GetNumComentarios(); ++i )
-      {  cout << "         - " << entrada.GetComentario(i) << endl;
+      {  std::cout << "         - " << entrada.GetComentario(i) << std::endl;
       }
    }
 
    // Segunda parte: comprobación del operador == (comparación)
 
-   cout << endl << endl;
-   cout << "A continuación, probamos el operador comparación." << endl;
+   std::cout << std::endl << std::endl;
+   std::cout << "A continuación, probamos el operador comparación." << std::endl;
 
    EntradaEnFacebook nuevaEntrada ( 3, "Este nuevo vídeo de Nyan Cat no lo habéis visto", 30);
    EntradaEnFacebook &entradaExistente = entrada; //Referencia a entrada existente
 
    if ( nuevaEntrada == entrada )
    {  // No se entra aquí
-      cout << "Dos entradas diferentes tienen el mismo ID y eso no puede ser..."
-           << endl;
+      std::cout << "Dos entradas diferentes tienen el mismo ID y eso no puede ser..."
+                << std::endl;
    }
    else
-   {  cout << "Las entradas " << entrada.GetId() << " y "
-           << nuevaEntrada.GetId() << " son diferentes" << endl;
+   {  std::cout << "Las entradas " << entrada.GetId() << " y "
+                << nuevaEntrada.GetId() << " son diferentes" << std::endl;
    }
 
    if ( entradaExistente == entrada)
-   {  cout << "La entrada con id " << entrada.GetId()
-           << " y su referencia son la misma" << endl;
+   {  std::cout << "La entrada con id " << entrada.GetId()
+                << " y su referencia son la misma" << std::endl;
    }
    else
    {  //No se entra aquí
-      cout << "Umm, ,debe haber un error en Matrix!" << endl;
+      std::cout << "Umm, ,debe haber un error en Matrix!" << std::endl;
    }
 
    // Tercera parte: comprobación del operador = (asignación)
-   cout << endl << endl;
-   cout << "A continuación, probamos el operador asignación." << endl
-        << "Deben salir los datos de las dos variables exactamente iguales" << endl;
+   std::cout << std::endl << std::endl;
+   std::cout << "A continuación, probamos el operador asignación." << std::endl
+             << "Deben salir los datos de las dos variables exactamente iguales" << std::endl;
    otraEntrada = entrada;
    // Mostramos los datos de ambas y deben ser iguales
-   cout << "+ Los datos de la variable otraEntrada son " << endl
-        << "    " << otraEntrada.GetTexto() << endl;
+   std::cout << "+ Los datos de la variable otraEntrada son " << std::endl
+             << "    " << otraEntrada.GetTexto() << std::endl;
    for ( int i = 0; i < otraEntrada.GetNumComentarios(); ++i )
-   {  cout << "         - " << otraEntrada.GetComentario(i) << endl;
+   {  std::cout << "         - " << otraEntrada.GetComentario(i) << std::endl;
    }
 
-   cout << "+ Los datos de la variable entrada son: " << endl
-        << "    " << entrada.GetTexto() << endl;
+   std::cout << "+ Los datos de la variable entrada son: " << std::endl
+             << "    " << entrada.GetTexto() << std::endl;
    for ( int i = 0; i < entrada.GetNumComentarios(); ++i )
-   {  cout << "         - " << entrada.GetComentario(i) << endl;
+   {  std::cout << "         - " << entrada.GetComentario(i) << std::endl;
    }
 
    return 0;

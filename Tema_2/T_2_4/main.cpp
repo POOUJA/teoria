@@ -1,4 +1,4 @@
-/** 
+/**
  * @brief Fichero principal del ejemplo de teoría T_2_3
  * @file main.cpp
  * @author Victor M. Rivas (vrivas@ujaen.es)
@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include "GaticoDeFeisbus.h"
-using namespace std;
+
 
 /**
  * @brief Función principal
@@ -20,8 +20,9 @@ int main(int argc, char** argv) {
     minino.megusta();
     minino.megusta();
     minino.megusta();
-    cout << "Ejemplo Teoria T_2_4" << endl;
-    cout << "El dichoso gato le gusta a " << minino.GetNumMeGusta() << endl;
+    std::cout << "Ejemplo Teoria T_2_4" << std::endl
+              << "El dichoso gato le gusta a " << minino.GetNumMeGusta()
+              << std::endl;
     return 0;
 }
 

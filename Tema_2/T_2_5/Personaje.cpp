@@ -1,4 +1,4 @@
-/** 
+/**
  * @brief
  * @file Personaje.cpp
  * @author Victor M. Rivas Santos <vrivas@ujaen.es>
@@ -43,7 +43,7 @@ nombre(orig.nombre)
  */
 
 /*
-Personaje::Personaje(const Personaje& orig) : // Si quieres usar este constructor de copia, debes poner entre comentarios el de arriba 
+Personaje::Personaje(const Personaje& orig) : // Si quieres usar este constructor de copia, debes poner entre comentarios el de arriba
 nombre(orig.nombre)
 , apellidoFamilia(0) {
     apellidoFamilia = new std::string;
