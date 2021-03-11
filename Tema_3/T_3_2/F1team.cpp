@@ -84,7 +84,7 @@ string F1team::getNombre ( ) const
  */
 void F1team::setP2 ( Piloto* nP2 )
 {
-   if ( nP2 == 0 )
+   if ( nP2 == nullptr )
    {
       throw std::invalid_argument ( "F1team::setP2: valor incorrecto de parámetro" );
    }
@@ -99,7 +99,7 @@ void F1team::setP2 ( Piloto* nP2 )
  */
 bool F1team::existeP2 ()
 {
-   return ( _p2 != 0 );
+   return ( _p2 != nullptr );
 }
 
 /**
@@ -109,7 +109,7 @@ bool F1team::existeP2 ()
  */
 Piloto& F1team::getP2 ( ) const
 {
-   if ( _p2 == 0 )
+   if ( _p2 == nullptr )
    {
       throw std::runtime_error ( "F1team::getP2: no hay segundo piloto" );
    }
@@ -124,7 +124,7 @@ Piloto& F1team::getP2 ( ) const
  */
 void F1team::setP1 ( Piloto* nP1 )
 {
-   if ( nP1 == 0 )
+   if ( nP1 == nullptr )
    {
       throw std::invalid_argument ( "F1team::setP1: valor incorrecto de parámetro" );
    }
@@ -139,7 +139,7 @@ void F1team::setP1 ( Piloto* nP1 )
  */
 bool F1team::existeP1 ()
 {
-   return ( _p1 != 0 );
+   return ( _p1 != nullptr );
 }
 
 /**
@@ -149,7 +149,7 @@ bool F1team::existeP1 ()
  */
 Piloto& F1team::getP1 ( ) const
 {
-   if ( _p1 == 0 )
+   if ( _p1 == nullptr )
    {
       throw std::runtime_error ( "F1team::getP1: no hay primer piloto" );
    }
@@ -168,7 +168,7 @@ Piloto& F1team::getP1 ( ) const
  */
 void F1team::sumaPtosCarrera ( int ptosP1, int ptosP2 )
 {
-   if ( ( _p1 == 0 ) || ( _p2 == 0 ) )
+   if ( ( _p1 == nullptr ) || ( _p2 == nullptr ) )
    {
       throw std::logic_error ( "F1team::sumaPtosCarrera: el equipo no tiene los"
                                "dos pilotos asignados todavía" );
@@ -193,11 +193,11 @@ int F1team::getPtosConstructores () const
 {
    int aux = 0;
 
-   if ( ( _p1 != 0 ) && ( _p2 != 0 ) )
+   if ( ( _p1 != nullptr ) && ( _p2 != nullptr ) )
    {
       aux = _p1->getPuntos () + _p2->getPuntos ();
    }
-   
+
    return ( aux );
 }
 
@@ -215,6 +215,6 @@ F1team& F1team::operator = (const F1team& orig)
       _p1 = orig._p1;
       _p2 = orig._p2;
    }
-   
+
    return ( *this );
 }
