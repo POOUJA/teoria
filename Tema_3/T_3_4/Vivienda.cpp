@@ -368,7 +368,7 @@ Vivienda &Vivienda::operator = (const Vivienda& orig)
 
       try
       {
-         for ( i = 0; i < _numH; i++ )
+         for ( i = 0; i < orig._numH; i++ )
          {
             _habitaciones[i] = new Dependencia ( *orig._habitaciones[i] );
             _numH++;
