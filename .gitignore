@@ -8,6 +8,10 @@
 **/nb-configuration.xml
 **/.nb-gradle/
 
+#Exclude Clion/CMake tmp dirs
+**/.idea
+**/cmake-build-debug
+
 
 #Doxygen generated output & temp files
 **/html/
@@ -19,3 +23,6 @@
 #Others
 **/.vscode/
 **/*.out
+
+
+
