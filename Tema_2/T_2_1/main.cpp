@@ -18,7 +18,7 @@
  */
 int main(int argc, char** argv) {
     Circulo rueda;
-    rueda.SetRadio(12);
+    rueda.SetRadio(1.2);
     std::cout << "Ejemplo T_2_1" << std::endl
               << "El radio de la rueda es " << rueda.GetRadio() << std::endl;
     return 0;
