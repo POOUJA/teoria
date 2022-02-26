@@ -16,16 +16,22 @@
  * @brief Constructor por defecto
  * @throws std::bad_alloc Si hay algún problema reservando memoria
  */
-TicTacToe::TicTacToe ( ): _jugadores{"p1","p2"}, _t(new Tablero()), _turno(0)
+TicTacToe::TicTacToe ( ) try: _jugadores{"p1","p2"}, _t( new Tablero() )
+                            , _turno ( 0 )
 {
    // NOTA: si la inicialización del array _jugadores da errores al compilar,
    // ha de incluirse aquí. Es una característica reciente de C++ que algunos
    // compiladores no soportan todavía
-   
+
    /*
     * _jugadores[0] = "p1";
     * _jugadores[1] = "p2";
     */
+}
+catch ( std::bad_alloc &e )
+{
+   // En este caso, basta con relanzar la excepción
+   throw e;
 }
 
 /**
@@ -35,10 +41,10 @@ TicTacToe::TicTacToe ( ): _jugadores{"p1","p2"}, _t(new Tablero()), _turno(0)
  * @param orig
  * @throws std::bad_alloc Si hay algún problema reservando memoria
  */
-TicTacToe::TicTacToe ( const TicTacToe& orig ): _jugadores{orig._jugadores[0],
-                                                           orig._jugadores[1]},
-                                                _t( new Tablero(*orig._t) ),
-                                                _turno(orig._turno)
+TicTacToe::TicTacToe ( const TicTacToe& orig ) try: _jugadores{ orig._jugadores[0]
+                                                              , orig._jugadores[1]}
+                                                  , _t( new Tablero(*orig._t) )
+                                                  , _turno ( orig._turno )
 {
    // NOTA: si la inicialización del array _jugadores da errores al compilar,
    // ha de incluirse aquí. Es una característica reciente de C++ que algunos
@@ -49,6 +55,11 @@ TicTacToe::TicTacToe ( const TicTacToe& orig ): _jugadores{orig._jugadores[0],
     * _jugadores[1] = orig.jugadores[1];
     */
 }
+catch ( std::bad_alloc &e )
+{
+   // En este caso, basta con relanzar la excepción
+   throw e;
+}
 
 /**
  * Asigna a los jugadores los nombres que se le pasan como parámetros. Crea
@@ -58,8 +69,10 @@ TicTacToe::TicTacToe ( const TicTacToe& orig ): _jugadores{orig._jugadores[0],
  * @param jugador2 Nombre del segundo jugador
  */
 TicTacToe::TicTacToe ( const string& jugador1,
-                       const string& jugador2 ): _jugadores{jugador1, jugador2},
-                                                 _t( new Tablero()), _turno(0)
+                       const string& jugador2 ) try: _jugadores{ jugador1
+                                                               , jugador2 }
+                                                   , _t( new Tablero() )
+                                                   , _turno ( 0 )
 {
    // NOTA: si la inicialización del array _jugadores da errores al compilar,
    // ha de incluirse aquí. Es una característica reciente de C++ que algunos
@@ -69,6 +82,11 @@ TicTacToe::TicTacToe ( const string& jugador1,
     * _jugadores[0] = jugador1;
     * _jugadores[1] = jugador2;
     */
+}
+catch ( std::bad_alloc &e )
+{
+   // En este caso, basta con relanzar la excepción
+   throw e;
 }
 
 /**

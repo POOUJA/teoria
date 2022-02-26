@@ -19,9 +19,9 @@
 class TicTacToe
 {
    private:
-      string _jugadores[2];   ///< Nombres de los jugadores
-      int _turno = 0;             ///< Almacena a qué jugador le toca mover (0 ó 1)
-      Tablero *_t = nullptr;            ///< Tablero de juego
+      string _jugadores[2];    ///< Nombres de los jugadores
+      int _turno = 0;          ///< Almacena a qué jugador le toca mover (0 ó 1)
+      Tablero *_t = nullptr;   ///< Tablero de juego
 
    public:
       TicTacToe ( );

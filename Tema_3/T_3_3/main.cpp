@@ -25,7 +25,18 @@ int main ( int argc, char** argv )
 {
    int partidaTerminada = 0;
    int fila, columna;
-   TicTacToe* partida = new TicTacToe ();
+   TicTacToe *partida = nullptr;
+
+   try
+   {
+      partida = new TicTacToe ();
+   }
+   catch ( std::bad_alloc &e )
+   {
+      std::cerr << "No se ha podido crear la partida. Finalizando..."
+                << std::endl;
+      return ( 1 );
+   }
    
    partida->setJugador1 ( "Pepe" );
    partida->setJugador2 ( "Manolo" );
