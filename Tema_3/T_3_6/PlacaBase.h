@@ -20,17 +20,17 @@ class PlacaBase: public Componente
 {
    public:
       /// Factores de forma para placas base en el mercado
-      enum FactorDeForma { ATX,        ///< 305x244 mm
-                           MicroATX,   ///< 244x244 mm
-                           MiniITX,    ///< 170x170 mm
-                           NanoITX,    ///< 120x120 mm
-                           PicoITX,    ///< 100x72 mm
-                           OTRO };
-      static FactorDeForma intoFactorDeForma ( int valor );
-      static bool isFactorDeForma ( int valor );
+      enum class FactorDeForma { ATX        ///< 305x244 mm
+                               , MicroATX   ///< 244x244 mm
+                               , MiniITX    ///< 170x170 mm
+                               , NanoITX    ///< 120x120 mm
+                               , PicoITX    ///< 100x72 mm
+                               , OTRO };
+
+      static std::string ff2string ( FactorDeForma ff );
 
    private:
-      FactorDeForma _fForma=OTRO;   ///< Factor de forma de la placa base
+      FactorDeForma _fForma=FactorDeForma::OTRO;   ///< Factor de forma de la placa base
       int _nPCIe=0;              ///< Número de puertos PCI Express
       int _nUSB=0;               ///< Número de puertos USB
       string _chipset="---";         ///< Modelo de chipset que lleva instalado

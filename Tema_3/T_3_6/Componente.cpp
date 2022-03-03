@@ -21,15 +21,15 @@
  *         un número positivo
  */
 Componente::Componente ( string marca, string modelo, string nSerie,
-                         float precio ): _marca (marca), _modelo (modelo),
-                                         _numSerie (nSerie), _precio (precio)
+                         float precio ): _marca (marca), _modelo (modelo)
+                                       , _numSerie (nSerie), _precio (precio)
 {
-   
     try {
         this->setPrecio(precio);
     }catch(std::invalid_argument &e) {
         //Añadimos id del método al error y relanzamos la excepción
-        throw std::invalid_argument( "[Componente::Componente] "+std::string(e.what()) );
+        throw std::invalid_argument ( "[Componente::Componente] "
+                                      + std::string(e.what()) );
     }
 }
 
@@ -39,9 +39,9 @@ Componente::Componente ( string marca, string modelo, string nSerie,
  * @brief Constructor de copia
  * @param orig Objeto del que se copian los atributos
  */
-Componente::Componente ( const Componente& orig ): _marca (orig._marca),
-                                                   _modelo (orig._modelo),
-                                                   _precio (orig._precio)
+Componente::Componente ( const Componente& orig ): _marca (orig._marca)
+                                                 , _modelo (orig._modelo)
+                                                 , _precio (orig._precio)
 {
    _numSerie = orig._numSerie + " - 2";
 }

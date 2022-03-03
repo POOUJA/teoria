@@ -20,18 +20,18 @@ class Procesador: public Componente
 {
    public:
       /// Tipos de arquitectura
-      enum Arquitectura { x86_32,   ///< Intel IA-32 (32 bits)
+      enum class Arquitectura { x86_32,   ///< Intel IA-32 (32 bits)
                           x86_64,   ///< Intel IA-64, o AMD64 (64 bits)
                           ARM,      ///< ARM (32 bits)
                           ARM64,    ///< ARM (64 bits)
                           OTRA };
-      static Arquitectura intoArquitectura ( int valor );
-      static bool isArquitectura ( int valor );
+
+      static std::string arq2string ( Arquitectura arq );
 
    private:
       float _velocidad=0;        ///< Velocidad de reloj del procesador en GHz
       string _socket="---";      ///< Modelo de socket al que se ajusta el procesador
-      Arquitectura _arq=OTRA;    ///< Arquitectura del procesador
+      Arquitectura _arq=Arquitectura::OTRA;    ///< Arquitectura del procesador
 
    public:
       Procesador ( ) = default;

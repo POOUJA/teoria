@@ -31,10 +31,10 @@ Computadora::Computadora ( ): Computadora("---","---", 1960)
  *         valor menor a 1960 o mayor al año actual
  */
 Computadora::Computadora ( string nMarca,
-                           string nModelo, int year): _marca (nMarca),
-                                                      _modelo (nModelo),
-                                                      _nPiezas (0),
-                                                      _compradoEn (year)
+                           string nModelo, int year): _marca (nMarca)
+                                                    , _modelo (nModelo)
+                                                    , _nPiezas (0)
+                                                    , _compradoEn (year)
 {
    int i;
    time_t tiempoActual;
@@ -50,7 +50,8 @@ Computadora::Computadora ( string nMarca,
         this->setCompradoEn(year);
     } catch (std::invalid_argument &e) {
         //Añadimos id del método al error y relanzamos la excepción
-        throw std::invalid_argument("[Computadora::Computadora] " + std::string(e.what()));
+        throw std::invalid_argument ( "[Computadora::Computadora] "
+                                      + std::string(e.what()) );
     }
 
 }
@@ -65,8 +66,8 @@ Computadora::Computadora ( string nMarca,
  * @brief Constructor de copia
  * @param orig Objeto del que se copian los atributos
  */
-Computadora::Computadora ( const Computadora& orig ): _compradoEn (orig._compradoEn),
-                                                      _nPiezas (0)
+Computadora::Computadora ( const Computadora& orig ): _compradoEn (orig._compradoEn)
+                                                    , _nPiezas (0)
 {
    int i;
 

@@ -12,47 +12,6 @@
 #include "DiscoDuro.h"
 
 /**
- * @brief Método de clase para asegurar un tipo de conexión correcto
- * @param valor Valor entero que se quiere convertir a un tipo de conexión
- * @return El valor convertido a uno de los valores del tipo
- *         DiscoDuro::TipoConexion. Si el valor no se corresponde con ningún
- *         tipo de conexión, devuelve el valor DiscoDuro::otra
- */
-DiscoDuro::TipoConexion DiscoDuro::intoTipoConexion (int valor)
-{
-   if ( ( valor >= SATA ) && ( valor <= OTRA ) )
-   {
-      return ( DiscoDuro::TipoConexion ( valor ) );
-   }
-   else
-   {
-      return ( OTRA );
-   }
-}
-
-/**
- * @brief Método para comprobar si un valor se corresponde con un tipo de
- *        conexión
- * @param valor Valor entero a comprobar
- * @retval true Si el valor se corresponde con uno de los del tipo
- *         DiscoDuro::TipoConexion
- * @retval false Si el valor no se correponde con un valor del tipo antes
- *         indicado
- */
-bool DiscoDuro::isTipoConexion ( int valor )
-{
-   if ( ( valor >= SATA ) && ( valor <= OTRA ) )
-   {
-      return ( true );
-   }
-   else
-   {
-      return ( false );
-   }
-}
-
-
-/**
  * Inicializa un objeto DiscoDuro con todos los parámetros, y a precio 0
  * @brief Constructor parametrizado
  * @param marca Marca del disco duro
@@ -64,15 +23,15 @@ bool DiscoDuro::isTipoConexion ( int valor )
  * @throws std::invalid_argument Si alguno de los parámetros no tiene valor
  *         correcto
  */
-DiscoDuro::DiscoDuro ( string marca, string modelo, string nSerie,
-                       float capacidad, string formato,
-                       TipoConexion conexion ): Componente (marca, modelo, nSerie, 0),
-                                                _capacidad (capacidad),
-                                                _formato (formato),
-                                                _conexion (conexion) {
+DiscoDuro::DiscoDuro ( string marca, string modelo, string nSerie
+                       , float capacidad, string formato
+                       , TipoConexion conexion ): Componente (marca, modelo, nSerie, 0)
+                                                , _capacidad (capacidad)
+                                                , _formato (formato)
+                                                , _conexion (conexion)
+{
     try {
         this->setCapacidad(capacidad); //Validar y asignar o lanza std::invalid_argument
-        this->setConexion(conexion); //Validar y asignar o lanza std::invalid_argument
     } catch (std::invalid_argument &e) {
         //Añadimos id del método al error y relanzamos la excepción
         throw std::invalid_argument("[DiscoDuro::DiscoDuro] " + std::string(e.what()));
@@ -83,10 +42,10 @@ DiscoDuro::DiscoDuro ( string marca, string modelo, string nSerie,
  * @brief Constructor de copia
  * @param orig Objeto del que se copian los parámetros
  */
-DiscoDuro::DiscoDuro ( const DiscoDuro& orig ): Componente (orig),
-                                                _capacidad (orig._capacidad),
-                                                _conexion (orig._conexion),
-                                                _formato (orig._formato)
+DiscoDuro::DiscoDuro ( const DiscoDuro& orig ): Componente (orig)
+                                              , _capacidad (orig._capacidad)
+                                              , _conexion (orig._conexion)
+                                              , _formato (orig._formato)
 {
 }
 
@@ -100,16 +59,9 @@ DiscoDuro::~DiscoDuro ( )
 /**
  * @brief Método para fijar el tipo de conexión del disco duro
  * @param conexion Identificador del nuevo tipo de conexión
- * @throws std::invalid_argument Si el valor de tipo de conexión no es correcto
  */
 void DiscoDuro::setConexion ( TipoConexion conexion )
 {
-   if ( isTipoConexion ( conexion ) == false )
-   {
-      throw std::invalid_argument ( "DiscoDuro::setConexion: el tipo de conexión"
-                                    " no es correcto" );
-   }
-
    this->_conexion = conexion;
 }
 

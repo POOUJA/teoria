@@ -37,14 +37,14 @@ void v1_objetos_automaticos ( )
    // Crea computadoras y componentes
    Computadora c1 ( "IBM", "PC", 1981 );
    Computadora c2 ( "Apple", "Macintosh", 1984 );
-   PlacaBase pb1 ( "Asus", "pb01", "1234", PlacaBase::ATX, 1,
-                                    4, "CH123", "ABCD" );
+   PlacaBase pb1 ( "Asus", "pb01", "1234", PlacaBase::FactorDeForma::ATX, 1
+                 , 4, "CH123", "ABCD" );
    PlacaBase pb2 ;
-   DiscoDuro dd1 ( "WD", "WD500", "123asdf", 500, "2.5",
-                                   DiscoDuro::SATA );
+   DiscoDuro dd1 ( "WD", "WD500", "123asdf", 500, "2.5"
+                 , DiscoDuro::TipoConexion::SATA );
    DiscoDuro dd2;
-   Procesador p1( "Intel", "Celeron", "1234", 1,
-                                     Procesador::intoArquitectura (1), "IA7" );
+   Procesador p1( "Intel", "Celeron", "1234", 1
+                , Procesador::Arquitectura::x86_64, "IA7" );
    Procesador p2 (p1);
 
    // Asigna valores usando distintos métodos
@@ -113,14 +113,16 @@ void v2_objetos_dinamicos (  )
    // Crea computadoras y componentes
    Computadora *c1 = new Computadora ( "IBM", "PC", 1981 );
    Computadora *c2 = new Computadora ( "Apple", "Macintosh", 1984 );
-   PlacaBase *pb1 = new PlacaBase ( "Asus", "pb01", "1234", PlacaBase::ATX, 1,
-                                    4, "CH123", "ABCD" );
+   PlacaBase *pb1 = new PlacaBase ( "Asus", "pb01", "1234"
+                                    , PlacaBase::FactorDeForma::ATX, 1
+                                    , 4, "CH123", "ABCD" );
    PlacaBase *pb2 = new PlacaBase ();
-   DiscoDuro *dd1 = new DiscoDuro ( "WD", "WD500", "123asdf", 500, "2.5",
-                                    DiscoDuro::SATA );
+   DiscoDuro *dd1 = new DiscoDuro ( "WD", "WD500", "123asdf"
+                                    , 500, "2.5"
+                                    , DiscoDuro::TipoConexion::SATA );
    DiscoDuro *dd2 = new DiscoDuro ();
-   Procesador *p1 = new Procesador ( "Intel", "Celeron", "1234", 1,
-                                     Procesador::intoArquitectura (1), "IA7" );
+   Procesador *p1 = new Procesador ( "Intel", "Celeron", "1234", 1
+                                   , Procesador::Arquitectura::x86_64, "IA7" );
    Procesador *p2 = new Procesador (*p1);
 
    // Asigna valores usando distintos métodos

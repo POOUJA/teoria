@@ -23,18 +23,16 @@ class DiscoDuro: public Componente
 {
    public:
       /// Tipos de conexiones
-      enum TipoConexion { SATA,   ///< Serial ATA
-                          IDE,    ///< Integrated Drive Electronics
-                          EIDE,   ///< Enhanced IDE
-                          SCSI,   ///< Small Computer Interface
-                          OTRA };
-      static TipoConexion intoTipoConexion ( int valor );
-      static bool isTipoConexion ( int valor );
+      enum class TipoConexion { SATA,   ///< Serial ATA
+                                IDE,    ///< Integrated Drive Electronics
+                                EIDE,   ///< Enhanced IDE
+                                SCSI,   ///< Small Computer Interface
+                                OTRA };
 
    private:
       float _capacidad=0;         ///< Capacidad en Megabytes
       string _formato="---";          ///< Formato (dimensiones) del disco (2.5", 3.5"...)
-      TipoConexion _conexion=OTRA;   ///< Tipo de conexión
+      TipoConexion _conexion=TipoConexion::OTRA;   ///< Tipo de conexión
 
    public:
       DiscoDuro ( ) = default;

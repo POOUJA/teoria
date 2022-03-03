@@ -11,43 +11,40 @@
 #include "PlacaBase.h"
 
 /**
- * @brief Método de clase para asegurar un factor de forma correcto
- * @param valor Valor entero que se quiere convertir a un factor de forma
- * @return El valor convertido a uno de los valores del tipo
- *         PlacaBase::FactorDeForma. Si el valor no se corresponde con ningún
- *         tipo de conexión, devuelve el valor FactorDeForma::otro
+ * Convierte un factor de forma a texto
+ * @param ff Factor de forma a convertir
+ * @return Una cadena de texto describiendo el factor de forma
  */
-PlacaBase::FactorDeForma PlacaBase::intoFactorDeForma (int valor)
+std::string PlacaBase::ff2string ( FactorDeForma ff )
 {
-   if ( ( valor >= ATX ) && ( valor <= OTRO ) )
-   {
-      return ( PlacaBase::FactorDeForma ( valor ) );
-   }
-   else
-   {
-      return ( OTRO );
-   }
-}
+   std::string aDevolver = "";
 
-/**
- * @brief Método para comprobar si un valor se corresponde con un factor de
- *        forma
- * @param valor Valor entero a comprobar
- * @retval true Si el valor se corresponde con uno de los del tipo
- *         PlacaBase::FactorDeForma
- * @retval false Si el valor no se correponde con un valor del tipo antes
- *         indicado
- */
-bool PlacaBase::isFactorDeForma ( int valor )
-{
-   if ( ( valor >= ATX ) && ( valor <= OTRO ) )
+   switch (ff)
    {
-      return ( true );
+      case FactorDeForma::ATX:
+         aDevolver = "ATX";
+         break;
+      case FactorDeForma::MicroATX:
+         aDevolver = "MicroATX";
+         break;
+      case FactorDeForma::MiniITX:
+         aDevolver = "MiniITX";
+         break;
+      case FactorDeForma::NanoITX:
+         aDevolver = "NanoITX";
+         break;
+      case FactorDeForma::PicoITX:
+         aDevolver = "PicoITX";
+         break;
+      case FactorDeForma::OTRO:
+         aDevolver = "OTRO";
+         break;
+      default:
+         aDevolver = "Desconocido";
+         break;
    }
-   else
-   {
-      return ( false );
-   }
+
+   return aDevolver;
 }
 
 /**
@@ -63,36 +60,34 @@ bool PlacaBase::isFactorDeForma ( int valor )
  * @throws std::invalid_argument Si el factor de forma no es correcto, o si
  *         alguno de los números de puertos es negativo
  */
-PlacaBase::PlacaBase ( string marca, string modelo, string nSerie,
-                       FactorDeForma fForma, int nPCIe, int nUSB, string chipset,
-                       string socket ):
-        Componente (marca, modelo, nSerie, 0),
-        _fForma (fForma), _nPCIe (nPCIe),
-        _nUSB (nUSB), _chipset (chipset),
-        _socket (socket)
+PlacaBase::PlacaBase ( string marca, string modelo, string nSerie
+                     , FactorDeForma fForma, int nPCIe, int nUSB, string chipset
+                     , string socket ):
+                                    Componente (marca, modelo, nSerie, 0)
+                                  , _fForma (fForma), _nPCIe (nPCIe)
+                                  , _nUSB (nUSB), _chipset (chipset)
+                                  , _socket (socket)
 {
-
     try {
-        this->setFForma(fForma); //Validar y asignar o excepción std::invalid_argument
-        this->setNUSB(nUSB);
+        this->setNUSB(nUSB); //Validar y asignar o excepción std::invalid_argument
         this->setNPCIe(nPCIe);
     }catch(std::invalid_argument &e) {
         //Añadimos id del método al error y relanzamos la excepción
-        throw std::invalid_argument( "[PlacaBase::PlacaBase] "+std::string(e.what()) );
+        throw std::invalid_argument ( "[PlacaBase::PlacaBase] "
+                                      + std::string(e.what()) );
     }
-
 }
 
 /**
  * @brief Constructor de copia
  * @param orig Objeto del que se copian los atributos
  */
-PlacaBase::PlacaBase ( const PlacaBase& orig ): Componente (orig),
-                                                _fForma (orig._fForma),
-                                                _nPCIe (orig._nPCIe),
-                                                _nUSB (orig._nUSB),
-                                                _chipset (orig._chipset),
-                                                _socket (orig._socket)
+PlacaBase::PlacaBase ( const PlacaBase& orig ): Componente (orig)
+                                              , _fForma (orig._fForma)
+                                              , _nPCIe (orig._nPCIe)
+                                              , _nUSB (orig._nUSB)
+                                              , _chipset (orig._chipset)
+                                              , _socket (orig._socket)
 {
 }
 
@@ -193,17 +188,9 @@ int PlacaBase::getNPCIe ( ) const
  * @brief Método para cambiar el factor de forma de la placa
  * @param fForma Identificador del factor de forma. Valor del tipo
  *        PlacaBase::FactorDeForma
- * @throws std::invalid_argument Si el valor que se pasa no identifica un factor
- *         de forma
  */
-void PlacaBase::setFForma ( PlacaBase::FactorDeForma fForma )
+void PlacaBase::setFForma ( FactorDeForma fForma )
 {
-   if ( isFactorDeForma ( fForma ) == false )
-   {
-      throw std::invalid_argument ( "PlacaBase::setFForma: factor de forma no"
-                                    " válido" );
-   }
-
    this->_fForma = fForma;
 }
 

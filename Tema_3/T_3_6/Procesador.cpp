@@ -11,43 +11,37 @@
 #include "Procesador.h"
 
 /**
- * @brief Método de clase para asegurar un tipo de arquitectura correcto
- * @param valor Valor entero que se quiere convertir a un tipo de arquitectura
- * @return El valor convertido a uno de los valores del tipo
- *         Procesador::Arquitectura. Si el valor no se corresponde con ningún
- *         tipo de conexión, devuelve el valor Arquitectura::otra
+ * Convierte una arquitectura en una cadena de texto
+ * @param arq Arquitectura a convertir
+ * @return Una cadena de texto describiendo la arquitectura
  */
-Procesador::Arquitectura Procesador::intoArquitectura (int valor)
+std::string Procesador::arq2string ( Arquitectura arq )
 {
-   if ( ( valor >= x86_32 ) && ( valor <= OTRA ) )
-   {
-      return ( Procesador::Arquitectura ( valor ) );
-   }
-   else
-   {
-      return ( OTRA );
-   }
-}
+   std::string aDevolver = "";
 
-/**
- * @brief Método para comprobar si un valor se corresponde con un tipo de
- *        arquitectura
- * @param valor Valor entero a comprobar
- * @retval true Si el valor se corresponde con uno de los del tipo
- *         Procesador::Arquitectura
- * @retval false Si el valor no se correponde con un valor del tipo antes
- *         indicado
- */
-bool Procesador::isArquitectura ( int valor )
-{
-   if ( ( valor >= x86_32 ) && ( valor <= OTRA ) )
+   switch ( arq )
    {
-      return ( true );
+      case Arquitectura::x86_32:
+         aDevolver = "Intel IA-32 (32 bits)";
+         break;
+      case Arquitectura::x86_64:
+         aDevolver = "Intel IA-64 o AMD64 (64 bits)";
+         break;
+      case Arquitectura::ARM:
+         aDevolver = "ARM (32 bits)";
+         break;
+      case Arquitectura::ARM64:
+         aDevolver = "ARM (64 bits)";
+         break;
+      case Arquitectura::OTRA:
+         aDevolver = "OTRA";
+         break;
+      default:
+         aDevolver = "Desconocida";
+         break;
    }
-   else
-   {
-      return ( false );
-   }
+
+   return aDevolver;
 }
 
 /**
@@ -66,14 +60,13 @@ bool Procesador::isArquitectura ( int valor )
  */
 Procesador::Procesador ( string marca, string modelo, string nSerie,
                          float velocidad, Arquitectura arquitectura,
-                         string socket ): Componente ( marca, modelo, nSerie, 0 ),
-                                          _arq (arquitectura), _socket (socket),
-                                          _velocidad (velocidad)
+                         string socket ): Componente ( marca, modelo, nSerie, 0 )
+                                        , _arq (arquitectura), _socket (socket)
+                                        , _velocidad (velocidad)
 {
 
     try {
         this->setVelocidad(velocidad); //Validar y asignar o lanza std::invalid_argument
-        this->setArq(arquitectura);
     }catch(std::invalid_argument &e) {
         //Añadimos id del método al error y relanzamos la excepción
         throw std::invalid_argument( "[Procesador::Procesador] "+std::string(e.what()) );
@@ -84,10 +77,10 @@ Procesador::Procesador ( string marca, string modelo, string nSerie,
  * @brief Constructor de copia
  * @param orig Objeto del que se copian los atributos
  */
-Procesador::Procesador ( const Procesador& orig ): Componente (orig),
-                                                   _arq (orig._arq),
-                                                   _socket (orig._socket),
-                                                   _velocidad (orig._velocidad)
+Procesador::Procesador ( const Procesador& orig ): Componente (orig)
+                                                 , _arq (orig._arq)
+                                                 , _socket (orig._socket)
+                                                 , _velocidad (orig._velocidad)
 {
 }
 
@@ -102,16 +95,9 @@ Procesador::~Procesador ( )
  * @brief Método para cambiar la arquitectura del procesador
  * @param nArq Un valor del tipo Procesador::Arquitectura, que identifica la
  *        nueva arquitectura del procesador
- * @throws std::invalid_argument Si el parámetro no es un valor válido del tipo
  */
 void Procesador::setArq ( Procesador::Arquitectura arq )
 {
-   if ( isArquitectura (arq) == false )
-   {
-      throw std::invalid_argument ( "Procesador::setArq: valor de arquitectura"
-                                    " no válido" );
-   }
-
    this->_arq = arq;
 }
 

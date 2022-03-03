@@ -109,7 +109,7 @@ string t36_utils::info ( PlacaBase& pb )
        << "S/N: " << pb.getNumSerie () << "\t"
        << "Precio: " << pb.getPrecio () << " Euros"
        << std::endl
-       << "   Factor de forma: " << pb.getFForma ()
+       << "   Factor de forma: " << PlacaBase::ff2string ( pb.getFForma () )
        << "\tNúmero de slots PCIe: " << pb.getNPCIe () << std::endl
        << "   Número de puertos USB: " << pb.getNUSB ()
        << "\tChipset: " << pb.getChipset () << std::endl
@@ -134,7 +134,7 @@ string t36_utils::info ( Procesador& p )
        << "S/N: " << p.getNumSerie () << "\t"
        << "Precio: " << p.getPrecio () << " Euros"
        << std::endl
-       << "   Arquitectura: " << p.getArq ()
+       << "   Arquitectura: " << Procesador::arq2string ( p.getArq () )
        << "\tSocket: " << p.getSocket () << std::endl
        << "   Velocidad en gigahercios: " << p.getVelocidad ();
    
