@@ -193,7 +193,7 @@ int TicTacToe::movimiento ( int f, int c )
 
       // Ya que la marca va a ser 'X' o 'O', la excepción out_of_range sólo
       // puede deberse a un valor no válido de fila y/o columna
-      mensaje << "TicTacToe::movimiento: posición incorrecta en el tablero"
+      mensaje << "TicTacToe::movimiento: posición incorrecta en el tablero "
               << oor.what ();
       throw std::out_of_range ( mensaje.str () );
    }
