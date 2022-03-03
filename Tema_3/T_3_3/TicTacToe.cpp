@@ -30,7 +30,8 @@ TicTacToe::TicTacToe ( ) try: _jugadores{"p1","p2"}, _t( new Tablero() )
 }
 catch ( std::bad_alloc &e )
 {
-   // En este caso, basta con relanzar la excepción
+   // La excepción se relanza automáticamente (y el objeto no se construirá),
+   // pero es conveniente dejarlo indicado
    throw e;
 }
 
@@ -57,7 +58,8 @@ TicTacToe::TicTacToe ( const TicTacToe& orig ) try: _jugadores{ orig._jugadores[
 }
 catch ( std::bad_alloc &e )
 {
-   // En este caso, basta con relanzar la excepción
+   // La excepción se relanza automáticamente (y el objeto no se construirá),
+   // pero es conveniente dejarlo indicado
    throw e;
 }
 
@@ -85,7 +87,8 @@ TicTacToe::TicTacToe ( const string& jugador1,
 }
 catch ( std::bad_alloc &e )
 {
-   // En este caso, basta con relanzar la excepción
+   // La excepción se relanza automáticamente (y el objeto no se construirá),
+   // pero es conveniente dejarlo indicado
    throw e;
 }
 
@@ -96,6 +99,8 @@ catch ( std::bad_alloc &e )
  */
 TicTacToe::~TicTacToe ( )
 {
+   /* Como en los constructores nos aseguramos de que siempre va a haber
+    * un tablero, no es necesario comprobar si el puntero es nullptr */
    delete _t;
    _t = nullptr;
 }
@@ -167,6 +172,8 @@ string TicTacToe::getAnterior ()
  */
 Tablero& TicTacToe::getTablero ()
 {
+   /* Como en los constructores nos aseguramos de que siempre va a haber
+    * un tablero, no es necesario comprobar si el puntero es nullptr */
    return ( *_t );
 }
 
