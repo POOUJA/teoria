@@ -40,16 +40,13 @@ Guerrero::Guerrero ( string nNombre, int nEnergia ): _nombre (nNombre),
 
 /**
  * @brief Constructor de copia
- * 
- * Solamente copia la energía y el nombre (añadiendo " - 2" al final, para que
- * no tenga exactamente el mismo nombre). El nuevo guerrero está desarmado, ya
- * que no tiene sentido que tenga la misma arma que el original
  * @param orig Objeto del que se copian los atributos
+ * @post El nuevo objeto añade a su nombre " - copia" al final
  */
-Guerrero::Guerrero ( const Guerrero& orig ): _armamento (nullptr),
-                                             _energia (orig._energia)
+Guerrero::Guerrero ( const Guerrero& orig ): _armamento (orig._armamento)
+                                           , _energia (orig._energia)
 {
-   _nombre = orig._nombre + " - 2";   // Para evitar nombres duplicados
+   _nombre = orig._nombre + " - copia";   // Para evitar nombres duplicados
 }
 
 /**
@@ -58,6 +55,8 @@ Guerrero::Guerrero ( const Guerrero& orig ): _armamento (nullptr),
  * Como la relación con el arma es de asociación, no se destruye el objeto de
  * clase Arma apuntado por Guerrero::_armamento. Es necesario llamar al método
  * Guerrero::desarmar antes de destruirlo
+ * @pre Antes de destruir un guerrero debe garantizarse que no tiene arma
+ *      asociada o retirarla usando el método desarmar
  */
 Guerrero::~Guerrero ( )
 {

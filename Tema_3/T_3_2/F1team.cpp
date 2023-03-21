@@ -11,14 +11,13 @@
 using std::string;
 
 /**
- * No copia los pilotos (no tiene sentido tener dos equipos con los mismos
- * pilotos), y añade al nombre " - 2", para que se sepa que es una copia
  * @brief Constructor de copia
  * @param orig Objeto del que se copian los atributos
+ * @post El nombre del nuevo objeto añade " - copia" al final
  */
-F1team::F1team ( const F1team& orig ): _p1 (nullptr), _p2 (nullptr)
+F1team::F1team ( const F1team& orig ): _p1 (orig._p1), _p2 (orig._p2)
 {
-   _nombre = orig._nombre + " - 2";
+   _nombre = orig._nombre + " - copia";
 }
 
 /**
