@@ -8,6 +8,7 @@
 #include <stdlib.h>    // Para usar rand
 #include <iostream>    // Para usar cerr
 #include <stdexcept>   // Para usar std::invalid_argument
+#include <cassert>
 #include "Guerrero.h"
 
 /**
@@ -60,13 +61,14 @@ Guerrero::Guerrero ( const Guerrero& orig ): _armamento (orig._armamento)
  */
 Guerrero::~Guerrero ( )
 {
-   // Como lanzar excepciones en los destructores no es una buena práctica,
-   // simplemente se muestra un mensaje por la consola de errores
-   if ( _armamento != nullptr )
-   {
-      std::cerr << "Guerrero::~Guerrero: se destruye un guerrero sin "
-                << "desarmarlo previamente";
-   }
+    // Como lanzar excepciones en los destructores no es una buena práctica,
+    // simplemente se comprueba que se ha desarmado el guerrero con la función assert y,
+    // en caso de que no, el programa finaliza mostrando un mensaje con la condición
+    // no satisfecha.
+   assert ( _armamento != nullptr ); //finalizamos el programa si se destruye un guerrero
+                                    //sin desarmarlo previamente
+
+
 }
 
 /**
