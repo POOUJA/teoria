@@ -65,7 +65,7 @@ Guerrero::~Guerrero ( )
     // simplemente se comprueba que se ha desarmado el guerrero con la función assert y,
     // en caso de que no, el programa finaliza mostrando un mensaje con la condición
     // no satisfecha.
-   assert ( _armamento != nullptr ); //finalizamos el programa si se destruye un guerrero
+   assert ( _armamento == nullptr ); //finalizamos el programa si se destruye un guerrero
                                     //sin desarmarlo previamente
 
 
