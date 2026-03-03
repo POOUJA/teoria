@@ -39,7 +39,7 @@ class Armero final
       string getNombre ( ) const;
       void setMaxPoderArma ( int nMaxPoderArma );
       int getMaxPoderArma ( ) const;
-      Arma* creaArma ( string nombreArma );
+      Arma creaArma ( string nombreArma );
       int ataque ();
       Armero& operator= ( const Armero& orig );
 };

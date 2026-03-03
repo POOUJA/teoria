@@ -23,7 +23,6 @@ int main ( int argc, char** argv )
 {
    // Crea un armero
    Armero merlin ( "Merlín", 500 );
-   Arma* espada = nullptr;
    Guerrero* lanci = nullptr;
    // Crea un guerrero
    Guerrero blacki ( "Caballero negro", 3000 );
@@ -35,13 +34,12 @@ int main ( int argc, char** argv )
    cout << info (merlin) << endl;
 
    // Pide al armero que fabrique un arma
-   espada = merlin.creaArma ( "Excalibur" );
-   cout << info (*espada) << endl;
+   Arma espada = merlin.creaArma ( "Excalibur" );
+   cout << info (espada) << endl;
 
    // Crea un guerrero en memoria dinámica, y le entrega el arma
    lanci = new Guerrero ( "Lancelot", 2500 );
-   lanci->setArmamento (espada);
-   espada = nullptr;
+   lanci->setArmamento (&espada);
    cout << info (*lanci) << endl;
 
    // El guerrero hace varios ataques de prueba
@@ -51,23 +49,21 @@ int main ( int argc, char** argv )
    cout << lanci->ataque () << endl;
 
    // En primer lugar, hay que desarmar al guerrero antes de destruirlo
-   espada = lanci->desarmar ();
-   delete lanci;
+   Arma *pArmaAbandonada = lanci->desarmar ();
+   delete lanci;  //Lanci dies...Aaargh!!! Liberamos su memoria dinámica
    lanci = nullptr;
 
    // Reutiliza el arma, dándosela a otro guerrero
-   blacki.setArmamento (espada);
-   espada = nullptr;
+   blacki.setArmamento (pArmaAbandonada);
    cout << info (blacki) << endl;
    cout << "Ataque de demostración:" << endl;
    cout << blacki.ataque () << endl;
 
    // Desarma al segundo guerrero
-   espada = blacki.desarmar ();
+   pArmaAbandonada = blacki.desarmar ();
 
-   // Destruye el arma
-   delete espada;
-   espada = nullptr;
+   //La espada, Excalibur, se libera automáticamente
+   //El guerrero, Blacki,  se libera automáticamente
 
    return 0;
 }

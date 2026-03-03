@@ -130,17 +130,16 @@ int Armero::getMaxPoderArma ( ) const
  * El poder de destrucción del arma creada variará aleatoriamente entre 1 y el
  * valor del atributo Armero::_maxPoderArma
  * @param nombreArma Texto con el nombre que se asignará a la nueva arma
- * @return Un puntero al objeto de clase Arma con la información de la nueva
- *         arma
+ * @return Objeto arma con el nombre indicado
  */
-Arma* Armero::creaArma ( string nombreArma )
+Arma Armero::creaArma ( string nombreArma )
 {
    // Crea un nuevo objeto de clase Arma, con el nombre que se le pasa
-   Arma *a = new Arma ( nombreArma );
+   Arma a { nombreArma };
 
    // Calcula aleatoriamente el poder asociado al arma, y lo asigna
    int aux = (rand () % _maxPoderArma) + 1;   
-   a->setPoder ( aux );
+   a.setPoder ( aux );
 
    return ( a );
 }
