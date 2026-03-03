@@ -5,9 +5,10 @@
  * @date 2015-12-31
  */
 
-#include <stdlib.h>   // Para usar rand
+#include <cstdlib>   // Para usar rand
 #include <iostream>    // Para usar cerr
 #include <stdexcept>   // Para usar las excepciones estándar
+#include <cassert>
 #include "Guerrero.h"
 
 /**
@@ -82,17 +83,11 @@ Guerrero::Guerrero ( const Guerrero& orig ): _numArmas (0),
  */
 Guerrero::~Guerrero ( )
 {
-   // Como lanzar excepciones en los destructores no es una buena práctica,
-   // simplemente se muestra un mensaje por la consola de errores
-   int i;
    
-   for ( i = 0; i < _numArmas; i++ )
+   for ( int i = 0; i < _numArmas; i++ )
    {
-      if ( _armamento[i] != nullptr )
-      {
-         std::cerr << "Guerrero::~Guerrero: se destruye un guerrero sin "
-                   << "desarmarlo previamente";
-      }
+      //No debería quedar ningún arma en el inventario
+      assert(_armamento[i] == nullptr);
    }
 }
 
@@ -277,7 +272,7 @@ Arma *Guerrero::desarmar ( int cual )
  *        este método. Los valores que tuviera almacenados se borrarán
  * @return El número de armas que se le han quitado al guerrero
  */
-int Guerrero::desarmar ( Arma* (&armas)[_MAX_ARMAS_] )
+int Guerrero::desarmar ( Arma* armas[_MAX_ARMAS_] )
 {
    int i;
    

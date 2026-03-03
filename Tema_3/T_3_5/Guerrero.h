@@ -51,7 +51,7 @@ class Guerrero
       void setNombre ( string nNombre );
       string getNombre ( ) const;
       Arma *desarmar ( int cual );
-      int desarmar ( Arma* (&armas)[_MAX_ARMAS_] );
+      int desarmar ( Arma* armas[_MAX_ARMAS_] );
       int ataque ( int armaElegida );
       Guerrero& operator= ( const Guerrero& orig );
 };

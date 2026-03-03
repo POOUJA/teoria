@@ -7,7 +7,7 @@
 
 //#include <cstdlib>
 #include <iostream>   // Para usar cout
-#include <stdlib.h>   // Para usar srand
+#include <cstdlib>   // Para usar srand
 //#include <time.h>
 
 #include "Armero.h"
@@ -22,56 +22,49 @@ using namespace t35_utils;
  */
 int main ( int argc, char** argv )
 {
-   Armero *a;
-   Arma *b, *c, *d;
-   Arma *armas[Guerrero::_MAX_ARMAS_];
-   Guerrero *g;
-   int i, aux;
+   
+   Arma* inventario[Guerrero::_MAX_ARMAS_];
+   Guerrero *pGuerrero{};  //el puntero se inicializa a nullptr   
 
    // Inicializa el generador de números pseudoaleatorios
    srand ( time (0) );
 
    // Crea un nuevo armero
-   a = new Armero ( "Merlín", 500 );
-   cout << info (*a) << endl;
+   Armero armero { "Merlín", 500 };
+   cout << info (armero) << endl;
 
    // Pide al armero que fabrique un arma
-   b = a->creaArma ( "Excalibur" );
-   c = a->creaArma ( "Magnum 44" );
-   d = a->creaArma ( "AK-47" );
+   Arma arma1 = armero.creaArma ( "Excalibur" );
+   Arma arma2 = armero.creaArma ( "Magnum 44" );
+   Arma arma3 = armero.creaArma ( "AK-47" );
 
-   // Crea un guerrero, y le entrega el arma
-   g = new Guerrero ( "Lancelot", 2500 );
-   g->addArma (b);
-   b = nullptr;
-   g->addArma (c);
-   c = nullptr;
-   g->addArma (d);
-   d = nullptr;
-   cout << info (*g) << endl;
+   // Crea un guerrero, y le entrega las armas
+   pGuerrero = new Guerrero ( "Lancelot", 2500 );
+
+   pGuerrero->addArma (&arma1);
+   pGuerrero->addArma (&arma2);
+   pGuerrero->addArma (&arma3);
+
+   cout << info (*pGuerrero) << endl;
 
    // El guerrero hace varios ataques de prueba
    cout << "Ataques de demostración:" << endl;
-   cout << g->ataque (1) << endl;
-   cout << g->ataque (2) << endl;
-   cout << g->ataque (3) << endl;
+   cout << pGuerrero->ataque (1) << endl;
+   cout << pGuerrero->ataque (2) << endl;
+   cout << pGuerrero->ataque (3) << endl;
 
    // Pasa a liberar recursos. En primer lugar, hay que desarmar al guerrero
    // antes de destruirlo
-   aux = g->desarmar ( armas );
-   delete g;
-   g = nullptr;
+   int armasRecuperadas = pGuerrero->desarmar ( inventario );
+   delete pGuerrero;  //Liberar memoria dinámica del objeto Guerrero
+   pGuerrero = nullptr;
 
-   // Destruye las armas
-   for ( i = 0; i < aux; i++ )
+   for (int i = 0; i < armasRecuperadas; i++)
    {
-      delete armas[i];
-      armas[i] = nullptr;
+      std::cout << "Se ha recuperado el arma " << inventario[i]->getNombre() << std::endl;
    }
-
-   // Destruye el armero
-   delete a;
-   a = nullptr;
+   
+   //Se liberan automáticamente las armas y el armero
 
    return 0;
 }
