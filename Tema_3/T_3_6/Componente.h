@@ -20,11 +20,12 @@ using std::string;
  */
 class Componente
 {
-   protected:
+   private:
       string _marca="---";      ///< Marca del componente
       string _modelo="---";     ///< Modelo del componente
+      float _precio=0;          ///< Precio del componente
+   protected:
       string _numSerie="000000000000";   ///< Número de serie del componente
-      float _precio=0;      ///< Precio del componente
 
    public:
       Componente () = default;
